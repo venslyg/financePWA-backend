@@ -1,0 +1,3 @@
+org.springframework.test.context.ContextCustomizerFactory = \
+    com.gvsolutions.config.SqlTestContainersSpringContextCustomizerFactory,com.\
+    gvsolutions.config.TestContainersSpringContextCustomizerFactory

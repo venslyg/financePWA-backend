@@ -20,6 +20,8 @@ describe('MaintenanceLog Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             maintenanceLogCode: expect.any(Object),
             logDate: expect.any(Object),
             logType: expect.any(Object),
@@ -43,6 +45,8 @@ describe('MaintenanceLog Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             maintenanceLogCode: expect.any(Object),
             logDate: expect.any(Object),
             logType: expect.any(Object),

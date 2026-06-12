@@ -24,6 +24,14 @@ public class ExpenseCategory extends AbstractAuditingEntity<Long> implements Ser
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "branch_code")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchCode;
+
+    @Column(name = "branch_id")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchId;
+
     @Column(name = "category_code")
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String categoryCode;
@@ -57,6 +65,32 @@ public class ExpenseCategory extends AbstractAuditingEntity<Long> implements Ser
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getBranchCode() {
+        return this.branchCode;
+    }
+
+    public ExpenseCategory branchCode(String branchCode) {
+        this.setBranchCode(branchCode);
+        return this;
+    }
+
+    public void setBranchCode(String branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return this.branchId;
+    }
+
+    public ExpenseCategory branchId(String branchId) {
+        this.setBranchId(branchId);
+        return this;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getCategoryCode() {
@@ -164,6 +198,8 @@ public class ExpenseCategory extends AbstractAuditingEntity<Long> implements Ser
     public String toString() {
         return "ExpenseCategory{" +
             "id=" + getId() +
+            ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", categoryCode='" + getCategoryCode() + "'" +
             ", categoryName='" + getCategoryName() + "'" +
             ", description='" + getDescription() + "'" +

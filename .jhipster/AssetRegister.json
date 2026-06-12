@@ -12,6 +12,10 @@
       "fieldType": "String"
     },
     {
+      "fieldName": "branchId",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "assetRegisterCode",
       "fieldType": "String"
     },

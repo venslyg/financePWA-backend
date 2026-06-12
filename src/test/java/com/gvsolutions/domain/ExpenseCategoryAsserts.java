@@ -49,6 +49,8 @@ public class ExpenseCategoryAsserts {
     public static void assertExpenseCategoryUpdatableFieldsEquals(ExpenseCategory expected, ExpenseCategory actual) {
         assertThat(actual)
             .as("Verify ExpenseCategory relevant properties")
+            .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getCategoryCode()).as("check categoryCode").isEqualTo(expected.getCategoryCode()))
             .satisfies(a -> assertThat(a.getCategoryName()).as("check categoryName").isEqualTo(expected.getCategoryName()))
             .satisfies(a -> assertThat(a.getDescription()).as("check description").isEqualTo(expected.getDescription()));

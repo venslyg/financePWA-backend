@@ -20,6 +20,8 @@ describe('AssetCategory Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             assetCategoryCode: expect.any(Object),
             assetCategoryName: expect.any(Object),
             description: expect.any(Object),
@@ -37,6 +39,8 @@ describe('AssetCategory Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             assetCategoryCode: expect.any(Object),
             assetCategoryName: expect.any(Object),
             description: expect.any(Object),

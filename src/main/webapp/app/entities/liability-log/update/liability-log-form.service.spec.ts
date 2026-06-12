@@ -21,6 +21,7 @@ describe('LiabilityLog Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             liabilityCode: expect.any(Object),
             loanFrom: expect.any(Object),
             description: expect.any(Object),
@@ -48,6 +49,7 @@ describe('LiabilityLog Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             liabilityCode: expect.any(Object),
             loanFrom: expect.any(Object),
             description: expect.any(Object),

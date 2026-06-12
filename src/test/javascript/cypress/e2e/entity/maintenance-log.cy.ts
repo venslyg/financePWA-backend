@@ -160,8 +160,14 @@ describe('MaintenanceLog e2e test', () => {
     });
 
     it('should create an instance of MaintenanceLog', () => {
-      cy.get(`[data-cy="maintenanceLogCode"]`).type('meh inasmuch vestment');
-      cy.get(`[data-cy="maintenanceLogCode"]`).should('have.value', 'meh inasmuch vestment');
+      cy.get(`[data-cy="branchCode"]`).type('mozzarella');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'mozzarella');
+
+      cy.get(`[data-cy="branchId"]`).type('aw');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'aw');
+
+      cy.get(`[data-cy="maintenanceLogCode"]`).type('crank superior');
+      cy.get(`[data-cy="maintenanceLogCode"]`).should('have.value', 'crank superior');
 
       cy.get(`[data-cy="logDate"]`).type('2026-06-11');
       cy.get(`[data-cy="logDate"]`).blur();
@@ -169,21 +175,21 @@ describe('MaintenanceLog e2e test', () => {
 
       cy.get(`[data-cy="logType"]`).select('REPAIR');
 
-      cy.get(`[data-cy="description"]`).type('precious shear');
-      cy.get(`[data-cy="description"]`).should('have.value', 'precious shear');
+      cy.get(`[data-cy="description"]`).type('outside fooey whenever');
+      cy.get(`[data-cy="description"]`).should('have.value', 'outside fooey whenever');
 
-      cy.get(`[data-cy="cost"]`).type('11264');
-      cy.get(`[data-cy="cost"]`).should('have.value', '11264');
+      cy.get(`[data-cy="cost"]`).type('18369.52');
+      cy.get(`[data-cy="cost"]`).should('have.value', '18369.52');
 
-      cy.get(`[data-cy="vendor"]`).type('once next');
-      cy.get(`[data-cy="vendor"]`).should('have.value', 'once next');
+      cy.get(`[data-cy="vendor"]`).type('unexpectedly while bewail');
+      cy.get(`[data-cy="vendor"]`).should('have.value', 'unexpectedly while bewail');
 
       cy.get(`[data-cy="nextServiceDate"]`).type('2026-06-11');
       cy.get(`[data-cy="nextServiceDate"]`).blur();
       cy.get(`[data-cy="nextServiceDate"]`).should('have.value', '2026-06-11');
 
-      cy.get(`[data-cy="note"]`).type('fussy blah valentine');
-      cy.get(`[data-cy="note"]`).should('have.value', 'fussy blah valentine');
+      cy.get(`[data-cy="note"]`).type('aha ha even');
+      cy.get(`[data-cy="note"]`).should('have.value', 'aha ha even');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

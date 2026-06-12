@@ -11,6 +11,10 @@
       "fieldType": "String"
     },
     {
+      "fieldName": "branchId",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "pettyCashCode",
       "fieldType": "String"
     },

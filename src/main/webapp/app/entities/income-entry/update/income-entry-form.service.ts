@@ -33,6 +33,7 @@ type IncomeEntryFormDefaults = Pick<NewIncomeEntry, 'id' | 'createdDate' | 'last
 type IncomeEntryFormGroupContent = {
   id: FormControl<IncomeEntryFormRawValue['id'] | NewIncomeEntry['id']>;
   branchCode: FormControl<IncomeEntryFormRawValue['branchCode']>;
+  branchId: FormControl<IncomeEntryFormRawValue['branchId']>;
   accountCode: FormControl<IncomeEntryFormRawValue['accountCode']>;
   incomeCode: FormControl<IncomeEntryFormRawValue['incomeCode']>;
   createdByUsername: FormControl<IncomeEntryFormRawValue['createdByUsername']>;
@@ -69,6 +70,7 @@ export class IncomeEntryFormService {
         },
       ),
       branchCode: new FormControl(incomeEntryRawValue.branchCode),
+      branchId: new FormControl(incomeEntryRawValue.branchId),
       accountCode: new FormControl(incomeEntryRawValue.accountCode),
       incomeCode: new FormControl(incomeEntryRawValue.incomeCode),
       createdByUsername: new FormControl(incomeEntryRawValue.createdByUsername),

@@ -26,6 +26,8 @@ public class AssetRegisterCriteria implements Serializable, Criteria {
 
     private StringFilter branchCode;
 
+    private StringFilter branchId;
+
     private StringFilter assetRegisterCode;
 
     private StringFilter assetCategoryCode;
@@ -61,6 +63,7 @@ public class AssetRegisterCriteria implements Serializable, Criteria {
     public AssetRegisterCriteria(AssetRegisterCriteria other) {
         this.id = other.optionalId().map(LongFilter::copy).orElse(null);
         this.branchCode = other.optionalBranchCode().map(StringFilter::copy).orElse(null);
+        this.branchId = other.optionalBranchId().map(StringFilter::copy).orElse(null);
         this.assetRegisterCode = other.optionalAssetRegisterCode().map(StringFilter::copy).orElse(null);
         this.assetCategoryCode = other.optionalAssetCategoryCode().map(StringFilter::copy).orElse(null);
         this.assetSubCategoryCode = other.optionalAssetSubCategoryCode().map(StringFilter::copy).orElse(null);
@@ -119,6 +122,25 @@ public class AssetRegisterCriteria implements Serializable, Criteria {
 
     public void setBranchCode(StringFilter branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public StringFilter getBranchId() {
+        return branchId;
+    }
+
+    public Optional<StringFilter> optionalBranchId() {
+        return Optional.ofNullable(branchId);
+    }
+
+    public StringFilter branchId() {
+        if (branchId == null) {
+            setBranchId(new StringFilter());
+        }
+        return branchId;
+    }
+
+    public void setBranchId(StringFilter branchId) {
+        this.branchId = branchId;
     }
 
     public StringFilter getAssetRegisterCode() {
@@ -418,6 +440,7 @@ public class AssetRegisterCriteria implements Serializable, Criteria {
         return (
             Objects.equals(id, that.id) &&
             Objects.equals(branchCode, that.branchCode) &&
+            Objects.equals(branchId, that.branchId) &&
             Objects.equals(assetRegisterCode, that.assetRegisterCode) &&
             Objects.equals(assetCategoryCode, that.assetCategoryCode) &&
             Objects.equals(assetSubCategoryCode, that.assetSubCategoryCode) &&
@@ -441,6 +464,7 @@ public class AssetRegisterCriteria implements Serializable, Criteria {
         return Objects.hash(
             id,
             branchCode,
+            branchId,
             assetRegisterCode,
             assetCategoryCode,
             assetSubCategoryCode,
@@ -465,6 +489,7 @@ public class AssetRegisterCriteria implements Serializable, Criteria {
         return "AssetRegisterCriteria{" +
             optionalId().map(f -> "id=" + f + ", ").orElse("") +
             optionalBranchCode().map(f -> "branchCode=" + f + ", ").orElse("") +
+            optionalBranchId().map(f -> "branchId=" + f + ", ").orElse("") +
             optionalAssetRegisterCode().map(f -> "assetRegisterCode=" + f + ", ").orElse("") +
             optionalAssetCategoryCode().map(f -> "assetCategoryCode=" + f + ", ").orElse("") +
             optionalAssetSubCategoryCode().map(f -> "assetSubCategoryCode=" + f + ", ").orElse("") +

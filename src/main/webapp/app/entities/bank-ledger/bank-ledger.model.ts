@@ -3,6 +3,7 @@ import dayjs from 'dayjs/esm';
 export interface IBankLedger {
   id: number;
   branchCode?: string | null;
+  branchId?: string | null;
   bankLedgerCode?: string | null;
   date?: dayjs.Dayjs | null;
   referenceNo?: string | null;

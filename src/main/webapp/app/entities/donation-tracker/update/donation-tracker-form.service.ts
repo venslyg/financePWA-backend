@@ -33,6 +33,7 @@ type DonationTrackerFormDefaults = Pick<NewDonationTracker, 'id' | 'createdDate'
 type DonationTrackerFormGroupContent = {
   id: FormControl<DonationTrackerFormRawValue['id'] | NewDonationTracker['id']>;
   branchCode: FormControl<DonationTrackerFormRawValue['branchCode']>;
+  branchId: FormControl<DonationTrackerFormRawValue['branchId']>;
   donationIdCode: FormControl<DonationTrackerFormRawValue['donationIdCode']>;
   date: FormControl<DonationTrackerFormRawValue['date']>;
   donorNameOrOrg: FormControl<DonationTrackerFormRawValue['donorNameOrOrg']>;
@@ -65,6 +66,7 @@ export class DonationTrackerFormService {
         },
       ),
       branchCode: new FormControl(donationTrackerRawValue.branchCode),
+      branchId: new FormControl(donationTrackerRawValue.branchId),
       donationIdCode: new FormControl(donationTrackerRawValue.donationIdCode),
       date: new FormControl(donationTrackerRawValue.date),
       donorNameOrOrg: new FormControl(donationTrackerRawValue.donorNameOrOrg),

@@ -7,30 +7,31 @@ export const sampleWithRequiredData: IBankLedger = {
 };
 
 export const sampleWithPartialData: IBankLedger = {
-  id: 18632,
-  branchCode: 'however all',
-  referenceNo: 'midst finally',
-  depositAmount: 22555.54,
-  createdBy: 'sightseeing how above',
-  createdDate: dayjs('2026-06-11T10:26'),
-  lastModifiedBy: 'wide-eyed excitedly',
+  id: 11566,
+  branchCode: 'zen',
+  date: dayjs('2026-06-11'),
+  description: 'anti marimba tuber',
+  remark: 'yowza deflect',
+  createdBy: 'judgementally',
+  createdDate: dayjs('2026-06-12T00:10'),
 };
 
 export const sampleWithFullData: IBankLedger = {
   id: 3712,
   branchCode: 'weird including',
-  bankLedgerCode: 'faithfully',
-  date: dayjs('2026-06-11'),
-  referenceNo: 'optimistically',
-  description: 'pricey',
-  depositAmount: 30269.96,
-  withdrawalAmount: 18731.75,
-  runningBalance: 6132.95,
-  remark: 'waltz closely wherever',
-  createdBy: 'underneath cantaloupe bah',
-  createdDate: dayjs('2026-06-12T02:20'),
-  lastModifiedBy: 'after grumpy eek',
-  lastModifiedDate: dayjs('2026-06-11T21:59'),
+  branchId: 'faithfully',
+  bankLedgerCode: 'everlasting intent',
+  date: dayjs('2026-06-12'),
+  referenceNo: 'publication surface',
+  description: 'schlep as openly',
+  depositAmount: 12361.82,
+  withdrawalAmount: 4759.84,
+  runningBalance: 18116.09,
+  remark: 'bah',
+  createdBy: 'unit readmit expostulate',
+  createdDate: dayjs('2026-06-11T21:38'),
+  lastModifiedBy: 'kaleidoscopic always',
+  lastModifiedDate: dayjs('2026-06-11T17:14'),
 };
 
 export const sampleWithNewData: NewBankLedger = {

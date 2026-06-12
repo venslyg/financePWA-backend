@@ -7,21 +7,23 @@ export const sampleWithRequiredData: IAssetCategory = {
 };
 
 export const sampleWithPartialData: IAssetCategory = {
-  id: 23907,
-  assetCategoryName: 'over scholarship joyfully',
-  createdDate: dayjs('2026-06-11T15:44'),
-  lastModifiedBy: 'utterly recklessly pish',
+  id: 28857,
+  branchId: 'er under',
+  description: 'unwieldy technician',
+  createdBy: 'per',
 };
 
 export const sampleWithFullData: IAssetCategory = {
   id: 6412,
-  assetCategoryCode: 'via',
-  assetCategoryName: 'monster',
-  description: 'fork and',
-  createdBy: 'although whoa',
-  createdDate: dayjs('2026-06-11T18:57'),
-  lastModifiedBy: 'inasmuch meh casement',
-  lastModifiedDate: dayjs('2026-06-11T21:33'),
+  branchCode: 'via',
+  branchId: 'monster',
+  assetCategoryCode: 'fork and',
+  assetCategoryName: 'although whoa',
+  description: 'inasmuch rim',
+  createdBy: 'casement as',
+  createdDate: dayjs('2026-06-11T22:38'),
+  lastModifiedBy: 'oh dissemble',
+  lastModifiedDate: dayjs('2026-06-12T02:52'),
 };
 
 export const sampleWithNewData: NewAssetCategory = {

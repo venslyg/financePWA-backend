@@ -35,6 +35,7 @@ import { SalaryPayoutDeleteDialogComponent } from '../delete/salary-payout-delet
 export class SalaryPayoutComponent implements OnInit {
   private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
     'branchCode',
+    'branchId',
     'salaryPayoutCode',
     'staffCode',
     'payPeriod',

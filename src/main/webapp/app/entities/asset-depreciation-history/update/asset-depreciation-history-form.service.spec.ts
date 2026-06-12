@@ -20,6 +20,8 @@ describe('AssetDepreciationHistory Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             assetRegisterCode: expect.any(Object),
             depreciationDate: expect.any(Object),
             depreciationAmount: expect.any(Object),
@@ -39,6 +41,8 @@ describe('AssetDepreciationHistory Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             assetRegisterCode: expect.any(Object),
             depreciationDate: expect.any(Object),
             depreciationAmount: expect.any(Object),

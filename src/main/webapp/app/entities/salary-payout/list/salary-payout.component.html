@@ -76,6 +76,14 @@
                 }
               </div>
             </th>
+            <th scope="col" jhiSortBy="branchId">
+              <div class="d-flex">
+                <span>Branch Id</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
             <th scope="col" jhiSortBy="salaryPayoutCode">
               <div class="d-flex">
                 <span>Salary Payout Code</span>
@@ -175,6 +183,7 @@
                 <a [routerLink]="['/salary-payout', salaryPayout.id, 'view']">{{ salaryPayout.id }}</a>
               </td>
               <td>{{ salaryPayout.branchCode }}</td>
+              <td>{{ salaryPayout.branchId }}</td>
               <td>{{ salaryPayout.salaryPayoutCode }}</td>
               <td>{{ salaryPayout.staffCode }}</td>
               <td>{{ salaryPayout.payPeriod }}</td>

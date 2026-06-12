@@ -34,6 +34,8 @@ import { BinCardLineDeleteDialogComponent } from '../delete/bin-card-line-delete
 })
 export class BinCardLineComponent implements OnInit {
   private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
+    'branchCode',
+    'branchId',
     'inventoryItemCode',
     'referenceNo',
     'description',

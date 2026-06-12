@@ -42,6 +42,10 @@ public class MaintenanceLogCriteria implements Serializable, Criteria {
 
     private LongFilter id;
 
+    private StringFilter branchCode;
+
+    private StringFilter branchId;
+
     private StringFilter maintenanceLogCode;
 
     private LocalDateFilter logDate;
@@ -74,6 +78,8 @@ public class MaintenanceLogCriteria implements Serializable, Criteria {
 
     public MaintenanceLogCriteria(MaintenanceLogCriteria other) {
         this.id = other.optionalId().map(LongFilter::copy).orElse(null);
+        this.branchCode = other.optionalBranchCode().map(StringFilter::copy).orElse(null);
+        this.branchId = other.optionalBranchId().map(StringFilter::copy).orElse(null);
         this.maintenanceLogCode = other.optionalMaintenanceLogCode().map(StringFilter::copy).orElse(null);
         this.logDate = other.optionalLogDate().map(LocalDateFilter::copy).orElse(null);
         this.logType = other.optionalLogType().map(MaintenanceLogTypeFilter::copy).orElse(null);
@@ -112,6 +118,44 @@ public class MaintenanceLogCriteria implements Serializable, Criteria {
 
     public void setId(LongFilter id) {
         this.id = id;
+    }
+
+    public StringFilter getBranchCode() {
+        return branchCode;
+    }
+
+    public Optional<StringFilter> optionalBranchCode() {
+        return Optional.ofNullable(branchCode);
+    }
+
+    public StringFilter branchCode() {
+        if (branchCode == null) {
+            setBranchCode(new StringFilter());
+        }
+        return branchCode;
+    }
+
+    public void setBranchCode(StringFilter branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public StringFilter getBranchId() {
+        return branchId;
+    }
+
+    public Optional<StringFilter> optionalBranchId() {
+        return Optional.ofNullable(branchId);
+    }
+
+    public StringFilter branchId() {
+        if (branchId == null) {
+            setBranchId(new StringFilter());
+        }
+        return branchId;
+    }
+
+    public void setBranchId(StringFilter branchId) {
+        this.branchId = branchId;
     }
 
     public StringFilter getMaintenanceLogCode() {
@@ -391,6 +435,8 @@ public class MaintenanceLogCriteria implements Serializable, Criteria {
         final MaintenanceLogCriteria that = (MaintenanceLogCriteria) o;
         return (
             Objects.equals(id, that.id) &&
+            Objects.equals(branchCode, that.branchCode) &&
+            Objects.equals(branchId, that.branchId) &&
             Objects.equals(maintenanceLogCode, that.maintenanceLogCode) &&
             Objects.equals(logDate, that.logDate) &&
             Objects.equals(logType, that.logType) &&
@@ -412,6 +458,8 @@ public class MaintenanceLogCriteria implements Serializable, Criteria {
     public int hashCode() {
         return Objects.hash(
             id,
+            branchCode,
+            branchId,
             maintenanceLogCode,
             logDate,
             logType,
@@ -434,6 +482,8 @@ public class MaintenanceLogCriteria implements Serializable, Criteria {
     public String toString() {
         return "MaintenanceLogCriteria{" +
             optionalId().map(f -> "id=" + f + ", ").orElse("") +
+            optionalBranchCode().map(f -> "branchCode=" + f + ", ").orElse("") +
+            optionalBranchId().map(f -> "branchId=" + f + ", ").orElse("") +
             optionalMaintenanceLogCode().map(f -> "maintenanceLogCode=" + f + ", ").orElse("") +
             optionalLogDate().map(f -> "logDate=" + f + ", ").orElse("") +
             optionalLogType().map(f -> "logType=" + f + ", ").orElse("") +

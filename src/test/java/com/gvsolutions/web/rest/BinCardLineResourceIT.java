@@ -45,6 +45,12 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class BinCardLineResourceIT {
 
+    private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_INVENTORY_ITEM_CODE = "AAAAAAAAAA";
     private static final String UPDATED_INVENTORY_ITEM_CODE = "BBBBBBBBBB";
 
@@ -107,6 +113,8 @@ class BinCardLineResourceIT {
      */
     public static BinCardLine createEntity() {
         return new BinCardLine()
+            .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .inventoryItemCode(DEFAULT_INVENTORY_ITEM_CODE)
             .date(DEFAULT_DATE)
             .referenceNo(DEFAULT_REFERENCE_NO)
@@ -124,6 +132,8 @@ class BinCardLineResourceIT {
      */
     public static BinCardLine createUpdatedEntity() {
         return new BinCardLine()
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .inventoryItemCode(UPDATED_INVENTORY_ITEM_CODE)
             .date(UPDATED_DATE)
             .referenceNo(UPDATED_REFERENCE_NO)
@@ -212,6 +222,8 @@ class BinCardLineResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(binCardLine.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].inventoryItemCode").value(hasItem(DEFAULT_INVENTORY_ITEM_CODE)))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].referenceNo").value(hasItem(DEFAULT_REFERENCE_NO)))
@@ -233,6 +245,8 @@ class BinCardLineResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(binCardLine.getId().intValue()))
+            .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.inventoryItemCode").value(DEFAULT_INVENTORY_ITEM_CODE))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.referenceNo").value(DEFAULT_REFERENCE_NO))
@@ -255,6 +269,109 @@ class BinCardLineResourceIT {
         defaultBinCardLineFiltering("id.greaterThanOrEqual=" + id, "id.greaterThan=" + id);
 
         defaultBinCardLineFiltering("id.lessThanOrEqual=" + id, "id.lessThan=" + id);
+    }
+
+    @Test
+    @Transactional
+    void getAllBinCardLinesByBranchCodeIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedBinCardLine = binCardLineRepository.saveAndFlush(binCardLine);
+
+        // Get all the binCardLineList where branchCode equals to
+        defaultBinCardLineFiltering("branchCode.equals=" + DEFAULT_BRANCH_CODE, "branchCode.equals=" + UPDATED_BRANCH_CODE);
+    }
+
+    @Test
+    @Transactional
+    void getAllBinCardLinesByBranchCodeIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedBinCardLine = binCardLineRepository.saveAndFlush(binCardLine);
+
+        // Get all the binCardLineList where branchCode in
+        defaultBinCardLineFiltering(
+            "branchCode.in=" + DEFAULT_BRANCH_CODE + "," + UPDATED_BRANCH_CODE,
+            "branchCode.in=" + UPDATED_BRANCH_CODE
+        );
+    }
+
+    @Test
+    @Transactional
+    void getAllBinCardLinesByBranchCodeIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedBinCardLine = binCardLineRepository.saveAndFlush(binCardLine);
+
+        // Get all the binCardLineList where branchCode is not null
+        defaultBinCardLineFiltering("branchCode.specified=true", "branchCode.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllBinCardLinesByBranchCodeContainsSomething() throws Exception {
+        // Initialize the database
+        insertedBinCardLine = binCardLineRepository.saveAndFlush(binCardLine);
+
+        // Get all the binCardLineList where branchCode contains
+        defaultBinCardLineFiltering("branchCode.contains=" + DEFAULT_BRANCH_CODE, "branchCode.contains=" + UPDATED_BRANCH_CODE);
+    }
+
+    @Test
+    @Transactional
+    void getAllBinCardLinesByBranchCodeNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedBinCardLine = binCardLineRepository.saveAndFlush(binCardLine);
+
+        // Get all the binCardLineList where branchCode does not contain
+        defaultBinCardLineFiltering("branchCode.doesNotContain=" + UPDATED_BRANCH_CODE, "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE);
+    }
+
+    @Test
+    @Transactional
+    void getAllBinCardLinesByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedBinCardLine = binCardLineRepository.saveAndFlush(binCardLine);
+
+        // Get all the binCardLineList where branchId equals to
+        defaultBinCardLineFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllBinCardLinesByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedBinCardLine = binCardLineRepository.saveAndFlush(binCardLine);
+
+        // Get all the binCardLineList where branchId in
+        defaultBinCardLineFiltering("branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID, "branchId.in=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllBinCardLinesByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedBinCardLine = binCardLineRepository.saveAndFlush(binCardLine);
+
+        // Get all the binCardLineList where branchId is not null
+        defaultBinCardLineFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllBinCardLinesByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedBinCardLine = binCardLineRepository.saveAndFlush(binCardLine);
+
+        // Get all the binCardLineList where branchId contains
+        defaultBinCardLineFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllBinCardLinesByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedBinCardLine = binCardLineRepository.saveAndFlush(binCardLine);
+
+        // Get all the binCardLineList where branchId does not contain
+        defaultBinCardLineFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -758,6 +875,8 @@ class BinCardLineResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(binCardLine.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].inventoryItemCode").value(hasItem(DEFAULT_INVENTORY_ITEM_CODE)))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].referenceNo").value(hasItem(DEFAULT_REFERENCE_NO)))
@@ -815,6 +934,8 @@ class BinCardLineResourceIT {
         // Disconnect from session so that the updates on updatedBinCardLine are not directly saved in db
         em.detach(updatedBinCardLine);
         updatedBinCardLine
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .inventoryItemCode(UPDATED_INVENTORY_ITEM_CODE)
             .date(UPDATED_DATE)
             .referenceNo(UPDATED_REFERENCE_NO)
@@ -932,11 +1053,12 @@ class BinCardLineResourceIT {
         partialUpdatedBinCardLine.setId(binCardLine.getId());
 
         partialUpdatedBinCardLine
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .inventoryItemCode(UPDATED_INVENTORY_ITEM_CODE)
-            .date(UPDATED_DATE)
             .referenceNo(UPDATED_REFERENCE_NO)
-            .quantityIn(UPDATED_QUANTITY_IN)
-            .quantityOut(UPDATED_QUANTITY_OUT);
+            .description(UPDATED_DESCRIPTION)
+            .runningBalance(UPDATED_RUNNING_BALANCE);
 
         restBinCardLineMockMvc
             .perform(
@@ -968,6 +1090,8 @@ class BinCardLineResourceIT {
         partialUpdatedBinCardLine.setId(binCardLine.getId());
 
         partialUpdatedBinCardLine
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .inventoryItemCode(UPDATED_INVENTORY_ITEM_CODE)
             .date(UPDATED_DATE)
             .referenceNo(UPDATED_REFERENCE_NO)
@@ -1097,6 +1221,8 @@ class BinCardLineResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(binCardLine.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].inventoryItemCode").value(hasItem(DEFAULT_INVENTORY_ITEM_CODE)))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].referenceNo").value(hasItem(DEFAULT_REFERENCE_NO)))

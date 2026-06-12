@@ -21,6 +21,7 @@ describe('ExpenseEntry Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             accountCode: expect.any(Object),
             expenseCode: expect.any(Object),
             expenseCategoryCode: expect.any(Object),
@@ -50,6 +51,7 @@ describe('ExpenseEntry Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             accountCode: expect.any(Object),
             expenseCode: expect.any(Object),
             expenseCategoryCode: expect.any(Object),

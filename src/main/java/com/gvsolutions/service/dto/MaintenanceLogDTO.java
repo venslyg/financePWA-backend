@@ -17,6 +17,10 @@ public class MaintenanceLogDTO implements Serializable {
 
     private Long id;
 
+    private String branchCode;
+
+    private String branchId;
+
     private String maintenanceLogCode;
 
     private LocalDate logDate;
@@ -49,6 +53,22 @@ public class MaintenanceLogDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getBranchCode() {
+        return branchCode;
+    }
+
+    public void setBranchCode(String branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getMaintenanceLogCode() {
@@ -181,6 +201,8 @@ public class MaintenanceLogDTO implements Serializable {
     public String toString() {
         return "MaintenanceLogDTO{" +
             "id=" + getId() +
+            ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", maintenanceLogCode='" + getMaintenanceLogCode() + "'" +
             ", logDate='" + getLogDate() + "'" +
             ", logType='" + getLogType() + "'" +

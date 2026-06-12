@@ -51,6 +51,7 @@ public class AssetRegisterAsserts {
         assertThat(actual)
             .as("Verify AssetRegister relevant properties")
             .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getAssetRegisterCode()).as("check assetRegisterCode").isEqualTo(expected.getAssetRegisterCode()))
             .satisfies(a -> assertThat(a.getAssetCategoryCode()).as("check assetCategoryCode").isEqualTo(expected.getAssetCategoryCode()))
             .satisfies(a ->

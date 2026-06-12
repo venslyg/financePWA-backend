@@ -50,7 +50,7 @@
     "incrementalChangelog": true,
     "jhipsterVersion": "8.11.0",
     "jwtSecretKey": "YjM5Y2NiNGUyYzZlM2VjY2RkYjZjOTdiN2I2Yjc4MGRkMDMzNDZkOGFjMzM5OWJmODFkODUyMTdmZmQ2YzAwMWU4NWNlMGY5NDI3MTQ5Y2NmMzE5MzYwYzQzZWU1YjNhMzM5MjJiM2VhZjAyMTBiMWZkZDM4NDEzODc3ZmYxNzU=",
-    "lastLiquibaseTimestamp": 1781247821000,
+    "lastLiquibaseTimestamp": 1781261384000,
     "microfrontend": null,
     "microfrontends": [],
     "nativeLanguage": "en",

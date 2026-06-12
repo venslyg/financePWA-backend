@@ -35,6 +35,7 @@ import { LiabilityLogDeleteDialogComponent } from '../delete/liability-log-delet
 export class LiabilityLogComponent implements OnInit {
   private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
     'branchCode',
+    'branchId',
     'liabilityCode',
     'loanFrom',
     'description',

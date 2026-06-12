@@ -160,26 +160,29 @@ describe('InventoryItem e2e test', () => {
     });
 
     it('should create an instance of InventoryItem', () => {
-      cy.get(`[data-cy="branchCode"]`).type('outsource');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'outsource');
+      cy.get(`[data-cy="branchCode"]`).type('underneath furthermore');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'underneath furthermore');
 
-      cy.get(`[data-cy="inventoryItemCode"]`).type('furthermore aching vice');
-      cy.get(`[data-cy="inventoryItemCode"]`).should('have.value', 'furthermore aching vice');
+      cy.get(`[data-cy="branchId"]`).type('whoa adumbrate deeply');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'whoa adumbrate deeply');
 
-      cy.get(`[data-cy="itemName"]`).type('deeply');
-      cy.get(`[data-cy="itemName"]`).should('have.value', 'deeply');
+      cy.get(`[data-cy="inventoryItemCode"]`).type('opposite within before');
+      cy.get(`[data-cy="inventoryItemCode"]`).should('have.value', 'opposite within before');
 
-      cy.get(`[data-cy="category"]`).type('opposite within before');
-      cy.get(`[data-cy="category"]`).should('have.value', 'opposite within before');
+      cy.get(`[data-cy="itemName"]`).type('wherever');
+      cy.get(`[data-cy="itemName"]`).should('have.value', 'wherever');
 
-      cy.get(`[data-cy="quantity"]`).type('1285.27');
-      cy.get(`[data-cy="quantity"]`).should('have.value', '1285.27');
+      cy.get(`[data-cy="category"]`).type('pro athwart gee');
+      cy.get(`[data-cy="category"]`).should('have.value', 'pro athwart gee');
 
-      cy.get(`[data-cy="unitPrice"]`).type('16952.77');
-      cy.get(`[data-cy="unitPrice"]`).should('have.value', '16952.77');
+      cy.get(`[data-cy="quantity"]`).type('2124.72');
+      cy.get(`[data-cy="quantity"]`).should('have.value', '2124.72');
 
-      cy.get(`[data-cy="runningStockCount"]`).type('28159.08');
-      cy.get(`[data-cy="runningStockCount"]`).should('have.value', '28159.08');
+      cy.get(`[data-cy="unitPrice"]`).type('7512.3');
+      cy.get(`[data-cy="unitPrice"]`).should('have.value', '7512.3');
+
+      cy.get(`[data-cy="runningStockCount"]`).type('23945.42');
+      cy.get(`[data-cy="runningStockCount"]`).should('have.value', '23945.42');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

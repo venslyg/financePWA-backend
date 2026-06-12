@@ -4,6 +4,7 @@ import { BudgetAlertStatus } from 'app/entities/enumerations/budget-alert-status
 export interface IBudgetPlan {
   id: number;
   branchCode?: string | null;
+  branchId?: string | null;
   accountCode?: string | null;
   budgetPlanCode?: string | null;
   departmentName?: string | null;

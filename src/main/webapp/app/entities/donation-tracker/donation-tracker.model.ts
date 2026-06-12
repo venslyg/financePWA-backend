@@ -4,6 +4,7 @@ import { PaymentMode } from 'app/entities/enumerations/payment-mode.model';
 export interface IDonationTracker {
   id: number;
   branchCode?: string | null;
+  branchId?: string | null;
   donationIdCode?: string | null;
   date?: dayjs.Dayjs | null;
   donorNameOrOrg?: string | null;

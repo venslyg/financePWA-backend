@@ -160,14 +160,20 @@ describe('ExpenseSubCategory e2e test', () => {
     });
 
     it('should create an instance of ExpenseSubCategory', () => {
-      cy.get(`[data-cy="categoryCode"]`).type('boo');
-      cy.get(`[data-cy="categoryCode"]`).should('have.value', 'boo');
+      cy.get(`[data-cy="branchCode"]`).type('underneath for');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'underneath for');
 
-      cy.get(`[data-cy="subCategoryCode"]`).type('unblinking');
-      cy.get(`[data-cy="subCategoryCode"]`).should('have.value', 'unblinking');
+      cy.get(`[data-cy="branchId"]`).type('psst for bemuse');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'psst for bemuse');
 
-      cy.get(`[data-cy="subCategoryName"]`).type('although tensely');
-      cy.get(`[data-cy="subCategoryName"]`).should('have.value', 'although tensely');
+      cy.get(`[data-cy="categoryCode"]`).type('whoa');
+      cy.get(`[data-cy="categoryCode"]`).should('have.value', 'whoa');
+
+      cy.get(`[data-cy="subCategoryCode"]`).type('hydrolyze');
+      cy.get(`[data-cy="subCategoryCode"]`).should('have.value', 'hydrolyze');
+
+      cy.get(`[data-cy="subCategoryName"]`).type('enormously quietly');
+      cy.get(`[data-cy="subCategoryName"]`).should('have.value', 'enormously quietly');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

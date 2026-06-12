@@ -12,6 +12,10 @@ public class AssetCategoryDTO implements Serializable {
 
     private Long id;
 
+    private String branchCode;
+
+    private String branchId;
+
     private String assetCategoryCode;
 
     private String assetCategoryName;
@@ -32,6 +36,22 @@ public class AssetCategoryDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getBranchCode() {
+        return branchCode;
+    }
+
+    public void setBranchCode(String branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getAssetCategoryCode() {
@@ -116,6 +136,8 @@ public class AssetCategoryDTO implements Serializable {
     public String toString() {
         return "AssetCategoryDTO{" +
             "id=" + getId() +
+            ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", assetCategoryCode='" + getAssetCategoryCode() + "'" +
             ", assetCategoryName='" + getAssetCategoryName() + "'" +
             ", description='" + getDescription() + "'" +

@@ -51,6 +51,7 @@ public class IncomeEntryAsserts {
         assertThat(actual)
             .as("Verify IncomeEntry relevant properties")
             .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getAccountCode()).as("check accountCode").isEqualTo(expected.getAccountCode()))
             .satisfies(a -> assertThat(a.getIncomeCode()).as("check incomeCode").isEqualTo(expected.getIncomeCode()))
             .satisfies(a -> assertThat(a.getCreatedByUsername()).as("check createdByUsername").isEqualTo(expected.getCreatedByUsername()))

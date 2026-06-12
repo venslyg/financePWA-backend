@@ -7,21 +7,23 @@ export const sampleWithRequiredData: IExpenseCategory = {
 };
 
 export const sampleWithPartialData: IExpenseCategory = {
-  id: 22676,
-  description: 'patiently furthermore orientate',
-  createdBy: 'knife awful fortunate',
-  createdDate: dayjs('2026-06-11T15:55'),
+  id: 2198,
+  categoryCode: 'spectate harp',
+  categoryName: 'fort imagineer',
+  description: 'openly fuzzy festival',
 };
 
 export const sampleWithFullData: IExpenseCategory = {
   id: 3552,
-  categoryCode: 'strategy ceramic',
-  categoryName: 'pike sore exalted',
-  description: 'reassuringly',
-  createdBy: 'unto',
-  createdDate: dayjs('2026-06-11T12:25'),
-  lastModifiedBy: 'for',
-  lastModifiedDate: dayjs('2026-06-11T15:45'),
+  branchCode: 'strategy ceramic',
+  branchId: 'pike sore exalted',
+  categoryCode: 'reassuringly',
+  categoryName: 'unto',
+  description: 'well',
+  createdBy: 'yowza',
+  createdDate: dayjs('2026-06-11T21:28'),
+  lastModifiedBy: 'upside-down mmm hmph',
+  lastModifiedDate: dayjs('2026-06-12T06:00'),
 };
 
 export const sampleWithNewData: NewExpenseCategory = {

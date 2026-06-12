@@ -3,6 +3,7 @@ import dayjs from 'dayjs/esm';
 export interface IPettyCashLedger {
   id: number;
   branchCode?: string | null;
+  branchId?: string | null;
   pettyCashCode?: string | null;
   date?: dayjs.Dayjs | null;
   pettyCashVoucherNo?: string | null;

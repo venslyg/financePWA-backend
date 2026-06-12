@@ -68,6 +68,22 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
+            <th scope="col" jhiSortBy="branchCode">
+              <div class="d-flex">
+                <span>Branch Code</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="branchId">
+              <div class="d-flex">
+                <span>Branch Id</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
             <th scope="col" jhiSortBy="maintenanceLogCode">
               <div class="d-flex">
                 <span>Maintenance Log Code</span>
@@ -174,6 +190,8 @@
               <td>
                 <a [routerLink]="['/maintenance-log', maintenanceLog.id, 'view']">{{ maintenanceLog.id }}</a>
               </td>
+              <td>{{ maintenanceLog.branchCode }}</td>
+              <td>{{ maintenanceLog.branchId }}</td>
               <td>{{ maintenanceLog.maintenanceLogCode }}</td>
               <td>{{ maintenanceLog.logDate | formatMediumDate }}</td>
               <td>{{ { null: '', REPAIR: 'REPAIR', REPLACEMENT: 'REPLACEMENT' }[maintenanceLog.logType ?? 'null'] }}</td>

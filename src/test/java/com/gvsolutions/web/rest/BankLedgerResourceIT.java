@@ -48,6 +48,9 @@ class BankLedgerResourceIT {
     private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
     private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_BANK_LEDGER_CODE = "AAAAAAAAAA";
     private static final String UPDATED_BANK_LEDGER_CODE = "BBBBBBBBBB";
 
@@ -114,6 +117,7 @@ class BankLedgerResourceIT {
     public static BankLedger createEntity() {
         return new BankLedger()
             .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .bankLedgerCode(DEFAULT_BANK_LEDGER_CODE)
             .date(DEFAULT_DATE)
             .referenceNo(DEFAULT_REFERENCE_NO)
@@ -133,6 +137,7 @@ class BankLedgerResourceIT {
     public static BankLedger createUpdatedEntity() {
         return new BankLedger()
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .bankLedgerCode(UPDATED_BANK_LEDGER_CODE)
             .date(UPDATED_DATE)
             .referenceNo(UPDATED_REFERENCE_NO)
@@ -223,6 +228,7 @@ class BankLedgerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(bankLedger.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].bankLedgerCode").value(hasItem(DEFAULT_BANK_LEDGER_CODE)))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].referenceNo").value(hasItem(DEFAULT_REFERENCE_NO)))
@@ -246,6 +252,7 @@ class BankLedgerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(bankLedger.getId().intValue()))
             .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.bankLedgerCode").value(DEFAULT_BANK_LEDGER_CODE))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.referenceNo").value(DEFAULT_REFERENCE_NO))
@@ -322,6 +329,56 @@ class BankLedgerResourceIT {
 
         // Get all the bankLedgerList where branchCode does not contain
         defaultBankLedgerFiltering("branchCode.doesNotContain=" + UPDATED_BRANCH_CODE, "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE);
+    }
+
+    @Test
+    @Transactional
+    void getAllBankLedgersByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedBankLedger = bankLedgerRepository.saveAndFlush(bankLedger);
+
+        // Get all the bankLedgerList where branchId equals to
+        defaultBankLedgerFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllBankLedgersByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedBankLedger = bankLedgerRepository.saveAndFlush(bankLedger);
+
+        // Get all the bankLedgerList where branchId in
+        defaultBankLedgerFiltering("branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID, "branchId.in=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllBankLedgersByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedBankLedger = bankLedgerRepository.saveAndFlush(bankLedger);
+
+        // Get all the bankLedgerList where branchId is not null
+        defaultBankLedgerFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllBankLedgersByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedBankLedger = bankLedgerRepository.saveAndFlush(bankLedger);
+
+        // Get all the bankLedgerList where branchId contains
+        defaultBankLedgerFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllBankLedgersByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedBankLedger = bankLedgerRepository.saveAndFlush(bankLedger);
+
+        // Get all the bankLedgerList where branchId does not contain
+        defaultBankLedgerFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -888,6 +945,7 @@ class BankLedgerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(bankLedger.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].bankLedgerCode").value(hasItem(DEFAULT_BANK_LEDGER_CODE)))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].referenceNo").value(hasItem(DEFAULT_REFERENCE_NO)))
@@ -947,6 +1005,7 @@ class BankLedgerResourceIT {
         em.detach(updatedBankLedger);
         updatedBankLedger
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .bankLedgerCode(UPDATED_BANK_LEDGER_CODE)
             .date(UPDATED_DATE)
             .referenceNo(UPDATED_REFERENCE_NO)
@@ -1065,11 +1124,11 @@ class BankLedgerResourceIT {
         partialUpdatedBankLedger.setId(bankLedger.getId());
 
         partialUpdatedBankLedger
+            .branchId(UPDATED_BRANCH_ID)
             .bankLedgerCode(UPDATED_BANK_LEDGER_CODE)
-            .date(UPDATED_DATE)
+            .description(UPDATED_DESCRIPTION)
             .depositAmount(UPDATED_DEPOSIT_AMOUNT)
-            .withdrawalAmount(UPDATED_WITHDRAWAL_AMOUNT)
-            .remark(UPDATED_REMARK);
+            .runningBalance(UPDATED_RUNNING_BALANCE);
 
         restBankLedgerMockMvc
             .perform(
@@ -1102,6 +1161,7 @@ class BankLedgerResourceIT {
 
         partialUpdatedBankLedger
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .bankLedgerCode(UPDATED_BANK_LEDGER_CODE)
             .date(UPDATED_DATE)
             .referenceNo(UPDATED_REFERENCE_NO)
@@ -1233,6 +1293,7 @@ class BankLedgerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(bankLedger.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].bankLedgerCode").value(hasItem(DEFAULT_BANK_LEDGER_CODE)))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].referenceNo").value(hasItem(DEFAULT_REFERENCE_NO)))

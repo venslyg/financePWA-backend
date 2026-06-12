@@ -20,6 +20,8 @@ describe('BinCardLine Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             inventoryItemCode: expect.any(Object),
             date: expect.any(Object),
             referenceNo: expect.any(Object),
@@ -41,6 +43,8 @@ describe('BinCardLine Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             inventoryItemCode: expect.any(Object),
             date: expect.any(Object),
             referenceNo: expect.any(Object),

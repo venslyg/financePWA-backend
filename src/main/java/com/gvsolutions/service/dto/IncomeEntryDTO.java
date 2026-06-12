@@ -21,6 +21,8 @@ public class IncomeEntryDTO implements Serializable {
 
     private String branchCode;
 
+    private String branchId;
+
     private String accountCode;
 
     private String incomeCode;
@@ -67,6 +69,14 @@ public class IncomeEntryDTO implements Serializable {
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getAccountCode() {
@@ -224,6 +234,7 @@ public class IncomeEntryDTO implements Serializable {
         return "IncomeEntryDTO{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", accountCode='" + getAccountCode() + "'" +
             ", incomeCode='" + getIncomeCode() + "'" +
             ", createdByUsername='" + getCreatedByUsername() + "'" +

@@ -77,6 +77,7 @@ class BankLedgerCriteriaTest {
     private static void setAllFilters(BankLedgerCriteria bankLedgerCriteria) {
         bankLedgerCriteria.id();
         bankLedgerCriteria.branchCode();
+        bankLedgerCriteria.branchId();
         bankLedgerCriteria.bankLedgerCode();
         bankLedgerCriteria.date();
         bankLedgerCriteria.referenceNo();
@@ -97,6 +98,7 @@ class BankLedgerCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId()) &&
                 condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getBankLedgerCode()) &&
                 condition.apply(criteria.getDate()) &&
                 condition.apply(criteria.getReferenceNo()) &&
@@ -119,6 +121,7 @@ class BankLedgerCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
                 condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getBankLedgerCode(), copy.getBankLedgerCode()) &&
                 condition.apply(criteria.getDate(), copy.getDate()) &&
                 condition.apply(criteria.getReferenceNo(), copy.getReferenceNo()) &&

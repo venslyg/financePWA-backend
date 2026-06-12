@@ -160,42 +160,45 @@ describe('IncomeEntry e2e test', () => {
     });
 
     it('should create an instance of IncomeEntry', () => {
-      cy.get(`[data-cy="branchCode"]`).type('whoa commemorate');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'whoa commemorate');
+      cy.get(`[data-cy="branchCode"]`).type('dream');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'dream');
 
-      cy.get(`[data-cy="accountCode"]`).type('what into jazz');
-      cy.get(`[data-cy="accountCode"]`).should('have.value', 'what into jazz');
+      cy.get(`[data-cy="branchId"]`).type('after blah although');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'after blah although');
 
-      cy.get(`[data-cy="incomeCode"]`).type('jealously than');
-      cy.get(`[data-cy="incomeCode"]`).should('have.value', 'jealously than');
+      cy.get(`[data-cy="accountCode"]`).type('account');
+      cy.get(`[data-cy="accountCode"]`).should('have.value', 'account');
 
-      cy.get(`[data-cy="createdByUsername"]`).type('for intervention duh');
-      cy.get(`[data-cy="createdByUsername"]`).should('have.value', 'for intervention duh');
+      cy.get(`[data-cy="incomeCode"]`).type('than forceful where');
+      cy.get(`[data-cy="incomeCode"]`).should('have.value', 'than forceful where');
 
-      cy.get(`[data-cy="date"]`).type('2026-06-11');
+      cy.get(`[data-cy="createdByUsername"]`).type('intrigue');
+      cy.get(`[data-cy="createdByUsername"]`).should('have.value', 'intrigue');
+
+      cy.get(`[data-cy="date"]`).type('2026-06-12');
       cy.get(`[data-cy="date"]`).blur();
-      cy.get(`[data-cy="date"]`).should('have.value', '2026-06-11');
+      cy.get(`[data-cy="date"]`).should('have.value', '2026-06-12');
 
-      cy.get(`[data-cy="receiptNo"]`).type('potable');
-      cy.get(`[data-cy="receiptNo"]`).should('have.value', 'potable');
+      cy.get(`[data-cy="receiptNo"]`).type('membership');
+      cy.get(`[data-cy="receiptNo"]`).should('have.value', 'membership');
 
-      cy.get(`[data-cy="description"]`).type('paltry though gadzooks');
-      cy.get(`[data-cy="description"]`).should('have.value', 'paltry though gadzooks');
+      cy.get(`[data-cy="description"]`).type('solidly whose');
+      cy.get(`[data-cy="description"]`).should('have.value', 'solidly whose');
 
-      cy.get(`[data-cy="incomeType"]`).select('OFFERING');
+      cy.get(`[data-cy="incomeType"]`).select('GIFT');
 
-      cy.get(`[data-cy="amount"]`).type('13952.75');
-      cy.get(`[data-cy="amount"]`).should('have.value', '13952.75');
+      cy.get(`[data-cy="amount"]`).type('31497.82');
+      cy.get(`[data-cy="amount"]`).should('have.value', '31497.82');
 
       cy.get(`[data-cy="paymentMethod"]`).select('BANK');
 
-      cy.get(`[data-cy="receivablePerson"]`).type('experienced');
-      cy.get(`[data-cy="receivablePerson"]`).should('have.value', 'experienced');
+      cy.get(`[data-cy="receivablePerson"]`).type('boohoo versus desecrate');
+      cy.get(`[data-cy="receivablePerson"]`).should('have.value', 'boohoo versus desecrate');
 
-      cy.get(`[data-cy="receivedBy"]`).type('instead');
-      cy.get(`[data-cy="receivedBy"]`).should('have.value', 'instead');
+      cy.get(`[data-cy="receivedBy"]`).type('spook metabolise eventually');
+      cy.get(`[data-cy="receivedBy"]`).should('have.value', 'spook metabolise eventually');
 
-      cy.get(`[data-cy="syncStatus"]`).select('PENDING_OFFLINE');
+      cy.get(`[data-cy="syncStatus"]`).select('SYNCED');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

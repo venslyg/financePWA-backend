@@ -77,6 +77,7 @@ class LiabilityLogCriteriaTest {
     private static void setAllFilters(LiabilityLogCriteria liabilityLogCriteria) {
         liabilityLogCriteria.id();
         liabilityLogCriteria.branchCode();
+        liabilityLogCriteria.branchId();
         liabilityLogCriteria.liabilityCode();
         liabilityLogCriteria.loanFrom();
         liabilityLogCriteria.description();
@@ -101,6 +102,7 @@ class LiabilityLogCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId()) &&
                 condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getLiabilityCode()) &&
                 condition.apply(criteria.getLoanFrom()) &&
                 condition.apply(criteria.getDescription()) &&
@@ -130,6 +132,7 @@ class LiabilityLogCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
                 condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getLiabilityCode(), copy.getLiabilityCode()) &&
                 condition.apply(criteria.getLoanFrom(), copy.getLoanFrom()) &&
                 condition.apply(criteria.getDescription(), copy.getDescription()) &&

@@ -46,6 +46,9 @@ class InventoryItemResourceIT {
     private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
     private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_INVENTORY_ITEM_CODE = "AAAAAAAAAA";
     private static final String UPDATED_INVENTORY_ITEM_CODE = "BBBBBBBBBB";
 
@@ -105,6 +108,7 @@ class InventoryItemResourceIT {
     public static InventoryItem createEntity() {
         return new InventoryItem()
             .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .inventoryItemCode(DEFAULT_INVENTORY_ITEM_CODE)
             .itemName(DEFAULT_ITEM_NAME)
             .category(DEFAULT_CATEGORY)
@@ -122,6 +126,7 @@ class InventoryItemResourceIT {
     public static InventoryItem createUpdatedEntity() {
         return new InventoryItem()
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .inventoryItemCode(UPDATED_INVENTORY_ITEM_CODE)
             .itemName(UPDATED_ITEM_NAME)
             .category(UPDATED_CATEGORY)
@@ -210,6 +215,7 @@ class InventoryItemResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(inventoryItem.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].inventoryItemCode").value(hasItem(DEFAULT_INVENTORY_ITEM_CODE)))
             .andExpect(jsonPath("$.[*].itemName").value(hasItem(DEFAULT_ITEM_NAME)))
             .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY)))
@@ -231,6 +237,7 @@ class InventoryItemResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(inventoryItem.getId().intValue()))
             .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.inventoryItemCode").value(DEFAULT_INVENTORY_ITEM_CODE))
             .andExpect(jsonPath("$.itemName").value(DEFAULT_ITEM_NAME))
             .andExpect(jsonPath("$.category").value(DEFAULT_CATEGORY))
@@ -308,6 +315,56 @@ class InventoryItemResourceIT {
             "branchCode.doesNotContain=" + UPDATED_BRANCH_CODE,
             "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE
         );
+    }
+
+    @Test
+    @Transactional
+    void getAllInventoryItemsByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedInventoryItem = inventoryItemRepository.saveAndFlush(inventoryItem);
+
+        // Get all the inventoryItemList where branchId equals to
+        defaultInventoryItemFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllInventoryItemsByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedInventoryItem = inventoryItemRepository.saveAndFlush(inventoryItem);
+
+        // Get all the inventoryItemList where branchId in
+        defaultInventoryItemFiltering("branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID, "branchId.in=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllInventoryItemsByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedInventoryItem = inventoryItemRepository.saveAndFlush(inventoryItem);
+
+        // Get all the inventoryItemList where branchId is not null
+        defaultInventoryItemFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllInventoryItemsByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedInventoryItem = inventoryItemRepository.saveAndFlush(inventoryItem);
+
+        // Get all the inventoryItemList where branchId contains
+        defaultInventoryItemFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllInventoryItemsByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedInventoryItem = inventoryItemRepository.saveAndFlush(inventoryItem);
+
+        // Get all the inventoryItemList where branchId does not contain
+        defaultInventoryItemFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -721,6 +778,7 @@ class InventoryItemResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(inventoryItem.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].inventoryItemCode").value(hasItem(DEFAULT_INVENTORY_ITEM_CODE)))
             .andExpect(jsonPath("$.[*].itemName").value(hasItem(DEFAULT_ITEM_NAME)))
             .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY)))
@@ -778,6 +836,7 @@ class InventoryItemResourceIT {
         em.detach(updatedInventoryItem);
         updatedInventoryItem
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .inventoryItemCode(UPDATED_INVENTORY_ITEM_CODE)
             .itemName(UPDATED_ITEM_NAME)
             .category(UPDATED_CATEGORY)
@@ -895,7 +954,8 @@ class InventoryItemResourceIT {
 
         partialUpdatedInventoryItem
             .branchCode(UPDATED_BRANCH_CODE)
-            .itemName(UPDATED_ITEM_NAME)
+            .inventoryItemCode(UPDATED_INVENTORY_ITEM_CODE)
+            .unitPrice(UPDATED_UNIT_PRICE)
             .runningStockCount(UPDATED_RUNNING_STOCK_COUNT);
 
         restInventoryItemMockMvc
@@ -929,6 +989,7 @@ class InventoryItemResourceIT {
 
         partialUpdatedInventoryItem
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .inventoryItemCode(UPDATED_INVENTORY_ITEM_CODE)
             .itemName(UPDATED_ITEM_NAME)
             .category(UPDATED_CATEGORY)
@@ -1058,6 +1119,7 @@ class InventoryItemResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(inventoryItem.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].inventoryItemCode").value(hasItem(DEFAULT_INVENTORY_ITEM_CODE)))
             .andExpect(jsonPath("$.[*].itemName").value(hasItem(DEFAULT_ITEM_NAME)))
             .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY)))

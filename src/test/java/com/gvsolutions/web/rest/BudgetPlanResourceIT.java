@@ -47,6 +47,9 @@ class BudgetPlanResourceIT {
     private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
     private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_ACCOUNT_CODE = "AAAAAAAAAA";
     private static final String UPDATED_ACCOUNT_CODE = "BBBBBBBBBB";
 
@@ -117,6 +120,7 @@ class BudgetPlanResourceIT {
     public static BudgetPlan createEntity() {
         return new BudgetPlan()
             .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .accountCode(DEFAULT_ACCOUNT_CODE)
             .budgetPlanCode(DEFAULT_BUDGET_PLAN_CODE)
             .departmentName(DEFAULT_DEPARTMENT_NAME)
@@ -137,6 +141,7 @@ class BudgetPlanResourceIT {
     public static BudgetPlan createUpdatedEntity() {
         return new BudgetPlan()
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .accountCode(UPDATED_ACCOUNT_CODE)
             .budgetPlanCode(UPDATED_BUDGET_PLAN_CODE)
             .departmentName(UPDATED_DEPARTMENT_NAME)
@@ -228,6 +233,7 @@ class BudgetPlanResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(budgetPlan.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].accountCode").value(hasItem(DEFAULT_ACCOUNT_CODE)))
             .andExpect(jsonPath("$.[*].budgetPlanCode").value(hasItem(DEFAULT_BUDGET_PLAN_CODE)))
             .andExpect(jsonPath("$.[*].departmentName").value(hasItem(DEFAULT_DEPARTMENT_NAME)))
@@ -252,6 +258,7 @@ class BudgetPlanResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(budgetPlan.getId().intValue()))
             .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.accountCode").value(DEFAULT_ACCOUNT_CODE))
             .andExpect(jsonPath("$.budgetPlanCode").value(DEFAULT_BUDGET_PLAN_CODE))
             .andExpect(jsonPath("$.departmentName").value(DEFAULT_DEPARTMENT_NAME))
@@ -329,6 +336,56 @@ class BudgetPlanResourceIT {
 
         // Get all the budgetPlanList where branchCode does not contain
         defaultBudgetPlanFiltering("branchCode.doesNotContain=" + UPDATED_BRANCH_CODE, "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE);
+    }
+
+    @Test
+    @Transactional
+    void getAllBudgetPlansByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedBudgetPlan = budgetPlanRepository.saveAndFlush(budgetPlan);
+
+        // Get all the budgetPlanList where branchId equals to
+        defaultBudgetPlanFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllBudgetPlansByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedBudgetPlan = budgetPlanRepository.saveAndFlush(budgetPlan);
+
+        // Get all the budgetPlanList where branchId in
+        defaultBudgetPlanFiltering("branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID, "branchId.in=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllBudgetPlansByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedBudgetPlan = budgetPlanRepository.saveAndFlush(budgetPlan);
+
+        // Get all the budgetPlanList where branchId is not null
+        defaultBudgetPlanFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllBudgetPlansByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedBudgetPlan = budgetPlanRepository.saveAndFlush(budgetPlan);
+
+        // Get all the budgetPlanList where branchId contains
+        defaultBudgetPlanFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllBudgetPlansByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedBudgetPlan = budgetPlanRepository.saveAndFlush(budgetPlan);
+
+        // Get all the budgetPlanList where branchId does not contain
+        defaultBudgetPlanFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -966,6 +1023,7 @@ class BudgetPlanResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(budgetPlan.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].accountCode").value(hasItem(DEFAULT_ACCOUNT_CODE)))
             .andExpect(jsonPath("$.[*].budgetPlanCode").value(hasItem(DEFAULT_BUDGET_PLAN_CODE)))
             .andExpect(jsonPath("$.[*].departmentName").value(hasItem(DEFAULT_DEPARTMENT_NAME)))
@@ -1026,6 +1084,7 @@ class BudgetPlanResourceIT {
         em.detach(updatedBudgetPlan);
         updatedBudgetPlan
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .accountCode(UPDATED_ACCOUNT_CODE)
             .budgetPlanCode(UPDATED_BUDGET_PLAN_CODE)
             .departmentName(UPDATED_DEPARTMENT_NAME)
@@ -1146,8 +1205,9 @@ class BudgetPlanResourceIT {
 
         partialUpdatedBudgetPlan
             .branchCode(UPDATED_BRANCH_CODE)
+            .year(UPDATED_YEAR)
             .allocatedAmount(UPDATED_ALLOCATED_AMOUNT)
-            .spentAmount(UPDATED_SPENT_AMOUNT)
+            .usedPercentage(UPDATED_USED_PERCENTAGE)
             .alertStatus(UPDATED_ALERT_STATUS);
 
         restBudgetPlanMockMvc
@@ -1181,6 +1241,7 @@ class BudgetPlanResourceIT {
 
         partialUpdatedBudgetPlan
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .accountCode(UPDATED_ACCOUNT_CODE)
             .budgetPlanCode(UPDATED_BUDGET_PLAN_CODE)
             .departmentName(UPDATED_DEPARTMENT_NAME)
@@ -1313,6 +1374,7 @@ class BudgetPlanResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(budgetPlan.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].accountCode").value(hasItem(DEFAULT_ACCOUNT_CODE)))
             .andExpect(jsonPath("$.[*].budgetPlanCode").value(hasItem(DEFAULT_BUDGET_PLAN_CODE)))
             .andExpect(jsonPath("$.[*].departmentName").value(hasItem(DEFAULT_DEPARTMENT_NAME)))

@@ -51,6 +51,7 @@ public class SalaryPayoutAsserts {
         assertThat(actual)
             .as("Verify SalaryPayout relevant properties")
             .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getSalaryPayoutCode()).as("check salaryPayoutCode").isEqualTo(expected.getSalaryPayoutCode()))
             .satisfies(a -> assertThat(a.getStaffCode()).as("check staffCode").isEqualTo(expected.getStaffCode()))
             .satisfies(a -> assertThat(a.getPayPeriod()).as("check payPeriod").isEqualTo(expected.getPayPeriod()))

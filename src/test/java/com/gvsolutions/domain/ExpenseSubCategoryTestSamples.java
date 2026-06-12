@@ -12,6 +12,8 @@ public class ExpenseSubCategoryTestSamples {
     public static ExpenseSubCategory getExpenseSubCategorySample1() {
         return new ExpenseSubCategory()
             .id(1L)
+            .branchCode("branchCode1")
+            .branchId("branchId1")
             .categoryCode("categoryCode1")
             .subCategoryCode("subCategoryCode1")
             .subCategoryName("subCategoryName1")
@@ -22,6 +24,8 @@ public class ExpenseSubCategoryTestSamples {
     public static ExpenseSubCategory getExpenseSubCategorySample2() {
         return new ExpenseSubCategory()
             .id(2L)
+            .branchCode("branchCode2")
+            .branchId("branchId2")
             .categoryCode("categoryCode2")
             .subCategoryCode("subCategoryCode2")
             .subCategoryName("subCategoryName2")
@@ -32,6 +36,8 @@ public class ExpenseSubCategoryTestSamples {
     public static ExpenseSubCategory getExpenseSubCategoryRandomSampleGenerator() {
         return new ExpenseSubCategory()
             .id(longCount.incrementAndGet())
+            .branchCode(UUID.randomUUID().toString())
+            .branchId(UUID.randomUUID().toString())
             .categoryCode(UUID.randomUUID().toString())
             .subCategoryCode(UUID.randomUUID().toString())
             .subCategoryName(UUID.randomUUID().toString())

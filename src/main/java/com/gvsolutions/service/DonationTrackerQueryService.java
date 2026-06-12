@@ -82,6 +82,7 @@ public class DonationTrackerQueryService extends QueryService<DonationTracker> {
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), DonationTracker_.id),
                 buildStringSpecification(criteria.getBranchCode(), DonationTracker_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), DonationTracker_.branchId),
                 buildStringSpecification(criteria.getDonationIdCode(), DonationTracker_.donationIdCode),
                 buildRangeSpecification(criteria.getDate(), DonationTracker_.date),
                 buildStringSpecification(criteria.getDonorNameOrOrg(), DonationTracker_.donorNameOrOrg),

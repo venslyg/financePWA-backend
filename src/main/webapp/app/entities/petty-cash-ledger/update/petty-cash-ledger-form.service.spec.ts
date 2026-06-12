@@ -21,6 +21,7 @@ describe('PettyCashLedger Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             pettyCashCode: expect.any(Object),
             date: expect.any(Object),
             pettyCashVoucherNo: expect.any(Object),
@@ -45,6 +46,7 @@ describe('PettyCashLedger Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             pettyCashCode: expect.any(Object),
             date: expect.any(Object),
             pettyCashVoucherNo: expect.any(Object),

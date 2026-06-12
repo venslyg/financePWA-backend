@@ -3,6 +3,7 @@ import dayjs from 'dayjs/esm';
 export interface ISalaryPayout {
   id: number;
   branchCode?: string | null;
+  branchId?: string | null;
   salaryPayoutCode?: string | null;
   staffCode?: string | null;
   payPeriod?: string | null;

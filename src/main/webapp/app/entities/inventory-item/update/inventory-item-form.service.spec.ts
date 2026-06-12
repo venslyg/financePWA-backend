@@ -21,6 +21,7 @@ describe('InventoryItem Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             inventoryItemCode: expect.any(Object),
             itemName: expect.any(Object),
             category: expect.any(Object),
@@ -42,6 +43,7 @@ describe('InventoryItem Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             inventoryItemCode: expect.any(Object),
             itemName: expect.any(Object),
             category: expect.any(Object),

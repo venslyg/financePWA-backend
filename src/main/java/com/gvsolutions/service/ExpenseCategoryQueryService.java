@@ -81,6 +81,8 @@ public class ExpenseCategoryQueryService extends QueryService<ExpenseCategory> {
             specification = Specification.allOf(
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), ExpenseCategory_.id),
+                buildStringSpecification(criteria.getBranchCode(), ExpenseCategory_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), ExpenseCategory_.branchId),
                 buildStringSpecification(criteria.getCategoryCode(), ExpenseCategory_.categoryCode),
                 buildStringSpecification(criteria.getCategoryName(), ExpenseCategory_.categoryName),
                 buildStringSpecification(criteria.getDescription(), ExpenseCategory_.description),

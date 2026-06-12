@@ -35,6 +35,7 @@ import { IncomeEntryDeleteDialogComponent } from '../delete/income-entry-delete-
 export class IncomeEntryComponent implements OnInit {
   private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
     'branchCode',
+    'branchId',
     'accountCode',
     'incomeCode',
     'createdByUsername',

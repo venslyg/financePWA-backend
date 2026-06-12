@@ -31,6 +31,10 @@ public class SalaryPayout extends AbstractAuditingEntity<Long> implements Serial
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String branchCode;
 
+    @Column(name = "branch_id")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchId;
+
     @Column(name = "salary_payout_code", unique = true)
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String salaryPayoutCode;
@@ -92,6 +96,19 @@ public class SalaryPayout extends AbstractAuditingEntity<Long> implements Serial
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return this.branchId;
+    }
+
+    public SalaryPayout branchId(String branchId) {
+        this.setBranchId(branchId);
+        return this;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getSalaryPayoutCode() {
@@ -265,6 +282,7 @@ public class SalaryPayout extends AbstractAuditingEntity<Long> implements Serial
         return "SalaryPayout{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", salaryPayoutCode='" + getSalaryPayoutCode() + "'" +
             ", staffCode='" + getStaffCode() + "'" +
             ", payPeriod='" + getPayPeriod() + "'" +

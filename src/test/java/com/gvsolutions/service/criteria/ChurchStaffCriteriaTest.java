@@ -78,6 +78,7 @@ class ChurchStaffCriteriaTest {
         churchStaffCriteria.id();
         churchStaffCriteria.staffCode();
         churchStaffCriteria.branchCode();
+        churchStaffCriteria.branchId();
         churchStaffCriteria.fullName();
         churchStaffCriteria.position();
         churchStaffCriteria.staffType();
@@ -97,6 +98,7 @@ class ChurchStaffCriteriaTest {
                 condition.apply(criteria.getId()) &&
                 condition.apply(criteria.getStaffCode()) &&
                 condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getFullName()) &&
                 condition.apply(criteria.getPosition()) &&
                 condition.apply(criteria.getStaffType()) &&
@@ -118,6 +120,7 @@ class ChurchStaffCriteriaTest {
                 condition.apply(criteria.getId(), copy.getId()) &&
                 condition.apply(criteria.getStaffCode(), copy.getStaffCode()) &&
                 condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getFullName(), copy.getFullName()) &&
                 condition.apply(criteria.getPosition(), copy.getPosition()) &&
                 condition.apply(criteria.getStaffType(), copy.getStaffType()) &&

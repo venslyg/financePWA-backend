@@ -20,6 +20,8 @@ public class ChurchStaffDTO implements Serializable {
 
     private String branchCode;
 
+    private String branchId;
+
     private String fullName;
 
     private String position;
@@ -62,6 +64,14 @@ public class ChurchStaffDTO implements Serializable {
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getFullName() {
@@ -172,6 +182,7 @@ public class ChurchStaffDTO implements Serializable {
             "id=" + getId() +
             ", staffCode='" + getStaffCode() + "'" +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", fullName='" + getFullName() + "'" +
             ", position='" + getPosition() + "'" +
             ", staffType='" + getStaffType() + "'" +

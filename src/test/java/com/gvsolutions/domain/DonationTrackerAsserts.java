@@ -51,6 +51,7 @@ public class DonationTrackerAsserts {
         assertThat(actual)
             .as("Verify DonationTracker relevant properties")
             .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getDonationIdCode()).as("check donationIdCode").isEqualTo(expected.getDonationIdCode()))
             .satisfies(a -> assertThat(a.getDate()).as("check date").isEqualTo(expected.getDate()))
             .satisfies(a -> assertThat(a.getDonorNameOrOrg()).as("check donorNameOrOrg").isEqualTo(expected.getDonorNameOrOrg()))

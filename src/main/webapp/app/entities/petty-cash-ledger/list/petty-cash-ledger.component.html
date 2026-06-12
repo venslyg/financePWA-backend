@@ -76,6 +76,14 @@
                 }
               </div>
             </th>
+            <th scope="col" jhiSortBy="branchId">
+              <div class="d-flex">
+                <span>Branch Id</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
             <th scope="col" jhiSortBy="pettyCashCode">
               <div class="d-flex">
                 <span>Petty Cash Code</span>
@@ -184,6 +192,7 @@
                 <a [routerLink]="['/petty-cash-ledger', pettyCashLedger.id, 'view']">{{ pettyCashLedger.id }}</a>
               </td>
               <td>{{ pettyCashLedger.branchCode }}</td>
+              <td>{{ pettyCashLedger.branchId }}</td>
               <td>{{ pettyCashLedger.pettyCashCode }}</td>
               <td>{{ pettyCashLedger.date | formatMediumDate }}</td>
               <td>{{ pettyCashLedger.pettyCashVoucherNo }}</td>

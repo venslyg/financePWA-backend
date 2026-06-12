@@ -76,6 +76,8 @@ class BinCardLineCriteriaTest {
 
     private static void setAllFilters(BinCardLineCriteria binCardLineCriteria) {
         binCardLineCriteria.id();
+        binCardLineCriteria.branchCode();
+        binCardLineCriteria.branchId();
         binCardLineCriteria.inventoryItemCode();
         binCardLineCriteria.date();
         binCardLineCriteria.referenceNo();
@@ -94,6 +96,8 @@ class BinCardLineCriteriaTest {
         return new Condition<>(
             criteria ->
                 condition.apply(criteria.getId()) &&
+                condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getInventoryItemCode()) &&
                 condition.apply(criteria.getDate()) &&
                 condition.apply(criteria.getReferenceNo()) &&
@@ -114,6 +118,8 @@ class BinCardLineCriteriaTest {
         return new Condition<>(
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
+                condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getInventoryItemCode(), copy.getInventoryItemCode()) &&
                 condition.apply(criteria.getDate(), copy.getDate()) &&
                 condition.apply(criteria.getReferenceNo(), copy.getReferenceNo()) &&

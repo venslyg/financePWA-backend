@@ -31,6 +31,10 @@ public class DonationTracker extends AbstractAuditingEntity<Long> implements Ser
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String branchCode;
 
+    @Column(name = "branch_id")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchId;
+
     @Column(name = "donation_id_code")
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String donationIdCode;
@@ -96,6 +100,19 @@ public class DonationTracker extends AbstractAuditingEntity<Long> implements Ser
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return this.branchId;
+    }
+
+    public DonationTracker branchId(String branchId) {
+        this.setBranchId(branchId);
+        return this;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getDonationIdCode() {
@@ -269,6 +286,7 @@ public class DonationTracker extends AbstractAuditingEntity<Long> implements Ser
         return "DonationTracker{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", donationIdCode='" + getDonationIdCode() + "'" +
             ", date='" + getDate() + "'" +
             ", donorNameOrOrg='" + getDonorNameOrOrg() + "'" +

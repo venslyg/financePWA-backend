@@ -82,6 +82,7 @@ public class BudgetPlanQueryService extends QueryService<BudgetPlan> {
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), BudgetPlan_.id),
                 buildStringSpecification(criteria.getBranchCode(), BudgetPlan_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), BudgetPlan_.branchId),
                 buildStringSpecification(criteria.getAccountCode(), BudgetPlan_.accountCode),
                 buildStringSpecification(criteria.getBudgetPlanCode(), BudgetPlan_.budgetPlanCode),
                 buildStringSpecification(criteria.getDepartmentName(), BudgetPlan_.departmentName),

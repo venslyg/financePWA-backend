@@ -51,6 +51,7 @@ public class InventoryItemAsserts {
         assertThat(actual)
             .as("Verify InventoryItem relevant properties")
             .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getInventoryItemCode()).as("check inventoryItemCode").isEqualTo(expected.getInventoryItemCode()))
             .satisfies(a -> assertThat(a.getItemName()).as("check itemName").isEqualTo(expected.getItemName()))
             .satisfies(a -> assertThat(a.getCategory()).as("check category").isEqualTo(expected.getCategory()))

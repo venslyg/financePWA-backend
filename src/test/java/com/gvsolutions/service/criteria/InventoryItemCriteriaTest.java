@@ -77,6 +77,7 @@ class InventoryItemCriteriaTest {
     private static void setAllFilters(InventoryItemCriteria inventoryItemCriteria) {
         inventoryItemCriteria.id();
         inventoryItemCriteria.branchCode();
+        inventoryItemCriteria.branchId();
         inventoryItemCriteria.inventoryItemCode();
         inventoryItemCriteria.itemName();
         inventoryItemCriteria.category();
@@ -95,6 +96,7 @@ class InventoryItemCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId()) &&
                 condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getInventoryItemCode()) &&
                 condition.apply(criteria.getItemName()) &&
                 condition.apply(criteria.getCategory()) &&
@@ -118,6 +120,7 @@ class InventoryItemCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
                 condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getInventoryItemCode(), copy.getInventoryItemCode()) &&
                 condition.apply(criteria.getItemName(), copy.getItemName()) &&
                 condition.apply(criteria.getCategory(), copy.getCategory()) &&

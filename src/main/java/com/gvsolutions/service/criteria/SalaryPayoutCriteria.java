@@ -26,6 +26,8 @@ public class SalaryPayoutCriteria implements Serializable, Criteria {
 
     private StringFilter branchCode;
 
+    private StringFilter branchId;
+
     private StringFilter salaryPayoutCode;
 
     private StringFilter staffCode;
@@ -57,6 +59,7 @@ public class SalaryPayoutCriteria implements Serializable, Criteria {
     public SalaryPayoutCriteria(SalaryPayoutCriteria other) {
         this.id = other.optionalId().map(LongFilter::copy).orElse(null);
         this.branchCode = other.optionalBranchCode().map(StringFilter::copy).orElse(null);
+        this.branchId = other.optionalBranchId().map(StringFilter::copy).orElse(null);
         this.salaryPayoutCode = other.optionalSalaryPayoutCode().map(StringFilter::copy).orElse(null);
         this.staffCode = other.optionalStaffCode().map(StringFilter::copy).orElse(null);
         this.payPeriod = other.optionalPayPeriod().map(StringFilter::copy).orElse(null);
@@ -113,6 +116,25 @@ public class SalaryPayoutCriteria implements Serializable, Criteria {
 
     public void setBranchCode(StringFilter branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public StringFilter getBranchId() {
+        return branchId;
+    }
+
+    public Optional<StringFilter> optionalBranchId() {
+        return Optional.ofNullable(branchId);
+    }
+
+    public StringFilter branchId() {
+        if (branchId == null) {
+            setBranchId(new StringFilter());
+        }
+        return branchId;
+    }
+
+    public void setBranchId(StringFilter branchId) {
+        this.branchId = branchId;
     }
 
     public StringFilter getSalaryPayoutCode() {
@@ -374,6 +396,7 @@ public class SalaryPayoutCriteria implements Serializable, Criteria {
         return (
             Objects.equals(id, that.id) &&
             Objects.equals(branchCode, that.branchCode) &&
+            Objects.equals(branchId, that.branchId) &&
             Objects.equals(salaryPayoutCode, that.salaryPayoutCode) &&
             Objects.equals(staffCode, that.staffCode) &&
             Objects.equals(payPeriod, that.payPeriod) &&
@@ -395,6 +418,7 @@ public class SalaryPayoutCriteria implements Serializable, Criteria {
         return Objects.hash(
             id,
             branchCode,
+            branchId,
             salaryPayoutCode,
             staffCode,
             payPeriod,
@@ -417,6 +441,7 @@ public class SalaryPayoutCriteria implements Serializable, Criteria {
         return "SalaryPayoutCriteria{" +
             optionalId().map(f -> "id=" + f + ", ").orElse("") +
             optionalBranchCode().map(f -> "branchCode=" + f + ", ").orElse("") +
+            optionalBranchId().map(f -> "branchId=" + f + ", ").orElse("") +
             optionalSalaryPayoutCode().map(f -> "salaryPayoutCode=" + f + ", ").orElse("") +
             optionalStaffCode().map(f -> "staffCode=" + f + ", ").orElse("") +
             optionalPayPeriod().map(f -> "payPeriod=" + f + ", ").orElse("") +

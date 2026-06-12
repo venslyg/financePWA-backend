@@ -34,6 +34,7 @@ import { InventoryItemDeleteDialogComponent } from '../delete/inventory-item-del
 export class InventoryItemComponent implements OnInit {
   private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
     'branchCode',
+    'branchId',
     'inventoryItemCode',
     'itemName',
     'category',

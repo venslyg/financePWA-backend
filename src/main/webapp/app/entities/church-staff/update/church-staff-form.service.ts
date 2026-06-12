@@ -34,6 +34,7 @@ type ChurchStaffFormGroupContent = {
   id: FormControl<ChurchStaffFormRawValue['id'] | NewChurchStaff['id']>;
   staffCode: FormControl<ChurchStaffFormRawValue['staffCode']>;
   branchCode: FormControl<ChurchStaffFormRawValue['branchCode']>;
+  branchId: FormControl<ChurchStaffFormRawValue['branchId']>;
   fullName: FormControl<ChurchStaffFormRawValue['fullName']>;
   position: FormControl<ChurchStaffFormRawValue['position']>;
   staffType: FormControl<ChurchStaffFormRawValue['staffType']>;
@@ -65,6 +66,7 @@ export class ChurchStaffFormService {
       ),
       staffCode: new FormControl(churchStaffRawValue.staffCode),
       branchCode: new FormControl(churchStaffRawValue.branchCode),
+      branchId: new FormControl(churchStaffRawValue.branchId),
       fullName: new FormControl(churchStaffRawValue.fullName),
       position: new FormControl(churchStaffRawValue.position),
       staffType: new FormControl(churchStaffRawValue.staffType),

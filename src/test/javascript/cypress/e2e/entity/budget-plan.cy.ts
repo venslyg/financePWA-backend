@@ -160,34 +160,37 @@ describe('BudgetPlan e2e test', () => {
     });
 
     it('should create an instance of BudgetPlan', () => {
-      cy.get(`[data-cy="branchCode"]`).type('ultimately embed');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'ultimately embed');
+      cy.get(`[data-cy="branchCode"]`).type('distorted foot');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'distorted foot');
 
-      cy.get(`[data-cy="accountCode"]`).type('actually behest');
-      cy.get(`[data-cy="accountCode"]`).should('have.value', 'actually behest');
+      cy.get(`[data-cy="branchId"]`).type('especially');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'especially');
 
-      cy.get(`[data-cy="budgetPlanCode"]`).type('sadly');
-      cy.get(`[data-cy="budgetPlanCode"]`).should('have.value', 'sadly');
+      cy.get(`[data-cy="accountCode"]`).type('judgementally once dicker');
+      cy.get(`[data-cy="accountCode"]`).should('have.value', 'judgementally once dicker');
 
-      cy.get(`[data-cy="departmentName"]`).type('dicker aboard');
-      cy.get(`[data-cy="departmentName"]`).should('have.value', 'dicker aboard');
+      cy.get(`[data-cy="budgetPlanCode"]`).type('ouch');
+      cy.get(`[data-cy="budgetPlanCode"]`).should('have.value', 'ouch');
 
-      cy.get(`[data-cy="year"]`).type('24443');
-      cy.get(`[data-cy="year"]`).should('have.value', '24443');
+      cy.get(`[data-cy="departmentName"]`).type('though');
+      cy.get(`[data-cy="departmentName"]`).should('have.value', 'though');
 
-      cy.get(`[data-cy="allocatedAmount"]`).type('9768.64');
-      cy.get(`[data-cy="allocatedAmount"]`).should('have.value', '9768.64');
+      cy.get(`[data-cy="year"]`).type('25809');
+      cy.get(`[data-cy="year"]`).should('have.value', '25809');
 
-      cy.get(`[data-cy="spentAmount"]`).type('30278.04');
-      cy.get(`[data-cy="spentAmount"]`).should('have.value', '30278.04');
+      cy.get(`[data-cy="allocatedAmount"]`).type('8193.67');
+      cy.get(`[data-cy="allocatedAmount"]`).should('have.value', '8193.67');
 
-      cy.get(`[data-cy="remainingAmount"]`).type('6511.92');
-      cy.get(`[data-cy="remainingAmount"]`).should('have.value', '6511.92');
+      cy.get(`[data-cy="spentAmount"]`).type('5290.24');
+      cy.get(`[data-cy="spentAmount"]`).should('have.value', '5290.24');
 
-      cy.get(`[data-cy="usedPercentage"]`).type('3784.23');
-      cy.get(`[data-cy="usedPercentage"]`).should('have.value', '3784.23');
+      cy.get(`[data-cy="remainingAmount"]`).type('27630.35');
+      cy.get(`[data-cy="remainingAmount"]`).should('have.value', '27630.35');
 
-      cy.get(`[data-cy="alertStatus"]`).select('WARNING_80_PERCENT');
+      cy.get(`[data-cy="usedPercentage"]`).type('14157.34');
+      cy.get(`[data-cy="usedPercentage"]`).should('have.value', '14157.34');
+
+      cy.get(`[data-cy="alertStatus"]`).select('RED_ALERT_100_PERCENT');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

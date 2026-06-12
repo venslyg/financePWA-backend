@@ -82,6 +82,7 @@ public class InventoryItemQueryService extends QueryService<InventoryItem> {
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), InventoryItem_.id),
                 buildStringSpecification(criteria.getBranchCode(), InventoryItem_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), InventoryItem_.branchId),
                 buildStringSpecification(criteria.getInventoryItemCode(), InventoryItem_.inventoryItemCode),
                 buildStringSpecification(criteria.getItemName(), InventoryItem_.itemName),
                 buildStringSpecification(criteria.getCategory(), InventoryItem_.category),

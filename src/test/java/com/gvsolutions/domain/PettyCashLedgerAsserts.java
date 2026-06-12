@@ -51,6 +51,7 @@ public class PettyCashLedgerAsserts {
         assertThat(actual)
             .as("Verify PettyCashLedger relevant properties")
             .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getPettyCashCode()).as("check pettyCashCode").isEqualTo(expected.getPettyCashCode()))
             .satisfies(a -> assertThat(a.getDate()).as("check date").isEqualTo(expected.getDate()))
             .satisfies(a -> assertThat(a.getPettyCashVoucherNo()).as("check pettyCashVoucherNo").isEqualTo(expected.getPettyCashVoucherNo())

@@ -82,6 +82,7 @@ public class AccountSetQueryService extends QueryService<AccountSet> {
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), AccountSet_.id),
                 buildStringSpecification(criteria.getBranchCode(), AccountSet_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), AccountSet_.branchId),
                 buildStringSpecification(criteria.getAccountCode(), AccountSet_.accountCode),
                 buildStringSpecification(criteria.getAccountName(), AccountSet_.accountName),
                 buildSpecification(criteria.getAccountType(), AccountSet_.accountType),

@@ -45,6 +45,12 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class AssetDepreciationHistoryResourceIT {
 
+    private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_ASSET_REGISTER_CODE = "AAAAAAAAAA";
     private static final String UPDATED_ASSET_REGISTER_CODE = "BBBBBBBBBB";
 
@@ -100,6 +106,8 @@ class AssetDepreciationHistoryResourceIT {
      */
     public static AssetDepreciationHistory createEntity() {
         return new AssetDepreciationHistory()
+            .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .assetRegisterCode(DEFAULT_ASSET_REGISTER_CODE)
             .depreciationDate(DEFAULT_DEPRECIATION_DATE)
             .depreciationAmount(DEFAULT_DEPRECIATION_AMOUNT)
@@ -115,6 +123,8 @@ class AssetDepreciationHistoryResourceIT {
      */
     public static AssetDepreciationHistory createUpdatedEntity() {
         return new AssetDepreciationHistory()
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .assetRegisterCode(UPDATED_ASSET_REGISTER_CODE)
             .depreciationDate(UPDATED_DEPRECIATION_DATE)
             .depreciationAmount(UPDATED_DEPRECIATION_AMOUNT)
@@ -208,6 +218,8 @@ class AssetDepreciationHistoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(assetDepreciationHistory.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].assetRegisterCode").value(hasItem(DEFAULT_ASSET_REGISTER_CODE)))
             .andExpect(jsonPath("$.[*].depreciationDate").value(hasItem(DEFAULT_DEPRECIATION_DATE.toString())))
             .andExpect(jsonPath("$.[*].depreciationAmount").value(hasItem(sameNumber(DEFAULT_DEPRECIATION_AMOUNT))))
@@ -227,6 +239,8 @@ class AssetDepreciationHistoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(assetDepreciationHistory.getId().intValue()))
+            .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.assetRegisterCode").value(DEFAULT_ASSET_REGISTER_CODE))
             .andExpect(jsonPath("$.depreciationDate").value(DEFAULT_DEPRECIATION_DATE.toString()))
             .andExpect(jsonPath("$.depreciationAmount").value(sameNumber(DEFAULT_DEPRECIATION_AMOUNT)))
@@ -247,6 +261,121 @@ class AssetDepreciationHistoryResourceIT {
         defaultAssetDepreciationHistoryFiltering("id.greaterThanOrEqual=" + id, "id.greaterThan=" + id);
 
         defaultAssetDepreciationHistoryFiltering("id.lessThanOrEqual=" + id, "id.lessThan=" + id);
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetDepreciationHistoriesByBranchCodeIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedAssetDepreciationHistory = assetDepreciationHistoryRepository.saveAndFlush(assetDepreciationHistory);
+
+        // Get all the assetDepreciationHistoryList where branchCode equals to
+        defaultAssetDepreciationHistoryFiltering("branchCode.equals=" + DEFAULT_BRANCH_CODE, "branchCode.equals=" + UPDATED_BRANCH_CODE);
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetDepreciationHistoriesByBranchCodeIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedAssetDepreciationHistory = assetDepreciationHistoryRepository.saveAndFlush(assetDepreciationHistory);
+
+        // Get all the assetDepreciationHistoryList where branchCode in
+        defaultAssetDepreciationHistoryFiltering(
+            "branchCode.in=" + DEFAULT_BRANCH_CODE + "," + UPDATED_BRANCH_CODE,
+            "branchCode.in=" + UPDATED_BRANCH_CODE
+        );
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetDepreciationHistoriesByBranchCodeIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedAssetDepreciationHistory = assetDepreciationHistoryRepository.saveAndFlush(assetDepreciationHistory);
+
+        // Get all the assetDepreciationHistoryList where branchCode is not null
+        defaultAssetDepreciationHistoryFiltering("branchCode.specified=true", "branchCode.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetDepreciationHistoriesByBranchCodeContainsSomething() throws Exception {
+        // Initialize the database
+        insertedAssetDepreciationHistory = assetDepreciationHistoryRepository.saveAndFlush(assetDepreciationHistory);
+
+        // Get all the assetDepreciationHistoryList where branchCode contains
+        defaultAssetDepreciationHistoryFiltering(
+            "branchCode.contains=" + DEFAULT_BRANCH_CODE,
+            "branchCode.contains=" + UPDATED_BRANCH_CODE
+        );
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetDepreciationHistoriesByBranchCodeNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedAssetDepreciationHistory = assetDepreciationHistoryRepository.saveAndFlush(assetDepreciationHistory);
+
+        // Get all the assetDepreciationHistoryList where branchCode does not contain
+        defaultAssetDepreciationHistoryFiltering(
+            "branchCode.doesNotContain=" + UPDATED_BRANCH_CODE,
+            "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE
+        );
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetDepreciationHistoriesByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedAssetDepreciationHistory = assetDepreciationHistoryRepository.saveAndFlush(assetDepreciationHistory);
+
+        // Get all the assetDepreciationHistoryList where branchId equals to
+        defaultAssetDepreciationHistoryFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetDepreciationHistoriesByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedAssetDepreciationHistory = assetDepreciationHistoryRepository.saveAndFlush(assetDepreciationHistory);
+
+        // Get all the assetDepreciationHistoryList where branchId in
+        defaultAssetDepreciationHistoryFiltering(
+            "branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID,
+            "branchId.in=" + UPDATED_BRANCH_ID
+        );
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetDepreciationHistoriesByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedAssetDepreciationHistory = assetDepreciationHistoryRepository.saveAndFlush(assetDepreciationHistory);
+
+        // Get all the assetDepreciationHistoryList where branchId is not null
+        defaultAssetDepreciationHistoryFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetDepreciationHistoriesByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedAssetDepreciationHistory = assetDepreciationHistoryRepository.saveAndFlush(assetDepreciationHistory);
+
+        // Get all the assetDepreciationHistoryList where branchId contains
+        defaultAssetDepreciationHistoryFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetDepreciationHistoriesByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedAssetDepreciationHistory = assetDepreciationHistoryRepository.saveAndFlush(assetDepreciationHistory);
+
+        // Get all the assetDepreciationHistoryList where branchId does not contain
+        defaultAssetDepreciationHistoryFiltering(
+            "branchId.doesNotContain=" + UPDATED_BRANCH_ID,
+            "branchId.doesNotContain=" + DEFAULT_BRANCH_ID
+        );
     }
 
     @Test
@@ -651,6 +780,8 @@ class AssetDepreciationHistoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(assetDepreciationHistory.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].assetRegisterCode").value(hasItem(DEFAULT_ASSET_REGISTER_CODE)))
             .andExpect(jsonPath("$.[*].depreciationDate").value(hasItem(DEFAULT_DEPRECIATION_DATE.toString())))
             .andExpect(jsonPath("$.[*].depreciationAmount").value(hasItem(sameNumber(DEFAULT_DEPRECIATION_AMOUNT))))
@@ -708,6 +839,8 @@ class AssetDepreciationHistoryResourceIT {
         // Disconnect from session so that the updates on updatedAssetDepreciationHistory are not directly saved in db
         em.detach(updatedAssetDepreciationHistory);
         updatedAssetDepreciationHistory
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .assetRegisterCode(UPDATED_ASSET_REGISTER_CODE)
             .depreciationDate(UPDATED_DEPRECIATION_DATE)
             .depreciationAmount(UPDATED_DEPRECIATION_AMOUNT)
@@ -826,6 +959,8 @@ class AssetDepreciationHistoryResourceIT {
         AssetDepreciationHistory partialUpdatedAssetDepreciationHistory = new AssetDepreciationHistory();
         partialUpdatedAssetDepreciationHistory.setId(assetDepreciationHistory.getId());
 
+        partialUpdatedAssetDepreciationHistory.valueAfterDepreciation(UPDATED_VALUE_AFTER_DEPRECIATION).processedBy(UPDATED_PROCESSED_BY);
+
         restAssetDepreciationHistoryMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedAssetDepreciationHistory.getId())
@@ -856,6 +991,8 @@ class AssetDepreciationHistoryResourceIT {
         partialUpdatedAssetDepreciationHistory.setId(assetDepreciationHistory.getId());
 
         partialUpdatedAssetDepreciationHistory
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .assetRegisterCode(UPDATED_ASSET_REGISTER_CODE)
             .depreciationDate(UPDATED_DEPRECIATION_DATE)
             .depreciationAmount(UPDATED_DEPRECIATION_AMOUNT)
@@ -988,6 +1125,8 @@ class AssetDepreciationHistoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(assetDepreciationHistory.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].assetRegisterCode").value(hasItem(DEFAULT_ASSET_REGISTER_CODE)))
             .andExpect(jsonPath("$.[*].depreciationDate").value(hasItem(DEFAULT_DEPRECIATION_DATE.toString())))
             .andExpect(jsonPath("$.[*].depreciationAmount").value(hasItem(sameNumber(DEFAULT_DEPRECIATION_AMOUNT))))

@@ -76,6 +76,14 @@
                 }
               </div>
             </th>
+            <th scope="col" jhiSortBy="branchId">
+              <div class="d-flex">
+                <span>Branch Id</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
             <th scope="col" jhiSortBy="inventoryItemCode">
               <div class="d-flex">
                 <span>Inventory Item Code</span>
@@ -161,6 +169,7 @@
                 <a [routerLink]="['/inventory-item', inventoryItem.id, 'view']">{{ inventoryItem.id }}</a>
               </td>
               <td>{{ inventoryItem.branchCode }}</td>
+              <td>{{ inventoryItem.branchId }}</td>
               <td>{{ inventoryItem.inventoryItemCode }}</td>
               <td>{{ inventoryItem.itemName }}</td>
               <td>{{ inventoryItem.category }}</td>

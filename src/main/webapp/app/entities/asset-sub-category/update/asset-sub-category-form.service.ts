@@ -32,6 +32,8 @@ type AssetSubCategoryFormDefaults = Pick<NewAssetSubCategory, 'id' | 'createdDat
 
 type AssetSubCategoryFormGroupContent = {
   id: FormControl<AssetSubCategoryFormRawValue['id'] | NewAssetSubCategory['id']>;
+  branchCode: FormControl<AssetSubCategoryFormRawValue['branchCode']>;
+  branchId: FormControl<AssetSubCategoryFormRawValue['branchId']>;
   assetCategoryCode: FormControl<AssetSubCategoryFormRawValue['assetCategoryCode']>;
   assetSubCategoryCode: FormControl<AssetSubCategoryFormRawValue['assetSubCategoryCode']>;
   assetSubCategoryName: FormControl<AssetSubCategoryFormRawValue['assetSubCategoryName']>;
@@ -59,6 +61,8 @@ export class AssetSubCategoryFormService {
           validators: [Validators.required],
         },
       ),
+      branchCode: new FormControl(assetSubCategoryRawValue.branchCode),
+      branchId: new FormControl(assetSubCategoryRawValue.branchId),
       assetCategoryCode: new FormControl(assetSubCategoryRawValue.assetCategoryCode),
       assetSubCategoryCode: new FormControl(assetSubCategoryRawValue.assetSubCategoryCode),
       assetSubCategoryName: new FormControl(assetSubCategoryRawValue.assetSubCategoryName),

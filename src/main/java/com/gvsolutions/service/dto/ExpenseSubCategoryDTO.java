@@ -12,6 +12,10 @@ public class ExpenseSubCategoryDTO implements Serializable {
 
     private Long id;
 
+    private String branchCode;
+
+    private String branchId;
+
     private String categoryCode;
 
     private String subCategoryCode;
@@ -34,6 +38,22 @@ public class ExpenseSubCategoryDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getBranchCode() {
+        return branchCode;
+    }
+
+    public void setBranchCode(String branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getCategoryCode() {
@@ -126,6 +146,8 @@ public class ExpenseSubCategoryDTO implements Serializable {
     public String toString() {
         return "ExpenseSubCategoryDTO{" +
             "id=" + getId() +
+            ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", categoryCode='" + getCategoryCode() + "'" +
             ", subCategoryCode='" + getSubCategoryCode() + "'" +
             ", subCategoryName='" + getSubCategoryName() + "'" +

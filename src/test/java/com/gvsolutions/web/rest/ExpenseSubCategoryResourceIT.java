@@ -50,6 +50,12 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class ExpenseSubCategoryResourceIT {
 
+    private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_CATEGORY_CODE = "AAAAAAAAAA";
     private static final String UPDATED_CATEGORY_CODE = "BBBBBBBBBB";
 
@@ -102,6 +108,8 @@ class ExpenseSubCategoryResourceIT {
      */
     public static ExpenseSubCategory createEntity() {
         return new ExpenseSubCategory()
+            .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .categoryCode(DEFAULT_CATEGORY_CODE)
             .subCategoryCode(DEFAULT_SUB_CATEGORY_CODE)
             .subCategoryName(DEFAULT_SUB_CATEGORY_NAME);
@@ -115,6 +123,8 @@ class ExpenseSubCategoryResourceIT {
      */
     public static ExpenseSubCategory createUpdatedEntity() {
         return new ExpenseSubCategory()
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .categoryCode(UPDATED_CATEGORY_CODE)
             .subCategoryCode(UPDATED_SUB_CATEGORY_CODE)
             .subCategoryName(UPDATED_SUB_CATEGORY_NAME);
@@ -202,6 +212,8 @@ class ExpenseSubCategoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(expenseSubCategory.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].categoryCode").value(hasItem(DEFAULT_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].subCategoryCode").value(hasItem(DEFAULT_SUB_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].subCategoryName").value(hasItem(DEFAULT_SUB_CATEGORY_NAME)));
@@ -236,6 +248,8 @@ class ExpenseSubCategoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(expenseSubCategory.getId().intValue()))
+            .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.categoryCode").value(DEFAULT_CATEGORY_CODE))
             .andExpect(jsonPath("$.subCategoryCode").value(DEFAULT_SUB_CATEGORY_CODE))
             .andExpect(jsonPath("$.subCategoryName").value(DEFAULT_SUB_CATEGORY_NAME));
@@ -254,6 +268,115 @@ class ExpenseSubCategoryResourceIT {
         defaultExpenseSubCategoryFiltering("id.greaterThanOrEqual=" + id, "id.greaterThan=" + id);
 
         defaultExpenseSubCategoryFiltering("id.lessThanOrEqual=" + id, "id.lessThan=" + id);
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseSubCategoriesByBranchCodeIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedExpenseSubCategory = expenseSubCategoryRepository.saveAndFlush(expenseSubCategory);
+
+        // Get all the expenseSubCategoryList where branchCode equals to
+        defaultExpenseSubCategoryFiltering("branchCode.equals=" + DEFAULT_BRANCH_CODE, "branchCode.equals=" + UPDATED_BRANCH_CODE);
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseSubCategoriesByBranchCodeIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedExpenseSubCategory = expenseSubCategoryRepository.saveAndFlush(expenseSubCategory);
+
+        // Get all the expenseSubCategoryList where branchCode in
+        defaultExpenseSubCategoryFiltering(
+            "branchCode.in=" + DEFAULT_BRANCH_CODE + "," + UPDATED_BRANCH_CODE,
+            "branchCode.in=" + UPDATED_BRANCH_CODE
+        );
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseSubCategoriesByBranchCodeIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedExpenseSubCategory = expenseSubCategoryRepository.saveAndFlush(expenseSubCategory);
+
+        // Get all the expenseSubCategoryList where branchCode is not null
+        defaultExpenseSubCategoryFiltering("branchCode.specified=true", "branchCode.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseSubCategoriesByBranchCodeContainsSomething() throws Exception {
+        // Initialize the database
+        insertedExpenseSubCategory = expenseSubCategoryRepository.saveAndFlush(expenseSubCategory);
+
+        // Get all the expenseSubCategoryList where branchCode contains
+        defaultExpenseSubCategoryFiltering("branchCode.contains=" + DEFAULT_BRANCH_CODE, "branchCode.contains=" + UPDATED_BRANCH_CODE);
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseSubCategoriesByBranchCodeNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedExpenseSubCategory = expenseSubCategoryRepository.saveAndFlush(expenseSubCategory);
+
+        // Get all the expenseSubCategoryList where branchCode does not contain
+        defaultExpenseSubCategoryFiltering(
+            "branchCode.doesNotContain=" + UPDATED_BRANCH_CODE,
+            "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE
+        );
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseSubCategoriesByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedExpenseSubCategory = expenseSubCategoryRepository.saveAndFlush(expenseSubCategory);
+
+        // Get all the expenseSubCategoryList where branchId equals to
+        defaultExpenseSubCategoryFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseSubCategoriesByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedExpenseSubCategory = expenseSubCategoryRepository.saveAndFlush(expenseSubCategory);
+
+        // Get all the expenseSubCategoryList where branchId in
+        defaultExpenseSubCategoryFiltering(
+            "branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID,
+            "branchId.in=" + UPDATED_BRANCH_ID
+        );
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseSubCategoriesByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedExpenseSubCategory = expenseSubCategoryRepository.saveAndFlush(expenseSubCategory);
+
+        // Get all the expenseSubCategoryList where branchId is not null
+        defaultExpenseSubCategoryFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseSubCategoriesByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedExpenseSubCategory = expenseSubCategoryRepository.saveAndFlush(expenseSubCategory);
+
+        // Get all the expenseSubCategoryList where branchId contains
+        defaultExpenseSubCategoryFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseSubCategoriesByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedExpenseSubCategory = expenseSubCategoryRepository.saveAndFlush(expenseSubCategory);
+
+        // Get all the expenseSubCategoryList where branchId does not contain
+        defaultExpenseSubCategoryFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -475,6 +598,8 @@ class ExpenseSubCategoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(expenseSubCategory.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].categoryCode").value(hasItem(DEFAULT_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].subCategoryCode").value(hasItem(DEFAULT_SUB_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].subCategoryName").value(hasItem(DEFAULT_SUB_CATEGORY_NAME)));
@@ -528,6 +653,8 @@ class ExpenseSubCategoryResourceIT {
         // Disconnect from session so that the updates on updatedExpenseSubCategory are not directly saved in db
         em.detach(updatedExpenseSubCategory);
         updatedExpenseSubCategory
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .categoryCode(UPDATED_CATEGORY_CODE)
             .subCategoryCode(UPDATED_SUB_CATEGORY_CODE)
             .subCategoryName(UPDATED_SUB_CATEGORY_NAME);
@@ -642,6 +769,8 @@ class ExpenseSubCategoryResourceIT {
         ExpenseSubCategory partialUpdatedExpenseSubCategory = new ExpenseSubCategory();
         partialUpdatedExpenseSubCategory.setId(expenseSubCategory.getId());
 
+        partialUpdatedExpenseSubCategory.subCategoryCode(UPDATED_SUB_CATEGORY_CODE).subCategoryName(UPDATED_SUB_CATEGORY_NAME);
+
         restExpenseSubCategoryMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedExpenseSubCategory.getId())
@@ -672,6 +801,8 @@ class ExpenseSubCategoryResourceIT {
         partialUpdatedExpenseSubCategory.setId(expenseSubCategory.getId());
 
         partialUpdatedExpenseSubCategory
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .categoryCode(UPDATED_CATEGORY_CODE)
             .subCategoryCode(UPDATED_SUB_CATEGORY_CODE)
             .subCategoryName(UPDATED_SUB_CATEGORY_NAME);
@@ -800,6 +931,8 @@ class ExpenseSubCategoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(expenseSubCategory.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].categoryCode").value(hasItem(DEFAULT_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].subCategoryCode").value(hasItem(DEFAULT_SUB_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].subCategoryName").value(hasItem(DEFAULT_SUB_CATEGORY_NAME)));

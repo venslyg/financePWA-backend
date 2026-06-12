@@ -32,6 +32,8 @@ type ExpenseSubCategoryFormDefaults = Pick<NewExpenseSubCategory, 'id' | 'create
 
 type ExpenseSubCategoryFormGroupContent = {
   id: FormControl<ExpenseSubCategoryFormRawValue['id'] | NewExpenseSubCategory['id']>;
+  branchCode: FormControl<ExpenseSubCategoryFormRawValue['branchCode']>;
+  branchId: FormControl<ExpenseSubCategoryFormRawValue['branchId']>;
   categoryCode: FormControl<ExpenseSubCategoryFormRawValue['categoryCode']>;
   subCategoryCode: FormControl<ExpenseSubCategoryFormRawValue['subCategoryCode']>;
   subCategoryName: FormControl<ExpenseSubCategoryFormRawValue['subCategoryName']>;
@@ -59,6 +61,8 @@ export class ExpenseSubCategoryFormService {
           validators: [Validators.required],
         },
       ),
+      branchCode: new FormControl(expenseSubCategoryRawValue.branchCode),
+      branchId: new FormControl(expenseSubCategoryRawValue.branchId),
       categoryCode: new FormControl(expenseSubCategoryRawValue.categoryCode),
       subCategoryCode: new FormControl(expenseSubCategoryRawValue.subCategoryCode),
       subCategoryName: new FormControl(expenseSubCategoryRawValue.subCategoryName),

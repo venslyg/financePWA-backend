@@ -160,14 +160,20 @@ describe('AssetCategory e2e test', () => {
     });
 
     it('should create an instance of AssetCategory', () => {
-      cy.get(`[data-cy="assetCategoryCode"]`).type('gastropod towards');
-      cy.get(`[data-cy="assetCategoryCode"]`).should('have.value', 'gastropod towards');
+      cy.get(`[data-cy="branchCode"]`).type('extent');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'extent');
 
-      cy.get(`[data-cy="assetCategoryName"]`).type('tragic');
-      cy.get(`[data-cy="assetCategoryName"]`).should('have.value', 'tragic');
+      cy.get(`[data-cy="branchId"]`).type('hence vast palatable');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'hence vast palatable');
 
-      cy.get(`[data-cy="description"]`).type('polite before immediately');
-      cy.get(`[data-cy="description"]`).should('have.value', 'polite before immediately');
+      cy.get(`[data-cy="assetCategoryCode"]`).type('brr incidentally yet');
+      cy.get(`[data-cy="assetCategoryCode"]`).should('have.value', 'brr incidentally yet');
+
+      cy.get(`[data-cy="assetCategoryName"]`).type('swerve trusting fooey');
+      cy.get(`[data-cy="assetCategoryName"]`).should('have.value', 'swerve trusting fooey');
+
+      cy.get(`[data-cy="description"]`).type('which custom');
+      cy.get(`[data-cy="description"]`).should('have.value', 'which custom');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

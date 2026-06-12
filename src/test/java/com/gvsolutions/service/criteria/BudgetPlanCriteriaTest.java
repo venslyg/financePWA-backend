@@ -77,6 +77,7 @@ class BudgetPlanCriteriaTest {
     private static void setAllFilters(BudgetPlanCriteria budgetPlanCriteria) {
         budgetPlanCriteria.id();
         budgetPlanCriteria.branchCode();
+        budgetPlanCriteria.branchId();
         budgetPlanCriteria.accountCode();
         budgetPlanCriteria.budgetPlanCode();
         budgetPlanCriteria.departmentName();
@@ -98,6 +99,7 @@ class BudgetPlanCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId()) &&
                 condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getAccountCode()) &&
                 condition.apply(criteria.getBudgetPlanCode()) &&
                 condition.apply(criteria.getDepartmentName()) &&
@@ -121,6 +123,7 @@ class BudgetPlanCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
                 condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getAccountCode(), copy.getAccountCode()) &&
                 condition.apply(criteria.getBudgetPlanCode(), copy.getBudgetPlanCode()) &&
                 condition.apply(criteria.getDepartmentName(), copy.getDepartmentName()) &&

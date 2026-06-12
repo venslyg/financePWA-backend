@@ -33,6 +33,7 @@ type BudgetPlanFormDefaults = Pick<NewBudgetPlan, 'id' | 'createdDate' | 'lastMo
 type BudgetPlanFormGroupContent = {
   id: FormControl<BudgetPlanFormRawValue['id'] | NewBudgetPlan['id']>;
   branchCode: FormControl<BudgetPlanFormRawValue['branchCode']>;
+  branchId: FormControl<BudgetPlanFormRawValue['branchId']>;
   accountCode: FormControl<BudgetPlanFormRawValue['accountCode']>;
   budgetPlanCode: FormControl<BudgetPlanFormRawValue['budgetPlanCode']>;
   departmentName: FormControl<BudgetPlanFormRawValue['departmentName']>;
@@ -66,6 +67,7 @@ export class BudgetPlanFormService {
         },
       ),
       branchCode: new FormControl(budgetPlanRawValue.branchCode),
+      branchId: new FormControl(budgetPlanRawValue.branchId),
       accountCode: new FormControl(budgetPlanRawValue.accountCode),
       budgetPlanCode: new FormControl(budgetPlanRawValue.budgetPlanCode),
       departmentName: new FormControl(budgetPlanRawValue.departmentName),

@@ -5,6 +5,7 @@ import { ApprovalStatus } from 'app/entities/enumerations/approval-status.model'
 export interface ILiabilityLog {
   id: number;
   branchCode?: string | null;
+  branchId?: string | null;
   liabilityCode?: string | null;
   loanFrom?: string | null;
   description?: string | null;

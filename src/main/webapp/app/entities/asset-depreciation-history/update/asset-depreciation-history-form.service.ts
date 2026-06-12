@@ -32,6 +32,8 @@ type AssetDepreciationHistoryFormDefaults = Pick<NewAssetDepreciationHistory, 'i
 
 type AssetDepreciationHistoryFormGroupContent = {
   id: FormControl<AssetDepreciationHistoryFormRawValue['id'] | NewAssetDepreciationHistory['id']>;
+  branchCode: FormControl<AssetDepreciationHistoryFormRawValue['branchCode']>;
+  branchId: FormControl<AssetDepreciationHistoryFormRawValue['branchId']>;
   assetRegisterCode: FormControl<AssetDepreciationHistoryFormRawValue['assetRegisterCode']>;
   depreciationDate: FormControl<AssetDepreciationHistoryFormRawValue['depreciationDate']>;
   depreciationAmount: FormControl<AssetDepreciationHistoryFormRawValue['depreciationAmount']>;
@@ -62,6 +64,8 @@ export class AssetDepreciationHistoryFormService {
           validators: [Validators.required],
         },
       ),
+      branchCode: new FormControl(assetDepreciationHistoryRawValue.branchCode),
+      branchId: new FormControl(assetDepreciationHistoryRawValue.branchId),
       assetRegisterCode: new FormControl(assetDepreciationHistoryRawValue.assetRegisterCode),
       depreciationDate: new FormControl(assetDepreciationHistoryRawValue.depreciationDate),
       depreciationAmount: new FormControl(assetDepreciationHistoryRawValue.depreciationAmount),

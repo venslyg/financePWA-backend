@@ -21,6 +21,7 @@ describe('AccountSet Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             accountCode: expect.any(Object),
             accountName: expect.any(Object),
             accountType: expect.any(Object),
@@ -41,6 +42,7 @@ describe('AccountSet Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             accountCode: expect.any(Object),
             accountName: expect.any(Object),
             accountType: expect.any(Object),

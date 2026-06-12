@@ -82,6 +82,8 @@ public class MaintenanceLogQueryService extends QueryService<MaintenanceLog> {
             specification = Specification.allOf(
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), MaintenanceLog_.id),
+                buildStringSpecification(criteria.getBranchCode(), MaintenanceLog_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), MaintenanceLog_.branchId),
                 buildStringSpecification(criteria.getMaintenanceLogCode(), MaintenanceLog_.maintenanceLogCode),
                 buildRangeSpecification(criteria.getLogDate(), MaintenanceLog_.logDate),
                 buildSpecification(criteria.getLogType(), MaintenanceLog_.logType),

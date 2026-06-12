@@ -77,6 +77,7 @@ class ExpenseEntryCriteriaTest {
     private static void setAllFilters(ExpenseEntryCriteria expenseEntryCriteria) {
         expenseEntryCriteria.id();
         expenseEntryCriteria.branchCode();
+        expenseEntryCriteria.branchId();
         expenseEntryCriteria.accountCode();
         expenseEntryCriteria.expenseCode();
         expenseEntryCriteria.expenseCategoryCode();
@@ -103,6 +104,7 @@ class ExpenseEntryCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId()) &&
                 condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getAccountCode()) &&
                 condition.apply(criteria.getExpenseCode()) &&
                 condition.apply(criteria.getExpenseCategoryCode()) &&
@@ -134,6 +136,7 @@ class ExpenseEntryCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
                 condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getAccountCode(), copy.getAccountCode()) &&
                 condition.apply(criteria.getExpenseCode(), copy.getExpenseCode()) &&
                 condition.apply(criteria.getExpenseCategoryCode(), copy.getExpenseCategoryCode()) &&

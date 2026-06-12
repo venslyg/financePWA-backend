@@ -17,6 +17,8 @@ public class AccountSetDTO implements Serializable {
 
     private String branchCode;
 
+    private String branchId;
+
     private String accountCode;
 
     private String accountName;
@@ -49,6 +51,14 @@ public class AccountSetDTO implements Serializable {
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getAccountCode() {
@@ -150,6 +160,7 @@ public class AccountSetDTO implements Serializable {
         return "AccountSetDTO{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", accountCode='" + getAccountCode() + "'" +
             ", accountName='" + getAccountName() + "'" +
             ", accountType='" + getAccountType() + "'" +

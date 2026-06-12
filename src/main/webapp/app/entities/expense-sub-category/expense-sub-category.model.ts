@@ -3,6 +3,8 @@ import { IExpenseCategory } from 'app/entities/expense-category/expense-category
 
 export interface IExpenseSubCategory {
   id: number;
+  branchCode?: string | null;
+  branchId?: string | null;
   categoryCode?: string | null;
   subCategoryCode?: string | null;
   subCategoryName?: string | null;

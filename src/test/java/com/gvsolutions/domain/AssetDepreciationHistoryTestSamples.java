@@ -12,6 +12,8 @@ public class AssetDepreciationHistoryTestSamples {
     public static AssetDepreciationHistory getAssetDepreciationHistorySample1() {
         return new AssetDepreciationHistory()
             .id(1L)
+            .branchCode("branchCode1")
+            .branchId("branchId1")
             .assetRegisterCode("assetRegisterCode1")
             .processedBy("processedBy1")
             .createdBy("createdBy1")
@@ -21,6 +23,8 @@ public class AssetDepreciationHistoryTestSamples {
     public static AssetDepreciationHistory getAssetDepreciationHistorySample2() {
         return new AssetDepreciationHistory()
             .id(2L)
+            .branchCode("branchCode2")
+            .branchId("branchId2")
             .assetRegisterCode("assetRegisterCode2")
             .processedBy("processedBy2")
             .createdBy("createdBy2")
@@ -30,6 +34,8 @@ public class AssetDepreciationHistoryTestSamples {
     public static AssetDepreciationHistory getAssetDepreciationHistoryRandomSampleGenerator() {
         return new AssetDepreciationHistory()
             .id(longCount.incrementAndGet())
+            .branchCode(UUID.randomUUID().toString())
+            .branchId(UUID.randomUUID().toString())
             .assetRegisterCode(UUID.randomUUID().toString())
             .processedBy(UUID.randomUUID().toString())
             .createdBy(UUID.randomUUID().toString())

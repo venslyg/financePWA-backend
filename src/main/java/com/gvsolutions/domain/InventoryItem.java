@@ -29,6 +29,10 @@ public class InventoryItem extends AbstractAuditingEntity<Long> implements Seria
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String branchCode;
 
+    @Column(name = "branch_id")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchId;
+
     @Column(name = "inventory_item_code")
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String inventoryItemCode;
@@ -84,6 +88,19 @@ public class InventoryItem extends AbstractAuditingEntity<Long> implements Seria
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return this.branchId;
+    }
+
+    public InventoryItem branchId(String branchId) {
+        this.setBranchId(branchId);
+        return this;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getInventoryItemCode() {
@@ -231,6 +248,7 @@ public class InventoryItem extends AbstractAuditingEntity<Long> implements Seria
         return "InventoryItem{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", inventoryItemCode='" + getInventoryItemCode() + "'" +
             ", itemName='" + getItemName() + "'" +
             ", category='" + getCategory() + "'" +

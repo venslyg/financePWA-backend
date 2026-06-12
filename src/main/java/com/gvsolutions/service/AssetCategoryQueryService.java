@@ -81,6 +81,8 @@ public class AssetCategoryQueryService extends QueryService<AssetCategory> {
             specification = Specification.allOf(
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), AssetCategory_.id),
+                buildStringSpecification(criteria.getBranchCode(), AssetCategory_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), AssetCategory_.branchId),
                 buildStringSpecification(criteria.getAssetCategoryCode(), AssetCategory_.assetCategoryCode),
                 buildStringSpecification(criteria.getAssetCategoryName(), AssetCategory_.assetCategoryName),
                 buildStringSpecification(criteria.getDescription(), AssetCategory_.description),

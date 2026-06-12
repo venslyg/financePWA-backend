@@ -77,6 +77,7 @@ class PettyCashLedgerCriteriaTest {
     private static void setAllFilters(PettyCashLedgerCriteria pettyCashLedgerCriteria) {
         pettyCashLedgerCriteria.id();
         pettyCashLedgerCriteria.branchCode();
+        pettyCashLedgerCriteria.branchId();
         pettyCashLedgerCriteria.pettyCashCode();
         pettyCashLedgerCriteria.date();
         pettyCashLedgerCriteria.pettyCashVoucherNo();
@@ -98,6 +99,7 @@ class PettyCashLedgerCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId()) &&
                 condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getPettyCashCode()) &&
                 condition.apply(criteria.getDate()) &&
                 condition.apply(criteria.getPettyCashVoucherNo()) &&
@@ -124,6 +126,7 @@ class PettyCashLedgerCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
                 condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getPettyCashCode(), copy.getPettyCashCode()) &&
                 condition.apply(criteria.getDate(), copy.getDate()) &&
                 condition.apply(criteria.getPettyCashVoucherNo(), copy.getPettyCashVoucherNo()) &&

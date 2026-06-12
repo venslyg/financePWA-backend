@@ -3,6 +3,7 @@ import dayjs from 'dayjs/esm';
 export interface IInventoryItem {
   id: number;
   branchCode?: string | null;
+  branchId?: string | null;
   inventoryItemCode?: string | null;
   itemName?: string | null;
   category?: string | null;

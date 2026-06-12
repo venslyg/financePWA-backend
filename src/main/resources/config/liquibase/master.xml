@@ -37,5 +37,43 @@
     <include file="config/liquibase/changelog/20260612070331_added_entity_constraints_AssetSubCategory.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20260612070334_added_entity_constraints_MaintenanceLog.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <include file="config/liquibase/changelog/20260612104926_updated_entity_AccountSet.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104926_updated_entity_migrate_AccountSet.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104927_updated_entity_IncomeEntry.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104927_updated_entity_migrate_IncomeEntry.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104928_updated_entity_ExpenseCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104928_updated_entity_migrate_ExpenseCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104929_updated_entity_ExpenseSubCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104929_updated_entity_migrate_ExpenseSubCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104930_updated_entity_ExpenseEntry.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104930_updated_entity_migrate_ExpenseEntry.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104931_updated_entity_BankLedger.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104931_updated_entity_migrate_BankLedger.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104932_updated_entity_PettyCashLedger.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104932_updated_entity_migrate_PettyCashLedger.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104933_updated_entity_AssetCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104933_updated_entity_migrate_AssetCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104934_updated_entity_AssetSubCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104934_updated_entity_migrate_AssetSubCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104935_updated_entity_AssetRegister.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104935_updated_entity_migrate_AssetRegister.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104936_updated_entity_AssetDepreciationHistory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104936_updated_entity_migrate_AssetDepreciationHistory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104937_updated_entity_MaintenanceLog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104937_updated_entity_migrate_MaintenanceLog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104938_updated_entity_InventoryItem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104938_updated_entity_migrate_InventoryItem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104939_updated_entity_BinCardLine.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104939_updated_entity_migrate_BinCardLine.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104940_updated_entity_LiabilityLog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104940_updated_entity_migrate_LiabilityLog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104941_updated_entity_BudgetPlan.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104941_updated_entity_migrate_BudgetPlan.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104942_updated_entity_DonationTracker.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104942_updated_entity_migrate_DonationTracker.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104943_updated_entity_ChurchStaff.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104943_updated_entity_migrate_ChurchStaff.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104944_updated_entity_SalaryPayout.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260612104944_updated_entity_migrate_SalaryPayout.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

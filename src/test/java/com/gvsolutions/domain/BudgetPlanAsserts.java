@@ -51,6 +51,7 @@ public class BudgetPlanAsserts {
         assertThat(actual)
             .as("Verify BudgetPlan relevant properties")
             .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getAccountCode()).as("check accountCode").isEqualTo(expected.getAccountCode()))
             .satisfies(a -> assertThat(a.getBudgetPlanCode()).as("check budgetPlanCode").isEqualTo(expected.getBudgetPlanCode()))
             .satisfies(a -> assertThat(a.getDepartmentName()).as("check departmentName").isEqualTo(expected.getDepartmentName()))

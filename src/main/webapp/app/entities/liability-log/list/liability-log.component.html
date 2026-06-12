@@ -76,6 +76,14 @@
                 }
               </div>
             </th>
+            <th scope="col" jhiSortBy="branchId">
+              <div class="d-flex">
+                <span>Branch Id</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
             <th scope="col" jhiSortBy="liabilityCode">
               <div class="d-flex">
                 <span>Liability Code</span>
@@ -205,6 +213,7 @@
                 <a [routerLink]="['/liability-log', liabilityLog.id, 'view']">{{ liabilityLog.id }}</a>
               </td>
               <td>{{ liabilityLog.branchCode }}</td>
+              <td>{{ liabilityLog.branchId }}</td>
               <td>{{ liabilityLog.liabilityCode }}</td>
               <td>{{ liabilityLog.loanFrom }}</td>
               <td>{{ liabilityLog.description }}</td>

@@ -33,7 +33,14 @@ import { AssetDepreciationHistoryDeleteDialogComponent } from '../delete/asset-d
   ],
 })
 export class AssetDepreciationHistoryComponent implements OnInit {
-  private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = ['assetRegisterCode', 'processedBy', 'createdBy', 'lastModifiedBy'];
+  private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
+    'branchCode',
+    'branchId',
+    'assetRegisterCode',
+    'processedBy',
+    'createdBy',
+    'lastModifiedBy',
+  ];
 
   subscription: Subscription | null = null;
   assetDepreciationHistories = signal<IAssetDepreciationHistory[]>([]);

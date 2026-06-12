@@ -48,6 +48,9 @@ class AssetRegisterResourceIT {
     private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
     private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_ASSET_REGISTER_CODE = "AAAAAAAAAA";
     private static final String UPDATED_ASSET_REGISTER_CODE = "BBBBBBBBBB";
 
@@ -121,6 +124,7 @@ class AssetRegisterResourceIT {
     public static AssetRegister createEntity() {
         return new AssetRegister()
             .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .assetRegisterCode(DEFAULT_ASSET_REGISTER_CODE)
             .assetCategoryCode(DEFAULT_ASSET_CATEGORY_CODE)
             .assetSubCategoryCode(DEFAULT_ASSET_SUB_CATEGORY_CODE)
@@ -142,6 +146,7 @@ class AssetRegisterResourceIT {
     public static AssetRegister createUpdatedEntity() {
         return new AssetRegister()
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .assetRegisterCode(UPDATED_ASSET_REGISTER_CODE)
             .assetCategoryCode(UPDATED_ASSET_CATEGORY_CODE)
             .assetSubCategoryCode(UPDATED_ASSET_SUB_CATEGORY_CODE)
@@ -234,6 +239,7 @@ class AssetRegisterResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(assetRegister.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].assetRegisterCode").value(hasItem(DEFAULT_ASSET_REGISTER_CODE)))
             .andExpect(jsonPath("$.[*].assetCategoryCode").value(hasItem(DEFAULT_ASSET_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].assetSubCategoryCode").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_CODE)))
@@ -259,6 +265,7 @@ class AssetRegisterResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(assetRegister.getId().intValue()))
             .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.assetRegisterCode").value(DEFAULT_ASSET_REGISTER_CODE))
             .andExpect(jsonPath("$.assetCategoryCode").value(DEFAULT_ASSET_CATEGORY_CODE))
             .andExpect(jsonPath("$.assetSubCategoryCode").value(DEFAULT_ASSET_SUB_CATEGORY_CODE))
@@ -340,6 +347,56 @@ class AssetRegisterResourceIT {
             "branchCode.doesNotContain=" + UPDATED_BRANCH_CODE,
             "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE
         );
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetRegistersByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedAssetRegister = assetRegisterRepository.saveAndFlush(assetRegister);
+
+        // Get all the assetRegisterList where branchId equals to
+        defaultAssetRegisterFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetRegistersByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedAssetRegister = assetRegisterRepository.saveAndFlush(assetRegister);
+
+        // Get all the assetRegisterList where branchId in
+        defaultAssetRegisterFiltering("branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID, "branchId.in=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetRegistersByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedAssetRegister = assetRegisterRepository.saveAndFlush(assetRegister);
+
+        // Get all the assetRegisterList where branchId is not null
+        defaultAssetRegisterFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetRegistersByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedAssetRegister = assetRegisterRepository.saveAndFlush(assetRegister);
+
+        // Get all the assetRegisterList where branchId contains
+        defaultAssetRegisterFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetRegistersByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedAssetRegister = assetRegisterRepository.saveAndFlush(assetRegister);
+
+        // Get all the assetRegisterList where branchId does not contain
+        defaultAssetRegisterFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -1068,6 +1125,7 @@ class AssetRegisterResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(assetRegister.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].assetRegisterCode").value(hasItem(DEFAULT_ASSET_REGISTER_CODE)))
             .andExpect(jsonPath("$.[*].assetCategoryCode").value(hasItem(DEFAULT_ASSET_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].assetSubCategoryCode").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_CODE)))
@@ -1129,6 +1187,7 @@ class AssetRegisterResourceIT {
         em.detach(updatedAssetRegister);
         updatedAssetRegister
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .assetRegisterCode(UPDATED_ASSET_REGISTER_CODE)
             .assetCategoryCode(UPDATED_ASSET_CATEGORY_CODE)
             .assetSubCategoryCode(UPDATED_ASSET_SUB_CATEGORY_CODE)
@@ -1250,10 +1309,11 @@ class AssetRegisterResourceIT {
 
         partialUpdatedAssetRegister
             .branchCode(UPDATED_BRANCH_CODE)
-            .assetRegisterCode(UPDATED_ASSET_REGISTER_CODE)
-            .assetName(UPDATED_ASSET_NAME)
+            .branchId(UPDATED_BRANCH_ID)
+            .assetSubCategoryCode(UPDATED_ASSET_SUB_CATEGORY_CODE)
+            .category(UPDATED_CATEGORY)
             .purchaseDate(UPDATED_PURCHASE_DATE)
-            .purchaseCost(UPDATED_PURCHASE_COST)
+            .depreciationRate(UPDATED_DEPRECIATION_RATE)
             .accumulatedDepreciation(UPDATED_ACCUMULATED_DEPRECIATION);
 
         restAssetRegisterMockMvc
@@ -1287,6 +1347,7 @@ class AssetRegisterResourceIT {
 
         partialUpdatedAssetRegister
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .assetRegisterCode(UPDATED_ASSET_REGISTER_CODE)
             .assetCategoryCode(UPDATED_ASSET_CATEGORY_CODE)
             .assetSubCategoryCode(UPDATED_ASSET_SUB_CATEGORY_CODE)
@@ -1420,6 +1481,7 @@ class AssetRegisterResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(assetRegister.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].assetRegisterCode").value(hasItem(DEFAULT_ASSET_REGISTER_CODE)))
             .andExpect(jsonPath("$.[*].assetCategoryCode").value(hasItem(DEFAULT_ASSET_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].assetSubCategoryCode").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_CODE)))

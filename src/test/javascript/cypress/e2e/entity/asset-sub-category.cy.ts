@@ -160,14 +160,20 @@ describe('AssetSubCategory e2e test', () => {
     });
 
     it('should create an instance of AssetSubCategory', () => {
-      cy.get(`[data-cy="assetCategoryCode"]`).type('plumber incidentally wafer');
-      cy.get(`[data-cy="assetCategoryCode"]`).should('have.value', 'plumber incidentally wafer');
+      cy.get(`[data-cy="branchCode"]`).type('afraid hello');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'afraid hello');
 
-      cy.get(`[data-cy="assetSubCategoryCode"]`).type('captain tensely');
-      cy.get(`[data-cy="assetSubCategoryCode"]`).should('have.value', 'captain tensely');
+      cy.get(`[data-cy="branchId"]`).type('messy whether');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'messy whether');
 
-      cy.get(`[data-cy="assetSubCategoryName"]`).type('though');
-      cy.get(`[data-cy="assetSubCategoryName"]`).should('have.value', 'though');
+      cy.get(`[data-cy="assetCategoryCode"]`).type('verbally impanel without');
+      cy.get(`[data-cy="assetCategoryCode"]`).should('have.value', 'verbally impanel without');
+
+      cy.get(`[data-cy="assetSubCategoryCode"]`).type('violently remorseful');
+      cy.get(`[data-cy="assetSubCategoryCode"]`).should('have.value', 'violently remorseful');
+
+      cy.get(`[data-cy="assetSubCategoryName"]`).type('blah');
+      cy.get(`[data-cy="assetSubCategoryName"]`).should('have.value', 'blah');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

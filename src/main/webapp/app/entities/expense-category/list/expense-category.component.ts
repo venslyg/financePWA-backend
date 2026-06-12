@@ -32,7 +32,15 @@ import { ExpenseCategoryDeleteDialogComponent } from '../delete/expense-category
   ],
 })
 export class ExpenseCategoryComponent implements OnInit {
-  private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = ['categoryCode', 'categoryName', 'description', 'createdBy', 'lastModifiedBy'];
+  private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
+    'branchCode',
+    'branchId',
+    'categoryCode',
+    'categoryName',
+    'description',
+    'createdBy',
+    'lastModifiedBy',
+  ];
 
   subscription: Subscription | null = null;
   expenseCategories = signal<IExpenseCategory[]>([]);

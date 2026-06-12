@@ -44,6 +44,8 @@ public class BudgetPlanCriteria implements Serializable, Criteria {
 
     private StringFilter branchCode;
 
+    private StringFilter branchId;
+
     private StringFilter accountCode;
 
     private StringFilter budgetPlanCode;
@@ -77,6 +79,7 @@ public class BudgetPlanCriteria implements Serializable, Criteria {
     public BudgetPlanCriteria(BudgetPlanCriteria other) {
         this.id = other.optionalId().map(LongFilter::copy).orElse(null);
         this.branchCode = other.optionalBranchCode().map(StringFilter::copy).orElse(null);
+        this.branchId = other.optionalBranchId().map(StringFilter::copy).orElse(null);
         this.accountCode = other.optionalAccountCode().map(StringFilter::copy).orElse(null);
         this.budgetPlanCode = other.optionalBudgetPlanCode().map(StringFilter::copy).orElse(null);
         this.departmentName = other.optionalDepartmentName().map(StringFilter::copy).orElse(null);
@@ -134,6 +137,25 @@ public class BudgetPlanCriteria implements Serializable, Criteria {
 
     public void setBranchCode(StringFilter branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public StringFilter getBranchId() {
+        return branchId;
+    }
+
+    public Optional<StringFilter> optionalBranchId() {
+        return Optional.ofNullable(branchId);
+    }
+
+    public StringFilter branchId() {
+        if (branchId == null) {
+            setBranchId(new StringFilter());
+        }
+        return branchId;
+    }
+
+    public void setBranchId(StringFilter branchId) {
+        this.branchId = branchId;
     }
 
     public StringFilter getAccountCode() {
@@ -414,6 +436,7 @@ public class BudgetPlanCriteria implements Serializable, Criteria {
         return (
             Objects.equals(id, that.id) &&
             Objects.equals(branchCode, that.branchCode) &&
+            Objects.equals(branchId, that.branchId) &&
             Objects.equals(accountCode, that.accountCode) &&
             Objects.equals(budgetPlanCode, that.budgetPlanCode) &&
             Objects.equals(departmentName, that.departmentName) &&
@@ -436,6 +459,7 @@ public class BudgetPlanCriteria implements Serializable, Criteria {
         return Objects.hash(
             id,
             branchCode,
+            branchId,
             accountCode,
             budgetPlanCode,
             departmentName,
@@ -459,6 +483,7 @@ public class BudgetPlanCriteria implements Serializable, Criteria {
         return "BudgetPlanCriteria{" +
             optionalId().map(f -> "id=" + f + ", ").orElse("") +
             optionalBranchCode().map(f -> "branchCode=" + f + ", ").orElse("") +
+            optionalBranchId().map(f -> "branchId=" + f + ", ").orElse("") +
             optionalAccountCode().map(f -> "accountCode=" + f + ", ").orElse("") +
             optionalBudgetPlanCode().map(f -> "budgetPlanCode=" + f + ", ").orElse("") +
             optionalDepartmentName().map(f -> "departmentName=" + f + ", ").orElse("") +

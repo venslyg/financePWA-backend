@@ -12,6 +12,8 @@ public class AssetSubCategoryTestSamples {
     public static AssetSubCategory getAssetSubCategorySample1() {
         return new AssetSubCategory()
             .id(1L)
+            .branchCode("branchCode1")
+            .branchId("branchId1")
             .assetCategoryCode("assetCategoryCode1")
             .assetSubCategoryCode("assetSubCategoryCode1")
             .assetSubCategoryName("assetSubCategoryName1")
@@ -22,6 +24,8 @@ public class AssetSubCategoryTestSamples {
     public static AssetSubCategory getAssetSubCategorySample2() {
         return new AssetSubCategory()
             .id(2L)
+            .branchCode("branchCode2")
+            .branchId("branchId2")
             .assetCategoryCode("assetCategoryCode2")
             .assetSubCategoryCode("assetSubCategoryCode2")
             .assetSubCategoryName("assetSubCategoryName2")
@@ -32,6 +36,8 @@ public class AssetSubCategoryTestSamples {
     public static AssetSubCategory getAssetSubCategoryRandomSampleGenerator() {
         return new AssetSubCategory()
             .id(longCount.incrementAndGet())
+            .branchCode(UUID.randomUUID().toString())
+            .branchId(UUID.randomUUID().toString())
             .assetCategoryCode(UUID.randomUUID().toString())
             .assetSubCategoryCode(UUID.randomUUID().toString())
             .assetSubCategoryName(UUID.randomUUID().toString())

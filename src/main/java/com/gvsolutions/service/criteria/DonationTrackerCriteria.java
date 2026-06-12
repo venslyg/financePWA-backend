@@ -44,6 +44,8 @@ public class DonationTrackerCriteria implements Serializable, Criteria {
 
     private StringFilter branchCode;
 
+    private StringFilter branchId;
+
     private StringFilter donationIdCode;
 
     private LocalDateFilter date;
@@ -75,6 +77,7 @@ public class DonationTrackerCriteria implements Serializable, Criteria {
     public DonationTrackerCriteria(DonationTrackerCriteria other) {
         this.id = other.optionalId().map(LongFilter::copy).orElse(null);
         this.branchCode = other.optionalBranchCode().map(StringFilter::copy).orElse(null);
+        this.branchId = other.optionalBranchId().map(StringFilter::copy).orElse(null);
         this.donationIdCode = other.optionalDonationIdCode().map(StringFilter::copy).orElse(null);
         this.date = other.optionalDate().map(LocalDateFilter::copy).orElse(null);
         this.donorNameOrOrg = other.optionalDonorNameOrOrg().map(StringFilter::copy).orElse(null);
@@ -131,6 +134,25 @@ public class DonationTrackerCriteria implements Serializable, Criteria {
 
     public void setBranchCode(StringFilter branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public StringFilter getBranchId() {
+        return branchId;
+    }
+
+    public Optional<StringFilter> optionalBranchId() {
+        return Optional.ofNullable(branchId);
+    }
+
+    public StringFilter branchId() {
+        if (branchId == null) {
+            setBranchId(new StringFilter());
+        }
+        return branchId;
+    }
+
+    public void setBranchId(StringFilter branchId) {
+        this.branchId = branchId;
     }
 
     public StringFilter getDonationIdCode() {
@@ -392,6 +414,7 @@ public class DonationTrackerCriteria implements Serializable, Criteria {
         return (
             Objects.equals(id, that.id) &&
             Objects.equals(branchCode, that.branchCode) &&
+            Objects.equals(branchId, that.branchId) &&
             Objects.equals(donationIdCode, that.donationIdCode) &&
             Objects.equals(date, that.date) &&
             Objects.equals(donorNameOrOrg, that.donorNameOrOrg) &&
@@ -413,6 +436,7 @@ public class DonationTrackerCriteria implements Serializable, Criteria {
         return Objects.hash(
             id,
             branchCode,
+            branchId,
             donationIdCode,
             date,
             donorNameOrOrg,
@@ -435,6 +459,7 @@ public class DonationTrackerCriteria implements Serializable, Criteria {
         return "DonationTrackerCriteria{" +
             optionalId().map(f -> "id=" + f + ", ").orElse("") +
             optionalBranchCode().map(f -> "branchCode=" + f + ", ").orElse("") +
+            optionalBranchId().map(f -> "branchId=" + f + ", ").orElse("") +
             optionalDonationIdCode().map(f -> "donationIdCode=" + f + ", ").orElse("") +
             optionalDate().map(f -> "date=" + f + ", ").orElse("") +
             optionalDonorNameOrOrg().map(f -> "donorNameOrOrg=" + f + ", ").orElse("") +

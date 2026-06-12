@@ -17,6 +17,8 @@ public class SalaryPayoutDTO implements Serializable {
 
     private String branchCode;
 
+    private String branchId;
+
     private String salaryPayoutCode;
 
     private String staffCode;
@@ -55,6 +57,14 @@ public class SalaryPayoutDTO implements Serializable {
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getSalaryPayoutCode() {
@@ -180,6 +190,7 @@ public class SalaryPayoutDTO implements Serializable {
         return "SalaryPayoutDTO{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", salaryPayoutCode='" + getSalaryPayoutCode() + "'" +
             ", staffCode='" + getStaffCode() + "'" +
             ", payPeriod='" + getPayPeriod() + "'" +

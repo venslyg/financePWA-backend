@@ -14,6 +14,10 @@ public class BinCardLineDTO implements Serializable {
 
     private Long id;
 
+    private String branchCode;
+
+    private String branchId;
+
     private String inventoryItemCode;
 
     private LocalDate date;
@@ -42,6 +46,22 @@ public class BinCardLineDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getBranchCode() {
+        return branchCode;
+    }
+
+    public void setBranchCode(String branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getInventoryItemCode() {
@@ -158,6 +178,8 @@ public class BinCardLineDTO implements Serializable {
     public String toString() {
         return "BinCardLineDTO{" +
             "id=" + getId() +
+            ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", inventoryItemCode='" + getInventoryItemCode() + "'" +
             ", date='" + getDate() + "'" +
             ", referenceNo='" + getReferenceNo() + "'" +

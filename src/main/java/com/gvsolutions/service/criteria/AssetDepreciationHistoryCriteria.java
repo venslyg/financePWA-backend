@@ -24,6 +24,10 @@ public class AssetDepreciationHistoryCriteria implements Serializable, Criteria 
 
     private LongFilter id;
 
+    private StringFilter branchCode;
+
+    private StringFilter branchId;
+
     private StringFilter assetRegisterCode;
 
     private LocalDateFilter depreciationDate;
@@ -48,6 +52,8 @@ public class AssetDepreciationHistoryCriteria implements Serializable, Criteria 
 
     public AssetDepreciationHistoryCriteria(AssetDepreciationHistoryCriteria other) {
         this.id = other.optionalId().map(LongFilter::copy).orElse(null);
+        this.branchCode = other.optionalBranchCode().map(StringFilter::copy).orElse(null);
+        this.branchId = other.optionalBranchId().map(StringFilter::copy).orElse(null);
         this.assetRegisterCode = other.optionalAssetRegisterCode().map(StringFilter::copy).orElse(null);
         this.depreciationDate = other.optionalDepreciationDate().map(LocalDateFilter::copy).orElse(null);
         this.depreciationAmount = other.optionalDepreciationAmount().map(BigDecimalFilter::copy).orElse(null);
@@ -82,6 +88,44 @@ public class AssetDepreciationHistoryCriteria implements Serializable, Criteria 
 
     public void setId(LongFilter id) {
         this.id = id;
+    }
+
+    public StringFilter getBranchCode() {
+        return branchCode;
+    }
+
+    public Optional<StringFilter> optionalBranchCode() {
+        return Optional.ofNullable(branchCode);
+    }
+
+    public StringFilter branchCode() {
+        if (branchCode == null) {
+            setBranchCode(new StringFilter());
+        }
+        return branchCode;
+    }
+
+    public void setBranchCode(StringFilter branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public StringFilter getBranchId() {
+        return branchId;
+    }
+
+    public Optional<StringFilter> optionalBranchId() {
+        return Optional.ofNullable(branchId);
+    }
+
+    public StringFilter branchId() {
+        if (branchId == null) {
+            setBranchId(new StringFilter());
+        }
+        return branchId;
+    }
+
+    public void setBranchId(StringFilter branchId) {
+        this.branchId = branchId;
     }
 
     public StringFilter getAssetRegisterCode() {
@@ -285,6 +329,8 @@ public class AssetDepreciationHistoryCriteria implements Serializable, Criteria 
         final AssetDepreciationHistoryCriteria that = (AssetDepreciationHistoryCriteria) o;
         return (
             Objects.equals(id, that.id) &&
+            Objects.equals(branchCode, that.branchCode) &&
+            Objects.equals(branchId, that.branchId) &&
             Objects.equals(assetRegisterCode, that.assetRegisterCode) &&
             Objects.equals(depreciationDate, that.depreciationDate) &&
             Objects.equals(depreciationAmount, that.depreciationAmount) &&
@@ -302,6 +348,8 @@ public class AssetDepreciationHistoryCriteria implements Serializable, Criteria 
     public int hashCode() {
         return Objects.hash(
             id,
+            branchCode,
+            branchId,
             assetRegisterCode,
             depreciationDate,
             depreciationAmount,
@@ -320,6 +368,8 @@ public class AssetDepreciationHistoryCriteria implements Serializable, Criteria 
     public String toString() {
         return "AssetDepreciationHistoryCriteria{" +
             optionalId().map(f -> "id=" + f + ", ").orElse("") +
+            optionalBranchCode().map(f -> "branchCode=" + f + ", ").orElse("") +
+            optionalBranchId().map(f -> "branchId=" + f + ", ").orElse("") +
             optionalAssetRegisterCode().map(f -> "assetRegisterCode=" + f + ", ").orElse("") +
             optionalDepreciationDate().map(f -> "depreciationDate=" + f + ", ").orElse("") +
             optionalDepreciationAmount().map(f -> "depreciationAmount=" + f + ", ").orElse("") +

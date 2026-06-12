@@ -33,6 +33,7 @@ type LiabilityLogFormDefaults = Pick<NewLiabilityLog, 'id' | 'createdDate' | 'la
 type LiabilityLogFormGroupContent = {
   id: FormControl<LiabilityLogFormRawValue['id'] | NewLiabilityLog['id']>;
   branchCode: FormControl<LiabilityLogFormRawValue['branchCode']>;
+  branchId: FormControl<LiabilityLogFormRawValue['branchId']>;
   liabilityCode: FormControl<LiabilityLogFormRawValue['liabilityCode']>;
   loanFrom: FormControl<LiabilityLogFormRawValue['loanFrom']>;
   description: FormControl<LiabilityLogFormRawValue['description']>;
@@ -69,6 +70,7 @@ export class LiabilityLogFormService {
         },
       ),
       branchCode: new FormControl(liabilityLogRawValue.branchCode),
+      branchId: new FormControl(liabilityLogRawValue.branchId),
       liabilityCode: new FormControl(liabilityLogRawValue.liabilityCode),
       loanFrom: new FormControl(liabilityLogRawValue.loanFrom),
       description: new FormControl(liabilityLogRawValue.description),

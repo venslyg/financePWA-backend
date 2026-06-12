@@ -82,6 +82,7 @@ public class AssetRegisterQueryService extends QueryService<AssetRegister> {
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), AssetRegister_.id),
                 buildStringSpecification(criteria.getBranchCode(), AssetRegister_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), AssetRegister_.branchId),
                 buildStringSpecification(criteria.getAssetRegisterCode(), AssetRegister_.assetRegisterCode),
                 buildStringSpecification(criteria.getAssetCategoryCode(), AssetRegister_.assetCategoryCode),
                 buildStringSpecification(criteria.getAssetSubCategoryCode(), AssetRegister_.assetSubCategoryCode),

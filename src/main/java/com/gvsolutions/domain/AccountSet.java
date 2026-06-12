@@ -29,6 +29,10 @@ public class AccountSet extends AbstractAuditingEntity<Long> implements Serializ
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String branchCode;
 
+    @Column(name = "branch_id")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchId;
+
     @Column(name = "account_code")
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String accountCode;
@@ -84,6 +88,19 @@ public class AccountSet extends AbstractAuditingEntity<Long> implements Serializ
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return this.branchId;
+    }
+
+    public AccountSet branchId(String branchId) {
+        this.setBranchId(branchId);
+        return this;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getAccountCode() {
@@ -218,6 +235,7 @@ public class AccountSet extends AbstractAuditingEntity<Long> implements Serializ
         return "AccountSet{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", accountCode='" + getAccountCode() + "'" +
             ", accountName='" + getAccountName() + "'" +
             ", accountType='" + getAccountType() + "'" +

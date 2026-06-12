@@ -34,6 +34,10 @@ public class ChurchStaff extends AbstractAuditingEntity<Long> implements Seriali
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String branchCode;
 
+    @Column(name = "branch_id")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchId;
+
     @Column(name = "full_name")
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String fullName;
@@ -105,6 +109,19 @@ public class ChurchStaff extends AbstractAuditingEntity<Long> implements Seriali
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return this.branchId;
+    }
+
+    public ChurchStaff branchId(String branchId) {
+        this.setBranchId(branchId);
+        return this;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getFullName() {
@@ -253,6 +270,7 @@ public class ChurchStaff extends AbstractAuditingEntity<Long> implements Seriali
             "id=" + getId() +
             ", staffCode='" + getStaffCode() + "'" +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", fullName='" + getFullName() + "'" +
             ", position='" + getPosition() + "'" +
             ", staffType='" + getStaffType() + "'" +

@@ -52,6 +52,7 @@ public class ChurchStaffAsserts {
             .as("Verify ChurchStaff relevant properties")
             .satisfies(a -> assertThat(a.getStaffCode()).as("check staffCode").isEqualTo(expected.getStaffCode()))
             .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getFullName()).as("check fullName").isEqualTo(expected.getFullName()))
             .satisfies(a -> assertThat(a.getPosition()).as("check position").isEqualTo(expected.getPosition()))
             .satisfies(a -> assertThat(a.getStaffType()).as("check staffType").isEqualTo(expected.getStaffType()))

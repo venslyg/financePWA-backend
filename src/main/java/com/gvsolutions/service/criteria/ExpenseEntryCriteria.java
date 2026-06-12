@@ -80,6 +80,8 @@ public class ExpenseEntryCriteria implements Serializable, Criteria {
 
     private StringFilter branchCode;
 
+    private StringFilter branchId;
+
     private StringFilter accountCode;
 
     private StringFilter expenseCode;
@@ -123,6 +125,7 @@ public class ExpenseEntryCriteria implements Serializable, Criteria {
     public ExpenseEntryCriteria(ExpenseEntryCriteria other) {
         this.id = other.optionalId().map(LongFilter::copy).orElse(null);
         this.branchCode = other.optionalBranchCode().map(StringFilter::copy).orElse(null);
+        this.branchId = other.optionalBranchId().map(StringFilter::copy).orElse(null);
         this.accountCode = other.optionalAccountCode().map(StringFilter::copy).orElse(null);
         this.expenseCode = other.optionalExpenseCode().map(StringFilter::copy).orElse(null);
         this.expenseCategoryCode = other.optionalExpenseCategoryCode().map(StringFilter::copy).orElse(null);
@@ -185,6 +188,25 @@ public class ExpenseEntryCriteria implements Serializable, Criteria {
 
     public void setBranchCode(StringFilter branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public StringFilter getBranchId() {
+        return branchId;
+    }
+
+    public Optional<StringFilter> optionalBranchId() {
+        return Optional.ofNullable(branchId);
+    }
+
+    public StringFilter branchId() {
+        if (branchId == null) {
+            setBranchId(new StringFilter());
+        }
+        return branchId;
+    }
+
+    public void setBranchId(StringFilter branchId) {
+        this.branchId = branchId;
     }
 
     public StringFilter getAccountCode() {
@@ -560,6 +582,7 @@ public class ExpenseEntryCriteria implements Serializable, Criteria {
         return (
             Objects.equals(id, that.id) &&
             Objects.equals(branchCode, that.branchCode) &&
+            Objects.equals(branchId, that.branchId) &&
             Objects.equals(accountCode, that.accountCode) &&
             Objects.equals(expenseCode, that.expenseCode) &&
             Objects.equals(expenseCategoryCode, that.expenseCategoryCode) &&
@@ -587,6 +610,7 @@ public class ExpenseEntryCriteria implements Serializable, Criteria {
         return Objects.hash(
             id,
             branchCode,
+            branchId,
             accountCode,
             expenseCode,
             expenseCategoryCode,
@@ -615,6 +639,7 @@ public class ExpenseEntryCriteria implements Serializable, Criteria {
         return "ExpenseEntryCriteria{" +
             optionalId().map(f -> "id=" + f + ", ").orElse("") +
             optionalBranchCode().map(f -> "branchCode=" + f + ", ").orElse("") +
+            optionalBranchId().map(f -> "branchId=" + f + ", ").orElse("") +
             optionalAccountCode().map(f -> "accountCode=" + f + ", ").orElse("") +
             optionalExpenseCode().map(f -> "expenseCode=" + f + ", ").orElse("") +
             optionalExpenseCategoryCode().map(f -> "expenseCategoryCode=" + f + ", ").orElse("") +

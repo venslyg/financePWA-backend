@@ -30,6 +30,10 @@ public class BudgetPlan extends AbstractAuditingEntity<Long> implements Serializ
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String branchCode;
 
+    @Column(name = "branch_id")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchId;
+
     @Column(name = "account_code")
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String accountCode;
@@ -97,6 +101,19 @@ public class BudgetPlan extends AbstractAuditingEntity<Long> implements Serializ
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return this.branchId;
+    }
+
+    public BudgetPlan branchId(String branchId) {
+        this.setBranchId(branchId);
+        return this;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getAccountCode() {
@@ -283,6 +300,7 @@ public class BudgetPlan extends AbstractAuditingEntity<Long> implements Serializ
         return "BudgetPlan{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", accountCode='" + getAccountCode() + "'" +
             ", budgetPlanCode='" + getBudgetPlanCode() + "'" +
             ", departmentName='" + getDepartmentName() + "'" +

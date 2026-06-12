@@ -76,6 +76,14 @@
                 }
               </div>
             </th>
+            <th scope="col" jhiSortBy="branchId">
+              <div class="d-flex">
+                <span>Branch Id</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
             <th scope="col" jhiSortBy="donationIdCode">
               <div class="d-flex">
                 <span>Donation Id Code</span>
@@ -178,6 +186,7 @@
                 <a [routerLink]="['/donation-tracker', donationTracker.id, 'view']">{{ donationTracker.id }}</a>
               </td>
               <td>{{ donationTracker.branchCode }}</td>
+              <td>{{ donationTracker.branchId }}</td>
               <td>{{ donationTracker.donationIdCode }}</td>
               <td>{{ donationTracker.date | formatMediumDate }}</td>
               <td>{{ donationTracker.donorNameOrOrg }}</td>

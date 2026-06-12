@@ -12,6 +12,8 @@ public class MaintenanceLogTestSamples {
     public static MaintenanceLog getMaintenanceLogSample1() {
         return new MaintenanceLog()
             .id(1L)
+            .branchCode("branchCode1")
+            .branchId("branchId1")
             .maintenanceLogCode("maintenanceLogCode1")
             .description("description1")
             .vendor("vendor1")
@@ -23,6 +25,8 @@ public class MaintenanceLogTestSamples {
     public static MaintenanceLog getMaintenanceLogSample2() {
         return new MaintenanceLog()
             .id(2L)
+            .branchCode("branchCode2")
+            .branchId("branchId2")
             .maintenanceLogCode("maintenanceLogCode2")
             .description("description2")
             .vendor("vendor2")
@@ -34,6 +38,8 @@ public class MaintenanceLogTestSamples {
     public static MaintenanceLog getMaintenanceLogRandomSampleGenerator() {
         return new MaintenanceLog()
             .id(longCount.incrementAndGet())
+            .branchCode(UUID.randomUUID().toString())
+            .branchId(UUID.randomUUID().toString())
             .maintenanceLogCode(UUID.randomUUID().toString())
             .description(UUID.randomUUID().toString())
             .vendor(UUID.randomUUID().toString())

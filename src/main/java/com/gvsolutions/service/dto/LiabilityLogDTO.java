@@ -20,6 +20,8 @@ public class LiabilityLogDTO implements Serializable {
 
     private String branchCode;
 
+    private String branchId;
+
     private String liabilityCode;
 
     private String loanFrom;
@@ -66,6 +68,14 @@ public class LiabilityLogDTO implements Serializable {
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getLiabilityCode() {
@@ -223,6 +233,7 @@ public class LiabilityLogDTO implements Serializable {
         return "LiabilityLogDTO{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", liabilityCode='" + getLiabilityCode() + "'" +
             ", loanFrom='" + getLoanFrom() + "'" +
             ", description='" + getDescription() + "'" +

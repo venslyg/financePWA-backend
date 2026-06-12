@@ -24,6 +24,10 @@ public class ExpenseCategoryCriteria implements Serializable, Criteria {
 
     private LongFilter id;
 
+    private StringFilter branchCode;
+
+    private StringFilter branchId;
+
     private StringFilter categoryCode;
 
     private StringFilter categoryName;
@@ -44,6 +48,8 @@ public class ExpenseCategoryCriteria implements Serializable, Criteria {
 
     public ExpenseCategoryCriteria(ExpenseCategoryCriteria other) {
         this.id = other.optionalId().map(LongFilter::copy).orElse(null);
+        this.branchCode = other.optionalBranchCode().map(StringFilter::copy).orElse(null);
+        this.branchId = other.optionalBranchId().map(StringFilter::copy).orElse(null);
         this.categoryCode = other.optionalCategoryCode().map(StringFilter::copy).orElse(null);
         this.categoryName = other.optionalCategoryName().map(StringFilter::copy).orElse(null);
         this.description = other.optionalDescription().map(StringFilter::copy).orElse(null);
@@ -76,6 +82,44 @@ public class ExpenseCategoryCriteria implements Serializable, Criteria {
 
     public void setId(LongFilter id) {
         this.id = id;
+    }
+
+    public StringFilter getBranchCode() {
+        return branchCode;
+    }
+
+    public Optional<StringFilter> optionalBranchCode() {
+        return Optional.ofNullable(branchCode);
+    }
+
+    public StringFilter branchCode() {
+        if (branchCode == null) {
+            setBranchCode(new StringFilter());
+        }
+        return branchCode;
+    }
+
+    public void setBranchCode(StringFilter branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public StringFilter getBranchId() {
+        return branchId;
+    }
+
+    public Optional<StringFilter> optionalBranchId() {
+        return Optional.ofNullable(branchId);
+    }
+
+    public StringFilter branchId() {
+        if (branchId == null) {
+            setBranchId(new StringFilter());
+        }
+        return branchId;
+    }
+
+    public void setBranchId(StringFilter branchId) {
+        this.branchId = branchId;
     }
 
     public StringFilter getCategoryCode() {
@@ -241,6 +285,8 @@ public class ExpenseCategoryCriteria implements Serializable, Criteria {
         final ExpenseCategoryCriteria that = (ExpenseCategoryCriteria) o;
         return (
             Objects.equals(id, that.id) &&
+            Objects.equals(branchCode, that.branchCode) &&
+            Objects.equals(branchId, that.branchId) &&
             Objects.equals(categoryCode, that.categoryCode) &&
             Objects.equals(categoryName, that.categoryName) &&
             Objects.equals(description, that.description) &&
@@ -256,6 +302,8 @@ public class ExpenseCategoryCriteria implements Serializable, Criteria {
     public int hashCode() {
         return Objects.hash(
             id,
+            branchCode,
+            branchId,
             categoryCode,
             categoryName,
             description,
@@ -272,6 +320,8 @@ public class ExpenseCategoryCriteria implements Serializable, Criteria {
     public String toString() {
         return "ExpenseCategoryCriteria{" +
             optionalId().map(f -> "id=" + f + ", ").orElse("") +
+            optionalBranchCode().map(f -> "branchCode=" + f + ", ").orElse("") +
+            optionalBranchId().map(f -> "branchId=" + f + ", ").orElse("") +
             optionalCategoryCode().map(f -> "categoryCode=" + f + ", ").orElse("") +
             optionalCategoryName().map(f -> "categoryName=" + f + ", ").orElse("") +
             optionalDescription().map(f -> "description=" + f + ", ").orElse("") +

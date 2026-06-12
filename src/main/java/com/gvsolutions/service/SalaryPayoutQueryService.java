@@ -82,6 +82,7 @@ public class SalaryPayoutQueryService extends QueryService<SalaryPayout> {
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), SalaryPayout_.id),
                 buildStringSpecification(criteria.getBranchCode(), SalaryPayout_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), SalaryPayout_.branchId),
                 buildStringSpecification(criteria.getSalaryPayoutCode(), SalaryPayout_.salaryPayoutCode),
                 buildStringSpecification(criteria.getStaffCode(), SalaryPayout_.staffCode),
                 buildStringSpecification(criteria.getPayPeriod(), SalaryPayout_.payPeriod),

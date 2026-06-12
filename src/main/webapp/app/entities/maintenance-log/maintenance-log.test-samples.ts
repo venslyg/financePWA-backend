@@ -7,28 +7,30 @@ export const sampleWithRequiredData: IMaintenanceLog = {
 };
 
 export const sampleWithPartialData: IMaintenanceLog = {
-  id: 21298,
+  id: 23373,
+  branchId: 'which shred whistle',
+  maintenanceLogCode: 'when frantically',
   logDate: dayjs('2026-06-11'),
-  logType: 'REPLACEMENT',
-  description: 'which shred whistle',
-  cost: 14711.31,
-  lastModifiedDate: dayjs('2026-06-11T22:05'),
+  logType: 'REPAIR',
+  createdDate: dayjs('2026-06-11T23:38'),
 };
 
 export const sampleWithFullData: IMaintenanceLog = {
   id: 6169,
-  maintenanceLogCode: 'hm coliseum fencing',
+  branchCode: 'hm coliseum fencing',
+  branchId: 'redesign',
+  maintenanceLogCode: 'handy about bashfully',
   logDate: dayjs('2026-06-11'),
   logType: 'REPAIR',
-  description: 'refine ham about',
-  cost: 18237.73,
-  vendor: 'information igloo knavishly',
+  description: 'igloo knavishly',
+  cost: 7913.45,
+  vendor: 'correctly underneath',
   nextServiceDate: dayjs('2026-06-11'),
-  note: 'correctly underneath',
-  createdBy: 'duh intent',
-  createdDate: dayjs('2026-06-11T20:47'),
-  lastModifiedBy: 'atrium',
-  lastModifiedDate: dayjs('2026-06-11T17:11'),
+  note: 'freckle',
+  createdBy: 'developmental atrium',
+  createdDate: dayjs('2026-06-11T17:11'),
+  lastModifiedBy: 'reprove',
+  lastModifiedDate: dayjs('2026-06-11T10:51'),
 };
 
 export const sampleWithNewData: NewMaintenanceLog = {

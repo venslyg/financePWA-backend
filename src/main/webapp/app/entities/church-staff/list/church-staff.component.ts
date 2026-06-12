@@ -35,6 +35,7 @@ export class ChurchStaffComponent implements OnInit {
   private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
     'staffCode',
     'branchCode',
+    'branchId',
     'fullName',
     'position',
     'staffType',

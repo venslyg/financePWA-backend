@@ -7,25 +7,29 @@ export const sampleWithRequiredData: IAssetDepreciationHistory = {
 };
 
 export const sampleWithPartialData: IAssetDepreciationHistory = {
-  id: 13954,
-  assetRegisterCode: 'boyfriend',
-  depreciationAmount: 17496.22,
-  processedBy: 'though',
-  createdBy: 'wobbly shakily aw',
-  lastModifiedDate: dayjs('2026-06-11T14:16'),
+  id: 2200,
+  branchCode: 'pfft though poor',
+  assetRegisterCode: 'shakily aw competent',
+  depreciationAmount: 9235.08,
+  valueAfterDepreciation: 20727.67,
+  createdDate: dayjs('2026-06-11T20:18'),
+  lastModifiedBy: 'judgementally supposing collaboration',
+  lastModifiedDate: dayjs('2026-06-11T17:44'),
 };
 
 export const sampleWithFullData: IAssetDepreciationHistory = {
   id: 29618,
-  assetRegisterCode: 'ecliptic hm',
-  depreciationDate: dayjs('2026-06-12'),
-  depreciationAmount: 29655.17,
-  valueAfterDepreciation: 26441.03,
-  processedBy: 'yippee astride appreciate',
-  createdBy: 'since until',
-  createdDate: dayjs('2026-06-12T04:33'),
-  lastModifiedBy: 'that',
-  lastModifiedDate: dayjs('2026-06-11T17:26'),
+  branchCode: 'ecliptic hm',
+  branchId: 'blah upbeat eek',
+  assetRegisterCode: 'wrongly intently',
+  depreciationDate: dayjs('2026-06-11'),
+  depreciationAmount: 2442.06,
+  valueAfterDepreciation: 23497.91,
+  processedBy: 'nor neatly safely',
+  createdBy: 'pace',
+  createdDate: dayjs('2026-06-11T19:44'),
+  lastModifiedBy: 'given',
+  lastModifiedDate: dayjs('2026-06-11T09:32'),
 };
 
 export const sampleWithNewData: NewAssetDepreciationHistory = {

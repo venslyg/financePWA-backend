@@ -51,6 +51,7 @@ public class LiabilityLogAsserts {
         assertThat(actual)
             .as("Verify LiabilityLog relevant properties")
             .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getLiabilityCode()).as("check liabilityCode").isEqualTo(expected.getLiabilityCode()))
             .satisfies(a -> assertThat(a.getLoanFrom()).as("check loanFrom").isEqualTo(expected.getLoanFrom()))
             .satisfies(a -> assertThat(a.getDescription()).as("check description").isEqualTo(expected.getDescription()))

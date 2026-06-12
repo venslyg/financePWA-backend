@@ -16,6 +16,8 @@ public class BankLedgerDTO implements Serializable {
 
     private String branchCode;
 
+    private String branchId;
+
     private String bankLedgerCode;
 
     private LocalDate date;
@@ -54,6 +56,14 @@ public class BankLedgerDTO implements Serializable {
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getBankLedgerCode() {
@@ -179,6 +189,7 @@ public class BankLedgerDTO implements Serializable {
         return "BankLedgerDTO{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", bankLedgerCode='" + getBankLedgerCode() + "'" +
             ", date='" + getDate() + "'" +
             ", referenceNo='" + getReferenceNo() + "'" +

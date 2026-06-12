@@ -12,6 +12,8 @@ public class BinCardLineTestSamples {
     public static BinCardLine getBinCardLineSample1() {
         return new BinCardLine()
             .id(1L)
+            .branchCode("branchCode1")
+            .branchId("branchId1")
             .inventoryItemCode("inventoryItemCode1")
             .referenceNo("referenceNo1")
             .description("description1")
@@ -22,6 +24,8 @@ public class BinCardLineTestSamples {
     public static BinCardLine getBinCardLineSample2() {
         return new BinCardLine()
             .id(2L)
+            .branchCode("branchCode2")
+            .branchId("branchId2")
             .inventoryItemCode("inventoryItemCode2")
             .referenceNo("referenceNo2")
             .description("description2")
@@ -32,6 +36,8 @@ public class BinCardLineTestSamples {
     public static BinCardLine getBinCardLineRandomSampleGenerator() {
         return new BinCardLine()
             .id(longCount.incrementAndGet())
+            .branchCode(UUID.randomUUID().toString())
+            .branchId(UUID.randomUUID().toString())
             .inventoryItemCode(UUID.randomUUID().toString())
             .referenceNo(UUID.randomUUID().toString())
             .description(UUID.randomUUID().toString())

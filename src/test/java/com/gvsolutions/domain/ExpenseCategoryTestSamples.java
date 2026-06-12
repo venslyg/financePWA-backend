@@ -12,6 +12,8 @@ public class ExpenseCategoryTestSamples {
     public static ExpenseCategory getExpenseCategorySample1() {
         return new ExpenseCategory()
             .id(1L)
+            .branchCode("branchCode1")
+            .branchId("branchId1")
             .categoryCode("categoryCode1")
             .categoryName("categoryName1")
             .description("description1")
@@ -22,6 +24,8 @@ public class ExpenseCategoryTestSamples {
     public static ExpenseCategory getExpenseCategorySample2() {
         return new ExpenseCategory()
             .id(2L)
+            .branchCode("branchCode2")
+            .branchId("branchId2")
             .categoryCode("categoryCode2")
             .categoryName("categoryName2")
             .description("description2")
@@ -32,6 +36,8 @@ public class ExpenseCategoryTestSamples {
     public static ExpenseCategory getExpenseCategoryRandomSampleGenerator() {
         return new ExpenseCategory()
             .id(longCount.incrementAndGet())
+            .branchCode(UUID.randomUUID().toString())
+            .branchId(UUID.randomUUID().toString())
             .categoryCode(UUID.randomUUID().toString())
             .categoryName(UUID.randomUUID().toString())
             .description(UUID.randomUUID().toString())

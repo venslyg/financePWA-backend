@@ -7,27 +7,29 @@ export const sampleWithRequiredData: IInventoryItem = {
 };
 
 export const sampleWithPartialData: IInventoryItem = {
-  id: 14278,
-  branchCode: 'step-mother notwithstanding',
-  category: 'powerfully which',
-  runningStockCount: 26591.38,
-  createdDate: dayjs('2026-06-11T19:13'),
-  lastModifiedDate: dayjs('2026-06-12T02:32'),
+  id: 11366,
+  branchCode: 'imagineer concerning powerfully',
+  itemName: 'uh-huh once hidden',
+  unitPrice: 10624.37,
+  createdBy: 'oof obstruct once',
+  lastModifiedBy: 'worth',
+  lastModifiedDate: dayjs('2026-06-11T16:17'),
 };
 
 export const sampleWithFullData: IInventoryItem = {
   id: 20465,
   branchCode: 'till distant',
-  inventoryItemCode: 'wilted meh left',
-  itemName: 'insistent validity ugh',
-  category: 'baritone woot dishearten',
-  quantity: 14631.62,
-  unitPrice: 26789.4,
-  runningStockCount: 17802.08,
-  createdBy: 'instead',
-  createdDate: dayjs('2026-06-12T01:18'),
-  lastModifiedBy: 'to frozen fooey',
-  lastModifiedDate: dayjs('2026-06-12T02:20'),
+  branchId: 'wilted meh left',
+  inventoryItemCode: 'insistent validity ugh',
+  itemName: 'baritone woot dishearten',
+  category: 'goose in',
+  quantity: 3121.77,
+  unitPrice: 1429.63,
+  runningStockCount: 9169.12,
+  createdBy: 'windy weep',
+  createdDate: dayjs('2026-06-11T11:52'),
+  lastModifiedBy: 'hmph contradict ethical',
+  lastModifiedDate: dayjs('2026-06-11T21:43'),
 };
 
 export const sampleWithNewData: NewInventoryItem = {

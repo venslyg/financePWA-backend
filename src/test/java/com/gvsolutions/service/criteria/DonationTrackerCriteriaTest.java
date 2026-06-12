@@ -77,6 +77,7 @@ class DonationTrackerCriteriaTest {
     private static void setAllFilters(DonationTrackerCriteria donationTrackerCriteria) {
         donationTrackerCriteria.id();
         donationTrackerCriteria.branchCode();
+        donationTrackerCriteria.branchId();
         donationTrackerCriteria.donationIdCode();
         donationTrackerCriteria.date();
         donationTrackerCriteria.donorNameOrOrg();
@@ -97,6 +98,7 @@ class DonationTrackerCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId()) &&
                 condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getDonationIdCode()) &&
                 condition.apply(criteria.getDate()) &&
                 condition.apply(criteria.getDonorNameOrOrg()) &&
@@ -122,6 +124,7 @@ class DonationTrackerCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
                 condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getDonationIdCode(), copy.getDonationIdCode()) &&
                 condition.apply(criteria.getDate(), copy.getDate()) &&
                 condition.apply(criteria.getDonorNameOrOrg(), copy.getDonorNameOrOrg()) &&

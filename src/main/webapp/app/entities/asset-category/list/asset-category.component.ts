@@ -33,6 +33,8 @@ import { AssetCategoryDeleteDialogComponent } from '../delete/asset-category-del
 })
 export class AssetCategoryComponent implements OnInit {
   private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
+    'branchCode',
+    'branchId',
     'assetCategoryCode',
     'assetCategoryName',
     'description',

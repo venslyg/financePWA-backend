@@ -21,6 +21,7 @@ describe('AssetRegister Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             assetRegisterCode: expect.any(Object),
             assetCategoryCode: expect.any(Object),
             assetSubCategoryCode: expect.any(Object),
@@ -46,6 +47,7 @@ describe('AssetRegister Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             assetRegisterCode: expect.any(Object),
             assetCategoryCode: expect.any(Object),
             assetSubCategoryCode: expect.any(Object),

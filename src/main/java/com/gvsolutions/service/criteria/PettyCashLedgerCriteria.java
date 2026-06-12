@@ -26,6 +26,8 @@ public class PettyCashLedgerCriteria implements Serializable, Criteria {
 
     private StringFilter branchCode;
 
+    private StringFilter branchId;
+
     private StringFilter pettyCashCode;
 
     private LocalDateFilter date;
@@ -59,6 +61,7 @@ public class PettyCashLedgerCriteria implements Serializable, Criteria {
     public PettyCashLedgerCriteria(PettyCashLedgerCriteria other) {
         this.id = other.optionalId().map(LongFilter::copy).orElse(null);
         this.branchCode = other.optionalBranchCode().map(StringFilter::copy).orElse(null);
+        this.branchId = other.optionalBranchId().map(StringFilter::copy).orElse(null);
         this.pettyCashCode = other.optionalPettyCashCode().map(StringFilter::copy).orElse(null);
         this.date = other.optionalDate().map(LocalDateFilter::copy).orElse(null);
         this.pettyCashVoucherNo = other.optionalPettyCashVoucherNo().map(StringFilter::copy).orElse(null);
@@ -116,6 +119,25 @@ public class PettyCashLedgerCriteria implements Serializable, Criteria {
 
     public void setBranchCode(StringFilter branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public StringFilter getBranchId() {
+        return branchId;
+    }
+
+    public Optional<StringFilter> optionalBranchId() {
+        return Optional.ofNullable(branchId);
+    }
+
+    public StringFilter branchId() {
+        if (branchId == null) {
+            setBranchId(new StringFilter());
+        }
+        return branchId;
+    }
+
+    public void setBranchId(StringFilter branchId) {
+        this.branchId = branchId;
     }
 
     public StringFilter getPettyCashCode() {
@@ -396,6 +418,7 @@ public class PettyCashLedgerCriteria implements Serializable, Criteria {
         return (
             Objects.equals(id, that.id) &&
             Objects.equals(branchCode, that.branchCode) &&
+            Objects.equals(branchId, that.branchId) &&
             Objects.equals(pettyCashCode, that.pettyCashCode) &&
             Objects.equals(date, that.date) &&
             Objects.equals(pettyCashVoucherNo, that.pettyCashVoucherNo) &&
@@ -418,6 +441,7 @@ public class PettyCashLedgerCriteria implements Serializable, Criteria {
         return Objects.hash(
             id,
             branchCode,
+            branchId,
             pettyCashCode,
             date,
             pettyCashVoucherNo,
@@ -441,6 +465,7 @@ public class PettyCashLedgerCriteria implements Serializable, Criteria {
         return "PettyCashLedgerCriteria{" +
             optionalId().map(f -> "id=" + f + ", ").orElse("") +
             optionalBranchCode().map(f -> "branchCode=" + f + ", ").orElse("") +
+            optionalBranchId().map(f -> "branchId=" + f + ", ").orElse("") +
             optionalPettyCashCode().map(f -> "pettyCashCode=" + f + ", ").orElse("") +
             optionalDate().map(f -> "date=" + f + ", ").orElse("") +
             optionalPettyCashVoucherNo().map(f -> "pettyCashVoucherNo=" + f + ", ").orElse("") +

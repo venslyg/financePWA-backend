@@ -50,6 +50,12 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class AssetSubCategoryResourceIT {
 
+    private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_ASSET_CATEGORY_CODE = "AAAAAAAAAA";
     private static final String UPDATED_ASSET_CATEGORY_CODE = "BBBBBBBBBB";
 
@@ -102,6 +108,8 @@ class AssetSubCategoryResourceIT {
      */
     public static AssetSubCategory createEntity() {
         return new AssetSubCategory()
+            .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .assetCategoryCode(DEFAULT_ASSET_CATEGORY_CODE)
             .assetSubCategoryCode(DEFAULT_ASSET_SUB_CATEGORY_CODE)
             .assetSubCategoryName(DEFAULT_ASSET_SUB_CATEGORY_NAME);
@@ -115,6 +123,8 @@ class AssetSubCategoryResourceIT {
      */
     public static AssetSubCategory createUpdatedEntity() {
         return new AssetSubCategory()
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .assetCategoryCode(UPDATED_ASSET_CATEGORY_CODE)
             .assetSubCategoryCode(UPDATED_ASSET_SUB_CATEGORY_CODE)
             .assetSubCategoryName(UPDATED_ASSET_SUB_CATEGORY_NAME);
@@ -199,6 +209,8 @@ class AssetSubCategoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(assetSubCategory.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].assetCategoryCode").value(hasItem(DEFAULT_ASSET_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].assetSubCategoryCode").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].assetSubCategoryName").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_NAME)));
@@ -233,6 +245,8 @@ class AssetSubCategoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(assetSubCategory.getId().intValue()))
+            .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.assetCategoryCode").value(DEFAULT_ASSET_CATEGORY_CODE))
             .andExpect(jsonPath("$.assetSubCategoryCode").value(DEFAULT_ASSET_SUB_CATEGORY_CODE))
             .andExpect(jsonPath("$.assetSubCategoryName").value(DEFAULT_ASSET_SUB_CATEGORY_NAME));
@@ -251,6 +265,112 @@ class AssetSubCategoryResourceIT {
         defaultAssetSubCategoryFiltering("id.greaterThanOrEqual=" + id, "id.greaterThan=" + id);
 
         defaultAssetSubCategoryFiltering("id.lessThanOrEqual=" + id, "id.lessThan=" + id);
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetSubCategoriesByBranchCodeIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedAssetSubCategory = assetSubCategoryRepository.saveAndFlush(assetSubCategory);
+
+        // Get all the assetSubCategoryList where branchCode equals to
+        defaultAssetSubCategoryFiltering("branchCode.equals=" + DEFAULT_BRANCH_CODE, "branchCode.equals=" + UPDATED_BRANCH_CODE);
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetSubCategoriesByBranchCodeIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedAssetSubCategory = assetSubCategoryRepository.saveAndFlush(assetSubCategory);
+
+        // Get all the assetSubCategoryList where branchCode in
+        defaultAssetSubCategoryFiltering(
+            "branchCode.in=" + DEFAULT_BRANCH_CODE + "," + UPDATED_BRANCH_CODE,
+            "branchCode.in=" + UPDATED_BRANCH_CODE
+        );
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetSubCategoriesByBranchCodeIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedAssetSubCategory = assetSubCategoryRepository.saveAndFlush(assetSubCategory);
+
+        // Get all the assetSubCategoryList where branchCode is not null
+        defaultAssetSubCategoryFiltering("branchCode.specified=true", "branchCode.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetSubCategoriesByBranchCodeContainsSomething() throws Exception {
+        // Initialize the database
+        insertedAssetSubCategory = assetSubCategoryRepository.saveAndFlush(assetSubCategory);
+
+        // Get all the assetSubCategoryList where branchCode contains
+        defaultAssetSubCategoryFiltering("branchCode.contains=" + DEFAULT_BRANCH_CODE, "branchCode.contains=" + UPDATED_BRANCH_CODE);
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetSubCategoriesByBranchCodeNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedAssetSubCategory = assetSubCategoryRepository.saveAndFlush(assetSubCategory);
+
+        // Get all the assetSubCategoryList where branchCode does not contain
+        defaultAssetSubCategoryFiltering(
+            "branchCode.doesNotContain=" + UPDATED_BRANCH_CODE,
+            "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE
+        );
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetSubCategoriesByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedAssetSubCategory = assetSubCategoryRepository.saveAndFlush(assetSubCategory);
+
+        // Get all the assetSubCategoryList where branchId equals to
+        defaultAssetSubCategoryFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetSubCategoriesByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedAssetSubCategory = assetSubCategoryRepository.saveAndFlush(assetSubCategory);
+
+        // Get all the assetSubCategoryList where branchId in
+        defaultAssetSubCategoryFiltering("branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID, "branchId.in=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetSubCategoriesByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedAssetSubCategory = assetSubCategoryRepository.saveAndFlush(assetSubCategory);
+
+        // Get all the assetSubCategoryList where branchId is not null
+        defaultAssetSubCategoryFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetSubCategoriesByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedAssetSubCategory = assetSubCategoryRepository.saveAndFlush(assetSubCategory);
+
+        // Get all the assetSubCategoryList where branchId contains
+        defaultAssetSubCategoryFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetSubCategoriesByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedAssetSubCategory = assetSubCategoryRepository.saveAndFlush(assetSubCategory);
+
+        // Get all the assetSubCategoryList where branchId does not contain
+        defaultAssetSubCategoryFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -475,6 +595,8 @@ class AssetSubCategoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(assetSubCategory.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].assetCategoryCode").value(hasItem(DEFAULT_ASSET_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].assetSubCategoryCode").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].assetSubCategoryName").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_NAME)));
@@ -528,6 +650,8 @@ class AssetSubCategoryResourceIT {
         // Disconnect from session so that the updates on updatedAssetSubCategory are not directly saved in db
         em.detach(updatedAssetSubCategory);
         updatedAssetSubCategory
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .assetCategoryCode(UPDATED_ASSET_CATEGORY_CODE)
             .assetSubCategoryCode(UPDATED_ASSET_SUB_CATEGORY_CODE)
             .assetSubCategoryName(UPDATED_ASSET_SUB_CATEGORY_NAME);
@@ -640,6 +764,8 @@ class AssetSubCategoryResourceIT {
         AssetSubCategory partialUpdatedAssetSubCategory = new AssetSubCategory();
         partialUpdatedAssetSubCategory.setId(assetSubCategory.getId());
 
+        partialUpdatedAssetSubCategory.assetSubCategoryName(UPDATED_ASSET_SUB_CATEGORY_NAME);
+
         restAssetSubCategoryMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedAssetSubCategory.getId())
@@ -670,6 +796,8 @@ class AssetSubCategoryResourceIT {
         partialUpdatedAssetSubCategory.setId(assetSubCategory.getId());
 
         partialUpdatedAssetSubCategory
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .assetCategoryCode(UPDATED_ASSET_CATEGORY_CODE)
             .assetSubCategoryCode(UPDATED_ASSET_SUB_CATEGORY_CODE)
             .assetSubCategoryName(UPDATED_ASSET_SUB_CATEGORY_NAME);
@@ -798,6 +926,8 @@ class AssetSubCategoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(assetSubCategory.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].assetCategoryCode").value(hasItem(DEFAULT_ASSET_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].assetSubCategoryCode").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].assetSubCategoryName").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_NAME)));

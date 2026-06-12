@@ -33,6 +33,8 @@ import { ExpenseSubCategoryDeleteDialogComponent } from '../delete/expense-sub-c
 })
 export class ExpenseSubCategoryComponent implements OnInit {
   private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
+    'branchCode',
+    'branchId',
     'categoryCode',
     'subCategoryCode',
     'subCategoryName',

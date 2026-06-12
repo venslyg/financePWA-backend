@@ -160,22 +160,25 @@ describe('AccountSet e2e test', () => {
     });
 
     it('should create an instance of AccountSet', () => {
-      cy.get(`[data-cy="branchCode"]`).type('phooey selfishly noon');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'phooey selfishly noon');
+      cy.get(`[data-cy="branchCode"]`).type('on');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'on');
 
-      cy.get(`[data-cy="accountCode"]`).type('pry tough');
-      cy.get(`[data-cy="accountCode"]`).should('have.value', 'pry tough');
+      cy.get(`[data-cy="branchId"]`).type('hm emotional during');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'hm emotional during');
 
-      cy.get(`[data-cy="accountName"]`).type('Credit Card Account');
-      cy.get(`[data-cy="accountName"]`).should('have.value', 'Credit Card Account');
+      cy.get(`[data-cy="accountCode"]`).type('necklace');
+      cy.get(`[data-cy="accountCode"]`).should('have.value', 'necklace');
 
-      cy.get(`[data-cy="accountType"]`).select('EXPENSE');
+      cy.get(`[data-cy="accountName"]`).type('Savings Account');
+      cy.get(`[data-cy="accountName"]`).should('have.value', 'Savings Account');
 
-      cy.get(`[data-cy="subCategory"]`).type('beneath terribly mysteriously');
-      cy.get(`[data-cy="subCategory"]`).should('have.value', 'beneath terribly mysteriously');
+      cy.get(`[data-cy="accountType"]`).select('INCOME');
 
-      cy.get(`[data-cy="remark"]`).type('only but');
-      cy.get(`[data-cy="remark"]`).should('have.value', 'only but');
+      cy.get(`[data-cy="subCategory"]`).type('sheepishly pension');
+      cy.get(`[data-cy="subCategory"]`).should('have.value', 'sheepishly pension');
+
+      cy.get(`[data-cy="remark"]`).type('ick shoot until');
+      cy.get(`[data-cy="remark"]`).should('have.value', 'ick shoot until');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

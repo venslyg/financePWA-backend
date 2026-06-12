@@ -24,6 +24,14 @@ public class AssetSubCategory extends AbstractAuditingEntity<Long> implements Se
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "branch_code")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchCode;
+
+    @Column(name = "branch_id")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchId;
+
     @Column(name = "asset_category_code")
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String assetCategoryCode;
@@ -60,6 +68,32 @@ public class AssetSubCategory extends AbstractAuditingEntity<Long> implements Se
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getBranchCode() {
+        return this.branchCode;
+    }
+
+    public AssetSubCategory branchCode(String branchCode) {
+        this.setBranchCode(branchCode);
+        return this;
+    }
+
+    public void setBranchCode(String branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return this.branchId;
+    }
+
+    public AssetSubCategory branchId(String branchId) {
+        this.setBranchId(branchId);
+        return this;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getAssetCategoryCode() {
@@ -180,6 +214,8 @@ public class AssetSubCategory extends AbstractAuditingEntity<Long> implements Se
     public String toString() {
         return "AssetSubCategory{" +
             "id=" + getId() +
+            ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", assetCategoryCode='" + getAssetCategoryCode() + "'" +
             ", assetSubCategoryCode='" + getAssetSubCategoryCode() + "'" +
             ", assetSubCategoryName='" + getAssetSubCategoryName() + "'" +

@@ -50,6 +50,8 @@ public class BinCardLineAsserts {
     public static void assertBinCardLineUpdatableFieldsEquals(BinCardLine expected, BinCardLine actual) {
         assertThat(actual)
             .as("Verify BinCardLine relevant properties")
+            .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getInventoryItemCode()).as("check inventoryItemCode").isEqualTo(expected.getInventoryItemCode()))
             .satisfies(a -> assertThat(a.getDate()).as("check date").isEqualTo(expected.getDate()))
             .satisfies(a -> assertThat(a.getReferenceNo()).as("check referenceNo").isEqualTo(expected.getReferenceNo()))

@@ -4,6 +4,7 @@ import { AccountType } from 'app/entities/enumerations/account-type.model';
 export interface IAccountSet {
   id: number;
   branchCode?: string | null;
+  branchId?: string | null;
   accountCode?: string | null;
   accountName?: string | null;
   accountType?: keyof typeof AccountType | null;

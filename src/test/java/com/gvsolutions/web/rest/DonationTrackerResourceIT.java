@@ -49,6 +49,9 @@ class DonationTrackerResourceIT {
     private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
     private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_DONATION_ID_CODE = "AAAAAAAAAA";
     private static final String UPDATED_DONATION_ID_CODE = "BBBBBBBBBB";
 
@@ -113,6 +116,7 @@ class DonationTrackerResourceIT {
     public static DonationTracker createEntity() {
         return new DonationTracker()
             .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .donationIdCode(DEFAULT_DONATION_ID_CODE)
             .date(DEFAULT_DATE)
             .donorNameOrOrg(DEFAULT_DONOR_NAME_OR_ORG)
@@ -132,6 +136,7 @@ class DonationTrackerResourceIT {
     public static DonationTracker createUpdatedEntity() {
         return new DonationTracker()
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .donationIdCode(UPDATED_DONATION_ID_CODE)
             .date(UPDATED_DATE)
             .donorNameOrOrg(UPDATED_DONOR_NAME_OR_ORG)
@@ -222,6 +227,7 @@ class DonationTrackerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(donationTracker.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].donationIdCode").value(hasItem(DEFAULT_DONATION_ID_CODE)))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].donorNameOrOrg").value(hasItem(DEFAULT_DONOR_NAME_OR_ORG)))
@@ -245,6 +251,7 @@ class DonationTrackerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(donationTracker.getId().intValue()))
             .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.donationIdCode").value(DEFAULT_DONATION_ID_CODE))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.donorNameOrOrg").value(DEFAULT_DONOR_NAME_OR_ORG))
@@ -324,6 +331,56 @@ class DonationTrackerResourceIT {
             "branchCode.doesNotContain=" + UPDATED_BRANCH_CODE,
             "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE
         );
+    }
+
+    @Test
+    @Transactional
+    void getAllDonationTrackersByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedDonationTracker = donationTrackerRepository.saveAndFlush(donationTracker);
+
+        // Get all the donationTrackerList where branchId equals to
+        defaultDonationTrackerFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllDonationTrackersByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedDonationTracker = donationTrackerRepository.saveAndFlush(donationTracker);
+
+        // Get all the donationTrackerList where branchId in
+        defaultDonationTrackerFiltering("branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID, "branchId.in=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllDonationTrackersByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedDonationTracker = donationTrackerRepository.saveAndFlush(donationTracker);
+
+        // Get all the donationTrackerList where branchId is not null
+        defaultDonationTrackerFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllDonationTrackersByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedDonationTracker = donationTrackerRepository.saveAndFlush(donationTracker);
+
+        // Get all the donationTrackerList where branchId contains
+        defaultDonationTrackerFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllDonationTrackersByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedDonationTracker = donationTrackerRepository.saveAndFlush(donationTracker);
+
+        // Get all the donationTrackerList where branchId does not contain
+        defaultDonationTrackerFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -803,6 +860,7 @@ class DonationTrackerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(donationTracker.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].donationIdCode").value(hasItem(DEFAULT_DONATION_ID_CODE)))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].donorNameOrOrg").value(hasItem(DEFAULT_DONOR_NAME_OR_ORG)))
@@ -862,6 +920,7 @@ class DonationTrackerResourceIT {
         em.detach(updatedDonationTracker);
         updatedDonationTracker
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .donationIdCode(UPDATED_DONATION_ID_CODE)
             .date(UPDATED_DATE)
             .donorNameOrOrg(UPDATED_DONOR_NAME_OR_ORG)
@@ -981,10 +1040,11 @@ class DonationTrackerResourceIT {
 
         partialUpdatedDonationTracker
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .donationIdCode(UPDATED_DONATION_ID_CODE)
             .date(UPDATED_DATE)
             .donorNameOrOrg(UPDATED_DONOR_NAME_OR_ORG)
-            .contactDetails(UPDATED_CONTACT_DETAILS)
+            .receivedViaMode(UPDATED_RECEIVED_VIA_MODE)
             .notes(UPDATED_NOTES);
 
         restDonationTrackerMockMvc
@@ -1018,6 +1078,7 @@ class DonationTrackerResourceIT {
 
         partialUpdatedDonationTracker
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .donationIdCode(UPDATED_DONATION_ID_CODE)
             .date(UPDATED_DATE)
             .donorNameOrOrg(UPDATED_DONOR_NAME_OR_ORG)
@@ -1152,6 +1213,7 @@ class DonationTrackerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(donationTracker.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].donationIdCode").value(hasItem(DEFAULT_DONATION_ID_CODE)))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].donorNameOrOrg").value(hasItem(DEFAULT_DONOR_NAME_OR_ORG)))

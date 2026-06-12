@@ -18,6 +18,8 @@ public class AssetRegisterDTO implements Serializable {
 
     private String branchCode;
 
+    private String branchId;
+
     private String assetRegisterCode;
 
     private String assetCategoryCode;
@@ -60,6 +62,14 @@ public class AssetRegisterDTO implements Serializable {
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getAssetRegisterCode() {
@@ -201,6 +211,7 @@ public class AssetRegisterDTO implements Serializable {
         return "AssetRegisterDTO{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", assetRegisterCode='" + getAssetRegisterCode() + "'" +
             ", assetCategoryCode='" + getAssetCategoryCode() + "'" +
             ", assetSubCategoryCode='" + getAssetSubCategoryCode() + "'" +

@@ -1,5 +1,5 @@
 #!/bin/sh
-VER=v1.0
+VER=v1.1
 REPO=gvensly
 NAME=cocotanaa
 ./gradlew -Pprod bootJar jib -Djib.to.image=$REPO/$NAME:$VER && docker push $REPO/$NAME:$VER

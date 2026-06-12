@@ -50,6 +50,8 @@ public class MaintenanceLogAsserts {
     public static void assertMaintenanceLogUpdatableFieldsEquals(MaintenanceLog expected, MaintenanceLog actual) {
         assertThat(actual)
             .as("Verify MaintenanceLog relevant properties")
+            .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getMaintenanceLogCode()).as("check maintenanceLogCode").isEqualTo(expected.getMaintenanceLogCode())
             )
             .satisfies(a -> assertThat(a.getLogDate()).as("check logDate").isEqualTo(expected.getLogDate()))

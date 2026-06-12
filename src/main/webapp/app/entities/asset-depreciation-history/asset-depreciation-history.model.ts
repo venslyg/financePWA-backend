@@ -2,6 +2,8 @@ import dayjs from 'dayjs/esm';
 
 export interface IAssetDepreciationHistory {
   id: number;
+  branchCode?: string | null;
+  branchId?: string | null;
   assetRegisterCode?: string | null;
   depreciationDate?: dayjs.Dayjs | null;
   depreciationAmount?: number | null;

@@ -24,6 +24,14 @@ public class AssetCategory extends AbstractAuditingEntity<Long> implements Seria
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "branch_code")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchCode;
+
+    @Column(name = "branch_id")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchId;
+
     @Column(name = "asset_category_code")
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String assetCategoryCode;
@@ -57,6 +65,32 @@ public class AssetCategory extends AbstractAuditingEntity<Long> implements Seria
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getBranchCode() {
+        return this.branchCode;
+    }
+
+    public AssetCategory branchCode(String branchCode) {
+        this.setBranchCode(branchCode);
+        return this;
+    }
+
+    public void setBranchCode(String branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return this.branchId;
+    }
+
+    public AssetCategory branchId(String branchId) {
+        this.setBranchId(branchId);
+        return this;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getAssetCategoryCode() {
@@ -164,6 +198,8 @@ public class AssetCategory extends AbstractAuditingEntity<Long> implements Seria
     public String toString() {
         return "AssetCategory{" +
             "id=" + getId() +
+            ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", assetCategoryCode='" + getAssetCategoryCode() + "'" +
             ", assetCategoryName='" + getAssetCategoryName() + "'" +
             ", description='" + getDescription() + "'" +

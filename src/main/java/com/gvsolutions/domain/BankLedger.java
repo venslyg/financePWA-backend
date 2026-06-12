@@ -30,6 +30,10 @@ public class BankLedger extends AbstractAuditingEntity<Long> implements Serializ
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String branchCode;
 
+    @Column(name = "branch_id")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchId;
+
     @Column(name = "bank_ledger_code")
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String bankLedgerCode;
@@ -92,6 +96,19 @@ public class BankLedger extends AbstractAuditingEntity<Long> implements Serializ
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return this.branchId;
+    }
+
+    public BankLedger branchId(String branchId) {
+        this.setBranchId(branchId);
+        return this;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getBankLedgerCode() {
@@ -265,6 +282,7 @@ public class BankLedger extends AbstractAuditingEntity<Long> implements Serializ
         return "BankLedger{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", bankLedgerCode='" + getBankLedgerCode() + "'" +
             ", date='" + getDate() + "'" +
             ", referenceNo='" + getReferenceNo() + "'" +

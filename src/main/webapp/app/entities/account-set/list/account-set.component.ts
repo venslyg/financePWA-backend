@@ -34,6 +34,7 @@ import { AccountSetDeleteDialogComponent } from '../delete/account-set-delete-di
 export class AccountSetComponent implements OnInit {
   private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
     'branchCode',
+    'branchId',
     'accountCode',
     'accountName',
     'accountType',

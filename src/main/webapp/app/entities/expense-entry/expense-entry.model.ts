@@ -6,6 +6,7 @@ import { SyncStatus } from 'app/entities/enumerations/sync-status.model';
 export interface IExpenseEntry {
   id: number;
   branchCode?: string | null;
+  branchId?: string | null;
   accountCode?: string | null;
   expenseCode?: string | null;
   expenseCategoryCode?: string | null;

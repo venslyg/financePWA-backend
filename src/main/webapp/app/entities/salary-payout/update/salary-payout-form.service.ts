@@ -33,6 +33,7 @@ type SalaryPayoutFormDefaults = Pick<NewSalaryPayout, 'id' | 'createdDate' | 'la
 type SalaryPayoutFormGroupContent = {
   id: FormControl<SalaryPayoutFormRawValue['id'] | NewSalaryPayout['id']>;
   branchCode: FormControl<SalaryPayoutFormRawValue['branchCode']>;
+  branchId: FormControl<SalaryPayoutFormRawValue['branchId']>;
   salaryPayoutCode: FormControl<SalaryPayoutFormRawValue['salaryPayoutCode']>;
   staffCode: FormControl<SalaryPayoutFormRawValue['staffCode']>;
   payPeriod: FormControl<SalaryPayoutFormRawValue['payPeriod']>;
@@ -65,6 +66,7 @@ export class SalaryPayoutFormService {
         },
       ),
       branchCode: new FormControl(salaryPayoutRawValue.branchCode),
+      branchId: new FormControl(salaryPayoutRawValue.branchId),
       salaryPayoutCode: new FormControl(salaryPayoutRawValue.salaryPayoutCode),
       staffCode: new FormControl(salaryPayoutRawValue.staffCode),
       payPeriod: new FormControl(salaryPayoutRawValue.payPeriod),

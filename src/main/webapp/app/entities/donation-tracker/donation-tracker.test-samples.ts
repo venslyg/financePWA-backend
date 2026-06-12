@@ -7,31 +7,32 @@ export const sampleWithRequiredData: IDonationTracker = {
 };
 
 export const sampleWithPartialData: IDonationTracker = {
-  id: 29382,
-  branchCode: 'geez',
-  donationIdCode: 'happy finally reborn',
-  donorNameOrOrg: 'knuckle',
-  contactDetails: 'aside splurge serene',
-  notes: 'colligate',
-  createdBy: 'yahoo',
-  lastModifiedBy: 'valuable unabashedly nervously',
+  id: 8650,
+  branchCode: 'skateboard happy',
+  branchId: 'beard far-off',
+  date: dayjs('2026-06-12'),
+  donorNameOrOrg: 'tromp',
+  receivedViaMode: 'CASH',
+  notes: 'before impeccable',
+  createdDate: dayjs('2026-06-11T20:08'),
 };
 
 export const sampleWithFullData: IDonationTracker = {
   id: 30043,
   branchCode: 'pfft pessimistic watery',
-  donationIdCode: 'tapioca modulo',
-  date: dayjs('2026-06-12'),
-  donorNameOrOrg: 'request whoa',
-  contactDetails: 'abaft drat',
-  amount: 15223.73,
-  purpose: 'bench bah',
+  branchId: 'tapioca modulo',
+  donationIdCode: 'er sternly harvest',
+  date: dayjs('2026-06-11'),
+  donorNameOrOrg: 'drat',
+  contactDetails: 'bus for',
+  amount: 21252.02,
+  purpose: 'now duh',
   receivedViaMode: 'BANK',
-  notes: 'zowie',
-  createdBy: 'blah',
-  createdDate: dayjs('2026-06-12T04:49'),
-  lastModifiedBy: 'nor solidly',
-  lastModifiedDate: dayjs('2026-06-12T04:26'),
+  notes: 'disconnection',
+  createdBy: 'huddle honestly',
+  createdDate: dayjs('2026-06-11T11:26'),
+  lastModifiedBy: 'warlike',
+  lastModifiedDate: dayjs('2026-06-11T13:57'),
 };
 
 export const sampleWithNewData: NewDonationTracker = {

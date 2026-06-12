@@ -160,39 +160,42 @@ describe('AssetRegister e2e test', () => {
     });
 
     it('should create an instance of AssetRegister', () => {
-      cy.get(`[data-cy="branchCode"]`).type('plait');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'plait');
+      cy.get(`[data-cy="branchCode"]`).type('whereas');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'whereas');
 
-      cy.get(`[data-cy="assetRegisterCode"]`).type('blue righteously mmm');
-      cy.get(`[data-cy="assetRegisterCode"]`).should('have.value', 'blue righteously mmm');
+      cy.get(`[data-cy="branchId"]`).type('brr');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'brr');
 
-      cy.get(`[data-cy="assetCategoryCode"]`).type('fully round');
-      cy.get(`[data-cy="assetCategoryCode"]`).should('have.value', 'fully round');
+      cy.get(`[data-cy="assetRegisterCode"]`).type('boo jagged');
+      cy.get(`[data-cy="assetRegisterCode"]`).should('have.value', 'boo jagged');
 
-      cy.get(`[data-cy="assetSubCategoryCode"]`).type('duh sniff');
-      cy.get(`[data-cy="assetSubCategoryCode"]`).should('have.value', 'duh sniff');
+      cy.get(`[data-cy="assetCategoryCode"]`).type('instead soliloquy come');
+      cy.get(`[data-cy="assetCategoryCode"]`).should('have.value', 'instead soliloquy come');
 
-      cy.get(`[data-cy="assetName"]`).type('entire commemorate');
-      cy.get(`[data-cy="assetName"]`).should('have.value', 'entire commemorate');
+      cy.get(`[data-cy="assetSubCategoryCode"]`).type('fooey madly finer');
+      cy.get(`[data-cy="assetSubCategoryCode"]`).should('have.value', 'fooey madly finer');
 
-      cy.get(`[data-cy="category"]`).type('drat');
-      cy.get(`[data-cy="category"]`).should('have.value', 'drat');
+      cy.get(`[data-cy="assetName"]`).type('incidentally grass with');
+      cy.get(`[data-cy="assetName"]`).should('have.value', 'incidentally grass with');
+
+      cy.get(`[data-cy="category"]`).type('who');
+      cy.get(`[data-cy="category"]`).should('have.value', 'who');
 
       cy.get(`[data-cy="purchaseDate"]`).type('2026-06-11');
       cy.get(`[data-cy="purchaseDate"]`).blur();
       cy.get(`[data-cy="purchaseDate"]`).should('have.value', '2026-06-11');
 
-      cy.get(`[data-cy="purchaseCost"]`).type('8812.55');
-      cy.get(`[data-cy="purchaseCost"]`).should('have.value', '8812.55');
+      cy.get(`[data-cy="purchaseCost"]`).type('21943.26');
+      cy.get(`[data-cy="purchaseCost"]`).should('have.value', '21943.26');
 
-      cy.get(`[data-cy="currentValue"]`).type('13601.09');
-      cy.get(`[data-cy="currentValue"]`).should('have.value', '13601.09');
+      cy.get(`[data-cy="currentValue"]`).type('30263.46');
+      cy.get(`[data-cy="currentValue"]`).should('have.value', '30263.46');
 
-      cy.get(`[data-cy="depreciationRate"]`).type('6885.68');
-      cy.get(`[data-cy="depreciationRate"]`).should('have.value', '6885.68');
+      cy.get(`[data-cy="depreciationRate"]`).type('22166.35');
+      cy.get(`[data-cy="depreciationRate"]`).should('have.value', '22166.35');
 
-      cy.get(`[data-cy="accumulatedDepreciation"]`).type('32550.94');
-      cy.get(`[data-cy="accumulatedDepreciation"]`).should('have.value', '32550.94');
+      cy.get(`[data-cy="accumulatedDepreciation"]`).type('9285.02');
+      cy.get(`[data-cy="accumulatedDepreciation"]`).should('have.value', '9285.02');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

@@ -49,6 +49,8 @@ public class AssetCategoryAsserts {
     public static void assertAssetCategoryUpdatableFieldsEquals(AssetCategory expected, AssetCategory actual) {
         assertThat(actual)
             .as("Verify AssetCategory relevant properties")
+            .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getAssetCategoryCode()).as("check assetCategoryCode").isEqualTo(expected.getAssetCategoryCode()))
             .satisfies(a -> assertThat(a.getAssetCategoryName()).as("check assetCategoryName").isEqualTo(expected.getAssetCategoryName()))
             .satisfies(a -> assertThat(a.getDescription()).as("check description").isEqualTo(expected.getDescription()));

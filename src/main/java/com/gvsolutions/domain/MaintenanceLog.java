@@ -27,6 +27,14 @@ public class MaintenanceLog extends AbstractAuditingEntity<Long> implements Seri
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "branch_code")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchCode;
+
+    @Column(name = "branch_id")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchId;
+
     @Column(name = "maintenance_log_code")
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String maintenanceLogCode;
@@ -81,6 +89,32 @@ public class MaintenanceLog extends AbstractAuditingEntity<Long> implements Seri
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getBranchCode() {
+        return this.branchCode;
+    }
+
+    public MaintenanceLog branchCode(String branchCode) {
+        this.setBranchCode(branchCode);
+        return this;
+    }
+
+    public void setBranchCode(String branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return this.branchId;
+    }
+
+    public MaintenanceLog branchId(String branchId) {
+        this.setBranchId(branchId);
+        return this;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getMaintenanceLogCode() {
@@ -266,6 +300,8 @@ public class MaintenanceLog extends AbstractAuditingEntity<Long> implements Seri
     public String toString() {
         return "MaintenanceLog{" +
             "id=" + getId() +
+            ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", maintenanceLogCode='" + getMaintenanceLogCode() + "'" +
             ", logDate='" + getLogDate() + "'" +
             ", logType='" + getLogType() + "'" +

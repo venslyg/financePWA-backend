@@ -51,6 +51,7 @@ public class BankLedgerAsserts {
         assertThat(actual)
             .as("Verify BankLedger relevant properties")
             .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getBankLedgerCode()).as("check bankLedgerCode").isEqualTo(expected.getBankLedgerCode()))
             .satisfies(a -> assertThat(a.getDate()).as("check date").isEqualTo(expected.getDate()))
             .satisfies(a -> assertThat(a.getReferenceNo()).as("check referenceNo").isEqualTo(expected.getReferenceNo()))

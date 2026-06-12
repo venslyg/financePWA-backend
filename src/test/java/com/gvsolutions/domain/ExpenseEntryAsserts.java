@@ -51,6 +51,7 @@ public class ExpenseEntryAsserts {
         assertThat(actual)
             .as("Verify ExpenseEntry relevant properties")
             .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getAccountCode()).as("check accountCode").isEqualTo(expected.getAccountCode()))
             .satisfies(a -> assertThat(a.getExpenseCode()).as("check expenseCode").isEqualTo(expected.getExpenseCode()))
             .satisfies(a ->

@@ -81,6 +81,8 @@ public class AssetDepreciationHistoryQueryService extends QueryService<AssetDepr
             specification = Specification.allOf(
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), AssetDepreciationHistory_.id),
+                buildStringSpecification(criteria.getBranchCode(), AssetDepreciationHistory_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), AssetDepreciationHistory_.branchId),
                 buildStringSpecification(criteria.getAssetRegisterCode(), AssetDepreciationHistory_.assetRegisterCode),
                 buildRangeSpecification(criteria.getDepreciationDate(), AssetDepreciationHistory_.depreciationDate),
                 buildRangeSpecification(criteria.getDepreciationAmount(), AssetDepreciationHistory_.depreciationAmount),

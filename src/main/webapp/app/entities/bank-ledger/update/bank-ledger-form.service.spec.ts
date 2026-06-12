@@ -21,6 +21,7 @@ describe('BankLedger Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             bankLedgerCode: expect.any(Object),
             date: expect.any(Object),
             referenceNo: expect.any(Object),
@@ -44,6 +45,7 @@ describe('BankLedger Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             bankLedgerCode: expect.any(Object),
             date: expect.any(Object),
             referenceNo: expect.any(Object),

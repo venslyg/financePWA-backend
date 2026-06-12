@@ -30,6 +30,10 @@ public class AssetRegister extends AbstractAuditingEntity<Long> implements Seria
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String branchCode;
 
+    @Column(name = "branch_id")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchId;
+
     @Column(name = "asset_register_code")
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String assetRegisterCode;
@@ -99,6 +103,19 @@ public class AssetRegister extends AbstractAuditingEntity<Long> implements Seria
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return this.branchId;
+    }
+
+    public AssetRegister branchId(String branchId) {
+        this.setBranchId(branchId);
+        return this;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getAssetRegisterCode() {
@@ -298,6 +315,7 @@ public class AssetRegister extends AbstractAuditingEntity<Long> implements Seria
         return "AssetRegister{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", assetRegisterCode='" + getAssetRegisterCode() + "'" +
             ", assetCategoryCode='" + getAssetCategoryCode() + "'" +
             ", assetSubCategoryCode='" + getAssetSubCategoryCode() + "'" +

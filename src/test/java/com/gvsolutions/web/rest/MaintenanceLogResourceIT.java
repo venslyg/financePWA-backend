@@ -55,6 +55,12 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class MaintenanceLogResourceIT {
 
+    private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_MAINTENANCE_LOG_CODE = "AAAAAAAAAA";
     private static final String UPDATED_MAINTENANCE_LOG_CODE = "BBBBBBBBBB";
 
@@ -125,6 +131,8 @@ class MaintenanceLogResourceIT {
      */
     public static MaintenanceLog createEntity() {
         return new MaintenanceLog()
+            .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .maintenanceLogCode(DEFAULT_MAINTENANCE_LOG_CODE)
             .logDate(DEFAULT_LOG_DATE)
             .logType(DEFAULT_LOG_TYPE)
@@ -143,6 +151,8 @@ class MaintenanceLogResourceIT {
      */
     public static MaintenanceLog createUpdatedEntity() {
         return new MaintenanceLog()
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .maintenanceLogCode(UPDATED_MAINTENANCE_LOG_CODE)
             .logDate(UPDATED_LOG_DATE)
             .logType(UPDATED_LOG_TYPE)
@@ -232,6 +242,8 @@ class MaintenanceLogResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(maintenanceLog.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].maintenanceLogCode").value(hasItem(DEFAULT_MAINTENANCE_LOG_CODE)))
             .andExpect(jsonPath("$.[*].logDate").value(hasItem(DEFAULT_LOG_DATE.toString())))
             .andExpect(jsonPath("$.[*].logType").value(hasItem(DEFAULT_LOG_TYPE.toString())))
@@ -271,6 +283,8 @@ class MaintenanceLogResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(maintenanceLog.getId().intValue()))
+            .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.maintenanceLogCode").value(DEFAULT_MAINTENANCE_LOG_CODE))
             .andExpect(jsonPath("$.logDate").value(DEFAULT_LOG_DATE.toString()))
             .andExpect(jsonPath("$.logType").value(DEFAULT_LOG_TYPE.toString()))
@@ -294,6 +308,112 @@ class MaintenanceLogResourceIT {
         defaultMaintenanceLogFiltering("id.greaterThanOrEqual=" + id, "id.greaterThan=" + id);
 
         defaultMaintenanceLogFiltering("id.lessThanOrEqual=" + id, "id.lessThan=" + id);
+    }
+
+    @Test
+    @Transactional
+    void getAllMaintenanceLogsByBranchCodeIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedMaintenanceLog = maintenanceLogRepository.saveAndFlush(maintenanceLog);
+
+        // Get all the maintenanceLogList where branchCode equals to
+        defaultMaintenanceLogFiltering("branchCode.equals=" + DEFAULT_BRANCH_CODE, "branchCode.equals=" + UPDATED_BRANCH_CODE);
+    }
+
+    @Test
+    @Transactional
+    void getAllMaintenanceLogsByBranchCodeIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedMaintenanceLog = maintenanceLogRepository.saveAndFlush(maintenanceLog);
+
+        // Get all the maintenanceLogList where branchCode in
+        defaultMaintenanceLogFiltering(
+            "branchCode.in=" + DEFAULT_BRANCH_CODE + "," + UPDATED_BRANCH_CODE,
+            "branchCode.in=" + UPDATED_BRANCH_CODE
+        );
+    }
+
+    @Test
+    @Transactional
+    void getAllMaintenanceLogsByBranchCodeIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedMaintenanceLog = maintenanceLogRepository.saveAndFlush(maintenanceLog);
+
+        // Get all the maintenanceLogList where branchCode is not null
+        defaultMaintenanceLogFiltering("branchCode.specified=true", "branchCode.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllMaintenanceLogsByBranchCodeContainsSomething() throws Exception {
+        // Initialize the database
+        insertedMaintenanceLog = maintenanceLogRepository.saveAndFlush(maintenanceLog);
+
+        // Get all the maintenanceLogList where branchCode contains
+        defaultMaintenanceLogFiltering("branchCode.contains=" + DEFAULT_BRANCH_CODE, "branchCode.contains=" + UPDATED_BRANCH_CODE);
+    }
+
+    @Test
+    @Transactional
+    void getAllMaintenanceLogsByBranchCodeNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedMaintenanceLog = maintenanceLogRepository.saveAndFlush(maintenanceLog);
+
+        // Get all the maintenanceLogList where branchCode does not contain
+        defaultMaintenanceLogFiltering(
+            "branchCode.doesNotContain=" + UPDATED_BRANCH_CODE,
+            "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE
+        );
+    }
+
+    @Test
+    @Transactional
+    void getAllMaintenanceLogsByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedMaintenanceLog = maintenanceLogRepository.saveAndFlush(maintenanceLog);
+
+        // Get all the maintenanceLogList where branchId equals to
+        defaultMaintenanceLogFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllMaintenanceLogsByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedMaintenanceLog = maintenanceLogRepository.saveAndFlush(maintenanceLog);
+
+        // Get all the maintenanceLogList where branchId in
+        defaultMaintenanceLogFiltering("branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID, "branchId.in=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllMaintenanceLogsByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedMaintenanceLog = maintenanceLogRepository.saveAndFlush(maintenanceLog);
+
+        // Get all the maintenanceLogList where branchId is not null
+        defaultMaintenanceLogFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllMaintenanceLogsByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedMaintenanceLog = maintenanceLogRepository.saveAndFlush(maintenanceLog);
+
+        // Get all the maintenanceLogList where branchId contains
+        defaultMaintenanceLogFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllMaintenanceLogsByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedMaintenanceLog = maintenanceLogRepository.saveAndFlush(maintenanceLog);
+
+        // Get all the maintenanceLogList where branchId does not contain
+        defaultMaintenanceLogFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -808,6 +928,8 @@ class MaintenanceLogResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(maintenanceLog.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].maintenanceLogCode").value(hasItem(DEFAULT_MAINTENANCE_LOG_CODE)))
             .andExpect(jsonPath("$.[*].logDate").value(hasItem(DEFAULT_LOG_DATE.toString())))
             .andExpect(jsonPath("$.[*].logType").value(hasItem(DEFAULT_LOG_TYPE.toString())))
@@ -866,6 +988,8 @@ class MaintenanceLogResourceIT {
         // Disconnect from session so that the updates on updatedMaintenanceLog are not directly saved in db
         em.detach(updatedMaintenanceLog);
         updatedMaintenanceLog
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .maintenanceLogCode(UPDATED_MAINTENANCE_LOG_CODE)
             .logDate(UPDATED_LOG_DATE)
             .logType(UPDATED_LOG_TYPE)
@@ -983,7 +1107,10 @@ class MaintenanceLogResourceIT {
         MaintenanceLog partialUpdatedMaintenanceLog = new MaintenanceLog();
         partialUpdatedMaintenanceLog.setId(maintenanceLog.getId());
 
-        partialUpdatedMaintenanceLog.logType(UPDATED_LOG_TYPE).description(UPDATED_DESCRIPTION).vendor(UPDATED_VENDOR);
+        partialUpdatedMaintenanceLog
+            .maintenanceLogCode(UPDATED_MAINTENANCE_LOG_CODE)
+            .logDate(UPDATED_LOG_DATE)
+            .description(UPDATED_DESCRIPTION);
 
         restMaintenanceLogMockMvc
             .perform(
@@ -1015,6 +1142,8 @@ class MaintenanceLogResourceIT {
         partialUpdatedMaintenanceLog.setId(maintenanceLog.getId());
 
         partialUpdatedMaintenanceLog
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .maintenanceLogCode(UPDATED_MAINTENANCE_LOG_CODE)
             .logDate(UPDATED_LOG_DATE)
             .logType(UPDATED_LOG_TYPE)
@@ -1145,6 +1274,8 @@ class MaintenanceLogResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(maintenanceLog.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].maintenanceLogCode").value(hasItem(DEFAULT_MAINTENANCE_LOG_CODE)))
             .andExpect(jsonPath("$.[*].logDate").value(hasItem(DEFAULT_LOG_DATE.toString())))
             .andExpect(jsonPath("$.[*].logType").value(hasItem(DEFAULT_LOG_TYPE.toString())))

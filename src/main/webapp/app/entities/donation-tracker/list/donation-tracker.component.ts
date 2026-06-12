@@ -35,6 +35,7 @@ import { DonationTrackerDeleteDialogComponent } from '../delete/donation-tracker
 export class DonationTrackerComponent implements OnInit {
   private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
     'branchCode',
+    'branchId',
     'donationIdCode',
     'donorNameOrOrg',
     'contactDetails',

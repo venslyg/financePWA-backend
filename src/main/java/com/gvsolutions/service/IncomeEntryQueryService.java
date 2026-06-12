@@ -82,6 +82,7 @@ public class IncomeEntryQueryService extends QueryService<IncomeEntry> {
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), IncomeEntry_.id),
                 buildStringSpecification(criteria.getBranchCode(), IncomeEntry_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), IncomeEntry_.branchId),
                 buildStringSpecification(criteria.getAccountCode(), IncomeEntry_.accountCode),
                 buildStringSpecification(criteria.getIncomeCode(), IncomeEntry_.incomeCode),
                 buildStringSpecification(criteria.getCreatedByUsername(), IncomeEntry_.createdByUsername),

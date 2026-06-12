@@ -160,36 +160,39 @@ describe('PettyCashLedger e2e test', () => {
     });
 
     it('should create an instance of PettyCashLedger', () => {
-      cy.get(`[data-cy="branchCode"]`).type('abaft provided ornate');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'abaft provided ornate');
+      cy.get(`[data-cy="branchCode"]`).type('rear internationalize');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'rear internationalize');
 
-      cy.get(`[data-cy="pettyCashCode"]`).type('indeed frankly');
-      cy.get(`[data-cy="pettyCashCode"]`).should('have.value', 'indeed frankly');
+      cy.get(`[data-cy="branchId"]`).type('at arrange');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'at arrange');
 
-      cy.get(`[data-cy="date"]`).type('2026-06-11');
+      cy.get(`[data-cy="pettyCashCode"]`).type('whoa');
+      cy.get(`[data-cy="pettyCashCode"]`).should('have.value', 'whoa');
+
+      cy.get(`[data-cy="date"]`).type('2026-06-12');
       cy.get(`[data-cy="date"]`).blur();
-      cy.get(`[data-cy="date"]`).should('have.value', '2026-06-11');
+      cy.get(`[data-cy="date"]`).should('have.value', '2026-06-12');
 
-      cy.get(`[data-cy="pettyCashVoucherNo"]`).type('questionably');
-      cy.get(`[data-cy="pettyCashVoucherNo"]`).should('have.value', 'questionably');
+      cy.get(`[data-cy="pettyCashVoucherNo"]`).type('if');
+      cy.get(`[data-cy="pettyCashVoucherNo"]`).should('have.value', 'if');
 
-      cy.get(`[data-cy="description"]`).type('disrespect');
-      cy.get(`[data-cy="description"]`).should('have.value', 'disrespect');
+      cy.get(`[data-cy="description"]`).type('meanwhile accredit');
+      cy.get(`[data-cy="description"]`).should('have.value', 'meanwhile accredit');
 
-      cy.get(`[data-cy="cashIn"]`).type('28931.37');
-      cy.get(`[data-cy="cashIn"]`).should('have.value', '28931.37');
+      cy.get(`[data-cy="cashIn"]`).type('3503.67');
+      cy.get(`[data-cy="cashIn"]`).should('have.value', '3503.67');
 
-      cy.get(`[data-cy="cashOut"]`).type('14695.04');
-      cy.get(`[data-cy="cashOut"]`).should('have.value', '14695.04');
+      cy.get(`[data-cy="cashOut"]`).type('13907.65');
+      cy.get(`[data-cy="cashOut"]`).should('have.value', '13907.65');
 
-      cy.get(`[data-cy="runningBalance"]`).type('13216.41');
-      cy.get(`[data-cy="runningBalance"]`).should('have.value', '13216.41');
+      cy.get(`[data-cy="runningBalance"]`).type('22183.52');
+      cy.get(`[data-cy="runningBalance"]`).should('have.value', '22183.52');
 
-      cy.get(`[data-cy="linkedAccountCode"]`).type('ignite');
-      cy.get(`[data-cy="linkedAccountCode"]`).should('have.value', 'ignite');
+      cy.get(`[data-cy="linkedAccountCode"]`).type('gripper');
+      cy.get(`[data-cy="linkedAccountCode"]`).should('have.value', 'gripper');
 
-      cy.get(`[data-cy="referenceNo"]`).type('freckle adolescent gorgeous');
-      cy.get(`[data-cy="referenceNo"]`).should('have.value', 'freckle adolescent gorgeous');
+      cy.get(`[data-cy="referenceNo"]`).type('fortunately loyally');
+      cy.get(`[data-cy="referenceNo"]`).should('have.value', 'fortunately loyally');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

@@ -26,6 +26,8 @@ public class InventoryItemCriteria implements Serializable, Criteria {
 
     private StringFilter branchCode;
 
+    private StringFilter branchId;
+
     private StringFilter inventoryItemCode;
 
     private StringFilter itemName;
@@ -53,6 +55,7 @@ public class InventoryItemCriteria implements Serializable, Criteria {
     public InventoryItemCriteria(InventoryItemCriteria other) {
         this.id = other.optionalId().map(LongFilter::copy).orElse(null);
         this.branchCode = other.optionalBranchCode().map(StringFilter::copy).orElse(null);
+        this.branchId = other.optionalBranchId().map(StringFilter::copy).orElse(null);
         this.inventoryItemCode = other.optionalInventoryItemCode().map(StringFilter::copy).orElse(null);
         this.itemName = other.optionalItemName().map(StringFilter::copy).orElse(null);
         this.category = other.optionalCategory().map(StringFilter::copy).orElse(null);
@@ -107,6 +110,25 @@ public class InventoryItemCriteria implements Serializable, Criteria {
 
     public void setBranchCode(StringFilter branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public StringFilter getBranchId() {
+        return branchId;
+    }
+
+    public Optional<StringFilter> optionalBranchId() {
+        return Optional.ofNullable(branchId);
+    }
+
+    public StringFilter branchId() {
+        if (branchId == null) {
+            setBranchId(new StringFilter());
+        }
+        return branchId;
+    }
+
+    public void setBranchId(StringFilter branchId) {
+        this.branchId = branchId;
     }
 
     public StringFilter getInventoryItemCode() {
@@ -330,6 +352,7 @@ public class InventoryItemCriteria implements Serializable, Criteria {
         return (
             Objects.equals(id, that.id) &&
             Objects.equals(branchCode, that.branchCode) &&
+            Objects.equals(branchId, that.branchId) &&
             Objects.equals(inventoryItemCode, that.inventoryItemCode) &&
             Objects.equals(itemName, that.itemName) &&
             Objects.equals(category, that.category) &&
@@ -349,6 +372,7 @@ public class InventoryItemCriteria implements Serializable, Criteria {
         return Objects.hash(
             id,
             branchCode,
+            branchId,
             inventoryItemCode,
             itemName,
             category,
@@ -369,6 +393,7 @@ public class InventoryItemCriteria implements Serializable, Criteria {
         return "InventoryItemCriteria{" +
             optionalId().map(f -> "id=" + f + ", ").orElse("") +
             optionalBranchCode().map(f -> "branchCode=" + f + ", ").orElse("") +
+            optionalBranchId().map(f -> "branchId=" + f + ", ").orElse("") +
             optionalInventoryItemCode().map(f -> "inventoryItemCode=" + f + ", ").orElse("") +
             optionalItemName().map(f -> "itemName=" + f + ", ").orElse("") +
             optionalCategory().map(f -> "category=" + f + ", ").orElse("") +

@@ -17,6 +17,8 @@ public class DonationTrackerDTO implements Serializable {
 
     private String branchCode;
 
+    private String branchId;
+
     private String donationIdCode;
 
     private LocalDate date;
@@ -55,6 +57,14 @@ public class DonationTrackerDTO implements Serializable {
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getDonationIdCode() {
@@ -180,6 +190,7 @@ public class DonationTrackerDTO implements Serializable {
         return "DonationTrackerDTO{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", donationIdCode='" + getDonationIdCode() + "'" +
             ", date='" + getDate() + "'" +
             ", donorNameOrOrg='" + getDonorNameOrOrg() + "'" +

@@ -77,6 +77,7 @@ class SalaryPayoutCriteriaTest {
     private static void setAllFilters(SalaryPayoutCriteria salaryPayoutCriteria) {
         salaryPayoutCriteria.id();
         salaryPayoutCriteria.branchCode();
+        salaryPayoutCriteria.branchId();
         salaryPayoutCriteria.salaryPayoutCode();
         salaryPayoutCriteria.staffCode();
         salaryPayoutCriteria.payPeriod();
@@ -97,6 +98,7 @@ class SalaryPayoutCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId()) &&
                 condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getSalaryPayoutCode()) &&
                 condition.apply(criteria.getStaffCode()) &&
                 condition.apply(criteria.getPayPeriod()) &&
@@ -122,6 +124,7 @@ class SalaryPayoutCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
                 condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getSalaryPayoutCode(), copy.getSalaryPayoutCode()) &&
                 condition.apply(criteria.getStaffCode(), copy.getStaffCode()) &&
                 condition.apply(criteria.getPayPeriod(), copy.getPayPeriod()) &&

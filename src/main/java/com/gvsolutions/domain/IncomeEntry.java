@@ -33,6 +33,10 @@ public class IncomeEntry extends AbstractAuditingEntity<Long> implements Seriali
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String branchCode;
 
+    @Column(name = "branch_id")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchId;
+
     @Column(name = "account_code")
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String accountCode;
@@ -116,6 +120,19 @@ public class IncomeEntry extends AbstractAuditingEntity<Long> implements Seriali
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return this.branchId;
+    }
+
+    public IncomeEntry branchId(String branchId) {
+        this.setBranchId(branchId);
+        return this;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getAccountCode() {
@@ -341,6 +358,7 @@ public class IncomeEntry extends AbstractAuditingEntity<Long> implements Seriali
         return "IncomeEntry{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", accountCode='" + getAccountCode() + "'" +
             ", incomeCode='" + getIncomeCode() + "'" +
             ", createdByUsername='" + getCreatedByUsername() + "'" +

@@ -32,6 +32,8 @@ type ExpenseCategoryFormDefaults = Pick<NewExpenseCategory, 'id' | 'createdDate'
 
 type ExpenseCategoryFormGroupContent = {
   id: FormControl<ExpenseCategoryFormRawValue['id'] | NewExpenseCategory['id']>;
+  branchCode: FormControl<ExpenseCategoryFormRawValue['branchCode']>;
+  branchId: FormControl<ExpenseCategoryFormRawValue['branchId']>;
   categoryCode: FormControl<ExpenseCategoryFormRawValue['categoryCode']>;
   categoryName: FormControl<ExpenseCategoryFormRawValue['categoryName']>;
   description: FormControl<ExpenseCategoryFormRawValue['description']>;
@@ -58,6 +60,8 @@ export class ExpenseCategoryFormService {
           validators: [Validators.required],
         },
       ),
+      branchCode: new FormControl(expenseCategoryRawValue.branchCode),
+      branchId: new FormControl(expenseCategoryRawValue.branchId),
       categoryCode: new FormControl(expenseCategoryRawValue.categoryCode),
       categoryName: new FormControl(expenseCategoryRawValue.categoryName),
       description: new FormControl(expenseCategoryRawValue.description),

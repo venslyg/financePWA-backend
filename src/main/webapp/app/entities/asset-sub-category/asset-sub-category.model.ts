@@ -3,6 +3,8 @@ import { IAssetCategory } from 'app/entities/asset-category/asset-category.model
 
 export interface IAssetSubCategory {
   id: number;
+  branchCode?: string | null;
+  branchId?: string | null;
   assetCategoryCode?: string | null;
   assetSubCategoryCode?: string | null;
   assetSubCategoryName?: string | null;

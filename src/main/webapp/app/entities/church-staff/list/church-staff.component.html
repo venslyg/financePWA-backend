@@ -84,6 +84,14 @@
                 }
               </div>
             </th>
+            <th scope="col" jhiSortBy="branchId">
+              <div class="d-flex">
+                <span>Branch Id</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
             <th scope="col" jhiSortBy="fullName">
               <div class="d-flex">
                 <span>Full Name</span>
@@ -171,6 +179,7 @@
               </td>
               <td>{{ churchStaff.staffCode }}</td>
               <td>{{ churchStaff.branchCode }}</td>
+              <td>{{ churchStaff.branchId }}</td>
               <td>{{ churchStaff.fullName }}</td>
               <td>{{ churchStaff.position }}</td>
               <td>

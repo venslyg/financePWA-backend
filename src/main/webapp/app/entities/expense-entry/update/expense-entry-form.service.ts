@@ -33,6 +33,7 @@ type ExpenseEntryFormDefaults = Pick<NewExpenseEntry, 'id' | 'createdDate' | 'la
 type ExpenseEntryFormGroupContent = {
   id: FormControl<ExpenseEntryFormRawValue['id'] | NewExpenseEntry['id']>;
   branchCode: FormControl<ExpenseEntryFormRawValue['branchCode']>;
+  branchId: FormControl<ExpenseEntryFormRawValue['branchId']>;
   accountCode: FormControl<ExpenseEntryFormRawValue['accountCode']>;
   expenseCode: FormControl<ExpenseEntryFormRawValue['expenseCode']>;
   expenseCategoryCode: FormControl<ExpenseEntryFormRawValue['expenseCategoryCode']>;
@@ -71,6 +72,7 @@ export class ExpenseEntryFormService {
         },
       ),
       branchCode: new FormControl(expenseEntryRawValue.branchCode),
+      branchId: new FormControl(expenseEntryRawValue.branchId),
       accountCode: new FormControl(expenseEntryRawValue.accountCode),
       expenseCode: new FormControl(expenseEntryRawValue.expenseCode),
       expenseCategoryCode: new FormControl(expenseEntryRawValue.expenseCategoryCode),

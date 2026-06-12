@@ -160,44 +160,47 @@ describe('LiabilityLog e2e test', () => {
     });
 
     it('should create an instance of LiabilityLog', () => {
-      cy.get(`[data-cy="branchCode"]`).type('before meadow unlike');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'before meadow unlike');
+      cy.get(`[data-cy="branchCode"]`).type('circa incidentally behind');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'circa incidentally behind');
 
-      cy.get(`[data-cy="liabilityCode"]`).type('close');
-      cy.get(`[data-cy="liabilityCode"]`).should('have.value', 'close');
+      cy.get(`[data-cy="branchId"]`).type('willfully circa woot');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'willfully circa woot');
 
-      cy.get(`[data-cy="loanFrom"]`).type('circa woot stump');
-      cy.get(`[data-cy="loanFrom"]`).should('have.value', 'circa woot stump');
+      cy.get(`[data-cy="liabilityCode"]`).type('runny');
+      cy.get(`[data-cy="liabilityCode"]`).should('have.value', 'runny');
 
-      cy.get(`[data-cy="description"]`).type('depart breastplate ack');
-      cy.get(`[data-cy="description"]`).should('have.value', 'depart breastplate ack');
+      cy.get(`[data-cy="loanFrom"]`).type('excluding sonata');
+      cy.get(`[data-cy="loanFrom"]`).should('have.value', 'excluding sonata');
 
-      cy.get(`[data-cy="liabilityType"]`).select('LONG_TERM');
+      cy.get(`[data-cy="description"]`).type('potentially excited colorful');
+      cy.get(`[data-cy="description"]`).should('have.value', 'potentially excited colorful');
 
-      cy.get(`[data-cy="totalLoanAmount"]`).type('19465.16');
-      cy.get(`[data-cy="totalLoanAmount"]`).should('have.value', '19465.16');
+      cy.get(`[data-cy="liabilityType"]`).select('SHORT_TERM');
 
-      cy.get(`[data-cy="startDate"]`).type('2026-06-12');
+      cy.get(`[data-cy="totalLoanAmount"]`).type('647.23');
+      cy.get(`[data-cy="totalLoanAmount"]`).should('have.value', '647.23');
+
+      cy.get(`[data-cy="startDate"]`).type('2026-06-11');
       cy.get(`[data-cy="startDate"]`).blur();
-      cy.get(`[data-cy="startDate"]`).should('have.value', '2026-06-12');
+      cy.get(`[data-cy="startDate"]`).should('have.value', '2026-06-11');
 
-      cy.get(`[data-cy="endDate"]`).type('2026-06-12');
+      cy.get(`[data-cy="endDate"]`).type('2026-06-11');
       cy.get(`[data-cy="endDate"]`).blur();
-      cy.get(`[data-cy="endDate"]`).should('have.value', '2026-06-12');
+      cy.get(`[data-cy="endDate"]`).should('have.value', '2026-06-11');
 
-      cy.get(`[data-cy="interestPercentage"]`).type('31038.05');
-      cy.get(`[data-cy="interestPercentage"]`).should('have.value', '31038.05');
+      cy.get(`[data-cy="interestPercentage"]`).type('19927.34');
+      cy.get(`[data-cy="interestPercentage"]`).should('have.value', '19927.34');
 
-      cy.get(`[data-cy="monthlyPaymentAmount"]`).type('16627.89');
-      cy.get(`[data-cy="monthlyPaymentAmount"]`).should('have.value', '16627.89');
+      cy.get(`[data-cy="monthlyPaymentAmount"]`).type('6821.48');
+      cy.get(`[data-cy="monthlyPaymentAmount"]`).should('have.value', '6821.48');
 
-      cy.get(`[data-cy="principalPaid"]`).type('21954.18');
-      cy.get(`[data-cy="principalPaid"]`).should('have.value', '21954.18');
+      cy.get(`[data-cy="principalPaid"]`).type('12968.93');
+      cy.get(`[data-cy="principalPaid"]`).should('have.value', '12968.93');
 
-      cy.get(`[data-cy="balanceToPay"]`).type('20442.77');
-      cy.get(`[data-cy="balanceToPay"]`).should('have.value', '20442.77');
+      cy.get(`[data-cy="balanceToPay"]`).type('29129.3');
+      cy.get(`[data-cy="balanceToPay"]`).should('have.value', '29129.3');
 
-      cy.get(`[data-cy="status"]`).select('DECLINED');
+      cy.get(`[data-cy="status"]`).select('PENDING');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

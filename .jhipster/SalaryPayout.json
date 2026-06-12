@@ -11,6 +11,10 @@
       "fieldType": "String"
     },
     {
+      "fieldName": "branchId",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "salaryPayoutCode",
       "fieldType": "String",
       "fieldValidateRules": ["unique"]

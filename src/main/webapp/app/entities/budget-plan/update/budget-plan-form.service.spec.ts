@@ -21,6 +21,7 @@ describe('BudgetPlan Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             accountCode: expect.any(Object),
             budgetPlanCode: expect.any(Object),
             departmentName: expect.any(Object),
@@ -45,6 +46,7 @@ describe('BudgetPlan Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             accountCode: expect.any(Object),
             budgetPlanCode: expect.any(Object),
             departmentName: expect.any(Object),

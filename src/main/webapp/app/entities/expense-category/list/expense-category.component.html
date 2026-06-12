@@ -68,6 +68,22 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
+            <th scope="col" jhiSortBy="branchCode">
+              <div class="d-flex">
+                <span>Branch Code</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="branchId">
+              <div class="d-flex">
+                <span>Branch Id</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
             <th scope="col" jhiSortBy="categoryCode">
               <div class="d-flex">
                 <span>Category Code</span>
@@ -131,6 +147,8 @@
               <td>
                 <a [routerLink]="['/expense-category', expenseCategory.id, 'view']">{{ expenseCategory.id }}</a>
               </td>
+              <td>{{ expenseCategory.branchCode }}</td>
+              <td>{{ expenseCategory.branchId }}</td>
               <td>{{ expenseCategory.categoryCode }}</td>
               <td>{{ expenseCategory.categoryName }}</td>
               <td>{{ expenseCategory.description }}</td>

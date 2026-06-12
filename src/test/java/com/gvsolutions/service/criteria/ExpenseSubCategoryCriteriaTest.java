@@ -76,6 +76,8 @@ class ExpenseSubCategoryCriteriaTest {
 
     private static void setAllFilters(ExpenseSubCategoryCriteria expenseSubCategoryCriteria) {
         expenseSubCategoryCriteria.id();
+        expenseSubCategoryCriteria.branchCode();
+        expenseSubCategoryCriteria.branchId();
         expenseSubCategoryCriteria.categoryCode();
         expenseSubCategoryCriteria.subCategoryCode();
         expenseSubCategoryCriteria.subCategoryName();
@@ -91,6 +93,8 @@ class ExpenseSubCategoryCriteriaTest {
         return new Condition<>(
             criteria ->
                 condition.apply(criteria.getId()) &&
+                condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getCategoryCode()) &&
                 condition.apply(criteria.getSubCategoryCode()) &&
                 condition.apply(criteria.getSubCategoryName()) &&
@@ -111,6 +115,8 @@ class ExpenseSubCategoryCriteriaTest {
         return new Condition<>(
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
+                condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getCategoryCode(), copy.getCategoryCode()) &&
                 condition.apply(criteria.getSubCategoryCode(), copy.getSubCategoryCode()) &&
                 condition.apply(criteria.getSubCategoryName(), copy.getSubCategoryName()) &&

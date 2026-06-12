@@ -24,6 +24,14 @@ public class ExpenseSubCategory extends AbstractAuditingEntity<Long> implements 
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "branch_code")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchCode;
+
+    @Column(name = "branch_id")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchId;
+
     @Column(name = "category_code")
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String categoryCode;
@@ -60,6 +68,32 @@ public class ExpenseSubCategory extends AbstractAuditingEntity<Long> implements 
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getBranchCode() {
+        return this.branchCode;
+    }
+
+    public ExpenseSubCategory branchCode(String branchCode) {
+        this.setBranchCode(branchCode);
+        return this;
+    }
+
+    public void setBranchCode(String branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return this.branchId;
+    }
+
+    public ExpenseSubCategory branchId(String branchId) {
+        this.setBranchId(branchId);
+        return this;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getCategoryCode() {
@@ -180,6 +214,8 @@ public class ExpenseSubCategory extends AbstractAuditingEntity<Long> implements 
     public String toString() {
         return "ExpenseSubCategory{" +
             "id=" + getId() +
+            ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", categoryCode='" + getCategoryCode() + "'" +
             ", subCategoryCode='" + getSubCategoryCode() + "'" +
             ", subCategoryName='" + getSubCategoryName() + "'" +

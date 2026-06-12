@@ -14,6 +14,10 @@ public class AssetDepreciationHistoryDTO implements Serializable {
 
     private Long id;
 
+    private String branchCode;
+
+    private String branchId;
+
     private String assetRegisterCode;
 
     private LocalDate depreciationDate;
@@ -38,6 +42,22 @@ public class AssetDepreciationHistoryDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getBranchCode() {
+        return branchCode;
+    }
+
+    public void setBranchCode(String branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getAssetRegisterCode() {
@@ -138,6 +158,8 @@ public class AssetDepreciationHistoryDTO implements Serializable {
     public String toString() {
         return "AssetDepreciationHistoryDTO{" +
             "id=" + getId() +
+            ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", assetRegisterCode='" + getAssetRegisterCode() + "'" +
             ", depreciationDate='" + getDepreciationDate() + "'" +
             ", depreciationAmount=" + getDepreciationAmount() +

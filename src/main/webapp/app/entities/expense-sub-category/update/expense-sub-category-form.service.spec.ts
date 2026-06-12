@@ -20,6 +20,8 @@ describe('ExpenseSubCategory Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             categoryCode: expect.any(Object),
             subCategoryCode: expect.any(Object),
             subCategoryName: expect.any(Object),
@@ -38,6 +40,8 @@ describe('ExpenseSubCategory Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             categoryCode: expect.any(Object),
             subCategoryCode: expect.any(Object),
             subCategoryName: expect.any(Object),

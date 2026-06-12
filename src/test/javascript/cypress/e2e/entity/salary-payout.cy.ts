@@ -160,29 +160,32 @@ describe('SalaryPayout e2e test', () => {
     });
 
     it('should create an instance of SalaryPayout', () => {
-      cy.get(`[data-cy="branchCode"]`).type('depute');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'depute');
+      cy.get(`[data-cy="branchCode"]`).type('lieu under');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'lieu under');
 
-      cy.get(`[data-cy="salaryPayoutCode"]`).type('different below prime');
-      cy.get(`[data-cy="salaryPayoutCode"]`).should('have.value', 'different below prime');
+      cy.get(`[data-cy="branchId"]`).type('truly unexpectedly');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'truly unexpectedly');
 
-      cy.get(`[data-cy="staffCode"]`).type('athwart');
-      cy.get(`[data-cy="staffCode"]`).should('have.value', 'athwart');
+      cy.get(`[data-cy="salaryPayoutCode"]`).type('indolent');
+      cy.get(`[data-cy="salaryPayoutCode"]`).should('have.value', 'indolent');
 
-      cy.get(`[data-cy="payPeriod"]`).type('shameless');
-      cy.get(`[data-cy="payPeriod"]`).should('have.value', 'shameless');
+      cy.get(`[data-cy="staffCode"]`).type('hyphenation drat glisten');
+      cy.get(`[data-cy="staffCode"]`).should('have.value', 'hyphenation drat glisten');
 
-      cy.get(`[data-cy="baseSalary"]`).type('8903.04');
-      cy.get(`[data-cy="baseSalary"]`).should('have.value', '8903.04');
+      cy.get(`[data-cy="payPeriod"]`).type('by outlaw');
+      cy.get(`[data-cy="payPeriod"]`).should('have.value', 'by outlaw');
 
-      cy.get(`[data-cy="allowances"]`).type('18600.79');
-      cy.get(`[data-cy="allowances"]`).should('have.value', '18600.79');
+      cy.get(`[data-cy="baseSalary"]`).type('573.7');
+      cy.get(`[data-cy="baseSalary"]`).should('have.value', '573.7');
 
-      cy.get(`[data-cy="deductions"]`).type('21445.06');
-      cy.get(`[data-cy="deductions"]`).should('have.value', '21445.06');
+      cy.get(`[data-cy="allowances"]`).type('8427.54');
+      cy.get(`[data-cy="allowances"]`).should('have.value', '8427.54');
 
-      cy.get(`[data-cy="netPay"]`).type('3403.52');
-      cy.get(`[data-cy="netPay"]`).should('have.value', '3403.52');
+      cy.get(`[data-cy="deductions"]`).type('1265.27');
+      cy.get(`[data-cy="deductions"]`).should('have.value', '1265.27');
+
+      cy.get(`[data-cy="netPay"]`).type('27042.49');
+      cy.get(`[data-cy="netPay"]`).should('have.value', '27042.49');
 
       cy.get(`[data-cy="payoutDate"]`).type('2026-06-11');
       cy.get(`[data-cy="payoutDate"]`).blur();

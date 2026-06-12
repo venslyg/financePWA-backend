@@ -76,6 +76,14 @@
                 }
               </div>
             </th>
+            <th scope="col" jhiSortBy="branchId">
+              <div class="d-flex">
+                <span>Branch Id</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
             <th scope="col" jhiSortBy="assetRegisterCode">
               <div class="d-flex">
                 <span>Asset Register Code</span>
@@ -191,6 +199,7 @@
                 <a [routerLink]="['/asset-register', assetRegister.id, 'view']">{{ assetRegister.id }}</a>
               </td>
               <td>{{ assetRegister.branchCode }}</td>
+              <td>{{ assetRegister.branchId }}</td>
               <td>{{ assetRegister.assetRegisterCode }}</td>
               <td>{{ assetRegister.assetCategoryCode }}</td>
               <td>{{ assetRegister.assetSubCategoryCode }}</td>

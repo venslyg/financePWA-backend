@@ -30,6 +30,10 @@ public class PettyCashLedger extends AbstractAuditingEntity<Long> implements Ser
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String branchCode;
 
+    @Column(name = "branch_id")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
+    private String branchId;
+
     @Column(name = "petty_cash_code")
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String pettyCashCode;
@@ -96,6 +100,19 @@ public class PettyCashLedger extends AbstractAuditingEntity<Long> implements Ser
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return this.branchId;
+    }
+
+    public PettyCashLedger branchId(String branchId) {
+        this.setBranchId(branchId);
+        return this;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getPettyCashCode() {
@@ -282,6 +299,7 @@ public class PettyCashLedger extends AbstractAuditingEntity<Long> implements Ser
         return "PettyCashLedger{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", pettyCashCode='" + getPettyCashCode() + "'" +
             ", date='" + getDate() + "'" +
             ", pettyCashVoucherNo='" + getPettyCashVoucherNo() + "'" +

@@ -76,6 +76,8 @@ class AssetDepreciationHistoryCriteriaTest {
 
     private static void setAllFilters(AssetDepreciationHistoryCriteria assetDepreciationHistoryCriteria) {
         assetDepreciationHistoryCriteria.id();
+        assetDepreciationHistoryCriteria.branchCode();
+        assetDepreciationHistoryCriteria.branchId();
         assetDepreciationHistoryCriteria.assetRegisterCode();
         assetDepreciationHistoryCriteria.depreciationDate();
         assetDepreciationHistoryCriteria.depreciationAmount();
@@ -92,6 +94,8 @@ class AssetDepreciationHistoryCriteriaTest {
         return new Condition<>(
             criteria ->
                 condition.apply(criteria.getId()) &&
+                condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getAssetRegisterCode()) &&
                 condition.apply(criteria.getDepreciationDate()) &&
                 condition.apply(criteria.getDepreciationAmount()) &&
@@ -113,6 +117,8 @@ class AssetDepreciationHistoryCriteriaTest {
         return new Condition<>(
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
+                condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getAssetRegisterCode(), copy.getAssetRegisterCode()) &&
                 condition.apply(criteria.getDepreciationDate(), copy.getDepreciationDate()) &&
                 condition.apply(criteria.getDepreciationAmount(), copy.getDepreciationAmount()) &&

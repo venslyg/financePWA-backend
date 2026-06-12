@@ -33,6 +33,7 @@ type InventoryItemFormDefaults = Pick<NewInventoryItem, 'id' | 'createdDate' | '
 type InventoryItemFormGroupContent = {
   id: FormControl<InventoryItemFormRawValue['id'] | NewInventoryItem['id']>;
   branchCode: FormControl<InventoryItemFormRawValue['branchCode']>;
+  branchId: FormControl<InventoryItemFormRawValue['branchId']>;
   inventoryItemCode: FormControl<InventoryItemFormRawValue['inventoryItemCode']>;
   itemName: FormControl<InventoryItemFormRawValue['itemName']>;
   category: FormControl<InventoryItemFormRawValue['category']>;
@@ -63,6 +64,7 @@ export class InventoryItemFormService {
         },
       ),
       branchCode: new FormControl(inventoryItemRawValue.branchCode),
+      branchId: new FormControl(inventoryItemRawValue.branchId),
       inventoryItemCode: new FormControl(inventoryItemRawValue.inventoryItemCode),
       itemName: new FormControl(inventoryItemRawValue.itemName),
       category: new FormControl(inventoryItemRawValue.category),

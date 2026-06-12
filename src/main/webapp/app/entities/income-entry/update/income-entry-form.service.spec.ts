@@ -21,6 +21,7 @@ describe('IncomeEntry Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             accountCode: expect.any(Object),
             incomeCode: expect.any(Object),
             createdByUsername: expect.any(Object),
@@ -48,6 +49,7 @@ describe('IncomeEntry Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             accountCode: expect.any(Object),
             incomeCode: expect.any(Object),
             createdByUsername: expect.any(Object),

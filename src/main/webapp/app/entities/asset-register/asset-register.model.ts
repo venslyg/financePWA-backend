@@ -3,6 +3,7 @@ import dayjs from 'dayjs/esm';
 export interface IAssetRegister {
   id: number;
   branchCode?: string | null;
+  branchId?: string | null;
   assetRegisterCode?: string | null;
   assetCategoryCode?: string | null;
   assetSubCategoryCode?: string | null;

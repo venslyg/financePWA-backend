@@ -77,6 +77,7 @@ class IncomeEntryCriteriaTest {
     private static void setAllFilters(IncomeEntryCriteria incomeEntryCriteria) {
         incomeEntryCriteria.id();
         incomeEntryCriteria.branchCode();
+        incomeEntryCriteria.branchId();
         incomeEntryCriteria.accountCode();
         incomeEntryCriteria.incomeCode();
         incomeEntryCriteria.createdByUsername();
@@ -101,6 +102,7 @@ class IncomeEntryCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId()) &&
                 condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getAccountCode()) &&
                 condition.apply(criteria.getIncomeCode()) &&
                 condition.apply(criteria.getCreatedByUsername()) &&
@@ -127,6 +129,7 @@ class IncomeEntryCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
                 condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getAccountCode(), copy.getAccountCode()) &&
                 condition.apply(criteria.getIncomeCode(), copy.getIncomeCode()) &&
                 condition.apply(criteria.getCreatedByUsername(), copy.getCreatedByUsername()) &&

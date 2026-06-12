@@ -48,6 +48,9 @@ class SalaryPayoutResourceIT {
     private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
     private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_SALARY_PAYOUT_CODE = "AAAAAAAAAA";
     private static final String UPDATED_SALARY_PAYOUT_CODE = "BBBBBBBBBB";
 
@@ -115,6 +118,7 @@ class SalaryPayoutResourceIT {
     public static SalaryPayout createEntity() {
         return new SalaryPayout()
             .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .salaryPayoutCode(DEFAULT_SALARY_PAYOUT_CODE)
             .staffCode(DEFAULT_STAFF_CODE)
             .payPeriod(DEFAULT_PAY_PERIOD)
@@ -134,6 +138,7 @@ class SalaryPayoutResourceIT {
     public static SalaryPayout createUpdatedEntity() {
         return new SalaryPayout()
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .salaryPayoutCode(UPDATED_SALARY_PAYOUT_CODE)
             .staffCode(UPDATED_STAFF_CODE)
             .payPeriod(UPDATED_PAY_PERIOD)
@@ -224,6 +229,7 @@ class SalaryPayoutResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(salaryPayout.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].salaryPayoutCode").value(hasItem(DEFAULT_SALARY_PAYOUT_CODE)))
             .andExpect(jsonPath("$.[*].staffCode").value(hasItem(DEFAULT_STAFF_CODE)))
             .andExpect(jsonPath("$.[*].payPeriod").value(hasItem(DEFAULT_PAY_PERIOD)))
@@ -247,6 +253,7 @@ class SalaryPayoutResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(salaryPayout.getId().intValue()))
             .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.salaryPayoutCode").value(DEFAULT_SALARY_PAYOUT_CODE))
             .andExpect(jsonPath("$.staffCode").value(DEFAULT_STAFF_CODE))
             .andExpect(jsonPath("$.payPeriod").value(DEFAULT_PAY_PERIOD))
@@ -326,6 +333,56 @@ class SalaryPayoutResourceIT {
             "branchCode.doesNotContain=" + UPDATED_BRANCH_CODE,
             "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE
         );
+    }
+
+    @Test
+    @Transactional
+    void getAllSalaryPayoutsByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedSalaryPayout = salaryPayoutRepository.saveAndFlush(salaryPayout);
+
+        // Get all the salaryPayoutList where branchId equals to
+        defaultSalaryPayoutFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllSalaryPayoutsByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedSalaryPayout = salaryPayoutRepository.saveAndFlush(salaryPayout);
+
+        // Get all the salaryPayoutList where branchId in
+        defaultSalaryPayoutFiltering("branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID, "branchId.in=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllSalaryPayoutsByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedSalaryPayout = salaryPayoutRepository.saveAndFlush(salaryPayout);
+
+        // Get all the salaryPayoutList where branchId is not null
+        defaultSalaryPayoutFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllSalaryPayoutsByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedSalaryPayout = salaryPayoutRepository.saveAndFlush(salaryPayout);
+
+        // Get all the salaryPayoutList where branchId contains
+        defaultSalaryPayoutFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllSalaryPayoutsByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedSalaryPayout = salaryPayoutRepository.saveAndFlush(salaryPayout);
+
+        // Get all the salaryPayoutList where branchId does not contain
+        defaultSalaryPayoutFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -891,6 +948,7 @@ class SalaryPayoutResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(salaryPayout.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].salaryPayoutCode").value(hasItem(DEFAULT_SALARY_PAYOUT_CODE)))
             .andExpect(jsonPath("$.[*].staffCode").value(hasItem(DEFAULT_STAFF_CODE)))
             .andExpect(jsonPath("$.[*].payPeriod").value(hasItem(DEFAULT_PAY_PERIOD)))
@@ -950,6 +1008,7 @@ class SalaryPayoutResourceIT {
         em.detach(updatedSalaryPayout);
         updatedSalaryPayout
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .salaryPayoutCode(UPDATED_SALARY_PAYOUT_CODE)
             .staffCode(UPDATED_STAFF_CODE)
             .payPeriod(UPDATED_PAY_PERIOD)
@@ -1067,16 +1126,7 @@ class SalaryPayoutResourceIT {
         SalaryPayout partialUpdatedSalaryPayout = new SalaryPayout();
         partialUpdatedSalaryPayout.setId(salaryPayout.getId());
 
-        partialUpdatedSalaryPayout
-            .branchCode(UPDATED_BRANCH_CODE)
-            .salaryPayoutCode(UPDATED_SALARY_PAYOUT_CODE)
-            .staffCode(UPDATED_STAFF_CODE)
-            .payPeriod(UPDATED_PAY_PERIOD)
-            .baseSalary(UPDATED_BASE_SALARY)
-            .allowances(UPDATED_ALLOWANCES)
-            .deductions(UPDATED_DEDUCTIONS)
-            .netPay(UPDATED_NET_PAY)
-            .payoutDate(UPDATED_PAYOUT_DATE);
+        partialUpdatedSalaryPayout.branchCode(UPDATED_BRANCH_CODE).staffCode(UPDATED_STAFF_CODE).payoutDate(UPDATED_PAYOUT_DATE);
 
         restSalaryPayoutMockMvc
             .perform(
@@ -1109,6 +1159,7 @@ class SalaryPayoutResourceIT {
 
         partialUpdatedSalaryPayout
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .salaryPayoutCode(UPDATED_SALARY_PAYOUT_CODE)
             .staffCode(UPDATED_STAFF_CODE)
             .payPeriod(UPDATED_PAY_PERIOD)
@@ -1240,6 +1291,7 @@ class SalaryPayoutResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(salaryPayout.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].salaryPayoutCode").value(hasItem(DEFAULT_SALARY_PAYOUT_CODE)))
             .andExpect(jsonPath("$.[*].staffCode").value(hasItem(DEFAULT_STAFF_CODE)))
             .andExpect(jsonPath("$.[*].payPeriod").value(hasItem(DEFAULT_PAY_PERIOD)))

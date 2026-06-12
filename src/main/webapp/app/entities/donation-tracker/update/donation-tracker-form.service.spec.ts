@@ -21,6 +21,7 @@ describe('DonationTracker Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             donationIdCode: expect.any(Object),
             date: expect.any(Object),
             donorNameOrOrg: expect.any(Object),
@@ -44,6 +45,7 @@ describe('DonationTracker Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             donationIdCode: expect.any(Object),
             date: expect.any(Object),
             donorNameOrOrg: expect.any(Object),

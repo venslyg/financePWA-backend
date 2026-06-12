@@ -45,6 +45,9 @@ class AccountSetResourceIT {
     private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
     private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_ACCOUNT_CODE = "AAAAAAAAAA";
     private static final String UPDATED_ACCOUNT_CODE = "BBBBBBBBBB";
 
@@ -98,6 +101,7 @@ class AccountSetResourceIT {
     public static AccountSet createEntity() {
         return new AccountSet()
             .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .accountCode(DEFAULT_ACCOUNT_CODE)
             .accountName(DEFAULT_ACCOUNT_NAME)
             .accountType(DEFAULT_ACCOUNT_TYPE)
@@ -114,6 +118,7 @@ class AccountSetResourceIT {
     public static AccountSet createUpdatedEntity() {
         return new AccountSet()
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .accountCode(UPDATED_ACCOUNT_CODE)
             .accountName(UPDATED_ACCOUNT_NAME)
             .accountType(UPDATED_ACCOUNT_TYPE)
@@ -201,6 +206,7 @@ class AccountSetResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(accountSet.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].accountCode").value(hasItem(DEFAULT_ACCOUNT_CODE)))
             .andExpect(jsonPath("$.[*].accountName").value(hasItem(DEFAULT_ACCOUNT_NAME)))
             .andExpect(jsonPath("$.[*].accountType").value(hasItem(DEFAULT_ACCOUNT_TYPE.toString())))
@@ -221,6 +227,7 @@ class AccountSetResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(accountSet.getId().intValue()))
             .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.accountCode").value(DEFAULT_ACCOUNT_CODE))
             .andExpect(jsonPath("$.accountName").value(DEFAULT_ACCOUNT_NAME))
             .andExpect(jsonPath("$.accountType").value(DEFAULT_ACCOUNT_TYPE.toString()))
@@ -294,6 +301,56 @@ class AccountSetResourceIT {
 
         // Get all the accountSetList where branchCode does not contain
         defaultAccountSetFiltering("branchCode.doesNotContain=" + UPDATED_BRANCH_CODE, "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE);
+    }
+
+    @Test
+    @Transactional
+    void getAllAccountSetsByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedAccountSet = accountSetRepository.saveAndFlush(accountSet);
+
+        // Get all the accountSetList where branchId equals to
+        defaultAccountSetFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllAccountSetsByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedAccountSet = accountSetRepository.saveAndFlush(accountSet);
+
+        // Get all the accountSetList where branchId in
+        defaultAccountSetFiltering("branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID, "branchId.in=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllAccountSetsByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedAccountSet = accountSetRepository.saveAndFlush(accountSet);
+
+        // Get all the accountSetList where branchId is not null
+        defaultAccountSetFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllAccountSetsByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedAccountSet = accountSetRepository.saveAndFlush(accountSet);
+
+        // Get all the accountSetList where branchId contains
+        defaultAccountSetFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllAccountSetsByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedAccountSet = accountSetRepository.saveAndFlush(accountSet);
+
+        // Get all the accountSetList where branchId does not contain
+        defaultAccountSetFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -562,6 +619,7 @@ class AccountSetResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(accountSet.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].accountCode").value(hasItem(DEFAULT_ACCOUNT_CODE)))
             .andExpect(jsonPath("$.[*].accountName").value(hasItem(DEFAULT_ACCOUNT_NAME)))
             .andExpect(jsonPath("$.[*].accountType").value(hasItem(DEFAULT_ACCOUNT_TYPE.toString())))
@@ -618,6 +676,7 @@ class AccountSetResourceIT {
         em.detach(updatedAccountSet);
         updatedAccountSet
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .accountCode(UPDATED_ACCOUNT_CODE)
             .accountName(UPDATED_ACCOUNT_NAME)
             .accountType(UPDATED_ACCOUNT_TYPE)
@@ -732,7 +791,7 @@ class AccountSetResourceIT {
         AccountSet partialUpdatedAccountSet = new AccountSet();
         partialUpdatedAccountSet.setId(accountSet.getId());
 
-        partialUpdatedAccountSet.subCategory(UPDATED_SUB_CATEGORY).remark(UPDATED_REMARK);
+        partialUpdatedAccountSet.accountType(UPDATED_ACCOUNT_TYPE).subCategory(UPDATED_SUB_CATEGORY);
 
         restAccountSetMockMvc
             .perform(
@@ -765,6 +824,7 @@ class AccountSetResourceIT {
 
         partialUpdatedAccountSet
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .accountCode(UPDATED_ACCOUNT_CODE)
             .accountName(UPDATED_ACCOUNT_NAME)
             .accountType(UPDATED_ACCOUNT_TYPE)
@@ -893,6 +953,7 @@ class AccountSetResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(accountSet.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].accountCode").value(hasItem(DEFAULT_ACCOUNT_CODE)))
             .andExpect(jsonPath("$.[*].accountName").value(hasItem(DEFAULT_ACCOUNT_NAME)))
             .andExpect(jsonPath("$.[*].accountType").value(hasItem(DEFAULT_ACCOUNT_TYPE.toString())))

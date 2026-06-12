@@ -50,6 +50,9 @@ class LiabilityLogResourceIT {
     private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
     private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_LIABILITY_CODE = "AAAAAAAAAA";
     private static final String UPDATED_LIABILITY_CODE = "BBBBBBBBBB";
 
@@ -131,6 +134,7 @@ class LiabilityLogResourceIT {
     public static LiabilityLog createEntity() {
         return new LiabilityLog()
             .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .liabilityCode(DEFAULT_LIABILITY_CODE)
             .loanFrom(DEFAULT_LOAN_FROM)
             .description(DEFAULT_DESCRIPTION)
@@ -154,6 +158,7 @@ class LiabilityLogResourceIT {
     public static LiabilityLog createUpdatedEntity() {
         return new LiabilityLog()
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .liabilityCode(UPDATED_LIABILITY_CODE)
             .loanFrom(UPDATED_LOAN_FROM)
             .description(UPDATED_DESCRIPTION)
@@ -248,6 +253,7 @@ class LiabilityLogResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(liabilityLog.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].liabilityCode").value(hasItem(DEFAULT_LIABILITY_CODE)))
             .andExpect(jsonPath("$.[*].loanFrom").value(hasItem(DEFAULT_LOAN_FROM)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
@@ -275,6 +281,7 @@ class LiabilityLogResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(liabilityLog.getId().intValue()))
             .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.liabilityCode").value(DEFAULT_LIABILITY_CODE))
             .andExpect(jsonPath("$.loanFrom").value(DEFAULT_LOAN_FROM))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
@@ -358,6 +365,56 @@ class LiabilityLogResourceIT {
             "branchCode.doesNotContain=" + UPDATED_BRANCH_CODE,
             "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE
         );
+    }
+
+    @Test
+    @Transactional
+    void getAllLiabilityLogsByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedLiabilityLog = liabilityLogRepository.saveAndFlush(liabilityLog);
+
+        // Get all the liabilityLogList where branchId equals to
+        defaultLiabilityLogFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllLiabilityLogsByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedLiabilityLog = liabilityLogRepository.saveAndFlush(liabilityLog);
+
+        // Get all the liabilityLogList where branchId in
+        defaultLiabilityLogFiltering("branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID, "branchId.in=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllLiabilityLogsByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedLiabilityLog = liabilityLogRepository.saveAndFlush(liabilityLog);
+
+        // Get all the liabilityLogList where branchId is not null
+        defaultLiabilityLogFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllLiabilityLogsByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedLiabilityLog = liabilityLogRepository.saveAndFlush(liabilityLog);
+
+        // Get all the liabilityLogList where branchId contains
+        defaultLiabilityLogFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllLiabilityLogsByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedLiabilityLog = liabilityLogRepository.saveAndFlush(liabilityLog);
+
+        // Get all the liabilityLogList where branchId does not contain
+        defaultLiabilityLogFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -1177,6 +1234,7 @@ class LiabilityLogResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(liabilityLog.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].liabilityCode").value(hasItem(DEFAULT_LIABILITY_CODE)))
             .andExpect(jsonPath("$.[*].loanFrom").value(hasItem(DEFAULT_LOAN_FROM)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
@@ -1240,6 +1298,7 @@ class LiabilityLogResourceIT {
         em.detach(updatedLiabilityLog);
         updatedLiabilityLog
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .liabilityCode(UPDATED_LIABILITY_CODE)
             .loanFrom(UPDATED_LOAN_FROM)
             .description(UPDATED_DESCRIPTION)
@@ -1362,10 +1421,10 @@ class LiabilityLogResourceIT {
         partialUpdatedLiabilityLog.setId(liabilityLog.getId());
 
         partialUpdatedLiabilityLog
-            .loanFrom(UPDATED_LOAN_FROM)
-            .startDate(UPDATED_START_DATE)
-            .interestPercentage(UPDATED_INTEREST_PERCENTAGE)
-            .status(UPDATED_STATUS);
+            .liabilityCode(UPDATED_LIABILITY_CODE)
+            .totalLoanAmount(UPDATED_TOTAL_LOAN_AMOUNT)
+            .endDate(UPDATED_END_DATE)
+            .balanceToPay(UPDATED_BALANCE_TO_PAY);
 
         restLiabilityLogMockMvc
             .perform(
@@ -1398,6 +1457,7 @@ class LiabilityLogResourceIT {
 
         partialUpdatedLiabilityLog
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .liabilityCode(UPDATED_LIABILITY_CODE)
             .loanFrom(UPDATED_LOAN_FROM)
             .description(UPDATED_DESCRIPTION)
@@ -1533,6 +1593,7 @@ class LiabilityLogResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(liabilityLog.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].liabilityCode").value(hasItem(DEFAULT_LIABILITY_CODE)))
             .andExpect(jsonPath("$.[*].loanFrom").value(hasItem(DEFAULT_LOAN_FROM)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))

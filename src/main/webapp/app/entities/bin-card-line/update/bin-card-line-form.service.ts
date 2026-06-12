@@ -32,6 +32,8 @@ type BinCardLineFormDefaults = Pick<NewBinCardLine, 'id' | 'createdDate' | 'last
 
 type BinCardLineFormGroupContent = {
   id: FormControl<BinCardLineFormRawValue['id'] | NewBinCardLine['id']>;
+  branchCode: FormControl<BinCardLineFormRawValue['branchCode']>;
+  branchId: FormControl<BinCardLineFormRawValue['branchId']>;
   inventoryItemCode: FormControl<BinCardLineFormRawValue['inventoryItemCode']>;
   date: FormControl<BinCardLineFormRawValue['date']>;
   referenceNo: FormControl<BinCardLineFormRawValue['referenceNo']>;
@@ -62,6 +64,8 @@ export class BinCardLineFormService {
           validators: [Validators.required],
         },
       ),
+      branchCode: new FormControl(binCardLineRawValue.branchCode),
+      branchId: new FormControl(binCardLineRawValue.branchId),
       inventoryItemCode: new FormControl(binCardLineRawValue.inventoryItemCode),
       date: new FormControl(binCardLineRawValue.date),
       referenceNo: new FormControl(binCardLineRawValue.referenceNo),

@@ -76,6 +76,8 @@ class MaintenanceLogCriteriaTest {
 
     private static void setAllFilters(MaintenanceLogCriteria maintenanceLogCriteria) {
         maintenanceLogCriteria.id();
+        maintenanceLogCriteria.branchCode();
+        maintenanceLogCriteria.branchId();
         maintenanceLogCriteria.maintenanceLogCode();
         maintenanceLogCriteria.logDate();
         maintenanceLogCriteria.logType();
@@ -96,6 +98,8 @@ class MaintenanceLogCriteriaTest {
         return new Condition<>(
             criteria ->
                 condition.apply(criteria.getId()) &&
+                condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getMaintenanceLogCode()) &&
                 condition.apply(criteria.getLogDate()) &&
                 condition.apply(criteria.getLogType()) &&
@@ -121,6 +125,8 @@ class MaintenanceLogCriteriaTest {
         return new Condition<>(
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
+                condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getMaintenanceLogCode(), copy.getMaintenanceLogCode()) &&
                 condition.apply(criteria.getLogDate(), copy.getLogDate()) &&
                 condition.apply(criteria.getLogType(), copy.getLogType()) &&

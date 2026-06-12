@@ -46,6 +46,8 @@ public class ChurchStaffCriteria implements Serializable, Criteria {
 
     private StringFilter branchCode;
 
+    private StringFilter branchId;
+
     private StringFilter fullName;
 
     private StringFilter position;
@@ -74,6 +76,7 @@ public class ChurchStaffCriteria implements Serializable, Criteria {
         this.id = other.optionalId().map(LongFilter::copy).orElse(null);
         this.staffCode = other.optionalStaffCode().map(StringFilter::copy).orElse(null);
         this.branchCode = other.optionalBranchCode().map(StringFilter::copy).orElse(null);
+        this.branchId = other.optionalBranchId().map(StringFilter::copy).orElse(null);
         this.fullName = other.optionalFullName().map(StringFilter::copy).orElse(null);
         this.position = other.optionalPosition().map(StringFilter::copy).orElse(null);
         this.staffType = other.optionalStaffType().map(StaffTypeFilter::copy).orElse(null);
@@ -147,6 +150,25 @@ public class ChurchStaffCriteria implements Serializable, Criteria {
 
     public void setBranchCode(StringFilter branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public StringFilter getBranchId() {
+        return branchId;
+    }
+
+    public Optional<StringFilter> optionalBranchId() {
+        return Optional.ofNullable(branchId);
+    }
+
+    public StringFilter branchId() {
+        if (branchId == null) {
+            setBranchId(new StringFilter());
+        }
+        return branchId;
+    }
+
+    public void setBranchId(StringFilter branchId) {
+        this.branchId = branchId;
     }
 
     public StringFilter getFullName() {
@@ -371,6 +393,7 @@ public class ChurchStaffCriteria implements Serializable, Criteria {
             Objects.equals(id, that.id) &&
             Objects.equals(staffCode, that.staffCode) &&
             Objects.equals(branchCode, that.branchCode) &&
+            Objects.equals(branchId, that.branchId) &&
             Objects.equals(fullName, that.fullName) &&
             Objects.equals(position, that.position) &&
             Objects.equals(staffType, that.staffType) &&
@@ -391,6 +414,7 @@ public class ChurchStaffCriteria implements Serializable, Criteria {
             id,
             staffCode,
             branchCode,
+            branchId,
             fullName,
             position,
             staffType,
@@ -412,6 +436,7 @@ public class ChurchStaffCriteria implements Serializable, Criteria {
             optionalId().map(f -> "id=" + f + ", ").orElse("") +
             optionalStaffCode().map(f -> "staffCode=" + f + ", ").orElse("") +
             optionalBranchCode().map(f -> "branchCode=" + f + ", ").orElse("") +
+            optionalBranchId().map(f -> "branchId=" + f + ", ").orElse("") +
             optionalFullName().map(f -> "fullName=" + f + ", ").orElse("") +
             optionalPosition().map(f -> "position=" + f + ", ").orElse("") +
             optionalStaffType().map(f -> "staffType=" + f + ", ").orElse("") +

@@ -7,6 +7,14 @@
   "dto": "mapstruct",
   "fields": [
     {
+      "fieldName": "branchCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "branchId",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "categoryCode",
       "fieldType": "String"
     },

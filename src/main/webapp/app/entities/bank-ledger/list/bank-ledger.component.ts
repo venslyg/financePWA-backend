@@ -35,6 +35,7 @@ import { BankLedgerDeleteDialogComponent } from '../delete/bank-ledger-delete-di
 export class BankLedgerComponent implements OnInit {
   private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
     'branchCode',
+    'branchId',
     'bankLedgerCode',
     'referenceNo',
     'description',

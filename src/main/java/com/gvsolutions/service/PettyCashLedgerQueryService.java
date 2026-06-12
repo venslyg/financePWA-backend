@@ -82,6 +82,7 @@ public class PettyCashLedgerQueryService extends QueryService<PettyCashLedger> {
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), PettyCashLedger_.id),
                 buildStringSpecification(criteria.getBranchCode(), PettyCashLedger_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), PettyCashLedger_.branchId),
                 buildStringSpecification(criteria.getPettyCashCode(), PettyCashLedger_.pettyCashCode),
                 buildRangeSpecification(criteria.getDate(), PettyCashLedger_.date),
                 buildStringSpecification(criteria.getPettyCashVoucherNo(), PettyCashLedger_.pettyCashVoucherNo),

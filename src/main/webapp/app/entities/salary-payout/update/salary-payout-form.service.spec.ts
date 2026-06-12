@@ -21,6 +21,7 @@ describe('SalaryPayout Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             salaryPayoutCode: expect.any(Object),
             staffCode: expect.any(Object),
             payPeriod: expect.any(Object),
@@ -44,6 +45,7 @@ describe('SalaryPayout Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             branchCode: expect.any(Object),
+            branchId: expect.any(Object),
             salaryPayoutCode: expect.any(Object),
             staffCode: expect.any(Object),
             payPeriod: expect.any(Object),

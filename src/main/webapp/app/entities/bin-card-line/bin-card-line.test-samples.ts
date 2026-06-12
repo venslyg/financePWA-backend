@@ -7,26 +7,29 @@ export const sampleWithRequiredData: IBinCardLine = {
 };
 
 export const sampleWithPartialData: IBinCardLine = {
-  id: 19764,
-  inventoryItemCode: 'cute',
-  quantityOut: 8611.25,
-  runningBalance: 6299.68,
-  createdDate: dayjs('2026-06-11T12:17'),
+  id: 31432,
+  branchCode: 'energetically compromise',
+  description: 'rubbery gadzooks',
+  quantityIn: 5429.19,
+  runningBalance: 28479.87,
+  lastModifiedDate: dayjs('2026-06-11T16:02'),
 };
 
 export const sampleWithFullData: IBinCardLine = {
   id: 17386,
-  inventoryItemCode: 'below uh-huh endow',
+  branchCode: 'below uh-huh endow',
+  branchId: 'whose excitedly',
+  inventoryItemCode: 'exhausted',
   date: dayjs('2026-06-11'),
-  referenceNo: 'yum after exhausted',
-  description: 'below quit',
-  quantityIn: 18573.94,
-  quantityOut: 25662.74,
-  runningBalance: 18423.4,
-  createdBy: 'fray loudly',
-  createdDate: dayjs('2026-06-11T16:21'),
-  lastModifiedBy: 'incidentally oval sans',
-  lastModifiedDate: dayjs('2026-06-11T17:10'),
+  referenceNo: 'intensely mentor',
+  description: 'concentration bleakly up',
+  quantityIn: 12449.79,
+  quantityOut: 21409.69,
+  runningBalance: 2161.95,
+  createdBy: 'oval sans',
+  createdDate: dayjs('2026-06-11T17:10'),
+  lastModifiedBy: 'dreamily from hm',
+  lastModifiedDate: dayjs('2026-06-12T03:36'),
 };
 
 export const sampleWithNewData: NewBinCardLine = {

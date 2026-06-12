@@ -160,25 +160,28 @@ describe('ChurchStaff e2e test', () => {
     });
 
     it('should create an instance of ChurchStaff', () => {
-      cy.get(`[data-cy="staffCode"]`).type('quizzically');
-      cy.get(`[data-cy="staffCode"]`).should('have.value', 'quizzically');
+      cy.get(`[data-cy="staffCode"]`).type('collaboration polyester');
+      cy.get(`[data-cy="staffCode"]`).should('have.value', 'collaboration polyester');
 
-      cy.get(`[data-cy="branchCode"]`).type('polyester');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'polyester');
+      cy.get(`[data-cy="branchCode"]`).type('monasticism after');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'monasticism after');
 
-      cy.get(`[data-cy="fullName"]`).type('monasticism after');
-      cy.get(`[data-cy="fullName"]`).should('have.value', 'monasticism after');
+      cy.get(`[data-cy="branchId"]`).type('till fill gah');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'till fill gah');
 
-      cy.get(`[data-cy="position"]`).type('till fill gah');
-      cy.get(`[data-cy="position"]`).should('have.value', 'till fill gah');
+      cy.get(`[data-cy="fullName"]`).type('made-up desk regarding');
+      cy.get(`[data-cy="fullName"]`).should('have.value', 'made-up desk regarding');
 
-      cy.get(`[data-cy="staffType"]`).select('VOLUNTEER');
+      cy.get(`[data-cy="position"]`).type('motor fatally whoever');
+      cy.get(`[data-cy="position"]`).should('have.value', 'motor fatally whoever');
 
-      cy.get(`[data-cy="contactNumber"]`).type('woot immediately stable');
-      cy.get(`[data-cy="contactNumber"]`).should('have.value', 'woot immediately stable');
+      cy.get(`[data-cy="staffType"]`).select('PART_TIME');
 
-      cy.get(`[data-cy="hourlyRateOrMonthlySalary"]`).type('6656.57');
-      cy.get(`[data-cy="hourlyRateOrMonthlySalary"]`).should('have.value', '6656.57');
+      cy.get(`[data-cy="contactNumber"]`).type('blah secularize');
+      cy.get(`[data-cy="contactNumber"]`).should('have.value', 'blah secularize');
+
+      cy.get(`[data-cy="hourlyRateOrMonthlySalary"]`).type('32143.69');
+      cy.get(`[data-cy="hourlyRateOrMonthlySalary"]`).should('have.value', '32143.69');
 
       cy.get(`[data-cy="isActive"]`).should('not.be.checked');
       cy.get(`[data-cy="isActive"]`).click();

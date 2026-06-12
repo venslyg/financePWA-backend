@@ -81,6 +81,8 @@ public class BinCardLineQueryService extends QueryService<BinCardLine> {
             specification = Specification.allOf(
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), BinCardLine_.id),
+                buildStringSpecification(criteria.getBranchCode(), BinCardLine_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), BinCardLine_.branchId),
                 buildStringSpecification(criteria.getInventoryItemCode(), BinCardLine_.inventoryItemCode),
                 buildRangeSpecification(criteria.getDate(), BinCardLine_.date),
                 buildStringSpecification(criteria.getReferenceNo(), BinCardLine_.referenceNo),

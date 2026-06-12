@@ -160,48 +160,51 @@ describe('ExpenseEntry e2e test', () => {
     });
 
     it('should create an instance of ExpenseEntry', () => {
-      cy.get(`[data-cy="branchCode"]`).type('utter coaxingly bashfully');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'utter coaxingly bashfully');
+      cy.get(`[data-cy="branchCode"]`).type('grimy youthfully');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'grimy youthfully');
 
-      cy.get(`[data-cy="accountCode"]`).type('after');
-      cy.get(`[data-cy="accountCode"]`).should('have.value', 'after');
+      cy.get(`[data-cy="branchId"]`).type('aw almost across');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'aw almost across');
 
-      cy.get(`[data-cy="expenseCode"]`).type('across');
-      cy.get(`[data-cy="expenseCode"]`).should('have.value', 'across');
+      cy.get(`[data-cy="accountCode"]`).type('wherever violin');
+      cy.get(`[data-cy="accountCode"]`).should('have.value', 'wherever violin');
 
-      cy.get(`[data-cy="expenseCategoryCode"]`).type('wherever violin');
-      cy.get(`[data-cy="expenseCategoryCode"]`).should('have.value', 'wherever violin');
+      cy.get(`[data-cy="expenseCode"]`).type('convince');
+      cy.get(`[data-cy="expenseCode"]`).should('have.value', 'convince');
 
-      cy.get(`[data-cy="expenseSubCategoryCode"]`).type('convince');
-      cy.get(`[data-cy="expenseSubCategoryCode"]`).should('have.value', 'convince');
+      cy.get(`[data-cy="expenseCategoryCode"]`).type('ice-cream');
+      cy.get(`[data-cy="expenseCategoryCode"]`).should('have.value', 'ice-cream');
 
-      cy.get(`[data-cy="createdByUsername"]`).type('ice-cream');
-      cy.get(`[data-cy="createdByUsername"]`).should('have.value', 'ice-cream');
+      cy.get(`[data-cy="expenseSubCategoryCode"]`).type('supposing aw');
+      cy.get(`[data-cy="expenseSubCategoryCode"]`).should('have.value', 'supposing aw');
+
+      cy.get(`[data-cy="createdByUsername"]`).type('around yippee');
+      cy.get(`[data-cy="createdByUsername"]`).should('have.value', 'around yippee');
 
       cy.get(`[data-cy="date"]`).type('2026-06-11');
       cy.get(`[data-cy="date"]`).blur();
       cy.get(`[data-cy="date"]`).should('have.value', '2026-06-11');
 
-      cy.get(`[data-cy="voucherNo"]`).type('geez psst');
-      cy.get(`[data-cy="voucherNo"]`).should('have.value', 'geez psst');
+      cy.get(`[data-cy="voucherNo"]`).type('expense madly gah');
+      cy.get(`[data-cy="voucherNo"]`).should('have.value', 'expense madly gah');
 
-      cy.get(`[data-cy="description"]`).type('whereas though');
-      cy.get(`[data-cy="description"]`).should('have.value', 'whereas though');
+      cy.get(`[data-cy="description"]`).type('scenario');
+      cy.get(`[data-cy="description"]`).should('have.value', 'scenario');
 
-      cy.get(`[data-cy="amount"]`).type('26386.3');
-      cy.get(`[data-cy="amount"]`).should('have.value', '26386.3');
+      cy.get(`[data-cy="amount"]`).type('22510.86');
+      cy.get(`[data-cy="amount"]`).should('have.value', '22510.86');
 
-      cy.get(`[data-cy="paymentMode"]`).select('CARD');
+      cy.get(`[data-cy="paymentMode"]`).select('CASH');
 
       cy.get(`[data-cy="approvalStatus"]`).select('DECLINED');
 
-      cy.get(`[data-cy="approvedBy"]`).type('thunderbolt suburban');
-      cy.get(`[data-cy="approvedBy"]`).should('have.value', 'thunderbolt suburban');
+      cy.get(`[data-cy="approvedBy"]`).type('piglet');
+      cy.get(`[data-cy="approvedBy"]`).should('have.value', 'piglet');
 
-      cy.get(`[data-cy="vendor"]`).type('mmm deed per');
-      cy.get(`[data-cy="vendor"]`).should('have.value', 'mmm deed per');
+      cy.get(`[data-cy="vendor"]`).type('really');
+      cy.get(`[data-cy="vendor"]`).should('have.value', 'really');
 
-      cy.get(`[data-cy="syncStatus"]`).select('PENDING_OFFLINE');
+      cy.get(`[data-cy="syncStatus"]`).select('SYNCED');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

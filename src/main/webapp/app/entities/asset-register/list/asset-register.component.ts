@@ -35,6 +35,7 @@ import { AssetRegisterDeleteDialogComponent } from '../delete/asset-register-del
 export class AssetRegisterComponent implements OnInit {
   private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
     'branchCode',
+    'branchId',
     'assetRegisterCode',
     'assetCategoryCode',
     'assetSubCategoryCode',

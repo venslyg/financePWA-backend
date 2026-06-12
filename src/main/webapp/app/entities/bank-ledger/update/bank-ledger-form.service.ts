@@ -33,6 +33,7 @@ type BankLedgerFormDefaults = Pick<NewBankLedger, 'id' | 'createdDate' | 'lastMo
 type BankLedgerFormGroupContent = {
   id: FormControl<BankLedgerFormRawValue['id'] | NewBankLedger['id']>;
   branchCode: FormControl<BankLedgerFormRawValue['branchCode']>;
+  branchId: FormControl<BankLedgerFormRawValue['branchId']>;
   bankLedgerCode: FormControl<BankLedgerFormRawValue['bankLedgerCode']>;
   date: FormControl<BankLedgerFormRawValue['date']>;
   referenceNo: FormControl<BankLedgerFormRawValue['referenceNo']>;
@@ -65,6 +66,7 @@ export class BankLedgerFormService {
         },
       ),
       branchCode: new FormControl(bankLedgerRawValue.branchCode),
+      branchId: new FormControl(bankLedgerRawValue.branchId),
       bankLedgerCode: new FormControl(bankLedgerRawValue.bankLedgerCode),
       date: new FormControl(bankLedgerRawValue.date),
       referenceNo: new FormControl(bankLedgerRawValue.referenceNo),

@@ -82,6 +82,7 @@ public class LiabilityLogQueryService extends QueryService<LiabilityLog> {
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), LiabilityLog_.id),
                 buildStringSpecification(criteria.getBranchCode(), LiabilityLog_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), LiabilityLog_.branchId),
                 buildStringSpecification(criteria.getLiabilityCode(), LiabilityLog_.liabilityCode),
                 buildStringSpecification(criteria.getLoanFrom(), LiabilityLog_.loanFrom),
                 buildStringSpecification(criteria.getDescription(), LiabilityLog_.description),

@@ -82,6 +82,7 @@ public class BankLedgerQueryService extends QueryService<BankLedger> {
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), BankLedger_.id),
                 buildStringSpecification(criteria.getBranchCode(), BankLedger_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), BankLedger_.branchId),
                 buildStringSpecification(criteria.getBankLedgerCode(), BankLedger_.bankLedgerCode),
                 buildRangeSpecification(criteria.getDate(), BankLedger_.date),
                 buildStringSpecification(criteria.getReferenceNo(), BankLedger_.referenceNo),

@@ -4,6 +4,8 @@ import { MaintenanceLogType } from 'app/entities/enumerations/maintenance-log-ty
 
 export interface IMaintenanceLog {
   id: number;
+  branchCode?: string | null;
+  branchId?: string | null;
   maintenanceLogCode?: string | null;
   logDate?: dayjs.Dayjs | null;
   logType?: keyof typeof MaintenanceLogType | null;

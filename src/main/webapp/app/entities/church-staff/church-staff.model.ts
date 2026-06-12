@@ -5,6 +5,7 @@ export interface IChurchStaff {
   id: number;
   staffCode?: string | null;
   branchCode?: string | null;
+  branchId?: string | null;
   fullName?: string | null;
   position?: string | null;
   staffType?: keyof typeof StaffType | null;

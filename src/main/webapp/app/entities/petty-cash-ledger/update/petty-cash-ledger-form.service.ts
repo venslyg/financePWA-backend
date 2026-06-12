@@ -33,6 +33,7 @@ type PettyCashLedgerFormDefaults = Pick<NewPettyCashLedger, 'id' | 'createdDate'
 type PettyCashLedgerFormGroupContent = {
   id: FormControl<PettyCashLedgerFormRawValue['id'] | NewPettyCashLedger['id']>;
   branchCode: FormControl<PettyCashLedgerFormRawValue['branchCode']>;
+  branchId: FormControl<PettyCashLedgerFormRawValue['branchId']>;
   pettyCashCode: FormControl<PettyCashLedgerFormRawValue['pettyCashCode']>;
   date: FormControl<PettyCashLedgerFormRawValue['date']>;
   pettyCashVoucherNo: FormControl<PettyCashLedgerFormRawValue['pettyCashVoucherNo']>;
@@ -66,6 +67,7 @@ export class PettyCashLedgerFormService {
         },
       ),
       branchCode: new FormControl(pettyCashLedgerRawValue.branchCode),
+      branchId: new FormControl(pettyCashLedgerRawValue.branchId),
       pettyCashCode: new FormControl(pettyCashLedgerRawValue.pettyCashCode),
       date: new FormControl(pettyCashLedgerRawValue.date),
       pettyCashVoucherNo: new FormControl(pettyCashLedgerRawValue.pettyCashVoucherNo),

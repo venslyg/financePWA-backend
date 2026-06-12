@@ -33,6 +33,7 @@ type AssetRegisterFormDefaults = Pick<NewAssetRegister, 'id' | 'createdDate' | '
 type AssetRegisterFormGroupContent = {
   id: FormControl<AssetRegisterFormRawValue['id'] | NewAssetRegister['id']>;
   branchCode: FormControl<AssetRegisterFormRawValue['branchCode']>;
+  branchId: FormControl<AssetRegisterFormRawValue['branchId']>;
   assetRegisterCode: FormControl<AssetRegisterFormRawValue['assetRegisterCode']>;
   assetCategoryCode: FormControl<AssetRegisterFormRawValue['assetCategoryCode']>;
   assetSubCategoryCode: FormControl<AssetRegisterFormRawValue['assetSubCategoryCode']>;
@@ -67,6 +68,7 @@ export class AssetRegisterFormService {
         },
       ),
       branchCode: new FormControl(assetRegisterRawValue.branchCode),
+      branchId: new FormControl(assetRegisterRawValue.branchId),
       assetRegisterCode: new FormControl(assetRegisterRawValue.assetRegisterCode),
       assetCategoryCode: new FormControl(assetRegisterRawValue.assetCategoryCode),
       assetSubCategoryCode: new FormControl(assetRegisterRawValue.assetSubCategoryCode),

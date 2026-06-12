@@ -61,6 +61,7 @@ entity Branch {
 @EnableAudit
 entity AccountSet {
     branchCode String
+    branchId String
     accountCode String
     accountName String
     accountType AccountType
@@ -74,6 +75,7 @@ entity AccountSet {
 @EnableAudit
 entity IncomeEntry {
     branchCode String
+    branchId String
     accountCode String
     incomeCode String
     createdByUsername String    // Maps softly to JHipster built-in User login
@@ -90,6 +92,8 @@ entity IncomeEntry {
 
 @EnableAudit
 entity ExpenseCategory {
+    branchCode String
+    branchId String
     categoryCode String
     categoryName String
     description String
@@ -97,6 +101,8 @@ entity ExpenseCategory {
 
 @EnableAudit
 entity ExpenseSubCategory {
+    branchCode String
+    branchId String
     categoryCode String
     subCategoryCode String
     subCategoryName String
@@ -108,6 +114,7 @@ entity ExpenseSubCategory {
 @EnableAudit
 entity ExpenseEntry {
     branchCode String
+    branchId String
     accountCode String
     expenseCode String
     expenseCategoryCode String
@@ -127,6 +134,7 @@ entity ExpenseEntry {
 @EnableAudit
 entity BankLedger {
     branchCode String
+    branchId String
     bankLedgerCode String
     date LocalDate
     referenceNo String
@@ -140,6 +148,7 @@ entity BankLedger {
 @EnableAudit
 entity PettyCashLedger {
     branchCode String
+    branchId String
     pettyCashCode String
     date LocalDate
     pettyCashVoucherNo String
@@ -153,6 +162,8 @@ entity PettyCashLedger {
 
 @EnableAudit
 entity AssetCategory {
+    branchCode String
+    branchId String
     assetCategoryCode String
     assetCategoryName String
     description String
@@ -160,6 +171,8 @@ entity AssetCategory {
 
 @EnableAudit
 entity AssetSubCategory {
+    branchCode String
+    branchId String
     assetCategoryCode String
     assetSubCategoryCode String
     assetSubCategoryName String
@@ -171,6 +184,7 @@ entity AssetSubCategory {
 @EnableAudit
 entity AssetRegister {
     branchCode String
+    branchId String
     assetRegisterCode String
     assetCategoryCode String
     assetSubCategoryCode String
@@ -185,6 +199,8 @@ entity AssetRegister {
 
 @EnableAudit
 entity AssetDepreciationHistory {
+    branchCode String
+    branchId String
     assetRegisterCode String
     depreciationDate LocalDate
     depreciationAmount BigDecimal
@@ -197,6 +213,8 @@ entity AssetDepreciationHistory {
  */
 @EnableAudit
 entity MaintenanceLog {
+    branchCode String
+    branchId String
     maintenanceLogCode String
     logDate LocalDate
     logType MaintenanceLogType
@@ -213,6 +231,7 @@ entity MaintenanceLog {
 @EnableAudit
 entity InventoryItem {
     branchCode String
+    branchId String
     inventoryItemCode String
     itemName String
     category String
@@ -223,6 +242,8 @@ entity InventoryItem {
 
 @EnableAudit
 entity BinCardLine {
+    branchCode String
+    branchId String
     inventoryItemCode String
     date LocalDate
     referenceNo String
@@ -238,6 +259,7 @@ entity BinCardLine {
 @EnableAudit
 entity LiabilityLog {
     branchCode String
+    branchId String
     liabilityCode String
     loanFrom String
     description String
@@ -255,6 +277,7 @@ entity LiabilityLog {
 @EnableAudit
 entity BudgetPlan {
     branchCode String
+    branchId String
     accountCode String
     budgetPlanCode String
     departmentName String
@@ -269,6 +292,7 @@ entity BudgetPlan {
 @EnableAudit
 entity DonationTracker {
     branchCode String
+    branchId String
     donationIdCode String
     date LocalDate
     donorNameOrOrg String
@@ -286,6 +310,7 @@ entity DonationTracker {
 entity ChurchStaff {
     staffCode String
     branchCode String
+    branchId String
     fullName String
     position String
     staffType StaffType
@@ -297,6 +322,7 @@ entity ChurchStaff {
 @EnableAudit
 entity SalaryPayout {
     branchCode String
+    branchId String
     salaryPayoutCode String unique
     staffCode String
     payPeriod String

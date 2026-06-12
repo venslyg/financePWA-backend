@@ -50,6 +50,9 @@ class ChurchStaffResourceIT {
     private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
     private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_FULL_NAME = "AAAAAAAAAA";
     private static final String UPDATED_FULL_NAME = "BBBBBBBBBB";
 
@@ -108,6 +111,7 @@ class ChurchStaffResourceIT {
         return new ChurchStaff()
             .staffCode(DEFAULT_STAFF_CODE)
             .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .fullName(DEFAULT_FULL_NAME)
             .position(DEFAULT_POSITION)
             .staffType(DEFAULT_STAFF_TYPE)
@@ -126,6 +130,7 @@ class ChurchStaffResourceIT {
         return new ChurchStaff()
             .staffCode(UPDATED_STAFF_CODE)
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .fullName(UPDATED_FULL_NAME)
             .position(UPDATED_POSITION)
             .staffType(UPDATED_STAFF_TYPE)
@@ -215,6 +220,7 @@ class ChurchStaffResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(churchStaff.getId().intValue())))
             .andExpect(jsonPath("$.[*].staffCode").value(hasItem(DEFAULT_STAFF_CODE)))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].fullName").value(hasItem(DEFAULT_FULL_NAME)))
             .andExpect(jsonPath("$.[*].position").value(hasItem(DEFAULT_POSITION)))
             .andExpect(jsonPath("$.[*].staffType").value(hasItem(DEFAULT_STAFF_TYPE.toString())))
@@ -237,6 +243,7 @@ class ChurchStaffResourceIT {
             .andExpect(jsonPath("$.id").value(churchStaff.getId().intValue()))
             .andExpect(jsonPath("$.staffCode").value(DEFAULT_STAFF_CODE))
             .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.fullName").value(DEFAULT_FULL_NAME))
             .andExpect(jsonPath("$.position").value(DEFAULT_POSITION))
             .andExpect(jsonPath("$.staffType").value(DEFAULT_STAFF_TYPE.toString()))
@@ -361,6 +368,56 @@ class ChurchStaffResourceIT {
 
         // Get all the churchStaffList where branchCode does not contain
         defaultChurchStaffFiltering("branchCode.doesNotContain=" + UPDATED_BRANCH_CODE, "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE);
+    }
+
+    @Test
+    @Transactional
+    void getAllChurchStaffsByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedChurchStaff = churchStaffRepository.saveAndFlush(churchStaff);
+
+        // Get all the churchStaffList where branchId equals to
+        defaultChurchStaffFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllChurchStaffsByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedChurchStaff = churchStaffRepository.saveAndFlush(churchStaff);
+
+        // Get all the churchStaffList where branchId in
+        defaultChurchStaffFiltering("branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID, "branchId.in=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllChurchStaffsByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedChurchStaff = churchStaffRepository.saveAndFlush(churchStaff);
+
+        // Get all the churchStaffList where branchId is not null
+        defaultChurchStaffFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllChurchStaffsByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedChurchStaff = churchStaffRepository.saveAndFlush(churchStaff);
+
+        // Get all the churchStaffList where branchId contains
+        defaultChurchStaffFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllChurchStaffsByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedChurchStaff = churchStaffRepository.saveAndFlush(churchStaff);
+
+        // Get all the churchStaffList where branchId does not contain
+        defaultChurchStaffFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -683,6 +740,7 @@ class ChurchStaffResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(churchStaff.getId().intValue())))
             .andExpect(jsonPath("$.[*].staffCode").value(hasItem(DEFAULT_STAFF_CODE)))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].fullName").value(hasItem(DEFAULT_FULL_NAME)))
             .andExpect(jsonPath("$.[*].position").value(hasItem(DEFAULT_POSITION)))
             .andExpect(jsonPath("$.[*].staffType").value(hasItem(DEFAULT_STAFF_TYPE.toString())))
@@ -741,6 +799,7 @@ class ChurchStaffResourceIT {
         updatedChurchStaff
             .staffCode(UPDATED_STAFF_CODE)
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .fullName(UPDATED_FULL_NAME)
             .position(UPDATED_POSITION)
             .staffType(UPDATED_STAFF_TYPE)
@@ -856,7 +915,7 @@ class ChurchStaffResourceIT {
         ChurchStaff partialUpdatedChurchStaff = new ChurchStaff();
         partialUpdatedChurchStaff.setId(churchStaff.getId());
 
-        partialUpdatedChurchStaff.staffType(UPDATED_STAFF_TYPE).contactNumber(UPDATED_CONTACT_NUMBER);
+        partialUpdatedChurchStaff.position(UPDATED_POSITION).staffType(UPDATED_STAFF_TYPE).isActive(UPDATED_IS_ACTIVE);
 
         restChurchStaffMockMvc
             .perform(
@@ -890,6 +949,7 @@ class ChurchStaffResourceIT {
         partialUpdatedChurchStaff
             .staffCode(UPDATED_STAFF_CODE)
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .fullName(UPDATED_FULL_NAME)
             .position(UPDATED_POSITION)
             .staffType(UPDATED_STAFF_TYPE)
@@ -1020,6 +1080,7 @@ class ChurchStaffResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(churchStaff.getId().intValue())))
             .andExpect(jsonPath("$.[*].staffCode").value(hasItem(DEFAULT_STAFF_CODE)))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].fullName").value(hasItem(DEFAULT_FULL_NAME)))
             .andExpect(jsonPath("$.[*].position").value(hasItem(DEFAULT_POSITION)))
             .andExpect(jsonPath("$.[*].staffType").value(hasItem(DEFAULT_STAFF_TYPE.toString())))

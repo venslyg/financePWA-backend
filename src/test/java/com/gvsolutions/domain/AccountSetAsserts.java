@@ -50,6 +50,7 @@ public class AccountSetAsserts {
         assertThat(actual)
             .as("Verify AccountSet relevant properties")
             .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getAccountCode()).as("check accountCode").isEqualTo(expected.getAccountCode()))
             .satisfies(a -> assertThat(a.getAccountName()).as("check accountName").isEqualTo(expected.getAccountName()))
             .satisfies(a -> assertThat(a.getAccountType()).as("check accountType").isEqualTo(expected.getAccountType()))

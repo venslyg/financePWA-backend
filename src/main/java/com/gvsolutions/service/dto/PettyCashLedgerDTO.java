@@ -16,6 +16,8 @@ public class PettyCashLedgerDTO implements Serializable {
 
     private String branchCode;
 
+    private String branchId;
+
     private String pettyCashCode;
 
     private LocalDate date;
@@ -56,6 +58,14 @@ public class PettyCashLedgerDTO implements Serializable {
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getPettyCashCode() {
@@ -189,6 +199,7 @@ public class PettyCashLedgerDTO implements Serializable {
         return "PettyCashLedgerDTO{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", pettyCashCode='" + getPettyCashCode() + "'" +
             ", date='" + getDate() + "'" +
             ", pettyCashVoucherNo='" + getPettyCashVoucherNo() + "'" +

@@ -82,6 +82,7 @@ public class ExpenseEntryQueryService extends QueryService<ExpenseEntry> {
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), ExpenseEntry_.id),
                 buildStringSpecification(criteria.getBranchCode(), ExpenseEntry_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), ExpenseEntry_.branchId),
                 buildStringSpecification(criteria.getAccountCode(), ExpenseEntry_.accountCode),
                 buildStringSpecification(criteria.getExpenseCode(), ExpenseEntry_.expenseCode),
                 buildStringSpecification(criteria.getExpenseCategoryCode(), ExpenseEntry_.expenseCategoryCode),

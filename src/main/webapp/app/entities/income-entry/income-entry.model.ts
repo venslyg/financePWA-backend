@@ -6,6 +6,7 @@ import { SyncStatus } from 'app/entities/enumerations/sync-status.model';
 export interface IIncomeEntry {
   id: number;
   branchCode?: string | null;
+  branchId?: string | null;
   accountCode?: string | null;
   incomeCode?: string | null;
   createdByUsername?: string | null;

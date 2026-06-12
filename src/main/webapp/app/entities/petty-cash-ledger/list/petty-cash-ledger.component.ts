@@ -35,6 +35,7 @@ import { PettyCashLedgerDeleteDialogComponent } from '../delete/petty-cash-ledge
 export class PettyCashLedgerComponent implements OnInit {
   private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
     'branchCode',
+    'branchId',
     'pettyCashCode',
     'pettyCashVoucherNo',
     'description',

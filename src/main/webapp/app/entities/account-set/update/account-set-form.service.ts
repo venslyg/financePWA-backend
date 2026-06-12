@@ -33,6 +33,7 @@ type AccountSetFormDefaults = Pick<NewAccountSet, 'id' | 'createdDate' | 'lastMo
 type AccountSetFormGroupContent = {
   id: FormControl<AccountSetFormRawValue['id'] | NewAccountSet['id']>;
   branchCode: FormControl<AccountSetFormRawValue['branchCode']>;
+  branchId: FormControl<AccountSetFormRawValue['branchId']>;
   accountCode: FormControl<AccountSetFormRawValue['accountCode']>;
   accountName: FormControl<AccountSetFormRawValue['accountName']>;
   accountType: FormControl<AccountSetFormRawValue['accountType']>;
@@ -62,6 +63,7 @@ export class AccountSetFormService {
         },
       ),
       branchCode: new FormControl(accountSetRawValue.branchCode),
+      branchId: new FormControl(accountSetRawValue.branchId),
       accountCode: new FormControl(accountSetRawValue.accountCode),
       accountName: new FormControl(accountSetRawValue.accountName),
       accountType: new FormControl(accountSetRawValue.accountType),

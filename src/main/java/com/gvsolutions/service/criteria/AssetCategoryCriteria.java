@@ -24,6 +24,10 @@ public class AssetCategoryCriteria implements Serializable, Criteria {
 
     private LongFilter id;
 
+    private StringFilter branchCode;
+
+    private StringFilter branchId;
+
     private StringFilter assetCategoryCode;
 
     private StringFilter assetCategoryName;
@@ -44,6 +48,8 @@ public class AssetCategoryCriteria implements Serializable, Criteria {
 
     public AssetCategoryCriteria(AssetCategoryCriteria other) {
         this.id = other.optionalId().map(LongFilter::copy).orElse(null);
+        this.branchCode = other.optionalBranchCode().map(StringFilter::copy).orElse(null);
+        this.branchId = other.optionalBranchId().map(StringFilter::copy).orElse(null);
         this.assetCategoryCode = other.optionalAssetCategoryCode().map(StringFilter::copy).orElse(null);
         this.assetCategoryName = other.optionalAssetCategoryName().map(StringFilter::copy).orElse(null);
         this.description = other.optionalDescription().map(StringFilter::copy).orElse(null);
@@ -76,6 +82,44 @@ public class AssetCategoryCriteria implements Serializable, Criteria {
 
     public void setId(LongFilter id) {
         this.id = id;
+    }
+
+    public StringFilter getBranchCode() {
+        return branchCode;
+    }
+
+    public Optional<StringFilter> optionalBranchCode() {
+        return Optional.ofNullable(branchCode);
+    }
+
+    public StringFilter branchCode() {
+        if (branchCode == null) {
+            setBranchCode(new StringFilter());
+        }
+        return branchCode;
+    }
+
+    public void setBranchCode(StringFilter branchCode) {
+        this.branchCode = branchCode;
+    }
+
+    public StringFilter getBranchId() {
+        return branchId;
+    }
+
+    public Optional<StringFilter> optionalBranchId() {
+        return Optional.ofNullable(branchId);
+    }
+
+    public StringFilter branchId() {
+        if (branchId == null) {
+            setBranchId(new StringFilter());
+        }
+        return branchId;
+    }
+
+    public void setBranchId(StringFilter branchId) {
+        this.branchId = branchId;
     }
 
     public StringFilter getAssetCategoryCode() {
@@ -241,6 +285,8 @@ public class AssetCategoryCriteria implements Serializable, Criteria {
         final AssetCategoryCriteria that = (AssetCategoryCriteria) o;
         return (
             Objects.equals(id, that.id) &&
+            Objects.equals(branchCode, that.branchCode) &&
+            Objects.equals(branchId, that.branchId) &&
             Objects.equals(assetCategoryCode, that.assetCategoryCode) &&
             Objects.equals(assetCategoryName, that.assetCategoryName) &&
             Objects.equals(description, that.description) &&
@@ -256,6 +302,8 @@ public class AssetCategoryCriteria implements Serializable, Criteria {
     public int hashCode() {
         return Objects.hash(
             id,
+            branchCode,
+            branchId,
             assetCategoryCode,
             assetCategoryName,
             description,
@@ -272,6 +320,8 @@ public class AssetCategoryCriteria implements Serializable, Criteria {
     public String toString() {
         return "AssetCategoryCriteria{" +
             optionalId().map(f -> "id=" + f + ", ").orElse("") +
+            optionalBranchCode().map(f -> "branchCode=" + f + ", ").orElse("") +
+            optionalBranchId().map(f -> "branchId=" + f + ", ").orElse("") +
             optionalAssetCategoryCode().map(f -> "assetCategoryCode=" + f + ", ").orElse("") +
             optionalAssetCategoryName().map(f -> "assetCategoryName=" + f + ", ").orElse("") +
             optionalDescription().map(f -> "description=" + f + ", ").orElse("") +

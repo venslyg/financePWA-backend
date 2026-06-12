@@ -62,6 +62,8 @@ public class AssetDepreciationHistoryAsserts {
     ) {
         assertThat(actual)
             .as("Verify AssetDepreciationHistory relevant properties")
+            .satisfies(a -> assertThat(a.getBranchCode()).as("check branchCode").isEqualTo(expected.getBranchCode()))
+            .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getAssetRegisterCode()).as("check assetRegisterCode").isEqualTo(expected.getAssetRegisterCode()))
             .satisfies(a -> assertThat(a.getDepreciationDate()).as("check depreciationDate").isEqualTo(expected.getDepreciationDate()))
             .satisfies(a ->

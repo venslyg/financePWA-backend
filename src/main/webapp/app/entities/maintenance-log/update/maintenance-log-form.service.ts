@@ -32,6 +32,8 @@ type MaintenanceLogFormDefaults = Pick<NewMaintenanceLog, 'id' | 'createdDate' |
 
 type MaintenanceLogFormGroupContent = {
   id: FormControl<MaintenanceLogFormRawValue['id'] | NewMaintenanceLog['id']>;
+  branchCode: FormControl<MaintenanceLogFormRawValue['branchCode']>;
+  branchId: FormControl<MaintenanceLogFormRawValue['branchId']>;
   maintenanceLogCode: FormControl<MaintenanceLogFormRawValue['maintenanceLogCode']>;
   logDate: FormControl<MaintenanceLogFormRawValue['logDate']>;
   logType: FormControl<MaintenanceLogFormRawValue['logType']>;
@@ -64,6 +66,8 @@ export class MaintenanceLogFormService {
           validators: [Validators.required],
         },
       ),
+      branchCode: new FormControl(maintenanceLogRawValue.branchCode),
+      branchId: new FormControl(maintenanceLogRawValue.branchId),
       maintenanceLogCode: new FormControl(maintenanceLogRawValue.maintenanceLogCode),
       logDate: new FormControl(maintenanceLogRawValue.logDate),
       logType: new FormControl(maintenanceLogRawValue.logType),

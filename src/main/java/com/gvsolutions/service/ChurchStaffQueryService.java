@@ -83,6 +83,7 @@ public class ChurchStaffQueryService extends QueryService<ChurchStaff> {
                 buildRangeSpecification(criteria.getId(), ChurchStaff_.id),
                 buildStringSpecification(criteria.getStaffCode(), ChurchStaff_.staffCode),
                 buildStringSpecification(criteria.getBranchCode(), ChurchStaff_.branchCode),
+                buildStringSpecification(criteria.getBranchId(), ChurchStaff_.branchId),
                 buildStringSpecification(criteria.getFullName(), ChurchStaff_.fullName),
                 buildStringSpecification(criteria.getPosition(), ChurchStaff_.position),
                 buildSpecification(criteria.getStaffType(), ChurchStaff_.staffType),

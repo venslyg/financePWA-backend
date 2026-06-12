@@ -17,6 +17,8 @@ public class InventoryItemDTO implements Serializable {
 
     private String branchCode;
 
+    private String branchId;
+
     private String inventoryItemCode;
 
     private String itemName;
@@ -51,6 +53,14 @@ public class InventoryItemDTO implements Serializable {
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getInventoryItemCode() {
@@ -160,6 +170,7 @@ public class InventoryItemDTO implements Serializable {
         return "InventoryItemDTO{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", inventoryItemCode='" + getInventoryItemCode() + "'" +
             ", itemName='" + getItemName() + "'" +
             ", category='" + getCategory() + "'" +

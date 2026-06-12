@@ -77,6 +77,7 @@ class AccountSetCriteriaTest {
     private static void setAllFilters(AccountSetCriteria accountSetCriteria) {
         accountSetCriteria.id();
         accountSetCriteria.branchCode();
+        accountSetCriteria.branchId();
         accountSetCriteria.accountCode();
         accountSetCriteria.accountName();
         accountSetCriteria.accountType();
@@ -94,6 +95,7 @@ class AccountSetCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId()) &&
                 condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getAccountCode()) &&
                 condition.apply(criteria.getAccountName()) &&
                 condition.apply(criteria.getAccountType()) &&
@@ -113,6 +115,7 @@ class AccountSetCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
                 condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getAccountCode(), copy.getAccountCode()) &&
                 condition.apply(criteria.getAccountName(), copy.getAccountName()) &&
                 condition.apply(criteria.getAccountType(), copy.getAccountType()) &&

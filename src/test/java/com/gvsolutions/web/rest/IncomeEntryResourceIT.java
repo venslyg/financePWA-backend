@@ -51,6 +51,9 @@ class IncomeEntryResourceIT {
     private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
     private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_ACCOUNT_CODE = "AAAAAAAAAA";
     private static final String UPDATED_ACCOUNT_CODE = "BBBBBBBBBB";
 
@@ -127,6 +130,7 @@ class IncomeEntryResourceIT {
     public static IncomeEntry createEntity() {
         return new IncomeEntry()
             .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .accountCode(DEFAULT_ACCOUNT_CODE)
             .incomeCode(DEFAULT_INCOME_CODE)
             .createdByUsername(DEFAULT_CREATED_BY_USERNAME)
@@ -150,6 +154,7 @@ class IncomeEntryResourceIT {
     public static IncomeEntry createUpdatedEntity() {
         return new IncomeEntry()
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .accountCode(UPDATED_ACCOUNT_CODE)
             .incomeCode(UPDATED_INCOME_CODE)
             .createdByUsername(UPDATED_CREATED_BY_USERNAME)
@@ -244,6 +249,7 @@ class IncomeEntryResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(incomeEntry.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].accountCode").value(hasItem(DEFAULT_ACCOUNT_CODE)))
             .andExpect(jsonPath("$.[*].incomeCode").value(hasItem(DEFAULT_INCOME_CODE)))
             .andExpect(jsonPath("$.[*].createdByUsername").value(hasItem(DEFAULT_CREATED_BY_USERNAME)))
@@ -271,6 +277,7 @@ class IncomeEntryResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(incomeEntry.getId().intValue()))
             .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.accountCode").value(DEFAULT_ACCOUNT_CODE))
             .andExpect(jsonPath("$.incomeCode").value(DEFAULT_INCOME_CODE))
             .andExpect(jsonPath("$.createdByUsername").value(DEFAULT_CREATED_BY_USERNAME))
@@ -351,6 +358,56 @@ class IncomeEntryResourceIT {
 
         // Get all the incomeEntryList where branchCode does not contain
         defaultIncomeEntryFiltering("branchCode.doesNotContain=" + UPDATED_BRANCH_CODE, "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE);
+    }
+
+    @Test
+    @Transactional
+    void getAllIncomeEntriesByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedIncomeEntry = incomeEntryRepository.saveAndFlush(incomeEntry);
+
+        // Get all the incomeEntryList where branchId equals to
+        defaultIncomeEntryFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllIncomeEntriesByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedIncomeEntry = incomeEntryRepository.saveAndFlush(incomeEntry);
+
+        // Get all the incomeEntryList where branchId in
+        defaultIncomeEntryFiltering("branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID, "branchId.in=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllIncomeEntriesByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedIncomeEntry = incomeEntryRepository.saveAndFlush(incomeEntry);
+
+        // Get all the incomeEntryList where branchId is not null
+        defaultIncomeEntryFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllIncomeEntriesByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedIncomeEntry = incomeEntryRepository.saveAndFlush(incomeEntry);
+
+        // Get all the incomeEntryList where branchId contains
+        defaultIncomeEntryFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllIncomeEntriesByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedIncomeEntry = incomeEntryRepository.saveAndFlush(incomeEntry);
+
+        // Get all the incomeEntryList where branchId does not contain
+        defaultIncomeEntryFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -999,6 +1056,7 @@ class IncomeEntryResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(incomeEntry.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].accountCode").value(hasItem(DEFAULT_ACCOUNT_CODE)))
             .andExpect(jsonPath("$.[*].incomeCode").value(hasItem(DEFAULT_INCOME_CODE)))
             .andExpect(jsonPath("$.[*].createdByUsername").value(hasItem(DEFAULT_CREATED_BY_USERNAME)))
@@ -1062,6 +1120,7 @@ class IncomeEntryResourceIT {
         em.detach(updatedIncomeEntry);
         updatedIncomeEntry
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .accountCode(UPDATED_ACCOUNT_CODE)
             .incomeCode(UPDATED_INCOME_CODE)
             .createdByUsername(UPDATED_CREATED_BY_USERNAME)
@@ -1185,14 +1244,14 @@ class IncomeEntryResourceIT {
 
         partialUpdatedIncomeEntry
             .branchCode(UPDATED_BRANCH_CODE)
-            .accountCode(UPDATED_ACCOUNT_CODE)
+            .branchId(UPDATED_BRANCH_ID)
+            .incomeCode(UPDATED_INCOME_CODE)
             .createdByUsername(UPDATED_CREATED_BY_USERNAME)
             .date(UPDATED_DATE)
-            .receiptNo(UPDATED_RECEIPT_NO)
+            .description(UPDATED_DESCRIPTION)
             .incomeType(UPDATED_INCOME_TYPE)
             .amount(UPDATED_AMOUNT)
-            .paymentMethod(UPDATED_PAYMENT_METHOD)
-            .syncStatus(UPDATED_SYNC_STATUS);
+            .receivedBy(UPDATED_RECEIVED_BY);
 
         restIncomeEntryMockMvc
             .perform(
@@ -1225,6 +1284,7 @@ class IncomeEntryResourceIT {
 
         partialUpdatedIncomeEntry
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .accountCode(UPDATED_ACCOUNT_CODE)
             .incomeCode(UPDATED_INCOME_CODE)
             .createdByUsername(UPDATED_CREATED_BY_USERNAME)
@@ -1360,6 +1420,7 @@ class IncomeEntryResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(incomeEntry.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].accountCode").value(hasItem(DEFAULT_ACCOUNT_CODE)))
             .andExpect(jsonPath("$.[*].incomeCode").value(hasItem(DEFAULT_INCOME_CODE)))
             .andExpect(jsonPath("$.[*].createdByUsername").value(hasItem(DEFAULT_CREATED_BY_USERNAME)))

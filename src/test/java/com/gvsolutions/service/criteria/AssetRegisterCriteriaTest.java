@@ -77,6 +77,7 @@ class AssetRegisterCriteriaTest {
     private static void setAllFilters(AssetRegisterCriteria assetRegisterCriteria) {
         assetRegisterCriteria.id();
         assetRegisterCriteria.branchCode();
+        assetRegisterCriteria.branchId();
         assetRegisterCriteria.assetRegisterCode();
         assetRegisterCriteria.assetCategoryCode();
         assetRegisterCriteria.assetSubCategoryCode();
@@ -99,6 +100,7 @@ class AssetRegisterCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId()) &&
                 condition.apply(criteria.getBranchCode()) &&
+                condition.apply(criteria.getBranchId()) &&
                 condition.apply(criteria.getAssetRegisterCode()) &&
                 condition.apply(criteria.getAssetCategoryCode()) &&
                 condition.apply(criteria.getAssetSubCategoryCode()) &&
@@ -126,6 +128,7 @@ class AssetRegisterCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
                 condition.apply(criteria.getBranchCode(), copy.getBranchCode()) &&
+                condition.apply(criteria.getBranchId(), copy.getBranchId()) &&
                 condition.apply(criteria.getAssetRegisterCode(), copy.getAssetRegisterCode()) &&
                 condition.apply(criteria.getAssetCategoryCode(), copy.getAssetCategoryCode()) &&
                 condition.apply(criteria.getAssetSubCategoryCode(), copy.getAssetSubCategoryCode()) &&

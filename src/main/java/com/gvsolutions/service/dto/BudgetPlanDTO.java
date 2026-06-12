@@ -16,6 +16,8 @@ public class BudgetPlanDTO implements Serializable {
 
     private String branchCode;
 
+    private String branchId;
+
     private String accountCode;
 
     private String budgetPlanCode;
@@ -56,6 +58,14 @@ public class BudgetPlanDTO implements Serializable {
 
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
     }
 
     public String getAccountCode() {
@@ -189,6 +199,7 @@ public class BudgetPlanDTO implements Serializable {
         return "BudgetPlanDTO{" +
             "id=" + getId() +
             ", branchCode='" + getBranchCode() + "'" +
+            ", branchId='" + getBranchId() + "'" +
             ", accountCode='" + getAccountCode() + "'" +
             ", budgetPlanCode='" + getBudgetPlanCode() + "'" +
             ", departmentName='" + getDepartmentName() + "'" +

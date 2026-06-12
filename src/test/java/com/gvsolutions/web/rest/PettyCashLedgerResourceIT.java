@@ -48,6 +48,9 @@ class PettyCashLedgerResourceIT {
     private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
     private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_PETTY_CASH_CODE = "AAAAAAAAAA";
     private static final String UPDATED_PETTY_CASH_CODE = "BBBBBBBBBB";
 
@@ -117,6 +120,7 @@ class PettyCashLedgerResourceIT {
     public static PettyCashLedger createEntity() {
         return new PettyCashLedger()
             .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .pettyCashCode(DEFAULT_PETTY_CASH_CODE)
             .date(DEFAULT_DATE)
             .pettyCashVoucherNo(DEFAULT_PETTY_CASH_VOUCHER_NO)
@@ -137,6 +141,7 @@ class PettyCashLedgerResourceIT {
     public static PettyCashLedger createUpdatedEntity() {
         return new PettyCashLedger()
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .pettyCashCode(UPDATED_PETTY_CASH_CODE)
             .date(UPDATED_DATE)
             .pettyCashVoucherNo(UPDATED_PETTY_CASH_VOUCHER_NO)
@@ -228,6 +233,7 @@ class PettyCashLedgerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(pettyCashLedger.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].pettyCashCode").value(hasItem(DEFAULT_PETTY_CASH_CODE)))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].pettyCashVoucherNo").value(hasItem(DEFAULT_PETTY_CASH_VOUCHER_NO)))
@@ -252,6 +258,7 @@ class PettyCashLedgerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(pettyCashLedger.getId().intValue()))
             .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.pettyCashCode").value(DEFAULT_PETTY_CASH_CODE))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.pettyCashVoucherNo").value(DEFAULT_PETTY_CASH_VOUCHER_NO))
@@ -332,6 +339,56 @@ class PettyCashLedgerResourceIT {
             "branchCode.doesNotContain=" + UPDATED_BRANCH_CODE,
             "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE
         );
+    }
+
+    @Test
+    @Transactional
+    void getAllPettyCashLedgersByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedPettyCashLedger = pettyCashLedgerRepository.saveAndFlush(pettyCashLedger);
+
+        // Get all the pettyCashLedgerList where branchId equals to
+        defaultPettyCashLedgerFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllPettyCashLedgersByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedPettyCashLedger = pettyCashLedgerRepository.saveAndFlush(pettyCashLedger);
+
+        // Get all the pettyCashLedgerList where branchId in
+        defaultPettyCashLedgerFiltering("branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID, "branchId.in=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllPettyCashLedgersByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedPettyCashLedger = pettyCashLedgerRepository.saveAndFlush(pettyCashLedger);
+
+        // Get all the pettyCashLedgerList where branchId is not null
+        defaultPettyCashLedgerFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllPettyCashLedgersByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedPettyCashLedger = pettyCashLedgerRepository.saveAndFlush(pettyCashLedger);
+
+        // Get all the pettyCashLedgerList where branchId contains
+        defaultPettyCashLedgerFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllPettyCashLedgersByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedPettyCashLedger = pettyCashLedgerRepository.saveAndFlush(pettyCashLedger);
+
+        // Get all the pettyCashLedgerList where branchId does not contain
+        defaultPettyCashLedgerFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -945,6 +1002,7 @@ class PettyCashLedgerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(pettyCashLedger.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].pettyCashCode").value(hasItem(DEFAULT_PETTY_CASH_CODE)))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].pettyCashVoucherNo").value(hasItem(DEFAULT_PETTY_CASH_VOUCHER_NO)))
@@ -1005,6 +1063,7 @@ class PettyCashLedgerResourceIT {
         em.detach(updatedPettyCashLedger);
         updatedPettyCashLedger
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .pettyCashCode(UPDATED_PETTY_CASH_CODE)
             .date(UPDATED_DATE)
             .pettyCashVoucherNo(UPDATED_PETTY_CASH_VOUCHER_NO)
@@ -1124,11 +1183,11 @@ class PettyCashLedgerResourceIT {
         partialUpdatedPettyCashLedger.setId(pettyCashLedger.getId());
 
         partialUpdatedPettyCashLedger
+            .pettyCashCode(UPDATED_PETTY_CASH_CODE)
             .date(UPDATED_DATE)
-            .pettyCashVoucherNo(UPDATED_PETTY_CASH_VOUCHER_NO)
+            .cashIn(UPDATED_CASH_IN)
             .cashOut(UPDATED_CASH_OUT)
-            .runningBalance(UPDATED_RUNNING_BALANCE)
-            .linkedAccountCode(UPDATED_LINKED_ACCOUNT_CODE);
+            .runningBalance(UPDATED_RUNNING_BALANCE);
 
         restPettyCashLedgerMockMvc
             .perform(
@@ -1161,6 +1220,7 @@ class PettyCashLedgerResourceIT {
 
         partialUpdatedPettyCashLedger
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .pettyCashCode(UPDATED_PETTY_CASH_CODE)
             .date(UPDATED_DATE)
             .pettyCashVoucherNo(UPDATED_PETTY_CASH_VOUCHER_NO)
@@ -1296,6 +1356,7 @@ class PettyCashLedgerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(pettyCashLedger.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].pettyCashCode").value(hasItem(DEFAULT_PETTY_CASH_CODE)))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].pettyCashVoucherNo").value(hasItem(DEFAULT_PETTY_CASH_VOUCHER_NO)))

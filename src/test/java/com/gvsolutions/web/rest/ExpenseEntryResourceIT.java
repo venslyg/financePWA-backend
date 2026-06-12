@@ -51,6 +51,9 @@ class ExpenseEntryResourceIT {
     private static final String DEFAULT_BRANCH_CODE = "AAAAAAAAAA";
     private static final String UPDATED_BRANCH_CODE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_BRANCH_ID = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCH_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_ACCOUNT_CODE = "AAAAAAAAAA";
     private static final String UPDATED_ACCOUNT_CODE = "BBBBBBBBBB";
 
@@ -133,6 +136,7 @@ class ExpenseEntryResourceIT {
     public static ExpenseEntry createEntity() {
         return new ExpenseEntry()
             .branchCode(DEFAULT_BRANCH_CODE)
+            .branchId(DEFAULT_BRANCH_ID)
             .accountCode(DEFAULT_ACCOUNT_CODE)
             .expenseCode(DEFAULT_EXPENSE_CODE)
             .expenseCategoryCode(DEFAULT_EXPENSE_CATEGORY_CODE)
@@ -158,6 +162,7 @@ class ExpenseEntryResourceIT {
     public static ExpenseEntry createUpdatedEntity() {
         return new ExpenseEntry()
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .accountCode(UPDATED_ACCOUNT_CODE)
             .expenseCode(UPDATED_EXPENSE_CODE)
             .expenseCategoryCode(UPDATED_EXPENSE_CATEGORY_CODE)
@@ -254,6 +259,7 @@ class ExpenseEntryResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(expenseEntry.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].accountCode").value(hasItem(DEFAULT_ACCOUNT_CODE)))
             .andExpect(jsonPath("$.[*].expenseCode").value(hasItem(DEFAULT_EXPENSE_CODE)))
             .andExpect(jsonPath("$.[*].expenseCategoryCode").value(hasItem(DEFAULT_EXPENSE_CATEGORY_CODE)))
@@ -283,6 +289,7 @@ class ExpenseEntryResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(expenseEntry.getId().intValue()))
             .andExpect(jsonPath("$.branchCode").value(DEFAULT_BRANCH_CODE))
+            .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.accountCode").value(DEFAULT_ACCOUNT_CODE))
             .andExpect(jsonPath("$.expenseCode").value(DEFAULT_EXPENSE_CODE))
             .andExpect(jsonPath("$.expenseCategoryCode").value(DEFAULT_EXPENSE_CATEGORY_CODE))
@@ -368,6 +375,56 @@ class ExpenseEntryResourceIT {
             "branchCode.doesNotContain=" + UPDATED_BRANCH_CODE,
             "branchCode.doesNotContain=" + DEFAULT_BRANCH_CODE
         );
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseEntriesByBranchIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedExpenseEntry = expenseEntryRepository.saveAndFlush(expenseEntry);
+
+        // Get all the expenseEntryList where branchId equals to
+        defaultExpenseEntryFiltering("branchId.equals=" + DEFAULT_BRANCH_ID, "branchId.equals=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseEntriesByBranchIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedExpenseEntry = expenseEntryRepository.saveAndFlush(expenseEntry);
+
+        // Get all the expenseEntryList where branchId in
+        defaultExpenseEntryFiltering("branchId.in=" + DEFAULT_BRANCH_ID + "," + UPDATED_BRANCH_ID, "branchId.in=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseEntriesByBranchIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedExpenseEntry = expenseEntryRepository.saveAndFlush(expenseEntry);
+
+        // Get all the expenseEntryList where branchId is not null
+        defaultExpenseEntryFiltering("branchId.specified=true", "branchId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseEntriesByBranchIdContainsSomething() throws Exception {
+        // Initialize the database
+        insertedExpenseEntry = expenseEntryRepository.saveAndFlush(expenseEntry);
+
+        // Get all the expenseEntryList where branchId contains
+        defaultExpenseEntryFiltering("branchId.contains=" + DEFAULT_BRANCH_ID, "branchId.contains=" + UPDATED_BRANCH_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseEntriesByBranchIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        insertedExpenseEntry = expenseEntryRepository.saveAndFlush(expenseEntry);
+
+        // Get all the expenseEntryList where branchId does not contain
+        defaultExpenseEntryFiltering("branchId.doesNotContain=" + UPDATED_BRANCH_ID, "branchId.doesNotContain=" + DEFAULT_BRANCH_ID);
     }
 
     @Test
@@ -1137,6 +1194,7 @@ class ExpenseEntryResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(expenseEntry.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].accountCode").value(hasItem(DEFAULT_ACCOUNT_CODE)))
             .andExpect(jsonPath("$.[*].expenseCode").value(hasItem(DEFAULT_EXPENSE_CODE)))
             .andExpect(jsonPath("$.[*].expenseCategoryCode").value(hasItem(DEFAULT_EXPENSE_CATEGORY_CODE)))
@@ -1202,6 +1260,7 @@ class ExpenseEntryResourceIT {
         em.detach(updatedExpenseEntry);
         updatedExpenseEntry
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .accountCode(UPDATED_ACCOUNT_CODE)
             .expenseCode(UPDATED_EXPENSE_CODE)
             .expenseCategoryCode(UPDATED_EXPENSE_CATEGORY_CODE)
@@ -1327,15 +1386,15 @@ class ExpenseEntryResourceIT {
 
         partialUpdatedExpenseEntry
             .branchCode(UPDATED_BRANCH_CODE)
+            .accountCode(UPDATED_ACCOUNT_CODE)
             .expenseCode(UPDATED_EXPENSE_CODE)
             .expenseCategoryCode(UPDATED_EXPENSE_CATEGORY_CODE)
-            .expenseSubCategoryCode(UPDATED_EXPENSE_SUB_CATEGORY_CODE)
+            .createdByUsername(UPDATED_CREATED_BY_USERNAME)
             .date(UPDATED_DATE)
-            .voucherNo(UPDATED_VOUCHER_NO)
+            .description(UPDATED_DESCRIPTION)
             .amount(UPDATED_AMOUNT)
             .paymentMode(UPDATED_PAYMENT_MODE)
-            .approvalStatus(UPDATED_APPROVAL_STATUS)
-            .vendor(UPDATED_VENDOR);
+            .approvedBy(UPDATED_APPROVED_BY);
 
         restExpenseEntryMockMvc
             .perform(
@@ -1368,6 +1427,7 @@ class ExpenseEntryResourceIT {
 
         partialUpdatedExpenseEntry
             .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .accountCode(UPDATED_ACCOUNT_CODE)
             .expenseCode(UPDATED_EXPENSE_CODE)
             .expenseCategoryCode(UPDATED_EXPENSE_CATEGORY_CODE)
@@ -1505,6 +1565,7 @@ class ExpenseEntryResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(expenseEntry.getId().intValue())))
             .andExpect(jsonPath("$.[*].branchCode").value(hasItem(DEFAULT_BRANCH_CODE)))
+            .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].accountCode").value(hasItem(DEFAULT_ACCOUNT_CODE)))
             .andExpect(jsonPath("$.[*].expenseCode").value(hasItem(DEFAULT_EXPENSE_CODE)))
             .andExpect(jsonPath("$.[*].expenseCategoryCode").value(hasItem(DEFAULT_EXPENSE_CATEGORY_CODE)))

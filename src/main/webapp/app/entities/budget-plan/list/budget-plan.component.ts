@@ -34,6 +34,7 @@ import { BudgetPlanDeleteDialogComponent } from '../delete/budget-plan-delete-di
 export class BudgetPlanComponent implements OnInit {
   private static readonly NOT_SORTABLE_FIELDS_AFTER_SEARCH = [
     'branchCode',
+    'branchId',
     'accountCode',
     'budgetPlanCode',
     'departmentName',

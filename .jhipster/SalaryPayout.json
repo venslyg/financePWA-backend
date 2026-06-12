@@ -1,0 +1,87 @@
+{
+  "annotations": {
+    "changelogDate": "20260612070341",
+    "enableAudit": true
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "branchCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "salaryPayoutCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "staffCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "payPeriod",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "baseSalary",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "allowances",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "deductions",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "netPay",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "payoutDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "createdBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    }
+  ],
+  "incrementalChangelog": true,
+  "jpaMetamodelFiltering": true,
+  "name": "SalaryPayout",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass"
+}

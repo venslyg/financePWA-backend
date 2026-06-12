@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (accountSet(); as accountSetRef) {
+      <div>
+        <h2 data-cy="accountSetDetailsHeading"><span>Account Set</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ accountSetRef.id }}</span>
+          </dd>
+          <dt><span>Branch Code</span></dt>
+          <dd>
+            <span>{{ accountSetRef.branchCode }}</span>
+          </dd>
+          <dt><span>Account Code</span></dt>
+          <dd>
+            <span>{{ accountSetRef.accountCode }}</span>
+          </dd>
+          <dt><span>Account Name</span></dt>
+          <dd>
+            <span>{{ accountSetRef.accountName }}</span>
+          </dd>
+          <dt><span>Account Type</span></dt>
+          <dd>
+            <span>{{
+              { null: '', ASSET: 'ASSET', INCOME: 'INCOME', EXPENSE: 'EXPENSE', LIABILITY: 'LIABILITY' }[
+                accountSetRef.accountType ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span>Sub Category</span></dt>
+          <dd>
+            <span>{{ accountSetRef.subCategory }}</span>
+          </dd>
+          <dt><span>Remark</span></dt>
+          <dd>
+            <span>{{ accountSetRef.remark }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ accountSetRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ accountSetRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ accountSetRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ accountSetRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/account-set', accountSetRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

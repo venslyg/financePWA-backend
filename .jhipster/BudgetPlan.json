@@ -1,0 +1,91 @@
+{
+  "annotations": {
+    "changelogDate": "20260612070338",
+    "enableAudit": true
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "branchCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accountCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "budgetPlanCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "departmentName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "year",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "allocatedAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "spentAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "remainingAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "usedPercentage",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "alertStatus",
+      "fieldType": "BudgetAlertStatus",
+      "fieldValues": "NORMAL,WARNING_80_PERCENT,RED_ALERT_100_PERCENT,NEED_APPROVAL"
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "createdBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    }
+  ],
+  "incrementalChangelog": true,
+  "jpaMetamodelFiltering": true,
+  "name": "BudgetPlan",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass"
+}

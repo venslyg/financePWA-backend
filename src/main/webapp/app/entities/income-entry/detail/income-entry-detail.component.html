@@ -1,0 +1,104 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (incomeEntry(); as incomeEntryRef) {
+      <div>
+        <h2 data-cy="incomeEntryDetailsHeading"><span>Income Entry</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ incomeEntryRef.id }}</span>
+          </dd>
+          <dt><span>Branch Code</span></dt>
+          <dd>
+            <span>{{ incomeEntryRef.branchCode }}</span>
+          </dd>
+          <dt><span>Account Code</span></dt>
+          <dd>
+            <span>{{ incomeEntryRef.accountCode }}</span>
+          </dd>
+          <dt><span>Income Code</span></dt>
+          <dd>
+            <span>{{ incomeEntryRef.incomeCode }}</span>
+          </dd>
+          <dt><span>Created By Username</span></dt>
+          <dd>
+            <span>{{ incomeEntryRef.createdByUsername }}</span>
+          </dd>
+          <dt><span>Date</span></dt>
+          <dd>
+            <span>{{ incomeEntryRef.date | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Receipt No</span></dt>
+          <dd>
+            <span>{{ incomeEntryRef.receiptNo }}</span>
+          </dd>
+          <dt><span>Description</span></dt>
+          <dd>
+            <span>{{ incomeEntryRef.description }}</span>
+          </dd>
+          <dt><span>Income Type</span></dt>
+          <dd>
+            <span>{{
+              { null: '', REGULAR: 'REGULAR', DONATION: 'DONATION', EVENTS: 'EVENTS', GIFT: 'GIFT', OFFERING: 'OFFERING' }[
+                incomeEntryRef.incomeType ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span>Amount</span></dt>
+          <dd>
+            <span>{{ incomeEntryRef.amount }}</span>
+          </dd>
+          <dt><span>Payment Method</span></dt>
+          <dd>
+            <span>{{
+              { null: '', CASH: 'CASH', BANK: 'BANK', CHEQUE: 'CHEQUE', CARD: 'CARD' }[incomeEntryRef.paymentMethod ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span>Receivable Person</span></dt>
+          <dd>
+            <span>{{ incomeEntryRef.receivablePerson }}</span>
+          </dd>
+          <dt><span>Received By</span></dt>
+          <dd>
+            <span>{{ incomeEntryRef.receivedBy }}</span>
+          </dd>
+          <dt><span>Sync Status</span></dt>
+          <dd>
+            <span>{{ { null: '', SYNCED: 'SYNCED', PENDING_OFFLINE: 'PENDING_OFFLINE' }[incomeEntryRef.syncStatus ?? 'null'] }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ incomeEntryRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ incomeEntryRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ incomeEntryRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ incomeEntryRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/income-entry', incomeEntryRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

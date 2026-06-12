@@ -1,0 +1,325 @@
+// ==========================================
+// 1. ENUMS (Global Dropdown Definitions)
+// ==========================================
+
+enum AccountType {
+    ASSET, INCOME, EXPENSE, LIABILITY
+}
+
+enum IncomeType {
+    REGULAR, DONATION, EVENTS, GIFT, OFFERING
+}
+
+enum PaymentMode {
+    CASH, BANK, CHEQUE, CARD
+}
+
+enum MaintenanceLogType {
+    REPAIR, REPLACEMENT
+}
+
+enum LiabilityType {
+    LONG_TERM, SHORT_TERM
+}
+
+enum SyncStatus {
+    SYNCED, PENDING_OFFLINE
+}
+
+enum ApprovalStatus {
+    APPROVED, DECLINED, PENDING, TO_REVIEW, FAILED
+}
+
+enum BudgetAlertStatus {
+    NORMAL, WARNING_80_PERCENT, RED_ALERT_100_PERCENT, NEED_APPROVAL
+}
+
+enum StaffType {
+    PASTORAL, FULL_TIME, PART_TIME, CASUAL_WORKER, VOLUNTEER
+}
+
+
+// ==========================================
+// 2. ENTITIES (Core Data Tables)
+// ==========================================
+
+/**
+ * Branch Entity representing individual churches
+ */
+@EnableAudit
+entity Branch {
+    branchCode String
+    branchName String
+    location String
+    phoneNumber String
+    isActive Boolean
+}
+
+/**
+ * Chart of Accounts / Account Set
+ */
+@EnableAudit
+entity AccountSet {
+    branchCode String
+    accountCode String
+    accountName String
+    accountType AccountType
+    subCategory String
+    remark String
+}
+
+/**
+ * Income Entries (Basic Package & Donation Tracker)
+ */
+@EnableAudit
+entity IncomeEntry {
+    branchCode String
+    accountCode String
+    incomeCode String
+    createdByUsername String    // Maps softly to JHipster built-in User login
+    date LocalDate
+    receiptNo String
+    description String
+    incomeType IncomeType
+    amount BigDecimal
+    paymentMethod PaymentMode
+    receivablePerson String
+    receivedBy String
+    syncStatus SyncStatus
+}
+
+@EnableAudit
+entity ExpenseCategory {
+    categoryCode String
+    categoryName String
+    description String
+}
+
+@EnableAudit
+entity ExpenseSubCategory {
+    categoryCode String
+    subCategoryCode String
+    subCategoryName String
+}
+
+/**
+ * Expense Entries & Bank/Petty Cash Transactions
+ */
+@EnableAudit
+entity ExpenseEntry {
+    branchCode String
+    accountCode String
+    expenseCode String
+    expenseCategoryCode String
+    expenseSubCategoryCode String
+    createdByUsername String    // Maps softly to JHipster built-in User login
+    date LocalDate
+    voucherNo String
+    description String
+    amount BigDecimal
+    paymentMode PaymentMode
+    approvalStatus ApprovalStatus
+    approvedBy String
+    vendor String
+    syncStatus SyncStatus
+}
+
+@EnableAudit
+entity BankLedger {
+    branchCode String
+    bankLedgerCode String
+    date LocalDate
+    referenceNo String
+    description String
+    depositAmount BigDecimal
+    withdrawalAmount BigDecimal
+    runningBalance BigDecimal
+    remark String
+}
+
+@EnableAudit
+entity PettyCashLedger {
+    branchCode String
+    pettyCashCode String
+    date LocalDate
+    pettyCashVoucherNo String
+    description String
+    cashIn BigDecimal
+    cashOut BigDecimal
+    runningBalance BigDecimal
+    linkedAccountCode String
+    referenceNo String
+}
+
+@EnableAudit
+entity AssetCategory {
+    assetCategoryCode String
+    assetCategoryName String
+    description String
+}
+
+@EnableAudit
+entity AssetSubCategory {
+    assetCategoryCode String
+    assetSubCategoryCode String
+    assetSubCategoryName String
+}
+
+/**
+ * Asset Register & Depreciation
+ */
+@EnableAudit
+entity AssetRegister {
+    branchCode String
+    assetRegisterCode String
+    assetCategoryCode String
+    assetSubCategoryCode String
+    assetName String
+    category String
+    purchaseDate LocalDate
+    purchaseCost BigDecimal
+    currentValue BigDecimal
+    depreciationRate BigDecimal
+    accumulatedDepreciation BigDecimal
+}
+
+@EnableAudit
+entity AssetDepreciationHistory {
+    assetRegisterCode String
+    depreciationDate LocalDate
+    depreciationAmount BigDecimal
+    valueAfterDepreciation BigDecimal
+    processedBy String
+}
+
+/**
+ * Asset Maintenance Log
+ */
+@EnableAudit
+entity MaintenanceLog {
+    maintenanceLogCode String
+    logDate LocalDate
+    logType MaintenanceLogType
+    description String
+    cost BigDecimal
+    vendor String
+    nextServiceDate LocalDate
+    note String
+}
+
+/**
+ * Inventory / Consumables (Non-Asset)
+ */
+@EnableAudit
+entity InventoryItem {
+    branchCode String
+    inventoryItemCode String
+    itemName String
+    category String
+    quantity BigDecimal
+    unitPrice BigDecimal
+    runningStockCount BigDecimal
+}
+
+@EnableAudit
+entity BinCardLine {
+    inventoryItemCode String
+    date LocalDate
+    referenceNo String
+    description String
+    quantityIn BigDecimal
+    quantityOut BigDecimal
+    runningBalance BigDecimal
+}
+
+/**
+ * Liabilities Log
+ */
+@EnableAudit
+entity LiabilityLog {
+    branchCode String
+    liabilityCode String
+    loanFrom String
+    description String
+    liabilityType LiabilityType
+    totalLoanAmount BigDecimal
+    startDate LocalDate
+    endDate LocalDate
+    interestPercentage BigDecimal
+    monthlyPaymentAmount BigDecimal
+    principalPaid BigDecimal
+    balanceToPay BigDecimal
+    status ApprovalStatus
+}
+
+@EnableAudit
+entity BudgetPlan {
+    branchCode String
+    accountCode String
+    budgetPlanCode String
+    departmentName String
+    year Integer
+    allocatedAmount BigDecimal
+    spentAmount BigDecimal
+    remainingAmount BigDecimal
+    usedPercentage BigDecimal
+    alertStatus BudgetAlertStatus
+}
+
+@EnableAudit
+entity DonationTracker {
+    branchCode String
+    donationIdCode String
+    date LocalDate
+    donorNameOrOrg String
+    contactDetails String
+    amount BigDecimal
+    purpose String
+    receivedViaMode PaymentMode
+    notes String
+}
+
+/**
+ * Staff and Worker Directories tracking variable skill roles
+ */
+@EnableAudit
+entity ChurchStaff {
+    staffCode String
+    branchCode String
+    fullName String
+    position String
+    staffType StaffType
+    contactNumber String
+    hourlyRateOrMonthlySalary BigDecimal
+    isActive Boolean
+}
+
+@EnableAudit
+entity SalaryPayout {
+    branchCode String
+    salaryPayoutCode String unique
+    staffCode String
+    payPeriod String
+    baseSalary BigDecimal
+    allowances BigDecimal
+    deductions BigDecimal
+    netPay BigDecimal
+    payoutDate LocalDate
+}
+
+
+// ==========================================
+// 3. HARD RELATIONSHIPS (Strict Metadata Only)
+// ==========================================
+
+relationship ManyToOne {
+    MaintenanceLog{asset(assetRegisterCode)} to AssetRegister
+    ExpenseSubCategory{category(categoryCode)} to ExpenseCategory
+    AssetSubCategory{category(assetCategoryCode)} to AssetCategory
+}
+
+// Global configurations
+paginate * with pagination
+dto * with mapstruct
+service * with serviceClass
+filter *

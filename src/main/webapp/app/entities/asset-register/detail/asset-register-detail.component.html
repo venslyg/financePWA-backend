@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (assetRegister(); as assetRegisterRef) {
+      <div>
+        <h2 data-cy="assetRegisterDetailsHeading"><span>Asset Register</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.id }}</span>
+          </dd>
+          <dt><span>Branch Code</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.branchCode }}</span>
+          </dd>
+          <dt><span>Asset Register Code</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.assetRegisterCode }}</span>
+          </dd>
+          <dt><span>Asset Category Code</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.assetCategoryCode }}</span>
+          </dd>
+          <dt><span>Asset Sub Category Code</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.assetSubCategoryCode }}</span>
+          </dd>
+          <dt><span>Asset Name</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.assetName }}</span>
+          </dd>
+          <dt><span>Category</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.category }}</span>
+          </dd>
+          <dt><span>Purchase Date</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.purchaseDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Purchase Cost</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.purchaseCost }}</span>
+          </dd>
+          <dt><span>Current Value</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.currentValue }}</span>
+          </dd>
+          <dt><span>Depreciation Rate</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.depreciationRate }}</span>
+          </dd>
+          <dt><span>Accumulated Depreciation</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.accumulatedDepreciation }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ assetRegisterRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/asset-register', assetRegisterRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

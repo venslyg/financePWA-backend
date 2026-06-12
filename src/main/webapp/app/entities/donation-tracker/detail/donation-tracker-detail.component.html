@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (donationTracker(); as donationTrackerRef) {
+      <div>
+        <h2 data-cy="donationTrackerDetailsHeading"><span>Donation Tracker</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ donationTrackerRef.id }}</span>
+          </dd>
+          <dt><span>Branch Code</span></dt>
+          <dd>
+            <span>{{ donationTrackerRef.branchCode }}</span>
+          </dd>
+          <dt><span>Donation Id Code</span></dt>
+          <dd>
+            <span>{{ donationTrackerRef.donationIdCode }}</span>
+          </dd>
+          <dt><span>Date</span></dt>
+          <dd>
+            <span>{{ donationTrackerRef.date | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Donor Name Or Org</span></dt>
+          <dd>
+            <span>{{ donationTrackerRef.donorNameOrOrg }}</span>
+          </dd>
+          <dt><span>Contact Details</span></dt>
+          <dd>
+            <span>{{ donationTrackerRef.contactDetails }}</span>
+          </dd>
+          <dt><span>Amount</span></dt>
+          <dd>
+            <span>{{ donationTrackerRef.amount }}</span>
+          </dd>
+          <dt><span>Purpose</span></dt>
+          <dd>
+            <span>{{ donationTrackerRef.purpose }}</span>
+          </dd>
+          <dt><span>Received Via Mode</span></dt>
+          <dd>
+            <span>{{
+              { null: '', CASH: 'CASH', BANK: 'BANK', CHEQUE: 'CHEQUE', CARD: 'CARD' }[donationTrackerRef.receivedViaMode ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span>Notes</span></dt>
+          <dd>
+            <span>{{ donationTrackerRef.notes }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ donationTrackerRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ donationTrackerRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ donationTrackerRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ donationTrackerRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/donation-tracker', donationTrackerRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

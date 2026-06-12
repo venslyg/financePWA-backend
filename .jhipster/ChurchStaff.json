@@ -1,0 +1,84 @@
+{
+  "annotations": {
+    "changelogDate": "20260612070340",
+    "enableAudit": true
+  },
+  "applications": "*",
+  "documentation": "Staff and Worker Directories tracking variable skill roles",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "staffCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "branchCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fullName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "position",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "staffType",
+      "fieldType": "StaffType",
+      "fieldValues": "PASTORAL,FULL_TIME,PART_TIME,CASUAL_WORKER,VOLUNTEER"
+    },
+    {
+      "fieldName": "contactNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hourlyRateOrMonthlySalary",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "isActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "createdBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    }
+  ],
+  "incrementalChangelog": true,
+  "jpaMetamodelFiltering": true,
+  "name": "ChurchStaff",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass"
+}

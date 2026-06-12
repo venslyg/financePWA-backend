@@ -1,0 +1,114 @@
+{
+  "annotations": {
+    "changelogDate": "20260612070327",
+    "enableAudit": true
+  },
+  "applications": "*",
+  "documentation": "Expense Entries & Bank/Petty Cash Transactions",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "branchCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accountCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "expenseCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "expenseCategoryCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "expenseSubCategoryCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdByUsername",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "voucherNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "paymentMode",
+      "fieldType": "PaymentMode",
+      "fieldValues": "CASH,BANK,CHEQUE,CARD"
+    },
+    {
+      "fieldName": "approvalStatus",
+      "fieldType": "ApprovalStatus",
+      "fieldValues": "APPROVED,DECLINED,PENDING,TO_REVIEW,FAILED"
+    },
+    {
+      "fieldName": "approvedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vendor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "syncStatus",
+      "fieldType": "SyncStatus",
+      "fieldValues": "SYNCED,PENDING_OFFLINE"
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "createdBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    }
+  ],
+  "incrementalChangelog": true,
+  "jpaMetamodelFiltering": true,
+  "name": "ExpenseEntry",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass"
+}

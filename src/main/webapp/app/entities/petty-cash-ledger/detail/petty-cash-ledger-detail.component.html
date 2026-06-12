@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (pettyCashLedger(); as pettyCashLedgerRef) {
+      <div>
+        <h2 data-cy="pettyCashLedgerDetailsHeading"><span>Petty Cash Ledger</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ pettyCashLedgerRef.id }}</span>
+          </dd>
+          <dt><span>Branch Code</span></dt>
+          <dd>
+            <span>{{ pettyCashLedgerRef.branchCode }}</span>
+          </dd>
+          <dt><span>Petty Cash Code</span></dt>
+          <dd>
+            <span>{{ pettyCashLedgerRef.pettyCashCode }}</span>
+          </dd>
+          <dt><span>Date</span></dt>
+          <dd>
+            <span>{{ pettyCashLedgerRef.date | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Petty Cash Voucher No</span></dt>
+          <dd>
+            <span>{{ pettyCashLedgerRef.pettyCashVoucherNo }}</span>
+          </dd>
+          <dt><span>Description</span></dt>
+          <dd>
+            <span>{{ pettyCashLedgerRef.description }}</span>
+          </dd>
+          <dt><span>Cash In</span></dt>
+          <dd>
+            <span>{{ pettyCashLedgerRef.cashIn }}</span>
+          </dd>
+          <dt><span>Cash Out</span></dt>
+          <dd>
+            <span>{{ pettyCashLedgerRef.cashOut }}</span>
+          </dd>
+          <dt><span>Running Balance</span></dt>
+          <dd>
+            <span>{{ pettyCashLedgerRef.runningBalance }}</span>
+          </dd>
+          <dt><span>Linked Account Code</span></dt>
+          <dd>
+            <span>{{ pettyCashLedgerRef.linkedAccountCode }}</span>
+          </dd>
+          <dt><span>Reference No</span></dt>
+          <dd>
+            <span>{{ pettyCashLedgerRef.referenceNo }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ pettyCashLedgerRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ pettyCashLedgerRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ pettyCashLedgerRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ pettyCashLedgerRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/petty-cash-ledger', pettyCashLedgerRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

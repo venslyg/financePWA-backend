@@ -1,0 +1,92 @@
+{
+  "annotations": {
+    "changelogDate": "20260612070334",
+    "enableAudit": true
+  },
+  "applications": "*",
+  "documentation": "Asset Maintenance Log",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "maintenanceLogCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "logDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "logType",
+      "fieldType": "MaintenanceLogType",
+      "fieldValues": "REPAIR,REPLACEMENT"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cost",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "vendor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nextServiceDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String"
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "createdBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    }
+  ],
+  "incrementalChangelog": true,
+  "jpaMetamodelFiltering": true,
+  "name": "MaintenanceLog",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "assetRegisterCode",
+      "otherEntityName": "assetRegister",
+      "relationshipName": "asset",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,267 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-liability-log-heading" data-cy="LiabilityLogCreateUpdateHeading">Create or edit a Liability Log</h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_branchCode">Branch Code</label>
+          <input
+            type="text"
+            class="form-control"
+            name="branchCode"
+            id="field_branchCode"
+            data-cy="branchCode"
+            formControlName="branchCode"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_liabilityCode">Liability Code</label>
+          <input
+            type="text"
+            class="form-control"
+            name="liabilityCode"
+            id="field_liabilityCode"
+            data-cy="liabilityCode"
+            formControlName="liabilityCode"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_loanFrom">Loan From</label>
+          <input type="text" class="form-control" name="loanFrom" id="field_loanFrom" data-cy="loanFrom" formControlName="loanFrom" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_liabilityType">Liability Type</label>
+          <select
+            class="form-control"
+            name="liabilityType"
+            formControlName="liabilityType"
+            id="field_liabilityType"
+            data-cy="liabilityType"
+          >
+            <option [ngValue]="null"></option>
+            @for (liabilityType of liabilityTypeValues; track $index) {
+              <option [value]="liabilityType">{{ { null: '', LONG_TERM: 'LONG_TERM', SHORT_TERM: 'SHORT_TERM' }[liabilityType] }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_totalLoanAmount">Total Loan Amount</label>
+          <input
+            type="number"
+            class="form-control"
+            name="totalLoanAmount"
+            id="field_totalLoanAmount"
+            data-cy="totalLoanAmount"
+            formControlName="totalLoanAmount"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_startDate">Start Date</label>
+          <div class="input-group">
+            <input
+              id="field_startDate"
+              data-cy="startDate"
+              type="text"
+              class="form-control"
+              name="startDate"
+              ngbDatepicker
+              #startDateDp="ngbDatepicker"
+              formControlName="startDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_endDate">End Date</label>
+          <div class="input-group">
+            <input
+              id="field_endDate"
+              data-cy="endDate"
+              type="text"
+              class="form-control"
+              name="endDate"
+              ngbDatepicker
+              #endDateDp="ngbDatepicker"
+              formControlName="endDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="endDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_interestPercentage">Interest Percentage</label>
+          <input
+            type="number"
+            class="form-control"
+            name="interestPercentage"
+            id="field_interestPercentage"
+            data-cy="interestPercentage"
+            formControlName="interestPercentage"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_monthlyPaymentAmount">Monthly Payment Amount</label>
+          <input
+            type="number"
+            class="form-control"
+            name="monthlyPaymentAmount"
+            id="field_monthlyPaymentAmount"
+            data-cy="monthlyPaymentAmount"
+            formControlName="monthlyPaymentAmount"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_principalPaid">Principal Paid</label>
+          <input
+            type="number"
+            class="form-control"
+            name="principalPaid"
+            id="field_principalPaid"
+            data-cy="principalPaid"
+            formControlName="principalPaid"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_balanceToPay">Balance To Pay</label>
+          <input
+            type="number"
+            class="form-control"
+            name="balanceToPay"
+            id="field_balanceToPay"
+            data-cy="balanceToPay"
+            formControlName="balanceToPay"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null"></option>
+            @for (approvalStatus of approvalStatusValues; track $index) {
+              <option [value]="approvalStatus">
+                {{
+                  { null: '', APPROVED: 'APPROVED', DECLINED: 'DECLINED', PENDING: 'PENDING', TO_REVIEW: 'TO_REVIEW', FAILED: 'FAILED' }[
+                    approvalStatus
+                  ]
+                }}
+              </option>
+            }
+          </select>
+        </div>
+
+        @if (editForm.controls.createdBy.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_createdBy">Created By</label>
+            <input
+              type="text"
+              class="form-control"
+              name="createdBy"
+              id="field_createdBy"
+              data-cy="createdBy"
+              formControlName="createdBy"
+              [readonly]="true"
+            />
+          </div>
+        }
+
+        @if (editForm.controls.createdDate.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_createdDate">Created Date</label>
+            <div class="d-flex">
+              <input
+                id="field_createdDate"
+                data-cy="createdDate"
+                type="datetime-local"
+                class="form-control"
+                name="createdDate"
+                formControlName="createdDate"
+                placeholder="YYYY-MM-DD HH:mm"
+                [readonly]="true"
+              />
+            </div>
+          </div>
+        }
+
+        @if (editForm.controls.lastModifiedBy.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_lastModifiedBy">Last Modified By</label>
+            <input
+              type="text"
+              class="form-control"
+              name="lastModifiedBy"
+              id="field_lastModifiedBy"
+              data-cy="lastModifiedBy"
+              formControlName="lastModifiedBy"
+              [readonly]="true"
+            />
+          </div>
+        }
+
+        @if (editForm.controls.lastModifiedDate.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_lastModifiedDate">Last Modified Date</label>
+            <div class="d-flex">
+              <input
+                id="field_lastModifiedDate"
+                data-cy="lastModifiedDate"
+                type="datetime-local"
+                class="form-control"
+                name="lastModifiedDate"
+                formControlName="lastModifiedDate"
+                placeholder="YYYY-MM-DD HH:mm"
+                [readonly]="true"
+              />
+            </div>
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

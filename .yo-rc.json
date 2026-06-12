@@ -3,6 +3,12 @@
     "applicationType": "monolith",
     "authenticationType": "jwt",
     "baseName": "accountSystemBackend",
+    "blueprints": [
+      {
+        "name": "generator-jhipster-entity-audit",
+        "version": "5.11.0"
+      }
+    ],
     "buildTool": "gradle",
     "cacheProvider": "ehcache",
     "clientFramework": "angular",
@@ -17,11 +23,34 @@
     "enableGradleEnterprise": false,
     "enableHibernateCache": false,
     "enableTranslation": false,
-    "entities": [],
+    "entities": [
+      "Branch",
+      "AccountSet",
+      "IncomeEntry",
+      "ExpenseCategory",
+      "ExpenseSubCategory",
+      "ExpenseEntry",
+      "BankLedger",
+      "PettyCashLedger",
+      "AssetCategory",
+      "AssetSubCategory",
+      "AssetRegister",
+      "AssetDepreciationHistory",
+      "MaintenanceLog",
+      "InventoryItem",
+      "BinCardLine",
+      "LiabilityLog",
+      "BudgetPlan",
+      "DonationTracker",
+      "ChurchStaff",
+      "SalaryPayout"
+    ],
     "feignClient": null,
     "gradleEnterpriseHost": null,
+    "incrementalChangelog": true,
     "jhipsterVersion": "8.11.0",
     "jwtSecretKey": "YjM5Y2NiNGUyYzZlM2VjY2RkYjZjOTdiN2I2Yjc4MGRkMDMzNDZkOGFjMzM5OWJmODFkODUyMTdmZmQ2YzAwMWU4NWNlMGY5NDI3MTQ5Y2NmMzE5MzYwYzQzZWU1YjNhMzM5MjJiM2VhZjAyMTBiMWZkZDM4NDEzODc3ZmYxNzU=",
+    "lastLiquibaseTimestamp": 1781247821000,
     "microfrontend": null,
     "microfrontends": [],
     "nativeLanguage": "en",
@@ -34,5 +63,10 @@
     "syncUserWithIdp": null,
     "testFrameworks": ["cucumber", "cypress"],
     "withAdminUi": true
+  },
+  "generator-jhipster-entity-audit": {
+    "auditFramework": "custom",
+    "auditPage": true,
+    "entityAuditEventChangelogDate": "20260612070321"
   }
 }

@@ -1,0 +1,106 @@
+{
+  "annotations": {
+    "changelogDate": "20260612070324",
+    "enableAudit": true
+  },
+  "applications": "*",
+  "documentation": "Income Entries (Basic Package & Donation Tracker)",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "branchCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accountCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "incomeCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdByUsername",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "receiptNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "incomeType",
+      "fieldType": "IncomeType",
+      "fieldValues": "REGULAR,DONATION,EVENTS,GIFT,OFFERING"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "paymentMethod",
+      "fieldType": "PaymentMode",
+      "fieldValues": "CASH,BANK,CHEQUE,CARD"
+    },
+    {
+      "fieldName": "receivablePerson",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "receivedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "syncStatus",
+      "fieldType": "SyncStatus",
+      "fieldValues": "SYNCED,PENDING_OFFLINE"
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "createdBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    }
+  ],
+  "incrementalChangelog": true,
+  "jpaMetamodelFiltering": true,
+  "name": "IncomeEntry",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass"
+}

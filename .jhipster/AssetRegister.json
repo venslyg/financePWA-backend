@@ -1,0 +1,95 @@
+{
+  "annotations": {
+    "changelogDate": "20260612070332",
+    "enableAudit": true
+  },
+  "applications": "*",
+  "documentation": "Asset Register & Depreciation",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "branchCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "assetRegisterCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "assetCategoryCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "assetSubCategoryCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "assetName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "purchaseDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "purchaseCost",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "currentValue",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "depreciationRate",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "accumulatedDepreciation",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "createdBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    }
+  ],
+  "incrementalChangelog": true,
+  "jpaMetamodelFiltering": true,
+  "name": "AssetRegister",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass"
+}

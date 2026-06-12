@@ -41,6 +41,26 @@ public class CacheConfiguration {
             createCache(cm, com.gvsolutions.repository.UserRepository.USERS_BY_LOGIN_CACHE);
             createCache(cm, com.gvsolutions.repository.UserRepository.USERS_BY_EMAIL_CACHE);
             createCache(cm, com.gvsolutions.domain.Authority.class.getName());
+            createCache(cm, com.gvsolutions.domain.Branch.class.getName());
+            createCache(cm, com.gvsolutions.domain.AccountSet.class.getName());
+            createCache(cm, com.gvsolutions.domain.IncomeEntry.class.getName());
+            createCache(cm, com.gvsolutions.domain.ExpenseCategory.class.getName());
+            createCache(cm, com.gvsolutions.domain.ExpenseSubCategory.class.getName());
+            createCache(cm, com.gvsolutions.domain.ExpenseEntry.class.getName());
+            createCache(cm, com.gvsolutions.domain.BankLedger.class.getName());
+            createCache(cm, com.gvsolutions.domain.PettyCashLedger.class.getName());
+            createCache(cm, com.gvsolutions.domain.AssetCategory.class.getName());
+            createCache(cm, com.gvsolutions.domain.AssetSubCategory.class.getName());
+            createCache(cm, com.gvsolutions.domain.AssetRegister.class.getName());
+            createCache(cm, com.gvsolutions.domain.AssetDepreciationHistory.class.getName());
+            createCache(cm, com.gvsolutions.domain.MaintenanceLog.class.getName());
+            createCache(cm, com.gvsolutions.domain.InventoryItem.class.getName());
+            createCache(cm, com.gvsolutions.domain.BinCardLine.class.getName());
+            createCache(cm, com.gvsolutions.domain.LiabilityLog.class.getName());
+            createCache(cm, com.gvsolutions.domain.BudgetPlan.class.getName());
+            createCache(cm, com.gvsolutions.domain.DonationTracker.class.getName());
+            createCache(cm, com.gvsolutions.domain.ChurchStaff.class.getName());
+            createCache(cm, com.gvsolutions.domain.SalaryPayout.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

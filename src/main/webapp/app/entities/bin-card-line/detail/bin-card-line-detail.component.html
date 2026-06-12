@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (binCardLine(); as binCardLineRef) {
+      <div>
+        <h2 data-cy="binCardLineDetailsHeading"><span>Bin Card Line</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ binCardLineRef.id }}</span>
+          </dd>
+          <dt><span>Inventory Item Code</span></dt>
+          <dd>
+            <span>{{ binCardLineRef.inventoryItemCode }}</span>
+          </dd>
+          <dt><span>Date</span></dt>
+          <dd>
+            <span>{{ binCardLineRef.date | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Reference No</span></dt>
+          <dd>
+            <span>{{ binCardLineRef.referenceNo }}</span>
+          </dd>
+          <dt><span>Description</span></dt>
+          <dd>
+            <span>{{ binCardLineRef.description }}</span>
+          </dd>
+          <dt><span>Quantity In</span></dt>
+          <dd>
+            <span>{{ binCardLineRef.quantityIn }}</span>
+          </dd>
+          <dt><span>Quantity Out</span></dt>
+          <dd>
+            <span>{{ binCardLineRef.quantityOut }}</span>
+          </dd>
+          <dt><span>Running Balance</span></dt>
+          <dd>
+            <span>{{ binCardLineRef.runningBalance }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ binCardLineRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ binCardLineRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ binCardLineRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ binCardLineRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bin-card-line', binCardLineRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

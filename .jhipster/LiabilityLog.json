@@ -1,0 +1,105 @@
+{
+  "annotations": {
+    "changelogDate": "20260612070337",
+    "enableAudit": true
+  },
+  "applications": "*",
+  "documentation": "Liabilities Log",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "branchCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "liabilityCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "loanFrom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "liabilityType",
+      "fieldType": "LiabilityType",
+      "fieldValues": "LONG_TERM,SHORT_TERM"
+    },
+    {
+      "fieldName": "totalLoanAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "interestPercentage",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "monthlyPaymentAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "principalPaid",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "balanceToPay",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ApprovalStatus",
+      "fieldValues": "APPROVED,DECLINED,PENDING,TO_REVIEW,FAILED"
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "createdBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "columnType": "varchar(50)",
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "nullable": false,
+      "readonly": true
+    },
+    {
+      "auditField": true,
+      "autoGenerate": true,
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant",
+      "nullable": false,
+      "readonly": true
+    }
+  ],
+  "incrementalChangelog": true,
+  "jpaMetamodelFiltering": true,
+  "name": "LiabilityLog",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass"
+}

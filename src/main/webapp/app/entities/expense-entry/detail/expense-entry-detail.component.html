@@ -1,0 +1,112 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (expenseEntry(); as expenseEntryRef) {
+      <div>
+        <h2 data-cy="expenseEntryDetailsHeading"><span>Expense Entry</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.id }}</span>
+          </dd>
+          <dt><span>Branch Code</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.branchCode }}</span>
+          </dd>
+          <dt><span>Account Code</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.accountCode }}</span>
+          </dd>
+          <dt><span>Expense Code</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.expenseCode }}</span>
+          </dd>
+          <dt><span>Expense Category Code</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.expenseCategoryCode }}</span>
+          </dd>
+          <dt><span>Expense Sub Category Code</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.expenseSubCategoryCode }}</span>
+          </dd>
+          <dt><span>Created By Username</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.createdByUsername }}</span>
+          </dd>
+          <dt><span>Date</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.date | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Voucher No</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.voucherNo }}</span>
+          </dd>
+          <dt><span>Description</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.description }}</span>
+          </dd>
+          <dt><span>Amount</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.amount }}</span>
+          </dd>
+          <dt><span>Payment Mode</span></dt>
+          <dd>
+            <span>{{
+              { null: '', CASH: 'CASH', BANK: 'BANK', CHEQUE: 'CHEQUE', CARD: 'CARD' }[expenseEntryRef.paymentMode ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span>Approval Status</span></dt>
+          <dd>
+            <span>{{
+              { null: '', APPROVED: 'APPROVED', DECLINED: 'DECLINED', PENDING: 'PENDING', TO_REVIEW: 'TO_REVIEW', FAILED: 'FAILED' }[
+                expenseEntryRef.approvalStatus ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span>Approved By</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.approvedBy }}</span>
+          </dd>
+          <dt><span>Vendor</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.vendor }}</span>
+          </dd>
+          <dt><span>Sync Status</span></dt>
+          <dd>
+            <span>{{ { null: '', SYNCED: 'SYNCED', PENDING_OFFLINE: 'PENDING_OFFLINE' }[expenseEntryRef.syncStatus ?? 'null'] }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ expenseEntryRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/expense-entry', expenseEntryRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

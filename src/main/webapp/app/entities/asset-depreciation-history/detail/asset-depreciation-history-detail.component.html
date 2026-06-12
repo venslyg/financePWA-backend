@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (assetDepreciationHistory(); as assetDepreciationHistoryRef) {
+      <div>
+        <h2 data-cy="assetDepreciationHistoryDetailsHeading"><span>Asset Depreciation History</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ assetDepreciationHistoryRef.id }}</span>
+          </dd>
+          <dt><span>Asset Register Code</span></dt>
+          <dd>
+            <span>{{ assetDepreciationHistoryRef.assetRegisterCode }}</span>
+          </dd>
+          <dt><span>Depreciation Date</span></dt>
+          <dd>
+            <span>{{ assetDepreciationHistoryRef.depreciationDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Depreciation Amount</span></dt>
+          <dd>
+            <span>{{ assetDepreciationHistoryRef.depreciationAmount }}</span>
+          </dd>
+          <dt><span>Value After Depreciation</span></dt>
+          <dd>
+            <span>{{ assetDepreciationHistoryRef.valueAfterDepreciation }}</span>
+          </dd>
+          <dt><span>Processed By</span></dt>
+          <dd>
+            <span>{{ assetDepreciationHistoryRef.processedBy }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ assetDepreciationHistoryRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ assetDepreciationHistoryRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ assetDepreciationHistoryRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ assetDepreciationHistoryRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button
+          type="button"
+          [routerLink]="['/asset-depreciation-history', assetDepreciationHistoryRef.id, 'edit']"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

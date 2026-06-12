@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (budgetPlan(); as budgetPlanRef) {
+      <div>
+        <h2 data-cy="budgetPlanDetailsHeading"><span>Budget Plan</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ budgetPlanRef.id }}</span>
+          </dd>
+          <dt><span>Branch Code</span></dt>
+          <dd>
+            <span>{{ budgetPlanRef.branchCode }}</span>
+          </dd>
+          <dt><span>Account Code</span></dt>
+          <dd>
+            <span>{{ budgetPlanRef.accountCode }}</span>
+          </dd>
+          <dt><span>Budget Plan Code</span></dt>
+          <dd>
+            <span>{{ budgetPlanRef.budgetPlanCode }}</span>
+          </dd>
+          <dt><span>Department Name</span></dt>
+          <dd>
+            <span>{{ budgetPlanRef.departmentName }}</span>
+          </dd>
+          <dt><span>Year</span></dt>
+          <dd>
+            <span>{{ budgetPlanRef.year }}</span>
+          </dd>
+          <dt><span>Allocated Amount</span></dt>
+          <dd>
+            <span>{{ budgetPlanRef.allocatedAmount }}</span>
+          </dd>
+          <dt><span>Spent Amount</span></dt>
+          <dd>
+            <span>{{ budgetPlanRef.spentAmount }}</span>
+          </dd>
+          <dt><span>Remaining Amount</span></dt>
+          <dd>
+            <span>{{ budgetPlanRef.remainingAmount }}</span>
+          </dd>
+          <dt><span>Used Percentage</span></dt>
+          <dd>
+            <span>{{ budgetPlanRef.usedPercentage }}</span>
+          </dd>
+          <dt><span>Alert Status</span></dt>
+          <dd>
+            <span>{{
+              {
+                null: '',
+                NORMAL: 'NORMAL',
+                WARNING_80_PERCENT: 'WARNING_80_PERCENT',
+                RED_ALERT_100_PERCENT: 'RED_ALERT_100_PERCENT',
+                NEED_APPROVAL: 'NEED_APPROVAL',
+              }[budgetPlanRef.alertStatus ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ budgetPlanRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ budgetPlanRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ budgetPlanRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ budgetPlanRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/budget-plan', budgetPlanRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

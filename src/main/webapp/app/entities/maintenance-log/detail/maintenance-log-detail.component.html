@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (maintenanceLog(); as maintenanceLogRef) {
+      <div>
+        <h2 data-cy="maintenanceLogDetailsHeading"><span>Maintenance Log</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ maintenanceLogRef.id }}</span>
+          </dd>
+          <dt><span>Maintenance Log Code</span></dt>
+          <dd>
+            <span>{{ maintenanceLogRef.maintenanceLogCode }}</span>
+          </dd>
+          <dt><span>Log Date</span></dt>
+          <dd>
+            <span>{{ maintenanceLogRef.logDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Log Type</span></dt>
+          <dd>
+            <span>{{ { null: '', REPAIR: 'REPAIR', REPLACEMENT: 'REPLACEMENT' }[maintenanceLogRef.logType ?? 'null'] }}</span>
+          </dd>
+          <dt><span>Description</span></dt>
+          <dd>
+            <span>{{ maintenanceLogRef.description }}</span>
+          </dd>
+          <dt><span>Cost</span></dt>
+          <dd>
+            <span>{{ maintenanceLogRef.cost }}</span>
+          </dd>
+          <dt><span>Vendor</span></dt>
+          <dd>
+            <span>{{ maintenanceLogRef.vendor }}</span>
+          </dd>
+          <dt><span>Next Service Date</span></dt>
+          <dd>
+            <span>{{ maintenanceLogRef.nextServiceDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Note</span></dt>
+          <dd>
+            <span>{{ maintenanceLogRef.note }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ maintenanceLogRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ maintenanceLogRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ maintenanceLogRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ maintenanceLogRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Asset</span></dt>
+          <dd>
+            @if (maintenanceLog()!.asset) {
+              <div>
+                <a [routerLink]="['/asset-register', maintenanceLog()!.asset?.id, 'view']">{{
+                  maintenanceLogRef.asset?.assetRegisterCode
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/maintenance-log', maintenanceLogRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,22 @@
+@if (assetCategory) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(assetCategory.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="assetCategoryDeleteDialogHeading">Confirm delete operation</h4>
+    </div>
+
+    <div class="modal-body">
+      <jhi-alert-error />
+      <p id="jhi-delete-assetCategory-heading">Are you sure you want to delete Asset Category {{ assetCategory.id }}?</p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+      </button>
+
+      <button id="jhi-confirm-delete-assetCategory" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;<span>Delete</span>
+      </button>
+    </div>
+  </form>
+}

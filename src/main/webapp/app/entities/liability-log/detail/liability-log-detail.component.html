@@ -1,0 +1,102 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (liabilityLog(); as liabilityLogRef) {
+      <div>
+        <h2 data-cy="liabilityLogDetailsHeading"><span>Liability Log</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.id }}</span>
+          </dd>
+          <dt><span>Branch Code</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.branchCode }}</span>
+          </dd>
+          <dt><span>Liability Code</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.liabilityCode }}</span>
+          </dd>
+          <dt><span>Loan From</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.loanFrom }}</span>
+          </dd>
+          <dt><span>Description</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.description }}</span>
+          </dd>
+          <dt><span>Liability Type</span></dt>
+          <dd>
+            <span>{{ { null: '', LONG_TERM: 'LONG_TERM', SHORT_TERM: 'SHORT_TERM' }[liabilityLogRef.liabilityType ?? 'null'] }}</span>
+          </dd>
+          <dt><span>Total Loan Amount</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.totalLoanAmount }}</span>
+          </dd>
+          <dt><span>Start Date</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.startDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span>End Date</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.endDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Interest Percentage</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.interestPercentage }}</span>
+          </dd>
+          <dt><span>Monthly Payment Amount</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.monthlyPaymentAmount }}</span>
+          </dd>
+          <dt><span>Principal Paid</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.principalPaid }}</span>
+          </dd>
+          <dt><span>Balance To Pay</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.balanceToPay }}</span>
+          </dd>
+          <dt><span>Status</span></dt>
+          <dd>
+            <span>{{
+              { null: '', APPROVED: 'APPROVED', DECLINED: 'DECLINED', PENDING: 'PENDING', TO_REVIEW: 'TO_REVIEW', FAILED: 'FAILED' }[
+                liabilityLogRef.status ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ liabilityLogRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/liability-log', liabilityLogRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (expenseSubCategory(); as expenseSubCategoryRef) {
+      <div>
+        <h2 data-cy="expenseSubCategoryDetailsHeading"><span>Expense Sub Category</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ expenseSubCategoryRef.id }}</span>
+          </dd>
+          <dt><span>Category Code</span></dt>
+          <dd>
+            <span>{{ expenseSubCategoryRef.categoryCode }}</span>
+          </dd>
+          <dt><span>Sub Category Code</span></dt>
+          <dd>
+            <span>{{ expenseSubCategoryRef.subCategoryCode }}</span>
+          </dd>
+          <dt><span>Sub Category Name</span></dt>
+          <dd>
+            <span>{{ expenseSubCategoryRef.subCategoryName }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ expenseSubCategoryRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ expenseSubCategoryRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ expenseSubCategoryRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ expenseSubCategoryRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Category</span></dt>
+          <dd>
+            @if (expenseSubCategory()!.category) {
+              <div>
+                <a [routerLink]="['/expense-category', expenseSubCategory()!.category?.id, 'view']">{{
+                  expenseSubCategoryRef.category?.categoryCode
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/expense-sub-category', expenseSubCategoryRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

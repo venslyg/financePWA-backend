@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (assetSubCategory(); as assetSubCategoryRef) {
+      <div>
+        <h2 data-cy="assetSubCategoryDetailsHeading"><span>Asset Sub Category</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ assetSubCategoryRef.id }}</span>
+          </dd>
+          <dt><span>Asset Category Code</span></dt>
+          <dd>
+            <span>{{ assetSubCategoryRef.assetCategoryCode }}</span>
+          </dd>
+          <dt><span>Asset Sub Category Code</span></dt>
+          <dd>
+            <span>{{ assetSubCategoryRef.assetSubCategoryCode }}</span>
+          </dd>
+          <dt><span>Asset Sub Category Name</span></dt>
+          <dd>
+            <span>{{ assetSubCategoryRef.assetSubCategoryName }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ assetSubCategoryRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ assetSubCategoryRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ assetSubCategoryRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ assetSubCategoryRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Category</span></dt>
+          <dd>
+            @if (assetSubCategory()!.category) {
+              <div>
+                <a [routerLink]="['/asset-category', assetSubCategory()!.category?.id, 'view']">{{
+                  assetSubCategoryRef.category?.assetCategoryCode
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/asset-sub-category', assetSubCategoryRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

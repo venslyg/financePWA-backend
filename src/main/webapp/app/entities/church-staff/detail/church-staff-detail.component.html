@@ -1,0 +1,87 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (churchStaff(); as churchStaffRef) {
+      <div>
+        <h2 data-cy="churchStaffDetailsHeading"><span>Church Staff</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ churchStaffRef.id }}</span>
+          </dd>
+          <dt><span>Staff Code</span></dt>
+          <dd>
+            <span>{{ churchStaffRef.staffCode }}</span>
+          </dd>
+          <dt><span>Branch Code</span></dt>
+          <dd>
+            <span>{{ churchStaffRef.branchCode }}</span>
+          </dd>
+          <dt><span>Full Name</span></dt>
+          <dd>
+            <span>{{ churchStaffRef.fullName }}</span>
+          </dd>
+          <dt><span>Position</span></dt>
+          <dd>
+            <span>{{ churchStaffRef.position }}</span>
+          </dd>
+          <dt><span>Staff Type</span></dt>
+          <dd>
+            <span>{{
+              {
+                null: '',
+                PASTORAL: 'PASTORAL',
+                FULL_TIME: 'FULL_TIME',
+                PART_TIME: 'PART_TIME',
+                CASUAL_WORKER: 'CASUAL_WORKER',
+                VOLUNTEER: 'VOLUNTEER',
+              }[churchStaffRef.staffType ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span>Contact Number</span></dt>
+          <dd>
+            <span>{{ churchStaffRef.contactNumber }}</span>
+          </dd>
+          <dt><span>Hourly Rate Or Monthly Salary</span></dt>
+          <dd>
+            <span>{{ churchStaffRef.hourlyRateOrMonthlySalary }}</span>
+          </dd>
+          <dt><span>Is Active</span></dt>
+          <dd>
+            <span>{{ churchStaffRef.isActive }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ churchStaffRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ churchStaffRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ churchStaffRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ churchStaffRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/church-staff', churchStaffRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

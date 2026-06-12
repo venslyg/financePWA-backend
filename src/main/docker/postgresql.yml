@@ -3,8 +3,8 @@ name: accountsystembackend
 services:
   postgresql:
     image: postgres:17.4
-    # volumes:
-    #   - ~/volumes/jhipster/accountSystemBackend/postgresql/:/var/lib/postgresql/data/
+    volumes:
+      - .data/postgresql/:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=accountSystemBackend
       - POSTGRES_HOST_AUTH_METHOD=trust

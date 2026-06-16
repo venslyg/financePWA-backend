@@ -7,10 +7,11 @@ export const sampleWithRequiredData: IExpenseCategory = {
 };
 
 export const sampleWithPartialData: IExpenseCategory = {
-  id: 2198,
-  categoryCode: 'spectate harp',
-  categoryName: 'fort imagineer',
-  description: 'openly fuzzy festival',
+  id: 11631,
+  categoryCode: 'confusion onto',
+  categoryName: 'amount word openly',
+  description: 'drat meh',
+  lastModifiedDate: dayjs('2026-06-11T12:22'),
 };
 
 export const sampleWithFullData: IExpenseCategory = {
@@ -20,10 +21,11 @@ export const sampleWithFullData: IExpenseCategory = {
   categoryCode: 'reassuringly',
   categoryName: 'unto',
   description: 'well',
-  createdBy: 'yowza',
-  createdDate: dayjs('2026-06-11T21:28'),
-  lastModifiedBy: 'upside-down mmm hmph',
-  lastModifiedDate: dayjs('2026-06-12T06:00'),
+  isActive: true,
+  createdBy: 'nerve coaxingly',
+  createdDate: dayjs('2026-06-12T04:10'),
+  lastModifiedBy: 'opposite whose',
+  lastModifiedDate: dayjs('2026-06-11T15:52'),
 };
 
 export const sampleWithNewData: NewExpenseCategory = {

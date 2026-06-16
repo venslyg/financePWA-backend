@@ -22,6 +22,8 @@ public class AssetSubCategoryDTO implements Serializable {
 
     private String assetSubCategoryName;
 
+    private Boolean isActive;
+
     private String createdBy;
 
     private Instant createdDate;
@@ -78,6 +80,14 @@ public class AssetSubCategoryDTO implements Serializable {
 
     public void setAssetSubCategoryName(String assetSubCategoryName) {
         this.assetSubCategoryName = assetSubCategoryName;
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
 
     public String getCreatedBy() {
@@ -151,6 +161,7 @@ public class AssetSubCategoryDTO implements Serializable {
             ", assetCategoryCode='" + getAssetCategoryCode() + "'" +
             ", assetSubCategoryCode='" + getAssetSubCategoryCode() + "'" +
             ", assetSubCategoryName='" + getAssetSubCategoryName() + "'" +
+            ", isActive='" + getIsActive() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedBy='" + getLastModifiedBy() + "'" +

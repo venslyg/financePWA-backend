@@ -65,6 +65,9 @@ class AssetSubCategoryResourceIT {
     private static final String DEFAULT_ASSET_SUB_CATEGORY_NAME = "AAAAAAAAAA";
     private static final String UPDATED_ASSET_SUB_CATEGORY_NAME = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_IS_ACTIVE = false;
+    private static final Boolean UPDATED_IS_ACTIVE = true;
+
     private static final String ENTITY_API_URL = "/api/asset-sub-categories";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
     private static final String ENTITY_SEARCH_API_URL = "/api/asset-sub-categories/_search";
@@ -112,7 +115,8 @@ class AssetSubCategoryResourceIT {
             .branchId(DEFAULT_BRANCH_ID)
             .assetCategoryCode(DEFAULT_ASSET_CATEGORY_CODE)
             .assetSubCategoryCode(DEFAULT_ASSET_SUB_CATEGORY_CODE)
-            .assetSubCategoryName(DEFAULT_ASSET_SUB_CATEGORY_NAME);
+            .assetSubCategoryName(DEFAULT_ASSET_SUB_CATEGORY_NAME)
+            .isActive(DEFAULT_IS_ACTIVE);
     }
 
     /**
@@ -127,7 +131,8 @@ class AssetSubCategoryResourceIT {
             .branchId(UPDATED_BRANCH_ID)
             .assetCategoryCode(UPDATED_ASSET_CATEGORY_CODE)
             .assetSubCategoryCode(UPDATED_ASSET_SUB_CATEGORY_CODE)
-            .assetSubCategoryName(UPDATED_ASSET_SUB_CATEGORY_NAME);
+            .assetSubCategoryName(UPDATED_ASSET_SUB_CATEGORY_NAME)
+            .isActive(UPDATED_IS_ACTIVE);
     }
 
     @BeforeEach
@@ -213,7 +218,8 @@ class AssetSubCategoryResourceIT {
             .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].assetCategoryCode").value(hasItem(DEFAULT_ASSET_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].assetSubCategoryCode").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_CODE)))
-            .andExpect(jsonPath("$.[*].assetSubCategoryName").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_NAME)));
+            .andExpect(jsonPath("$.[*].assetSubCategoryName").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_NAME)))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE)));
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -249,7 +255,8 @@ class AssetSubCategoryResourceIT {
             .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.assetCategoryCode").value(DEFAULT_ASSET_CATEGORY_CODE))
             .andExpect(jsonPath("$.assetSubCategoryCode").value(DEFAULT_ASSET_SUB_CATEGORY_CODE))
-            .andExpect(jsonPath("$.assetSubCategoryName").value(DEFAULT_ASSET_SUB_CATEGORY_NAME));
+            .andExpect(jsonPath("$.assetSubCategoryName").value(DEFAULT_ASSET_SUB_CATEGORY_NAME))
+            .andExpect(jsonPath("$.isActive").value(DEFAULT_IS_ACTIVE));
     }
 
     @Test
@@ -561,6 +568,36 @@ class AssetSubCategoryResourceIT {
 
     @Test
     @Transactional
+    void getAllAssetSubCategoriesByIsActiveIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedAssetSubCategory = assetSubCategoryRepository.saveAndFlush(assetSubCategory);
+
+        // Get all the assetSubCategoryList where isActive equals to
+        defaultAssetSubCategoryFiltering("isActive.equals=" + DEFAULT_IS_ACTIVE, "isActive.equals=" + UPDATED_IS_ACTIVE);
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetSubCategoriesByIsActiveIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedAssetSubCategory = assetSubCategoryRepository.saveAndFlush(assetSubCategory);
+
+        // Get all the assetSubCategoryList where isActive in
+        defaultAssetSubCategoryFiltering("isActive.in=" + DEFAULT_IS_ACTIVE + "," + UPDATED_IS_ACTIVE, "isActive.in=" + UPDATED_IS_ACTIVE);
+    }
+
+    @Test
+    @Transactional
+    void getAllAssetSubCategoriesByIsActiveIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedAssetSubCategory = assetSubCategoryRepository.saveAndFlush(assetSubCategory);
+
+        // Get all the assetSubCategoryList where isActive is not null
+        defaultAssetSubCategoryFiltering("isActive.specified=true", "isActive.specified=false");
+    }
+
+    @Test
+    @Transactional
     void getAllAssetSubCategoriesByCategoryIsEqualToSomething() throws Exception {
         AssetCategory category;
         if (TestUtil.findAll(em, AssetCategory.class).isEmpty()) {
@@ -599,7 +636,8 @@ class AssetSubCategoryResourceIT {
             .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].assetCategoryCode").value(hasItem(DEFAULT_ASSET_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].assetSubCategoryCode").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_CODE)))
-            .andExpect(jsonPath("$.[*].assetSubCategoryName").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_NAME)));
+            .andExpect(jsonPath("$.[*].assetSubCategoryName").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_NAME)))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE)));
 
         // Check, that the count call also returns 1
         restAssetSubCategoryMockMvc
@@ -654,7 +692,8 @@ class AssetSubCategoryResourceIT {
             .branchId(UPDATED_BRANCH_ID)
             .assetCategoryCode(UPDATED_ASSET_CATEGORY_CODE)
             .assetSubCategoryCode(UPDATED_ASSET_SUB_CATEGORY_CODE)
-            .assetSubCategoryName(UPDATED_ASSET_SUB_CATEGORY_NAME);
+            .assetSubCategoryName(UPDATED_ASSET_SUB_CATEGORY_NAME)
+            .isActive(UPDATED_IS_ACTIVE);
         AssetSubCategoryDTO assetSubCategoryDTO = assetSubCategoryMapper.toDto(updatedAssetSubCategory);
 
         restAssetSubCategoryMockMvc
@@ -764,7 +803,7 @@ class AssetSubCategoryResourceIT {
         AssetSubCategory partialUpdatedAssetSubCategory = new AssetSubCategory();
         partialUpdatedAssetSubCategory.setId(assetSubCategory.getId());
 
-        partialUpdatedAssetSubCategory.assetSubCategoryName(UPDATED_ASSET_SUB_CATEGORY_NAME);
+        partialUpdatedAssetSubCategory.branchCode(UPDATED_BRANCH_CODE);
 
         restAssetSubCategoryMockMvc
             .perform(
@@ -800,7 +839,8 @@ class AssetSubCategoryResourceIT {
             .branchId(UPDATED_BRANCH_ID)
             .assetCategoryCode(UPDATED_ASSET_CATEGORY_CODE)
             .assetSubCategoryCode(UPDATED_ASSET_SUB_CATEGORY_CODE)
-            .assetSubCategoryName(UPDATED_ASSET_SUB_CATEGORY_NAME);
+            .assetSubCategoryName(UPDATED_ASSET_SUB_CATEGORY_NAME)
+            .isActive(UPDATED_IS_ACTIVE);
 
         restAssetSubCategoryMockMvc
             .perform(
@@ -930,7 +970,8 @@ class AssetSubCategoryResourceIT {
             .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].assetCategoryCode").value(hasItem(DEFAULT_ASSET_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].assetSubCategoryCode").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_CODE)))
-            .andExpect(jsonPath("$.[*].assetSubCategoryName").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_NAME)));
+            .andExpect(jsonPath("$.[*].assetSubCategoryName").value(hasItem(DEFAULT_ASSET_SUB_CATEGORY_NAME)))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE)));
     }
 
     protected long getRepositoryCount() {

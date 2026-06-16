@@ -7,10 +7,10 @@ export const sampleWithRequiredData: IAssetCategory = {
 };
 
 export const sampleWithPartialData: IAssetCategory = {
-  id: 28857,
-  branchId: 'er under',
-  description: 'unwieldy technician',
-  createdBy: 'per',
+  id: 11038,
+  branchId: 'yippee or',
+  description: 'bad afore',
+  isActive: true,
 };
 
 export const sampleWithFullData: IAssetCategory = {
@@ -20,10 +20,11 @@ export const sampleWithFullData: IAssetCategory = {
   assetCategoryCode: 'fork and',
   assetCategoryName: 'although whoa',
   description: 'inasmuch rim',
-  createdBy: 'casement as',
-  createdDate: dayjs('2026-06-11T22:38'),
-  lastModifiedBy: 'oh dissemble',
-  lastModifiedDate: dayjs('2026-06-12T02:52'),
+  isActive: true,
+  createdBy: 'supposing though joy',
+  createdDate: dayjs('2026-06-11T07:46'),
+  lastModifiedBy: 'slink',
+  lastModifiedDate: dayjs('2026-06-11T21:06'),
 };
 
 export const sampleWithNewData: NewAssetCategory = {

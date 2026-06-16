@@ -959,7 +959,12 @@ class AssetDepreciationHistoryResourceIT {
         AssetDepreciationHistory partialUpdatedAssetDepreciationHistory = new AssetDepreciationHistory();
         partialUpdatedAssetDepreciationHistory.setId(assetDepreciationHistory.getId());
 
-        partialUpdatedAssetDepreciationHistory.valueAfterDepreciation(UPDATED_VALUE_AFTER_DEPRECIATION).processedBy(UPDATED_PROCESSED_BY);
+        partialUpdatedAssetDepreciationHistory
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
+            .depreciationDate(UPDATED_DEPRECIATION_DATE)
+            .valueAfterDepreciation(UPDATED_VALUE_AFTER_DEPRECIATION)
+            .processedBy(UPDATED_PROCESSED_BY);
 
         restAssetDepreciationHistoryMockMvc
             .perform(

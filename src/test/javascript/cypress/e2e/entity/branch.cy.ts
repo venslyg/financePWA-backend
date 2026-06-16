@@ -160,17 +160,17 @@ describe('Branch e2e test', () => {
     });
 
     it('should create an instance of Branch', () => {
-      cy.get(`[data-cy="branchCode"]`).type('utilized');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'utilized');
+      cy.get(`[data-cy="branchCode"]`).type('annually');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'annually');
 
-      cy.get(`[data-cy="branchName"]`).type('ugly');
-      cy.get(`[data-cy="branchName"]`).should('have.value', 'ugly');
+      cy.get(`[data-cy="branchName"]`).type('close');
+      cy.get(`[data-cy="branchName"]`).should('have.value', 'close');
 
-      cy.get(`[data-cy="location"]`).type('boohoo whether');
-      cy.get(`[data-cy="location"]`).should('have.value', 'boohoo whether');
+      cy.get(`[data-cy="location"]`).type('lest');
+      cy.get(`[data-cy="location"]`).should('have.value', 'lest');
 
-      cy.get(`[data-cy="phoneNumber"]`).type('before');
-      cy.get(`[data-cy="phoneNumber"]`).should('have.value', 'before');
+      cy.get(`[data-cy="phoneNumber"]`).type('never');
+      cy.get(`[data-cy="phoneNumber"]`).should('have.value', 'never');
 
       cy.get(`[data-cy="isActive"]`).should('not.be.checked');
       cy.get(`[data-cy="isActive"]`).click();

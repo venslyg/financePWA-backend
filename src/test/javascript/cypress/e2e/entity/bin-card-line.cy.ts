@@ -160,33 +160,33 @@ describe('BinCardLine e2e test', () => {
     });
 
     it('should create an instance of BinCardLine', () => {
-      cy.get(`[data-cy="branchCode"]`).type('ick');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'ick');
+      cy.get(`[data-cy="branchCode"]`).type('confused bony apud');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'confused bony apud');
 
-      cy.get(`[data-cy="branchId"]`).type('bossy inconsequential gosh');
-      cy.get(`[data-cy="branchId"]`).should('have.value', 'bossy inconsequential gosh');
+      cy.get(`[data-cy="branchId"]`).type('boastfully rigid');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'boastfully rigid');
 
-      cy.get(`[data-cy="inventoryItemCode"]`).type('capsize likewise if');
-      cy.get(`[data-cy="inventoryItemCode"]`).should('have.value', 'capsize likewise if');
+      cy.get(`[data-cy="inventoryItemCode"]`).type('regarding');
+      cy.get(`[data-cy="inventoryItemCode"]`).should('have.value', 'regarding');
 
       cy.get(`[data-cy="date"]`).type('2026-06-11');
       cy.get(`[data-cy="date"]`).blur();
       cy.get(`[data-cy="date"]`).should('have.value', '2026-06-11');
 
-      cy.get(`[data-cy="referenceNo"]`).type('unlike for shameless');
-      cy.get(`[data-cy="referenceNo"]`).should('have.value', 'unlike for shameless');
+      cy.get(`[data-cy="referenceNo"]`).type('cautiously custody address');
+      cy.get(`[data-cy="referenceNo"]`).should('have.value', 'cautiously custody address');
 
-      cy.get(`[data-cy="description"]`).type('powerfully huzzah');
-      cy.get(`[data-cy="description"]`).should('have.value', 'powerfully huzzah');
+      cy.get(`[data-cy="description"]`).type('and resource');
+      cy.get(`[data-cy="description"]`).should('have.value', 'and resource');
 
-      cy.get(`[data-cy="quantityIn"]`).type('32035.86');
-      cy.get(`[data-cy="quantityIn"]`).should('have.value', '32035.86');
+      cy.get(`[data-cy="quantityIn"]`).type('9720.84');
+      cy.get(`[data-cy="quantityIn"]`).should('have.value', '9720.84');
 
-      cy.get(`[data-cy="quantityOut"]`).type('10571.64');
-      cy.get(`[data-cy="quantityOut"]`).should('have.value', '10571.64');
+      cy.get(`[data-cy="quantityOut"]`).type('12036.78');
+      cy.get(`[data-cy="quantityOut"]`).should('have.value', '12036.78');
 
-      cy.get(`[data-cy="runningBalance"]`).type('5344.49');
-      cy.get(`[data-cy="runningBalance"]`).should('have.value', '5344.49');
+      cy.get(`[data-cy="runningBalance"]`).type('18007.23');
+      cy.get(`[data-cy="runningBalance"]`).should('have.value', '18007.23');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

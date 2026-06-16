@@ -86,6 +86,7 @@ class MaintenanceLogCriteriaTest {
         maintenanceLogCriteria.vendor();
         maintenanceLogCriteria.nextServiceDate();
         maintenanceLogCriteria.note();
+        maintenanceLogCriteria.isActive();
         maintenanceLogCriteria.createdBy();
         maintenanceLogCriteria.createdDate();
         maintenanceLogCriteria.lastModifiedBy();
@@ -108,6 +109,7 @@ class MaintenanceLogCriteriaTest {
                 condition.apply(criteria.getVendor()) &&
                 condition.apply(criteria.getNextServiceDate()) &&
                 condition.apply(criteria.getNote()) &&
+                condition.apply(criteria.getIsActive()) &&
                 condition.apply(criteria.getCreatedBy()) &&
                 condition.apply(criteria.getCreatedDate()) &&
                 condition.apply(criteria.getLastModifiedBy()) &&
@@ -135,6 +137,7 @@ class MaintenanceLogCriteriaTest {
                 condition.apply(criteria.getVendor(), copy.getVendor()) &&
                 condition.apply(criteria.getNextServiceDate(), copy.getNextServiceDate()) &&
                 condition.apply(criteria.getNote(), copy.getNote()) &&
+                condition.apply(criteria.getIsActive(), copy.getIsActive()) &&
                 condition.apply(criteria.getCreatedBy(), copy.getCreatedBy()) &&
                 condition.apply(criteria.getCreatedDate(), copy.getCreatedDate()) &&
                 condition.apply(criteria.getLastModifiedBy(), copy.getLastModifiedBy()) &&

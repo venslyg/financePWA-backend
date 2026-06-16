@@ -57,7 +57,8 @@ public class AssetSubCategoryAsserts {
             )
             .satisfies(a ->
                 assertThat(a.getAssetSubCategoryName()).as("check assetSubCategoryName").isEqualTo(expected.getAssetSubCategoryName())
-            );
+            )
+            .satisfies(a -> assertThat(a.getIsActive()).as("check isActive").isEqualTo(expected.getIsActive()));
     }
 
     /**

@@ -34,6 +34,8 @@ public class AssetCategoryCriteria implements Serializable, Criteria {
 
     private StringFilter description;
 
+    private BooleanFilter isActive;
+
     private StringFilter createdBy;
 
     private InstantFilter createdDate;
@@ -53,6 +55,7 @@ public class AssetCategoryCriteria implements Serializable, Criteria {
         this.assetCategoryCode = other.optionalAssetCategoryCode().map(StringFilter::copy).orElse(null);
         this.assetCategoryName = other.optionalAssetCategoryName().map(StringFilter::copy).orElse(null);
         this.description = other.optionalDescription().map(StringFilter::copy).orElse(null);
+        this.isActive = other.optionalIsActive().map(BooleanFilter::copy).orElse(null);
         this.createdBy = other.optionalCreatedBy().map(StringFilter::copy).orElse(null);
         this.createdDate = other.optionalCreatedDate().map(InstantFilter::copy).orElse(null);
         this.lastModifiedBy = other.optionalLastModifiedBy().map(StringFilter::copy).orElse(null);
@@ -179,6 +182,25 @@ public class AssetCategoryCriteria implements Serializable, Criteria {
         this.description = description;
     }
 
+    public BooleanFilter getIsActive() {
+        return isActive;
+    }
+
+    public Optional<BooleanFilter> optionalIsActive() {
+        return Optional.ofNullable(isActive);
+    }
+
+    public BooleanFilter isActive() {
+        if (isActive == null) {
+            setIsActive(new BooleanFilter());
+        }
+        return isActive;
+    }
+
+    public void setIsActive(BooleanFilter isActive) {
+        this.isActive = isActive;
+    }
+
     public StringFilter getCreatedBy() {
         return createdBy;
     }
@@ -290,6 +312,7 @@ public class AssetCategoryCriteria implements Serializable, Criteria {
             Objects.equals(assetCategoryCode, that.assetCategoryCode) &&
             Objects.equals(assetCategoryName, that.assetCategoryName) &&
             Objects.equals(description, that.description) &&
+            Objects.equals(isActive, that.isActive) &&
             Objects.equals(createdBy, that.createdBy) &&
             Objects.equals(createdDate, that.createdDate) &&
             Objects.equals(lastModifiedBy, that.lastModifiedBy) &&
@@ -307,6 +330,7 @@ public class AssetCategoryCriteria implements Serializable, Criteria {
             assetCategoryCode,
             assetCategoryName,
             description,
+            isActive,
             createdBy,
             createdDate,
             lastModifiedBy,
@@ -325,6 +349,7 @@ public class AssetCategoryCriteria implements Serializable, Criteria {
             optionalAssetCategoryCode().map(f -> "assetCategoryCode=" + f + ", ").orElse("") +
             optionalAssetCategoryName().map(f -> "assetCategoryName=" + f + ", ").orElse("") +
             optionalDescription().map(f -> "description=" + f + ", ").orElse("") +
+            optionalIsActive().map(f -> "isActive=" + f + ", ").orElse("") +
             optionalCreatedBy().map(f -> "createdBy=" + f + ", ").orElse("") +
             optionalCreatedDate().map(f -> "createdDate=" + f + ", ").orElse("") +
             optionalLastModifiedBy().map(f -> "lastModifiedBy=" + f + ", ").orElse("") +

@@ -791,7 +791,11 @@ class AccountSetResourceIT {
         AccountSet partialUpdatedAccountSet = new AccountSet();
         partialUpdatedAccountSet.setId(accountSet.getId());
 
-        partialUpdatedAccountSet.accountType(UPDATED_ACCOUNT_TYPE).subCategory(UPDATED_SUB_CATEGORY);
+        partialUpdatedAccountSet
+            .branchId(UPDATED_BRANCH_ID)
+            .accountCode(UPDATED_ACCOUNT_CODE)
+            .accountName(UPDATED_ACCOUNT_NAME)
+            .subCategory(UPDATED_SUB_CATEGORY);
 
         restAccountSetMockMvc
             .perform(

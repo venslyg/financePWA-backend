@@ -160,20 +160,24 @@ describe('AssetCategory e2e test', () => {
     });
 
     it('should create an instance of AssetCategory', () => {
-      cy.get(`[data-cy="branchCode"]`).type('extent');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'extent');
+      cy.get(`[data-cy="branchCode"]`).type('throughout treasure stylish');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'throughout treasure stylish');
 
-      cy.get(`[data-cy="branchId"]`).type('hence vast palatable');
-      cy.get(`[data-cy="branchId"]`).should('have.value', 'hence vast palatable');
+      cy.get(`[data-cy="branchId"]`).type('veto');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'veto');
 
-      cy.get(`[data-cy="assetCategoryCode"]`).type('brr incidentally yet');
-      cy.get(`[data-cy="assetCategoryCode"]`).should('have.value', 'brr incidentally yet');
+      cy.get(`[data-cy="assetCategoryCode"]`).type('kick');
+      cy.get(`[data-cy="assetCategoryCode"]`).should('have.value', 'kick');
 
-      cy.get(`[data-cy="assetCategoryName"]`).type('swerve trusting fooey');
-      cy.get(`[data-cy="assetCategoryName"]`).should('have.value', 'swerve trusting fooey');
+      cy.get(`[data-cy="assetCategoryName"]`).type('cram onto');
+      cy.get(`[data-cy="assetCategoryName"]`).should('have.value', 'cram onto');
 
-      cy.get(`[data-cy="description"]`).type('which custom');
-      cy.get(`[data-cy="description"]`).should('have.value', 'which custom');
+      cy.get(`[data-cy="description"]`).type('for hence');
+      cy.get(`[data-cy="description"]`).should('have.value', 'for hence');
+
+      cy.get(`[data-cy="isActive"]`).should('not.be.checked');
+      cy.get(`[data-cy="isActive"]`).click();
+      cy.get(`[data-cy="isActive"]`).should('be.checked');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

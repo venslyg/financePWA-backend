@@ -160,20 +160,24 @@ describe('ExpenseSubCategory e2e test', () => {
     });
 
     it('should create an instance of ExpenseSubCategory', () => {
-      cy.get(`[data-cy="branchCode"]`).type('underneath for');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'underneath for');
+      cy.get(`[data-cy="branchCode"]`).type('calmly cap');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'calmly cap');
 
-      cy.get(`[data-cy="branchId"]`).type('psst for bemuse');
-      cy.get(`[data-cy="branchId"]`).should('have.value', 'psst for bemuse');
+      cy.get(`[data-cy="branchId"]`).type('considering entice um');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'considering entice um');
 
-      cy.get(`[data-cy="categoryCode"]`).type('whoa');
-      cy.get(`[data-cy="categoryCode"]`).should('have.value', 'whoa');
+      cy.get(`[data-cy="categoryCode"]`).type('mid');
+      cy.get(`[data-cy="categoryCode"]`).should('have.value', 'mid');
 
-      cy.get(`[data-cy="subCategoryCode"]`).type('hydrolyze');
-      cy.get(`[data-cy="subCategoryCode"]`).should('have.value', 'hydrolyze');
+      cy.get(`[data-cy="subCategoryCode"]`).type('hippodrome ack');
+      cy.get(`[data-cy="subCategoryCode"]`).should('have.value', 'hippodrome ack');
 
-      cy.get(`[data-cy="subCategoryName"]`).type('enormously quietly');
-      cy.get(`[data-cy="subCategoryName"]`).should('have.value', 'enormously quietly');
+      cy.get(`[data-cy="subCategoryName"]`).type('exaggerate tuba next');
+      cy.get(`[data-cy="subCategoryName"]`).should('have.value', 'exaggerate tuba next');
+
+      cy.get(`[data-cy="isActive"]`).should('not.be.checked');
+      cy.get(`[data-cy="isActive"]`).click();
+      cy.get(`[data-cy="isActive"]`).should('be.checked');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

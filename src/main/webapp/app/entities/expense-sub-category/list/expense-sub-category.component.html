@@ -108,6 +108,13 @@
                 }
               </div>
             </th>
+            <th scope="col" jhiSortBy="isActive">
+              <div class="d-flex">
+                <span>Is Active</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col" jhiSortBy="createdBy">
               <div class="d-flex">
                 <span>Created By</span>
@@ -158,6 +165,7 @@
               <td>{{ expenseSubCategory.categoryCode }}</td>
               <td>{{ expenseSubCategory.subCategoryCode }}</td>
               <td>{{ expenseSubCategory.subCategoryName }}</td>
+              <td>{{ expenseSubCategory.isActive }}</td>
               <td>{{ expenseSubCategory.createdBy }}</td>
               <td>{{ expenseSubCategory.createdDate | formatMediumDatetime }}</td>
               <td>{{ expenseSubCategory.lastModifiedBy }}</td>

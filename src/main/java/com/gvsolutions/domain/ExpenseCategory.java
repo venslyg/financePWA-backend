@@ -44,6 +44,10 @@ public class ExpenseCategory extends AbstractAuditingEntity<Long> implements Ser
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String description;
 
+    @Column(name = "is_active")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Boolean)
+    private Boolean isActive;
+
     // Inherited createdBy definition
     // Inherited createdDate definition
     // Inherited lastModifiedBy definition
@@ -132,6 +136,19 @@ public class ExpenseCategory extends AbstractAuditingEntity<Long> implements Ser
         this.description = description;
     }
 
+    public Boolean getIsActive() {
+        return this.isActive;
+    }
+
+    public ExpenseCategory isActive(Boolean isActive) {
+        this.setIsActive(isActive);
+        return this;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
     // Inherited createdBy methods
     public ExpenseCategory createdBy(String createdBy) {
         this.setCreatedBy(createdBy);
@@ -203,6 +220,7 @@ public class ExpenseCategory extends AbstractAuditingEntity<Long> implements Ser
             ", categoryCode='" + getCategoryCode() + "'" +
             ", categoryName='" + getCategoryName() + "'" +
             ", description='" + getDescription() + "'" +
+            ", isActive='" + getIsActive() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedBy='" + getLastModifiedBy() + "'" +

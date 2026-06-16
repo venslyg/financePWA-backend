@@ -53,7 +53,8 @@ public class ExpenseSubCategoryAsserts {
             .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getCategoryCode()).as("check categoryCode").isEqualTo(expected.getCategoryCode()))
             .satisfies(a -> assertThat(a.getSubCategoryCode()).as("check subCategoryCode").isEqualTo(expected.getSubCategoryCode()))
-            .satisfies(a -> assertThat(a.getSubCategoryName()).as("check subCategoryName").isEqualTo(expected.getSubCategoryName()));
+            .satisfies(a -> assertThat(a.getSubCategoryName()).as("check subCategoryName").isEqualTo(expected.getSubCategoryName()))
+            .satisfies(a -> assertThat(a.getIsActive()).as("check isActive").isEqualTo(expected.getIsActive()));
     }
 
     /**

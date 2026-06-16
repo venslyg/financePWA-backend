@@ -1308,13 +1308,12 @@ class AssetRegisterResourceIT {
         partialUpdatedAssetRegister.setId(assetRegister.getId());
 
         partialUpdatedAssetRegister
-            .branchCode(UPDATED_BRANCH_CODE)
             .branchId(UPDATED_BRANCH_ID)
+            .assetRegisterCode(UPDATED_ASSET_REGISTER_CODE)
             .assetSubCategoryCode(UPDATED_ASSET_SUB_CATEGORY_CODE)
-            .category(UPDATED_CATEGORY)
+            .assetName(UPDATED_ASSET_NAME)
             .purchaseDate(UPDATED_PURCHASE_DATE)
-            .depreciationRate(UPDATED_DEPRECIATION_RATE)
-            .accumulatedDepreciation(UPDATED_ACCUMULATED_DEPRECIATION);
+            .purchaseCost(UPDATED_PURCHASE_COST);
 
         restAssetRegisterMockMvc
             .perform(

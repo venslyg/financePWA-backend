@@ -108,6 +108,13 @@
                 }
               </div>
             </th>
+            <th scope="col" jhiSortBy="isActive">
+              <div class="d-flex">
+                <span>Is Active</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col" jhiSortBy="createdBy">
               <div class="d-flex">
                 <span>Created By</span>
@@ -152,6 +159,7 @@
               <td>{{ assetCategory.assetCategoryCode }}</td>
               <td>{{ assetCategory.assetCategoryName }}</td>
               <td>{{ assetCategory.description }}</td>
+              <td>{{ assetCategory.isActive }}</td>
               <td>{{ assetCategory.createdBy }}</td>
               <td>{{ assetCategory.createdDate | formatMediumDatetime }}</td>
               <td>{{ assetCategory.lastModifiedBy }}</td>

@@ -1243,15 +1243,11 @@ class IncomeEntryResourceIT {
         partialUpdatedIncomeEntry.setId(incomeEntry.getId());
 
         partialUpdatedIncomeEntry
-            .branchCode(UPDATED_BRANCH_CODE)
-            .branchId(UPDATED_BRANCH_ID)
             .incomeCode(UPDATED_INCOME_CODE)
-            .createdByUsername(UPDATED_CREATED_BY_USERNAME)
-            .date(UPDATED_DATE)
             .description(UPDATED_DESCRIPTION)
-            .incomeType(UPDATED_INCOME_TYPE)
             .amount(UPDATED_AMOUNT)
-            .receivedBy(UPDATED_RECEIVED_BY);
+            .paymentMethod(UPDATED_PAYMENT_METHOD)
+            .syncStatus(UPDATED_SYNC_STATUS);
 
         restIncomeEntryMockMvc
             .perform(

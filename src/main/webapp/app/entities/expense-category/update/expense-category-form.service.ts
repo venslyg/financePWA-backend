@@ -28,7 +28,7 @@ type ExpenseCategoryFormRawValue = FormValueOf<IExpenseCategory>;
 
 type NewExpenseCategoryFormRawValue = FormValueOf<NewExpenseCategory>;
 
-type ExpenseCategoryFormDefaults = Pick<NewExpenseCategory, 'id' | 'createdDate' | 'lastModifiedDate'>;
+type ExpenseCategoryFormDefaults = Pick<NewExpenseCategory, 'id' | 'isActive' | 'createdDate' | 'lastModifiedDate'>;
 
 type ExpenseCategoryFormGroupContent = {
   id: FormControl<ExpenseCategoryFormRawValue['id'] | NewExpenseCategory['id']>;
@@ -37,6 +37,7 @@ type ExpenseCategoryFormGroupContent = {
   categoryCode: FormControl<ExpenseCategoryFormRawValue['categoryCode']>;
   categoryName: FormControl<ExpenseCategoryFormRawValue['categoryName']>;
   description: FormControl<ExpenseCategoryFormRawValue['description']>;
+  isActive: FormControl<ExpenseCategoryFormRawValue['isActive']>;
   createdBy: FormControl<ExpenseCategoryFormRawValue['createdBy']>;
   createdDate: FormControl<ExpenseCategoryFormRawValue['createdDate']>;
   lastModifiedBy: FormControl<ExpenseCategoryFormRawValue['lastModifiedBy']>;
@@ -65,6 +66,7 @@ export class ExpenseCategoryFormService {
       categoryCode: new FormControl(expenseCategoryRawValue.categoryCode),
       categoryName: new FormControl(expenseCategoryRawValue.categoryName),
       description: new FormControl(expenseCategoryRawValue.description),
+      isActive: new FormControl(expenseCategoryRawValue.isActive),
       createdBy: new FormControl(expenseCategoryRawValue.createdBy),
       createdDate: new FormControl(expenseCategoryRawValue.createdDate),
       lastModifiedBy: new FormControl(expenseCategoryRawValue.lastModifiedBy),
@@ -93,6 +95,7 @@ export class ExpenseCategoryFormService {
 
     return {
       id: null,
+      isActive: false,
       createdDate: currentTime,
       lastModifiedDate: currentTime,
     };

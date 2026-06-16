@@ -1185,9 +1185,10 @@ class PettyCashLedgerResourceIT {
         partialUpdatedPettyCashLedger
             .pettyCashCode(UPDATED_PETTY_CASH_CODE)
             .date(UPDATED_DATE)
-            .cashIn(UPDATED_CASH_IN)
+            .pettyCashVoucherNo(UPDATED_PETTY_CASH_VOUCHER_NO)
             .cashOut(UPDATED_CASH_OUT)
-            .runningBalance(UPDATED_RUNNING_BALANCE);
+            .runningBalance(UPDATED_RUNNING_BALANCE)
+            .linkedAccountCode(UPDATED_LINKED_ACCOUNT_CODE);
 
         restPettyCashLedgerMockMvc
             .perform(

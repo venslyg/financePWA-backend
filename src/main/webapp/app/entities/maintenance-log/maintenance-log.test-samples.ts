@@ -7,12 +7,12 @@ export const sampleWithRequiredData: IMaintenanceLog = {
 };
 
 export const sampleWithPartialData: IMaintenanceLog = {
-  id: 23373,
-  branchId: 'which shred whistle',
-  maintenanceLogCode: 'when frantically',
+  id: 25622,
+  branchId: 'gosh croon failing',
+  maintenanceLogCode: 'lest beside',
   logDate: dayjs('2026-06-11'),
-  logType: 'REPAIR',
-  createdDate: dayjs('2026-06-11T23:38'),
+  logType: 'REPLACEMENT',
+  createdBy: 'abscond',
 };
 
 export const sampleWithFullData: IMaintenanceLog = {
@@ -27,10 +27,11 @@ export const sampleWithFullData: IMaintenanceLog = {
   vendor: 'correctly underneath',
   nextServiceDate: dayjs('2026-06-11'),
   note: 'freckle',
-  createdBy: 'developmental atrium',
-  createdDate: dayjs('2026-06-11T17:11'),
-  lastModifiedBy: 'reprove',
-  lastModifiedDate: dayjs('2026-06-11T10:51'),
+  isActive: true,
+  createdBy: 'when heroine',
+  createdDate: dayjs('2026-06-11T07:19'),
+  lastModifiedBy: 'cumbersome',
+  lastModifiedDate: dayjs('2026-06-11T07:44'),
 };
 
 export const sampleWithNewData: NewMaintenanceLog = {

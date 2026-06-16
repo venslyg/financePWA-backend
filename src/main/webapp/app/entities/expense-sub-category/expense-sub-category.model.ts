@@ -8,6 +8,7 @@ export interface IExpenseSubCategory {
   categoryCode?: string | null;
   subCategoryCode?: string | null;
   subCategoryName?: string | null;
+  isActive?: boolean | null;
   createdBy?: string | null;
   createdDate?: dayjs.Dayjs | null;
   lastModifiedBy?: string | null;

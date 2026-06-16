@@ -70,6 +70,9 @@ class InventoryItemResourceIT {
     private static final BigDecimal UPDATED_RUNNING_STOCK_COUNT = new BigDecimal(2);
     private static final BigDecimal SMALLER_RUNNING_STOCK_COUNT = new BigDecimal(1 - 1);
 
+    private static final Boolean DEFAULT_IS_ACTIVE = false;
+    private static final Boolean UPDATED_IS_ACTIVE = true;
+
     private static final String ENTITY_API_URL = "/api/inventory-items";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
     private static final String ENTITY_SEARCH_API_URL = "/api/inventory-items/_search";
@@ -114,7 +117,8 @@ class InventoryItemResourceIT {
             .category(DEFAULT_CATEGORY)
             .quantity(DEFAULT_QUANTITY)
             .unitPrice(DEFAULT_UNIT_PRICE)
-            .runningStockCount(DEFAULT_RUNNING_STOCK_COUNT);
+            .runningStockCount(DEFAULT_RUNNING_STOCK_COUNT)
+            .isActive(DEFAULT_IS_ACTIVE);
     }
 
     /**
@@ -132,7 +136,8 @@ class InventoryItemResourceIT {
             .category(UPDATED_CATEGORY)
             .quantity(UPDATED_QUANTITY)
             .unitPrice(UPDATED_UNIT_PRICE)
-            .runningStockCount(UPDATED_RUNNING_STOCK_COUNT);
+            .runningStockCount(UPDATED_RUNNING_STOCK_COUNT)
+            .isActive(UPDATED_IS_ACTIVE);
     }
 
     @BeforeEach
@@ -221,7 +226,8 @@ class InventoryItemResourceIT {
             .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY)))
             .andExpect(jsonPath("$.[*].quantity").value(hasItem(sameNumber(DEFAULT_QUANTITY))))
             .andExpect(jsonPath("$.[*].unitPrice").value(hasItem(sameNumber(DEFAULT_UNIT_PRICE))))
-            .andExpect(jsonPath("$.[*].runningStockCount").value(hasItem(sameNumber(DEFAULT_RUNNING_STOCK_COUNT))));
+            .andExpect(jsonPath("$.[*].runningStockCount").value(hasItem(sameNumber(DEFAULT_RUNNING_STOCK_COUNT))))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE)));
     }
 
     @Test
@@ -243,7 +249,8 @@ class InventoryItemResourceIT {
             .andExpect(jsonPath("$.category").value(DEFAULT_CATEGORY))
             .andExpect(jsonPath("$.quantity").value(sameNumber(DEFAULT_QUANTITY)))
             .andExpect(jsonPath("$.unitPrice").value(sameNumber(DEFAULT_UNIT_PRICE)))
-            .andExpect(jsonPath("$.runningStockCount").value(sameNumber(DEFAULT_RUNNING_STOCK_COUNT)));
+            .andExpect(jsonPath("$.runningStockCount").value(sameNumber(DEFAULT_RUNNING_STOCK_COUNT)))
+            .andExpect(jsonPath("$.isActive").value(DEFAULT_IS_ACTIVE));
     }
 
     @Test
@@ -763,6 +770,36 @@ class InventoryItemResourceIT {
         );
     }
 
+    @Test
+    @Transactional
+    void getAllInventoryItemsByIsActiveIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedInventoryItem = inventoryItemRepository.saveAndFlush(inventoryItem);
+
+        // Get all the inventoryItemList where isActive equals to
+        defaultInventoryItemFiltering("isActive.equals=" + DEFAULT_IS_ACTIVE, "isActive.equals=" + UPDATED_IS_ACTIVE);
+    }
+
+    @Test
+    @Transactional
+    void getAllInventoryItemsByIsActiveIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedInventoryItem = inventoryItemRepository.saveAndFlush(inventoryItem);
+
+        // Get all the inventoryItemList where isActive in
+        defaultInventoryItemFiltering("isActive.in=" + DEFAULT_IS_ACTIVE + "," + UPDATED_IS_ACTIVE, "isActive.in=" + UPDATED_IS_ACTIVE);
+    }
+
+    @Test
+    @Transactional
+    void getAllInventoryItemsByIsActiveIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedInventoryItem = inventoryItemRepository.saveAndFlush(inventoryItem);
+
+        // Get all the inventoryItemList where isActive is not null
+        defaultInventoryItemFiltering("isActive.specified=true", "isActive.specified=false");
+    }
+
     private void defaultInventoryItemFiltering(String shouldBeFound, String shouldNotBeFound) throws Exception {
         defaultInventoryItemShouldBeFound(shouldBeFound);
         defaultInventoryItemShouldNotBeFound(shouldNotBeFound);
@@ -784,7 +821,8 @@ class InventoryItemResourceIT {
             .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY)))
             .andExpect(jsonPath("$.[*].quantity").value(hasItem(sameNumber(DEFAULT_QUANTITY))))
             .andExpect(jsonPath("$.[*].unitPrice").value(hasItem(sameNumber(DEFAULT_UNIT_PRICE))))
-            .andExpect(jsonPath("$.[*].runningStockCount").value(hasItem(sameNumber(DEFAULT_RUNNING_STOCK_COUNT))));
+            .andExpect(jsonPath("$.[*].runningStockCount").value(hasItem(sameNumber(DEFAULT_RUNNING_STOCK_COUNT))))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE)));
 
         // Check, that the count call also returns 1
         restInventoryItemMockMvc
@@ -842,7 +880,8 @@ class InventoryItemResourceIT {
             .category(UPDATED_CATEGORY)
             .quantity(UPDATED_QUANTITY)
             .unitPrice(UPDATED_UNIT_PRICE)
-            .runningStockCount(UPDATED_RUNNING_STOCK_COUNT);
+            .runningStockCount(UPDATED_RUNNING_STOCK_COUNT)
+            .isActive(UPDATED_IS_ACTIVE);
         InventoryItemDTO inventoryItemDTO = inventoryItemMapper.toDto(updatedInventoryItem);
 
         restInventoryItemMockMvc
@@ -954,9 +993,11 @@ class InventoryItemResourceIT {
 
         partialUpdatedInventoryItem
             .branchCode(UPDATED_BRANCH_CODE)
-            .inventoryItemCode(UPDATED_INVENTORY_ITEM_CODE)
+            .itemName(UPDATED_ITEM_NAME)
+            .category(UPDATED_CATEGORY)
+            .quantity(UPDATED_QUANTITY)
             .unitPrice(UPDATED_UNIT_PRICE)
-            .runningStockCount(UPDATED_RUNNING_STOCK_COUNT);
+            .isActive(UPDATED_IS_ACTIVE);
 
         restInventoryItemMockMvc
             .perform(
@@ -995,7 +1036,8 @@ class InventoryItemResourceIT {
             .category(UPDATED_CATEGORY)
             .quantity(UPDATED_QUANTITY)
             .unitPrice(UPDATED_UNIT_PRICE)
-            .runningStockCount(UPDATED_RUNNING_STOCK_COUNT);
+            .runningStockCount(UPDATED_RUNNING_STOCK_COUNT)
+            .isActive(UPDATED_IS_ACTIVE);
 
         restInventoryItemMockMvc
             .perform(
@@ -1125,7 +1167,8 @@ class InventoryItemResourceIT {
             .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY)))
             .andExpect(jsonPath("$.[*].quantity").value(hasItem(sameNumber(DEFAULT_QUANTITY))))
             .andExpect(jsonPath("$.[*].unitPrice").value(hasItem(sameNumber(DEFAULT_UNIT_PRICE))))
-            .andExpect(jsonPath("$.[*].runningStockCount").value(hasItem(sameNumber(DEFAULT_RUNNING_STOCK_COUNT))));
+            .andExpect(jsonPath("$.[*].runningStockCount").value(hasItem(sameNumber(DEFAULT_RUNNING_STOCK_COUNT))))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE)));
     }
 
     protected long getRepositoryCount() {

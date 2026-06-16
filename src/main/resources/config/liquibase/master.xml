@@ -75,5 +75,17 @@
     <include file="config/liquibase/changelog/20260612104943_updated_entity_migrate_ChurchStaff.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20260612104944_updated_entity_SalaryPayout.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20260612104944_updated_entity_migrate_SalaryPayout.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260616073121_updated_entity_ExpenseCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260616073121_updated_entity_migrate_ExpenseCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260616073122_updated_entity_ExpenseSubCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260616073122_updated_entity_migrate_ExpenseSubCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260616073123_updated_entity_AssetCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260616073123_updated_entity_migrate_AssetCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260616073124_updated_entity_AssetSubCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260616073124_updated_entity_migrate_AssetSubCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260616073125_updated_entity_MaintenanceLog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260616073125_updated_entity_migrate_MaintenanceLog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260616073126_updated_entity_InventoryItem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260616073126_updated_entity_migrate_InventoryItem.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

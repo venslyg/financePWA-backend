@@ -22,6 +22,8 @@ public class ExpenseSubCategoryDTO implements Serializable {
 
     private String subCategoryName;
 
+    private Boolean isActive;
+
     private String createdBy;
 
     private Instant createdDate;
@@ -78,6 +80,14 @@ public class ExpenseSubCategoryDTO implements Serializable {
 
     public void setSubCategoryName(String subCategoryName) {
         this.subCategoryName = subCategoryName;
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
 
     public String getCreatedBy() {
@@ -151,6 +161,7 @@ public class ExpenseSubCategoryDTO implements Serializable {
             ", categoryCode='" + getCategoryCode() + "'" +
             ", subCategoryCode='" + getSubCategoryCode() + "'" +
             ", subCategoryName='" + getSubCategoryName() + "'" +
+            ", isActive='" + getIsActive() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedBy='" + getLastModifiedBy() + "'" +

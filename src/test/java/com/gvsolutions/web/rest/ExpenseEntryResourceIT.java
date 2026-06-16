@@ -1385,16 +1385,16 @@ class ExpenseEntryResourceIT {
         partialUpdatedExpenseEntry.setId(expenseEntry.getId());
 
         partialUpdatedExpenseEntry
-            .branchCode(UPDATED_BRANCH_CODE)
-            .accountCode(UPDATED_ACCOUNT_CODE)
             .expenseCode(UPDATED_EXPENSE_CODE)
-            .expenseCategoryCode(UPDATED_EXPENSE_CATEGORY_CODE)
             .createdByUsername(UPDATED_CREATED_BY_USERNAME)
             .date(UPDATED_DATE)
+            .voucherNo(UPDATED_VOUCHER_NO)
             .description(UPDATED_DESCRIPTION)
             .amount(UPDATED_AMOUNT)
             .paymentMode(UPDATED_PAYMENT_MODE)
-            .approvedBy(UPDATED_APPROVED_BY);
+            .approvalStatus(UPDATED_APPROVAL_STATUS)
+            .approvedBy(UPDATED_APPROVED_BY)
+            .vendor(UPDATED_VENDOR);
 
         restExpenseEntryMockMvc
             .perform(

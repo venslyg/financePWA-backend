@@ -160,43 +160,43 @@ describe('IncomeEntry e2e test', () => {
     });
 
     it('should create an instance of IncomeEntry', () => {
-      cy.get(`[data-cy="branchCode"]`).type('dream');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'dream');
+      cy.get(`[data-cy="branchCode"]`).type('adumbrate sure-footed');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'adumbrate sure-footed');
 
-      cy.get(`[data-cy="branchId"]`).type('after blah although');
-      cy.get(`[data-cy="branchId"]`).should('have.value', 'after blah although');
+      cy.get(`[data-cy="branchId"]`).type('supposing narrate pivot');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'supposing narrate pivot');
 
-      cy.get(`[data-cy="accountCode"]`).type('account');
-      cy.get(`[data-cy="accountCode"]`).should('have.value', 'account');
+      cy.get(`[data-cy="accountCode"]`).type('over nor');
+      cy.get(`[data-cy="accountCode"]`).should('have.value', 'over nor');
 
-      cy.get(`[data-cy="incomeCode"]`).type('than forceful where');
-      cy.get(`[data-cy="incomeCode"]`).should('have.value', 'than forceful where');
+      cy.get(`[data-cy="incomeCode"]`).type('irritably');
+      cy.get(`[data-cy="incomeCode"]`).should('have.value', 'irritably');
 
-      cy.get(`[data-cy="createdByUsername"]`).type('intrigue');
-      cy.get(`[data-cy="createdByUsername"]`).should('have.value', 'intrigue');
+      cy.get(`[data-cy="createdByUsername"]`).type('official');
+      cy.get(`[data-cy="createdByUsername"]`).should('have.value', 'official');
 
-      cy.get(`[data-cy="date"]`).type('2026-06-12');
+      cy.get(`[data-cy="date"]`).type('2026-06-11');
       cy.get(`[data-cy="date"]`).blur();
-      cy.get(`[data-cy="date"]`).should('have.value', '2026-06-12');
+      cy.get(`[data-cy="date"]`).should('have.value', '2026-06-11');
 
-      cy.get(`[data-cy="receiptNo"]`).type('membership');
-      cy.get(`[data-cy="receiptNo"]`).should('have.value', 'membership');
+      cy.get(`[data-cy="receiptNo"]`).type('libel runny');
+      cy.get(`[data-cy="receiptNo"]`).should('have.value', 'libel runny');
 
-      cy.get(`[data-cy="description"]`).type('solidly whose');
-      cy.get(`[data-cy="description"]`).should('have.value', 'solidly whose');
+      cy.get(`[data-cy="description"]`).type('verbally alongside');
+      cy.get(`[data-cy="description"]`).should('have.value', 'verbally alongside');
 
-      cy.get(`[data-cy="incomeType"]`).select('GIFT');
+      cy.get(`[data-cy="incomeType"]`).select('OFFERING');
 
-      cy.get(`[data-cy="amount"]`).type('31497.82');
-      cy.get(`[data-cy="amount"]`).should('have.value', '31497.82');
+      cy.get(`[data-cy="amount"]`).type('11437.71');
+      cy.get(`[data-cy="amount"]`).should('have.value', '11437.71');
 
       cy.get(`[data-cy="paymentMethod"]`).select('BANK');
 
-      cy.get(`[data-cy="receivablePerson"]`).type('boohoo versus desecrate');
-      cy.get(`[data-cy="receivablePerson"]`).should('have.value', 'boohoo versus desecrate');
+      cy.get(`[data-cy="receivablePerson"]`).type('burdensome weary');
+      cy.get(`[data-cy="receivablePerson"]`).should('have.value', 'burdensome weary');
 
-      cy.get(`[data-cy="receivedBy"]`).type('spook metabolise eventually');
-      cy.get(`[data-cy="receivedBy"]`).should('have.value', 'spook metabolise eventually');
+      cy.get(`[data-cy="receivedBy"]`).type('toward');
+      cy.get(`[data-cy="receivedBy"]`).should('have.value', 'toward');
 
       cy.get(`[data-cy="syncStatus"]`).select('SYNCED');
 

@@ -22,6 +22,8 @@ public class ExpenseCategoryDTO implements Serializable {
 
     private String description;
 
+    private Boolean isActive;
+
     private String createdBy;
 
     private Instant createdDate;
@@ -76,6 +78,14 @@ public class ExpenseCategoryDTO implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
 
     public String getCreatedBy() {
@@ -141,6 +151,7 @@ public class ExpenseCategoryDTO implements Serializable {
             ", categoryCode='" + getCategoryCode() + "'" +
             ", categoryName='" + getCategoryName() + "'" +
             ", description='" + getDescription() + "'" +
+            ", isActive='" + getIsActive() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedBy='" + getLastModifiedBy() + "'" +

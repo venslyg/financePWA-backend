@@ -84,6 +84,7 @@ class InventoryItemCriteriaTest {
         inventoryItemCriteria.quantity();
         inventoryItemCriteria.unitPrice();
         inventoryItemCriteria.runningStockCount();
+        inventoryItemCriteria.isActive();
         inventoryItemCriteria.createdBy();
         inventoryItemCriteria.createdDate();
         inventoryItemCriteria.lastModifiedBy();
@@ -103,6 +104,7 @@ class InventoryItemCriteriaTest {
                 condition.apply(criteria.getQuantity()) &&
                 condition.apply(criteria.getUnitPrice()) &&
                 condition.apply(criteria.getRunningStockCount()) &&
+                condition.apply(criteria.getIsActive()) &&
                 condition.apply(criteria.getCreatedBy()) &&
                 condition.apply(criteria.getCreatedDate()) &&
                 condition.apply(criteria.getLastModifiedBy()) &&
@@ -127,6 +129,7 @@ class InventoryItemCriteriaTest {
                 condition.apply(criteria.getQuantity(), copy.getQuantity()) &&
                 condition.apply(criteria.getUnitPrice(), copy.getUnitPrice()) &&
                 condition.apply(criteria.getRunningStockCount(), copy.getRunningStockCount()) &&
+                condition.apply(criteria.getIsActive(), copy.getIsActive()) &&
                 condition.apply(criteria.getCreatedBy(), copy.getCreatedBy()) &&
                 condition.apply(criteria.getCreatedDate(), copy.getCreatedDate()) &&
                 condition.apply(criteria.getLastModifiedBy(), copy.getLastModifiedBy()) &&

@@ -1044,8 +1044,9 @@ class DonationTrackerResourceIT {
             .donationIdCode(UPDATED_DONATION_ID_CODE)
             .date(UPDATED_DATE)
             .donorNameOrOrg(UPDATED_DONOR_NAME_OR_ORG)
-            .receivedViaMode(UPDATED_RECEIVED_VIA_MODE)
-            .notes(UPDATED_NOTES);
+            .contactDetails(UPDATED_CONTACT_DETAILS)
+            .amount(UPDATED_AMOUNT)
+            .receivedViaMode(UPDATED_RECEIVED_VIA_MODE);
 
         restDonationTrackerMockMvc
             .perform(

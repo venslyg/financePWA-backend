@@ -66,7 +66,8 @@ public class InventoryItemAsserts {
                     .as("check runningStockCount")
                     .usingComparator(bigDecimalCompareTo)
                     .isEqualTo(expected.getRunningStockCount())
-            );
+            )
+            .satisfies(a -> assertThat(a.getIsActive()).as("check isActive").isEqualTo(expected.getIsActive()));
     }
 
     /**

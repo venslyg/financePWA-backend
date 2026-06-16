@@ -7,6 +7,7 @@ export interface IExpenseCategory {
   categoryCode?: string | null;
   categoryName?: string | null;
   description?: string | null;
+  isActive?: boolean | null;
   createdBy?: string | null;
   createdDate?: dayjs.Dayjs | null;
   lastModifiedBy?: string | null;

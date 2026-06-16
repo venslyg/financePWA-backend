@@ -145,6 +145,13 @@
                 }
               </div>
             </th>
+            <th scope="col" jhiSortBy="isActive">
+              <div class="d-flex">
+                <span>Is Active</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col" jhiSortBy="createdBy">
               <div class="d-flex">
                 <span>Created By</span>
@@ -200,6 +207,7 @@
               <td>{{ maintenanceLog.vendor }}</td>
               <td>{{ maintenanceLog.nextServiceDate | formatMediumDate }}</td>
               <td>{{ maintenanceLog.note }}</td>
+              <td>{{ maintenanceLog.isActive }}</td>
               <td>{{ maintenanceLog.createdBy }}</td>
               <td>{{ maintenanceLog.createdDate | formatMediumDatetime }}</td>
               <td>{{ maintenanceLog.lastModifiedBy }}</td>

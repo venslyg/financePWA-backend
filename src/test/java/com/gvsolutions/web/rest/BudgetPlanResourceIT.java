@@ -1203,12 +1203,7 @@ class BudgetPlanResourceIT {
         BudgetPlan partialUpdatedBudgetPlan = new BudgetPlan();
         partialUpdatedBudgetPlan.setId(budgetPlan.getId());
 
-        partialUpdatedBudgetPlan
-            .branchCode(UPDATED_BRANCH_CODE)
-            .year(UPDATED_YEAR)
-            .allocatedAmount(UPDATED_ALLOCATED_AMOUNT)
-            .usedPercentage(UPDATED_USED_PERCENTAGE)
-            .alertStatus(UPDATED_ALERT_STATUS);
+        partialUpdatedBudgetPlan.branchId(UPDATED_BRANCH_ID).spentAmount(UPDATED_SPENT_AMOUNT).alertStatus(UPDATED_ALERT_STATUS);
 
         restBudgetPlanMockMvc
             .perform(

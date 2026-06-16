@@ -1421,10 +1421,17 @@ class LiabilityLogResourceIT {
         partialUpdatedLiabilityLog.setId(liabilityLog.getId());
 
         partialUpdatedLiabilityLog
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .liabilityCode(UPDATED_LIABILITY_CODE)
+            .loanFrom(UPDATED_LOAN_FROM)
+            .description(UPDATED_DESCRIPTION)
+            .liabilityType(UPDATED_LIABILITY_TYPE)
             .totalLoanAmount(UPDATED_TOTAL_LOAN_AMOUNT)
             .endDate(UPDATED_END_DATE)
-            .balanceToPay(UPDATED_BALANCE_TO_PAY);
+            .monthlyPaymentAmount(UPDATED_MONTHLY_PAYMENT_AMOUNT)
+            .principalPaid(UPDATED_PRINCIPAL_PAID)
+            .status(UPDATED_STATUS);
 
         restLiabilityLogMockMvc
             .perform(

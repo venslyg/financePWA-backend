@@ -7,13 +7,14 @@ export const sampleWithRequiredData: IInventoryItem = {
 };
 
 export const sampleWithPartialData: IInventoryItem = {
-  id: 11366,
-  branchCode: 'imagineer concerning powerfully',
-  itemName: 'uh-huh once hidden',
-  unitPrice: 10624.37,
-  createdBy: 'oof obstruct once',
-  lastModifiedBy: 'worth',
-  lastModifiedDate: dayjs('2026-06-11T16:17'),
+  id: 25369,
+  branchCode: 'psst kowtow testimonial',
+  itemName: 'including aw',
+  unitPrice: 10087.07,
+  isActive: true,
+  createdDate: dayjs('2026-06-12T04:54'),
+  lastModifiedBy: 'hoick though hastily',
+  lastModifiedDate: dayjs('2026-06-11T08:18'),
 };
 
 export const sampleWithFullData: IInventoryItem = {
@@ -26,10 +27,11 @@ export const sampleWithFullData: IInventoryItem = {
   quantity: 3121.77,
   unitPrice: 1429.63,
   runningStockCount: 9169.12,
-  createdBy: 'windy weep',
-  createdDate: dayjs('2026-06-11T11:52'),
-  lastModifiedBy: 'hmph contradict ethical',
-  lastModifiedDate: dayjs('2026-06-11T21:43'),
+  isActive: false,
+  createdBy: 'frozen fooey kiddingly',
+  createdDate: dayjs('2026-06-12T03:26'),
+  lastModifiedBy: 'far',
+  lastModifiedDate: dayjs('2026-06-12T06:49'),
 };
 
 export const sampleWithNewData: NewInventoryItem = {

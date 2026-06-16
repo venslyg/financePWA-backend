@@ -7,11 +7,11 @@ export const sampleWithRequiredData: IAssetSubCategory = {
 };
 
 export const sampleWithPartialData: IAssetSubCategory = {
-  id: 29506,
-  branchId: 'in expostulate',
-  assetCategoryCode: 'truthfully dishonor',
-  assetSubCategoryName: 'frail orientate',
-  createdBy: 'instructor mostly whack',
+  id: 19901,
+  branchId: 'coolly',
+  assetCategoryCode: 'unexpectedly',
+  assetSubCategoryName: 'abaft',
+  isActive: false,
 };
 
 export const sampleWithFullData: IAssetSubCategory = {
@@ -21,10 +21,11 @@ export const sampleWithFullData: IAssetSubCategory = {
   assetCategoryCode: 'which whoever around',
   assetSubCategoryCode: 'swanling foodstuffs vastly',
   assetSubCategoryName: 'internal',
-  createdBy: 'vice whenever',
-  createdDate: dayjs('2026-06-11T09:13'),
-  lastModifiedBy: 'mountain',
-  lastModifiedDate: dayjs('2026-06-11T16:02'),
+  isActive: false,
+  createdBy: 'how boo',
+  createdDate: dayjs('2026-06-11T14:12'),
+  lastModifiedBy: 'concerning unlike',
+  lastModifiedDate: dayjs('2026-06-11T12:26'),
 };
 
 export const sampleWithNewData: NewAssetSubCategory = {

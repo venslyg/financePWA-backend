@@ -1053,11 +1053,10 @@ class BinCardLineResourceIT {
         partialUpdatedBinCardLine.setId(binCardLine.getId());
 
         partialUpdatedBinCardLine
-            .branchCode(UPDATED_BRANCH_CODE)
             .branchId(UPDATED_BRANCH_ID)
-            .inventoryItemCode(UPDATED_INVENTORY_ITEM_CODE)
+            .date(UPDATED_DATE)
             .referenceNo(UPDATED_REFERENCE_NO)
-            .description(UPDATED_DESCRIPTION)
+            .quantityOut(UPDATED_QUANTITY_OUT)
             .runningBalance(UPDATED_RUNNING_BALANCE);
 
         restBinCardLineMockMvc

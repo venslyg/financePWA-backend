@@ -44,6 +44,10 @@ public class AssetSubCategory extends AbstractAuditingEntity<Long> implements Se
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String assetSubCategoryName;
 
+    @Column(name = "is_active")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Boolean)
+    private Boolean isActive;
+
     // Inherited createdBy definition
     // Inherited createdDate definition
     // Inherited lastModifiedBy definition
@@ -135,6 +139,19 @@ public class AssetSubCategory extends AbstractAuditingEntity<Long> implements Se
         this.assetSubCategoryName = assetSubCategoryName;
     }
 
+    public Boolean getIsActive() {
+        return this.isActive;
+    }
+
+    public AssetSubCategory isActive(Boolean isActive) {
+        this.setIsActive(isActive);
+        return this;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
     // Inherited createdBy methods
     public AssetSubCategory createdBy(String createdBy) {
         this.setCreatedBy(createdBy);
@@ -219,6 +236,7 @@ public class AssetSubCategory extends AbstractAuditingEntity<Long> implements Se
             ", assetCategoryCode='" + getAssetCategoryCode() + "'" +
             ", assetSubCategoryCode='" + getAssetSubCategoryCode() + "'" +
             ", assetSubCategoryName='" + getAssetSubCategoryName() + "'" +
+            ", isActive='" + getIsActive() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedBy='" + getLastModifiedBy() + "'" +

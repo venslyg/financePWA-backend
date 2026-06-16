@@ -160,36 +160,36 @@ describe('BankLedger e2e test', () => {
     });
 
     it('should create an instance of BankLedger', () => {
-      cy.get(`[data-cy="branchCode"]`).type('where longingly');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'where longingly');
+      cy.get(`[data-cy="branchCode"]`).type('brightly only unfortunately');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'brightly only unfortunately');
 
-      cy.get(`[data-cy="branchId"]`).type('sadly motor when');
-      cy.get(`[data-cy="branchId"]`).should('have.value', 'sadly motor when');
+      cy.get(`[data-cy="branchId"]`).type('finally notwithstanding mispronounce');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'finally notwithstanding mispronounce');
 
-      cy.get(`[data-cy="bankLedgerCode"]`).type('yippee alliance majestic');
-      cy.get(`[data-cy="bankLedgerCode"]`).should('have.value', 'yippee alliance majestic');
+      cy.get(`[data-cy="bankLedgerCode"]`).type('popularity spring rewrite');
+      cy.get(`[data-cy="bankLedgerCode"]`).should('have.value', 'popularity spring rewrite');
 
-      cy.get(`[data-cy="date"]`).type('2026-06-11');
+      cy.get(`[data-cy="date"]`).type('2026-06-12');
       cy.get(`[data-cy="date"]`).blur();
-      cy.get(`[data-cy="date"]`).should('have.value', '2026-06-11');
+      cy.get(`[data-cy="date"]`).should('have.value', '2026-06-12');
 
-      cy.get(`[data-cy="referenceNo"]`).type('braid haunting');
-      cy.get(`[data-cy="referenceNo"]`).should('have.value', 'braid haunting');
+      cy.get(`[data-cy="referenceNo"]`).type('inasmuch poor');
+      cy.get(`[data-cy="referenceNo"]`).should('have.value', 'inasmuch poor');
 
-      cy.get(`[data-cy="description"]`).type('inspect');
-      cy.get(`[data-cy="description"]`).should('have.value', 'inspect');
+      cy.get(`[data-cy="description"]`).type('conjecture');
+      cy.get(`[data-cy="description"]`).should('have.value', 'conjecture');
 
-      cy.get(`[data-cy="depositAmount"]`).type('30266.17');
-      cy.get(`[data-cy="depositAmount"]`).should('have.value', '30266.17');
+      cy.get(`[data-cy="depositAmount"]`).type('21956.83');
+      cy.get(`[data-cy="depositAmount"]`).should('have.value', '21956.83');
 
-      cy.get(`[data-cy="withdrawalAmount"]`).type('16809.71');
-      cy.get(`[data-cy="withdrawalAmount"]`).should('have.value', '16809.71');
+      cy.get(`[data-cy="withdrawalAmount"]`).type('18193.98');
+      cy.get(`[data-cy="withdrawalAmount"]`).should('have.value', '18193.98');
 
-      cy.get(`[data-cy="runningBalance"]`).type('13390.78');
-      cy.get(`[data-cy="runningBalance"]`).should('have.value', '13390.78');
+      cy.get(`[data-cy="runningBalance"]`).type('21741.12');
+      cy.get(`[data-cy="runningBalance"]`).should('have.value', '21741.12');
 
-      cy.get(`[data-cy="remark"]`).type('scrape circa unbalance');
-      cy.get(`[data-cy="remark"]`).should('have.value', 'scrape circa unbalance');
+      cy.get(`[data-cy="remark"]`).type('slow able');
+      cy.get(`[data-cy="remark"]`).should('have.value', 'slow able');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

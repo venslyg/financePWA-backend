@@ -62,6 +62,8 @@ public class MaintenanceLogCriteria implements Serializable, Criteria {
 
     private StringFilter note;
 
+    private BooleanFilter isActive;
+
     private StringFilter createdBy;
 
     private InstantFilter createdDate;
@@ -88,6 +90,7 @@ public class MaintenanceLogCriteria implements Serializable, Criteria {
         this.vendor = other.optionalVendor().map(StringFilter::copy).orElse(null);
         this.nextServiceDate = other.optionalNextServiceDate().map(LocalDateFilter::copy).orElse(null);
         this.note = other.optionalNote().map(StringFilter::copy).orElse(null);
+        this.isActive = other.optionalIsActive().map(BooleanFilter::copy).orElse(null);
         this.createdBy = other.optionalCreatedBy().map(StringFilter::copy).orElse(null);
         this.createdDate = other.optionalCreatedDate().map(InstantFilter::copy).orElse(null);
         this.lastModifiedBy = other.optionalLastModifiedBy().map(StringFilter::copy).orElse(null);
@@ -310,6 +313,25 @@ public class MaintenanceLogCriteria implements Serializable, Criteria {
         this.note = note;
     }
 
+    public BooleanFilter getIsActive() {
+        return isActive;
+    }
+
+    public Optional<BooleanFilter> optionalIsActive() {
+        return Optional.ofNullable(isActive);
+    }
+
+    public BooleanFilter isActive() {
+        if (isActive == null) {
+            setIsActive(new BooleanFilter());
+        }
+        return isActive;
+    }
+
+    public void setIsActive(BooleanFilter isActive) {
+        this.isActive = isActive;
+    }
+
     public StringFilter getCreatedBy() {
         return createdBy;
     }
@@ -445,6 +467,7 @@ public class MaintenanceLogCriteria implements Serializable, Criteria {
             Objects.equals(vendor, that.vendor) &&
             Objects.equals(nextServiceDate, that.nextServiceDate) &&
             Objects.equals(note, that.note) &&
+            Objects.equals(isActive, that.isActive) &&
             Objects.equals(createdBy, that.createdBy) &&
             Objects.equals(createdDate, that.createdDate) &&
             Objects.equals(lastModifiedBy, that.lastModifiedBy) &&
@@ -468,6 +491,7 @@ public class MaintenanceLogCriteria implements Serializable, Criteria {
             vendor,
             nextServiceDate,
             note,
+            isActive,
             createdBy,
             createdDate,
             lastModifiedBy,
@@ -492,6 +516,7 @@ public class MaintenanceLogCriteria implements Serializable, Criteria {
             optionalVendor().map(f -> "vendor=" + f + ", ").orElse("") +
             optionalNextServiceDate().map(f -> "nextServiceDate=" + f + ", ").orElse("") +
             optionalNote().map(f -> "note=" + f + ", ").orElse("") +
+            optionalIsActive().map(f -> "isActive=" + f + ", ").orElse("") +
             optionalCreatedBy().map(f -> "createdBy=" + f + ", ").orElse("") +
             optionalCreatedDate().map(f -> "createdDate=" + f + ", ").orElse("") +
             optionalLastModifiedBy().map(f -> "lastModifiedBy=" + f + ", ").orElse("") +

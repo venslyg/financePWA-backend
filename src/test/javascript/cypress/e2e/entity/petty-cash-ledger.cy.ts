@@ -160,39 +160,39 @@ describe('PettyCashLedger e2e test', () => {
     });
 
     it('should create an instance of PettyCashLedger', () => {
-      cy.get(`[data-cy="branchCode"]`).type('rear internationalize');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'rear internationalize');
+      cy.get(`[data-cy="branchCode"]`).type('extricate');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'extricate');
 
-      cy.get(`[data-cy="branchId"]`).type('at arrange');
-      cy.get(`[data-cy="branchId"]`).should('have.value', 'at arrange');
+      cy.get(`[data-cy="branchId"]`).type('to');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'to');
 
-      cy.get(`[data-cy="pettyCashCode"]`).type('whoa');
-      cy.get(`[data-cy="pettyCashCode"]`).should('have.value', 'whoa');
+      cy.get(`[data-cy="pettyCashCode"]`).type('emphasize suddenly');
+      cy.get(`[data-cy="pettyCashCode"]`).should('have.value', 'emphasize suddenly');
 
-      cy.get(`[data-cy="date"]`).type('2026-06-12');
+      cy.get(`[data-cy="date"]`).type('2026-06-11');
       cy.get(`[data-cy="date"]`).blur();
-      cy.get(`[data-cy="date"]`).should('have.value', '2026-06-12');
+      cy.get(`[data-cy="date"]`).should('have.value', '2026-06-11');
 
-      cy.get(`[data-cy="pettyCashVoucherNo"]`).type('if');
-      cy.get(`[data-cy="pettyCashVoucherNo"]`).should('have.value', 'if');
+      cy.get(`[data-cy="pettyCashVoucherNo"]`).type('alongside');
+      cy.get(`[data-cy="pettyCashVoucherNo"]`).should('have.value', 'alongside');
 
-      cy.get(`[data-cy="description"]`).type('meanwhile accredit');
-      cy.get(`[data-cy="description"]`).should('have.value', 'meanwhile accredit');
+      cy.get(`[data-cy="description"]`).type('commemorate');
+      cy.get(`[data-cy="description"]`).should('have.value', 'commemorate');
 
-      cy.get(`[data-cy="cashIn"]`).type('3503.67');
-      cy.get(`[data-cy="cashIn"]`).should('have.value', '3503.67');
+      cy.get(`[data-cy="cashIn"]`).type('21103.96');
+      cy.get(`[data-cy="cashIn"]`).should('have.value', '21103.96');
 
-      cy.get(`[data-cy="cashOut"]`).type('13907.65');
-      cy.get(`[data-cy="cashOut"]`).should('have.value', '13907.65');
+      cy.get(`[data-cy="cashOut"]`).type('11477.57');
+      cy.get(`[data-cy="cashOut"]`).should('have.value', '11477.57');
 
-      cy.get(`[data-cy="runningBalance"]`).type('22183.52');
-      cy.get(`[data-cy="runningBalance"]`).should('have.value', '22183.52');
+      cy.get(`[data-cy="runningBalance"]`).type('7048.93');
+      cy.get(`[data-cy="runningBalance"]`).should('have.value', '7048.93');
 
-      cy.get(`[data-cy="linkedAccountCode"]`).type('gripper');
-      cy.get(`[data-cy="linkedAccountCode"]`).should('have.value', 'gripper');
+      cy.get(`[data-cy="linkedAccountCode"]`).type('hopelessly');
+      cy.get(`[data-cy="linkedAccountCode"]`).should('have.value', 'hopelessly');
 
-      cy.get(`[data-cy="referenceNo"]`).type('fortunately loyally');
-      cy.get(`[data-cy="referenceNo"]`).should('have.value', 'fortunately loyally');
+      cy.get(`[data-cy="referenceNo"]`).type('scrutinise as');
+      cy.get(`[data-cy="referenceNo"]`).should('have.value', 'scrutinise as');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

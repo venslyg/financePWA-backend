@@ -65,6 +65,9 @@ class ExpenseSubCategoryResourceIT {
     private static final String DEFAULT_SUB_CATEGORY_NAME = "AAAAAAAAAA";
     private static final String UPDATED_SUB_CATEGORY_NAME = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_IS_ACTIVE = false;
+    private static final Boolean UPDATED_IS_ACTIVE = true;
+
     private static final String ENTITY_API_URL = "/api/expense-sub-categories";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
     private static final String ENTITY_SEARCH_API_URL = "/api/expense-sub-categories/_search";
@@ -112,7 +115,8 @@ class ExpenseSubCategoryResourceIT {
             .branchId(DEFAULT_BRANCH_ID)
             .categoryCode(DEFAULT_CATEGORY_CODE)
             .subCategoryCode(DEFAULT_SUB_CATEGORY_CODE)
-            .subCategoryName(DEFAULT_SUB_CATEGORY_NAME);
+            .subCategoryName(DEFAULT_SUB_CATEGORY_NAME)
+            .isActive(DEFAULT_IS_ACTIVE);
     }
 
     /**
@@ -127,7 +131,8 @@ class ExpenseSubCategoryResourceIT {
             .branchId(UPDATED_BRANCH_ID)
             .categoryCode(UPDATED_CATEGORY_CODE)
             .subCategoryCode(UPDATED_SUB_CATEGORY_CODE)
-            .subCategoryName(UPDATED_SUB_CATEGORY_NAME);
+            .subCategoryName(UPDATED_SUB_CATEGORY_NAME)
+            .isActive(UPDATED_IS_ACTIVE);
     }
 
     @BeforeEach
@@ -216,7 +221,8 @@ class ExpenseSubCategoryResourceIT {
             .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].categoryCode").value(hasItem(DEFAULT_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].subCategoryCode").value(hasItem(DEFAULT_SUB_CATEGORY_CODE)))
-            .andExpect(jsonPath("$.[*].subCategoryName").value(hasItem(DEFAULT_SUB_CATEGORY_NAME)));
+            .andExpect(jsonPath("$.[*].subCategoryName").value(hasItem(DEFAULT_SUB_CATEGORY_NAME)))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE)));
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -252,7 +258,8 @@ class ExpenseSubCategoryResourceIT {
             .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.categoryCode").value(DEFAULT_CATEGORY_CODE))
             .andExpect(jsonPath("$.subCategoryCode").value(DEFAULT_SUB_CATEGORY_CODE))
-            .andExpect(jsonPath("$.subCategoryName").value(DEFAULT_SUB_CATEGORY_NAME));
+            .andExpect(jsonPath("$.subCategoryName").value(DEFAULT_SUB_CATEGORY_NAME))
+            .andExpect(jsonPath("$.isActive").value(DEFAULT_IS_ACTIVE));
     }
 
     @Test
@@ -564,6 +571,39 @@ class ExpenseSubCategoryResourceIT {
 
     @Test
     @Transactional
+    void getAllExpenseSubCategoriesByIsActiveIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedExpenseSubCategory = expenseSubCategoryRepository.saveAndFlush(expenseSubCategory);
+
+        // Get all the expenseSubCategoryList where isActive equals to
+        defaultExpenseSubCategoryFiltering("isActive.equals=" + DEFAULT_IS_ACTIVE, "isActive.equals=" + UPDATED_IS_ACTIVE);
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseSubCategoriesByIsActiveIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedExpenseSubCategory = expenseSubCategoryRepository.saveAndFlush(expenseSubCategory);
+
+        // Get all the expenseSubCategoryList where isActive in
+        defaultExpenseSubCategoryFiltering(
+            "isActive.in=" + DEFAULT_IS_ACTIVE + "," + UPDATED_IS_ACTIVE,
+            "isActive.in=" + UPDATED_IS_ACTIVE
+        );
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseSubCategoriesByIsActiveIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedExpenseSubCategory = expenseSubCategoryRepository.saveAndFlush(expenseSubCategory);
+
+        // Get all the expenseSubCategoryList where isActive is not null
+        defaultExpenseSubCategoryFiltering("isActive.specified=true", "isActive.specified=false");
+    }
+
+    @Test
+    @Transactional
     void getAllExpenseSubCategoriesByCategoryIsEqualToSomething() throws Exception {
         ExpenseCategory category;
         if (TestUtil.findAll(em, ExpenseCategory.class).isEmpty()) {
@@ -602,7 +642,8 @@ class ExpenseSubCategoryResourceIT {
             .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].categoryCode").value(hasItem(DEFAULT_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].subCategoryCode").value(hasItem(DEFAULT_SUB_CATEGORY_CODE)))
-            .andExpect(jsonPath("$.[*].subCategoryName").value(hasItem(DEFAULT_SUB_CATEGORY_NAME)));
+            .andExpect(jsonPath("$.[*].subCategoryName").value(hasItem(DEFAULT_SUB_CATEGORY_NAME)))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE)));
 
         // Check, that the count call also returns 1
         restExpenseSubCategoryMockMvc
@@ -657,7 +698,8 @@ class ExpenseSubCategoryResourceIT {
             .branchId(UPDATED_BRANCH_ID)
             .categoryCode(UPDATED_CATEGORY_CODE)
             .subCategoryCode(UPDATED_SUB_CATEGORY_CODE)
-            .subCategoryName(UPDATED_SUB_CATEGORY_NAME);
+            .subCategoryName(UPDATED_SUB_CATEGORY_NAME)
+            .isActive(UPDATED_IS_ACTIVE);
         ExpenseSubCategoryDTO expenseSubCategoryDTO = expenseSubCategoryMapper.toDto(updatedExpenseSubCategory);
 
         restExpenseSubCategoryMockMvc
@@ -769,7 +811,12 @@ class ExpenseSubCategoryResourceIT {
         ExpenseSubCategory partialUpdatedExpenseSubCategory = new ExpenseSubCategory();
         partialUpdatedExpenseSubCategory.setId(expenseSubCategory.getId());
 
-        partialUpdatedExpenseSubCategory.subCategoryCode(UPDATED_SUB_CATEGORY_CODE).subCategoryName(UPDATED_SUB_CATEGORY_NAME);
+        partialUpdatedExpenseSubCategory
+            .branchCode(UPDATED_BRANCH_CODE)
+            .branchId(UPDATED_BRANCH_ID)
+            .subCategoryCode(UPDATED_SUB_CATEGORY_CODE)
+            .subCategoryName(UPDATED_SUB_CATEGORY_NAME)
+            .isActive(UPDATED_IS_ACTIVE);
 
         restExpenseSubCategoryMockMvc
             .perform(
@@ -805,7 +852,8 @@ class ExpenseSubCategoryResourceIT {
             .branchId(UPDATED_BRANCH_ID)
             .categoryCode(UPDATED_CATEGORY_CODE)
             .subCategoryCode(UPDATED_SUB_CATEGORY_CODE)
-            .subCategoryName(UPDATED_SUB_CATEGORY_NAME);
+            .subCategoryName(UPDATED_SUB_CATEGORY_NAME)
+            .isActive(UPDATED_IS_ACTIVE);
 
         restExpenseSubCategoryMockMvc
             .perform(
@@ -935,7 +983,8 @@ class ExpenseSubCategoryResourceIT {
             .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].categoryCode").value(hasItem(DEFAULT_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].subCategoryCode").value(hasItem(DEFAULT_SUB_CATEGORY_CODE)))
-            .andExpect(jsonPath("$.[*].subCategoryName").value(hasItem(DEFAULT_SUB_CATEGORY_NAME)));
+            .andExpect(jsonPath("$.[*].subCategoryName").value(hasItem(DEFAULT_SUB_CATEGORY_NAME)))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE)));
     }
 
     protected long getRepositoryCount() {

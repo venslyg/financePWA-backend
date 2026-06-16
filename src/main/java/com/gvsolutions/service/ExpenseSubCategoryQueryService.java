@@ -87,6 +87,7 @@ public class ExpenseSubCategoryQueryService extends QueryService<ExpenseSubCateg
                 buildStringSpecification(criteria.getCategoryCode(), ExpenseSubCategory_.categoryCode),
                 buildStringSpecification(criteria.getSubCategoryCode(), ExpenseSubCategory_.subCategoryCode),
                 buildStringSpecification(criteria.getSubCategoryName(), ExpenseSubCategory_.subCategoryName),
+                buildSpecification(criteria.getIsActive(), ExpenseSubCategory_.isActive),
                 buildStringSpecification(criteria.getCreatedBy(), ExpenseSubCategory_.createdBy),
                 buildRangeSpecification(criteria.getCreatedDate(), ExpenseSubCategory_.createdDate),
                 buildStringSpecification(criteria.getLastModifiedBy(), ExpenseSubCategory_.lastModifiedBy),

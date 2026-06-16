@@ -88,6 +88,9 @@ class MaintenanceLogResourceIT {
     private static final String DEFAULT_NOTE = "AAAAAAAAAA";
     private static final String UPDATED_NOTE = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_IS_ACTIVE = false;
+    private static final Boolean UPDATED_IS_ACTIVE = true;
+
     private static final String ENTITY_API_URL = "/api/maintenance-logs";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
     private static final String ENTITY_SEARCH_API_URL = "/api/maintenance-logs/_search";
@@ -140,7 +143,8 @@ class MaintenanceLogResourceIT {
             .cost(DEFAULT_COST)
             .vendor(DEFAULT_VENDOR)
             .nextServiceDate(DEFAULT_NEXT_SERVICE_DATE)
-            .note(DEFAULT_NOTE);
+            .note(DEFAULT_NOTE)
+            .isActive(DEFAULT_IS_ACTIVE);
     }
 
     /**
@@ -160,7 +164,8 @@ class MaintenanceLogResourceIT {
             .cost(UPDATED_COST)
             .vendor(UPDATED_VENDOR)
             .nextServiceDate(UPDATED_NEXT_SERVICE_DATE)
-            .note(UPDATED_NOTE);
+            .note(UPDATED_NOTE)
+            .isActive(UPDATED_IS_ACTIVE);
     }
 
     @BeforeEach
@@ -251,7 +256,8 @@ class MaintenanceLogResourceIT {
             .andExpect(jsonPath("$.[*].cost").value(hasItem(sameNumber(DEFAULT_COST))))
             .andExpect(jsonPath("$.[*].vendor").value(hasItem(DEFAULT_VENDOR)))
             .andExpect(jsonPath("$.[*].nextServiceDate").value(hasItem(DEFAULT_NEXT_SERVICE_DATE.toString())))
-            .andExpect(jsonPath("$.[*].note").value(hasItem(DEFAULT_NOTE)));
+            .andExpect(jsonPath("$.[*].note").value(hasItem(DEFAULT_NOTE)))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE)));
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -292,7 +298,8 @@ class MaintenanceLogResourceIT {
             .andExpect(jsonPath("$.cost").value(sameNumber(DEFAULT_COST)))
             .andExpect(jsonPath("$.vendor").value(DEFAULT_VENDOR))
             .andExpect(jsonPath("$.nextServiceDate").value(DEFAULT_NEXT_SERVICE_DATE.toString()))
-            .andExpect(jsonPath("$.note").value(DEFAULT_NOTE));
+            .andExpect(jsonPath("$.note").value(DEFAULT_NOTE))
+            .andExpect(jsonPath("$.isActive").value(DEFAULT_IS_ACTIVE));
     }
 
     @Test
@@ -894,6 +901,36 @@ class MaintenanceLogResourceIT {
 
     @Test
     @Transactional
+    void getAllMaintenanceLogsByIsActiveIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedMaintenanceLog = maintenanceLogRepository.saveAndFlush(maintenanceLog);
+
+        // Get all the maintenanceLogList where isActive equals to
+        defaultMaintenanceLogFiltering("isActive.equals=" + DEFAULT_IS_ACTIVE, "isActive.equals=" + UPDATED_IS_ACTIVE);
+    }
+
+    @Test
+    @Transactional
+    void getAllMaintenanceLogsByIsActiveIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedMaintenanceLog = maintenanceLogRepository.saveAndFlush(maintenanceLog);
+
+        // Get all the maintenanceLogList where isActive in
+        defaultMaintenanceLogFiltering("isActive.in=" + DEFAULT_IS_ACTIVE + "," + UPDATED_IS_ACTIVE, "isActive.in=" + UPDATED_IS_ACTIVE);
+    }
+
+    @Test
+    @Transactional
+    void getAllMaintenanceLogsByIsActiveIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedMaintenanceLog = maintenanceLogRepository.saveAndFlush(maintenanceLog);
+
+        // Get all the maintenanceLogList where isActive is not null
+        defaultMaintenanceLogFiltering("isActive.specified=true", "isActive.specified=false");
+    }
+
+    @Test
+    @Transactional
     void getAllMaintenanceLogsByAssetIsEqualToSomething() throws Exception {
         AssetRegister asset;
         if (TestUtil.findAll(em, AssetRegister.class).isEmpty()) {
@@ -937,7 +974,8 @@ class MaintenanceLogResourceIT {
             .andExpect(jsonPath("$.[*].cost").value(hasItem(sameNumber(DEFAULT_COST))))
             .andExpect(jsonPath("$.[*].vendor").value(hasItem(DEFAULT_VENDOR)))
             .andExpect(jsonPath("$.[*].nextServiceDate").value(hasItem(DEFAULT_NEXT_SERVICE_DATE.toString())))
-            .andExpect(jsonPath("$.[*].note").value(hasItem(DEFAULT_NOTE)));
+            .andExpect(jsonPath("$.[*].note").value(hasItem(DEFAULT_NOTE)))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE)));
 
         // Check, that the count call also returns 1
         restMaintenanceLogMockMvc
@@ -997,7 +1035,8 @@ class MaintenanceLogResourceIT {
             .cost(UPDATED_COST)
             .vendor(UPDATED_VENDOR)
             .nextServiceDate(UPDATED_NEXT_SERVICE_DATE)
-            .note(UPDATED_NOTE);
+            .note(UPDATED_NOTE)
+            .isActive(UPDATED_IS_ACTIVE);
         MaintenanceLogDTO maintenanceLogDTO = maintenanceLogMapper.toDto(updatedMaintenanceLog);
 
         restMaintenanceLogMockMvc
@@ -1107,10 +1146,7 @@ class MaintenanceLogResourceIT {
         MaintenanceLog partialUpdatedMaintenanceLog = new MaintenanceLog();
         partialUpdatedMaintenanceLog.setId(maintenanceLog.getId());
 
-        partialUpdatedMaintenanceLog
-            .maintenanceLogCode(UPDATED_MAINTENANCE_LOG_CODE)
-            .logDate(UPDATED_LOG_DATE)
-            .description(UPDATED_DESCRIPTION);
+        partialUpdatedMaintenanceLog.branchCode(UPDATED_BRANCH_CODE).logDate(UPDATED_LOG_DATE).isActive(UPDATED_IS_ACTIVE);
 
         restMaintenanceLogMockMvc
             .perform(
@@ -1151,7 +1187,8 @@ class MaintenanceLogResourceIT {
             .cost(UPDATED_COST)
             .vendor(UPDATED_VENDOR)
             .nextServiceDate(UPDATED_NEXT_SERVICE_DATE)
-            .note(UPDATED_NOTE);
+            .note(UPDATED_NOTE)
+            .isActive(UPDATED_IS_ACTIVE);
 
         restMaintenanceLogMockMvc
             .perform(
@@ -1283,7 +1320,8 @@ class MaintenanceLogResourceIT {
             .andExpect(jsonPath("$.[*].cost").value(hasItem(sameNumber(DEFAULT_COST))))
             .andExpect(jsonPath("$.[*].vendor").value(hasItem(DEFAULT_VENDOR)))
             .andExpect(jsonPath("$.[*].nextServiceDate").value(hasItem(DEFAULT_NEXT_SERVICE_DATE.toString())))
-            .andExpect(jsonPath("$.[*].note").value(hasItem(DEFAULT_NOTE)));
+            .andExpect(jsonPath("$.[*].note").value(hasItem(DEFAULT_NOTE)))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE)));
     }
 
     protected long getRepositoryCount() {

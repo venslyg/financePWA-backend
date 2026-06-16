@@ -28,7 +28,7 @@ type ExpenseSubCategoryFormRawValue = FormValueOf<IExpenseSubCategory>;
 
 type NewExpenseSubCategoryFormRawValue = FormValueOf<NewExpenseSubCategory>;
 
-type ExpenseSubCategoryFormDefaults = Pick<NewExpenseSubCategory, 'id' | 'createdDate' | 'lastModifiedDate'>;
+type ExpenseSubCategoryFormDefaults = Pick<NewExpenseSubCategory, 'id' | 'isActive' | 'createdDate' | 'lastModifiedDate'>;
 
 type ExpenseSubCategoryFormGroupContent = {
   id: FormControl<ExpenseSubCategoryFormRawValue['id'] | NewExpenseSubCategory['id']>;
@@ -37,6 +37,7 @@ type ExpenseSubCategoryFormGroupContent = {
   categoryCode: FormControl<ExpenseSubCategoryFormRawValue['categoryCode']>;
   subCategoryCode: FormControl<ExpenseSubCategoryFormRawValue['subCategoryCode']>;
   subCategoryName: FormControl<ExpenseSubCategoryFormRawValue['subCategoryName']>;
+  isActive: FormControl<ExpenseSubCategoryFormRawValue['isActive']>;
   createdBy: FormControl<ExpenseSubCategoryFormRawValue['createdBy']>;
   createdDate: FormControl<ExpenseSubCategoryFormRawValue['createdDate']>;
   lastModifiedBy: FormControl<ExpenseSubCategoryFormRawValue['lastModifiedBy']>;
@@ -66,6 +67,7 @@ export class ExpenseSubCategoryFormService {
       categoryCode: new FormControl(expenseSubCategoryRawValue.categoryCode),
       subCategoryCode: new FormControl(expenseSubCategoryRawValue.subCategoryCode),
       subCategoryName: new FormControl(expenseSubCategoryRawValue.subCategoryName),
+      isActive: new FormControl(expenseSubCategoryRawValue.isActive),
       createdBy: new FormControl(expenseSubCategoryRawValue.createdBy),
       createdDate: new FormControl(expenseSubCategoryRawValue.createdDate),
       lastModifiedBy: new FormControl(expenseSubCategoryRawValue.lastModifiedBy),
@@ -98,6 +100,7 @@ export class ExpenseSubCategoryFormService {
 
     return {
       id: null,
+      isActive: false,
       createdDate: currentTime,
       lastModifiedDate: currentTime,
     };

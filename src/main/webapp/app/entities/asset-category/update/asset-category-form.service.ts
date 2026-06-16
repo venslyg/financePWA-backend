@@ -28,7 +28,7 @@ type AssetCategoryFormRawValue = FormValueOf<IAssetCategory>;
 
 type NewAssetCategoryFormRawValue = FormValueOf<NewAssetCategory>;
 
-type AssetCategoryFormDefaults = Pick<NewAssetCategory, 'id' | 'createdDate' | 'lastModifiedDate'>;
+type AssetCategoryFormDefaults = Pick<NewAssetCategory, 'id' | 'isActive' | 'createdDate' | 'lastModifiedDate'>;
 
 type AssetCategoryFormGroupContent = {
   id: FormControl<AssetCategoryFormRawValue['id'] | NewAssetCategory['id']>;
@@ -37,6 +37,7 @@ type AssetCategoryFormGroupContent = {
   assetCategoryCode: FormControl<AssetCategoryFormRawValue['assetCategoryCode']>;
   assetCategoryName: FormControl<AssetCategoryFormRawValue['assetCategoryName']>;
   description: FormControl<AssetCategoryFormRawValue['description']>;
+  isActive: FormControl<AssetCategoryFormRawValue['isActive']>;
   createdBy: FormControl<AssetCategoryFormRawValue['createdBy']>;
   createdDate: FormControl<AssetCategoryFormRawValue['createdDate']>;
   lastModifiedBy: FormControl<AssetCategoryFormRawValue['lastModifiedBy']>;
@@ -65,6 +66,7 @@ export class AssetCategoryFormService {
       assetCategoryCode: new FormControl(assetCategoryRawValue.assetCategoryCode),
       assetCategoryName: new FormControl(assetCategoryRawValue.assetCategoryName),
       description: new FormControl(assetCategoryRawValue.description),
+      isActive: new FormControl(assetCategoryRawValue.isActive),
       createdBy: new FormControl(assetCategoryRawValue.createdBy),
       createdDate: new FormControl(assetCategoryRawValue.createdDate),
       lastModifiedBy: new FormControl(assetCategoryRawValue.lastModifiedBy),
@@ -91,6 +93,7 @@ export class AssetCategoryFormService {
 
     return {
       id: null,
+      isActive: false,
       createdDate: currentTime,
       lastModifiedDate: currentTime,
     };

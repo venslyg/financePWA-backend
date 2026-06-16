@@ -40,6 +40,8 @@ public class InventoryItemCriteria implements Serializable, Criteria {
 
     private BigDecimalFilter runningStockCount;
 
+    private BooleanFilter isActive;
+
     private StringFilter createdBy;
 
     private InstantFilter createdDate;
@@ -62,6 +64,7 @@ public class InventoryItemCriteria implements Serializable, Criteria {
         this.quantity = other.optionalQuantity().map(BigDecimalFilter::copy).orElse(null);
         this.unitPrice = other.optionalUnitPrice().map(BigDecimalFilter::copy).orElse(null);
         this.runningStockCount = other.optionalRunningStockCount().map(BigDecimalFilter::copy).orElse(null);
+        this.isActive = other.optionalIsActive().map(BooleanFilter::copy).orElse(null);
         this.createdBy = other.optionalCreatedBy().map(StringFilter::copy).orElse(null);
         this.createdDate = other.optionalCreatedDate().map(InstantFilter::copy).orElse(null);
         this.lastModifiedBy = other.optionalLastModifiedBy().map(StringFilter::copy).orElse(null);
@@ -245,6 +248,25 @@ public class InventoryItemCriteria implements Serializable, Criteria {
         this.runningStockCount = runningStockCount;
     }
 
+    public BooleanFilter getIsActive() {
+        return isActive;
+    }
+
+    public Optional<BooleanFilter> optionalIsActive() {
+        return Optional.ofNullable(isActive);
+    }
+
+    public BooleanFilter isActive() {
+        if (isActive == null) {
+            setIsActive(new BooleanFilter());
+        }
+        return isActive;
+    }
+
+    public void setIsActive(BooleanFilter isActive) {
+        this.isActive = isActive;
+    }
+
     public StringFilter getCreatedBy() {
         return createdBy;
     }
@@ -359,6 +381,7 @@ public class InventoryItemCriteria implements Serializable, Criteria {
             Objects.equals(quantity, that.quantity) &&
             Objects.equals(unitPrice, that.unitPrice) &&
             Objects.equals(runningStockCount, that.runningStockCount) &&
+            Objects.equals(isActive, that.isActive) &&
             Objects.equals(createdBy, that.createdBy) &&
             Objects.equals(createdDate, that.createdDate) &&
             Objects.equals(lastModifiedBy, that.lastModifiedBy) &&
@@ -379,6 +402,7 @@ public class InventoryItemCriteria implements Serializable, Criteria {
             quantity,
             unitPrice,
             runningStockCount,
+            isActive,
             createdBy,
             createdDate,
             lastModifiedBy,
@@ -400,6 +424,7 @@ public class InventoryItemCriteria implements Serializable, Criteria {
             optionalQuantity().map(f -> "quantity=" + f + ", ").orElse("") +
             optionalUnitPrice().map(f -> "unitPrice=" + f + ", ").orElse("") +
             optionalRunningStockCount().map(f -> "runningStockCount=" + f + ", ").orElse("") +
+            optionalIsActive().map(f -> "isActive=" + f + ", ").orElse("") +
             optionalCreatedBy().map(f -> "createdBy=" + f + ", ").orElse("") +
             optionalCreatedDate().map(f -> "createdDate=" + f + ", ").orElse("") +
             optionalLastModifiedBy().map(f -> "lastModifiedBy=" + f + ", ").orElse("") +

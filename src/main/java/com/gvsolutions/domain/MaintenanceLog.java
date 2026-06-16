@@ -65,6 +65,10 @@ public class MaintenanceLog extends AbstractAuditingEntity<Long> implements Seri
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String note;
 
+    @Column(name = "is_active")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Boolean)
+    private Boolean isActive;
+
     // Inherited createdBy definition
     // Inherited createdDate definition
     // Inherited lastModifiedBy definition
@@ -221,6 +225,19 @@ public class MaintenanceLog extends AbstractAuditingEntity<Long> implements Seri
         this.note = note;
     }
 
+    public Boolean getIsActive() {
+        return this.isActive;
+    }
+
+    public MaintenanceLog isActive(Boolean isActive) {
+        this.setIsActive(isActive);
+        return this;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
     // Inherited createdBy methods
     public MaintenanceLog createdBy(String createdBy) {
         this.setCreatedBy(createdBy);
@@ -310,6 +327,7 @@ public class MaintenanceLog extends AbstractAuditingEntity<Long> implements Seri
             ", vendor='" + getVendor() + "'" +
             ", nextServiceDate='" + getNextServiceDate() + "'" +
             ", note='" + getNote() + "'" +
+            ", isActive='" + getIsActive() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedBy='" + getLastModifiedBy() + "'" +

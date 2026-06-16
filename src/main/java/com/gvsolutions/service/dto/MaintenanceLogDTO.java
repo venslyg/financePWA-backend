@@ -37,6 +37,8 @@ public class MaintenanceLogDTO implements Serializable {
 
     private String note;
 
+    private Boolean isActive;
+
     private String createdBy;
 
     private Instant createdDate;
@@ -135,6 +137,14 @@ public class MaintenanceLogDTO implements Serializable {
         this.note = note;
     }
 
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
     public String getCreatedBy() {
         return createdBy;
     }
@@ -211,6 +221,7 @@ public class MaintenanceLogDTO implements Serializable {
             ", vendor='" + getVendor() + "'" +
             ", nextServiceDate='" + getNextServiceDate() + "'" +
             ", note='" + getNote() + "'" +
+            ", isActive='" + getIsActive() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedBy='" + getLastModifiedBy() + "'" +

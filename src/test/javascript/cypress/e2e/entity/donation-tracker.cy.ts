@@ -160,35 +160,35 @@ describe('DonationTracker e2e test', () => {
     });
 
     it('should create an instance of DonationTracker', () => {
-      cy.get(`[data-cy="branchCode"]`).type('enthusiastically');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'enthusiastically');
+      cy.get(`[data-cy="branchCode"]`).type('aw searchingly');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'aw searchingly');
 
-      cy.get(`[data-cy="branchId"]`).type('ew');
-      cy.get(`[data-cy="branchId"]`).should('have.value', 'ew');
+      cy.get(`[data-cy="branchId"]`).type('woot unaccountably');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'woot unaccountably');
 
-      cy.get(`[data-cy="donationIdCode"]`).type('glass tray um');
-      cy.get(`[data-cy="donationIdCode"]`).should('have.value', 'glass tray um');
+      cy.get(`[data-cy="donationIdCode"]`).type('indeed athwart');
+      cy.get(`[data-cy="donationIdCode"]`).should('have.value', 'indeed athwart');
 
-      cy.get(`[data-cy="date"]`).type('2026-06-11');
+      cy.get(`[data-cy="date"]`).type('2026-06-12');
       cy.get(`[data-cy="date"]`).blur();
-      cy.get(`[data-cy="date"]`).should('have.value', '2026-06-11');
+      cy.get(`[data-cy="date"]`).should('have.value', '2026-06-12');
 
-      cy.get(`[data-cy="donorNameOrOrg"]`).type('lest because');
-      cy.get(`[data-cy="donorNameOrOrg"]`).should('have.value', 'lest because');
+      cy.get(`[data-cy="donorNameOrOrg"]`).type('truly');
+      cy.get(`[data-cy="donorNameOrOrg"]`).should('have.value', 'truly');
 
-      cy.get(`[data-cy="contactDetails"]`).type('yahoo');
-      cy.get(`[data-cy="contactDetails"]`).should('have.value', 'yahoo');
+      cy.get(`[data-cy="contactDetails"]`).type('finally adult as');
+      cy.get(`[data-cy="contactDetails"]`).should('have.value', 'finally adult as');
 
-      cy.get(`[data-cy="amount"]`).type('22355.4');
-      cy.get(`[data-cy="amount"]`).should('have.value', '22355.4');
+      cy.get(`[data-cy="amount"]`).type('17943.87');
+      cy.get(`[data-cy="amount"]`).should('have.value', '17943.87');
 
-      cy.get(`[data-cy="purpose"]`).type('notarize extra-large');
-      cy.get(`[data-cy="purpose"]`).should('have.value', 'notarize extra-large');
+      cy.get(`[data-cy="purpose"]`).type('failing what');
+      cy.get(`[data-cy="purpose"]`).should('have.value', 'failing what');
 
-      cy.get(`[data-cy="receivedViaMode"]`).select('CASH');
+      cy.get(`[data-cy="receivedViaMode"]`).select('BANK');
 
-      cy.get(`[data-cy="notes"]`).type('ick rightfully worth');
-      cy.get(`[data-cy="notes"]`).should('have.value', 'ick rightfully worth');
+      cy.get(`[data-cy="notes"]`).type('until regarding toward');
+      cy.get(`[data-cy="notes"]`).should('have.value', 'until regarding toward');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

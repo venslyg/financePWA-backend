@@ -44,6 +44,10 @@ public class AssetCategory extends AbstractAuditingEntity<Long> implements Seria
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String description;
 
+    @Column(name = "is_active")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Boolean)
+    private Boolean isActive;
+
     // Inherited createdBy definition
     // Inherited createdDate definition
     // Inherited lastModifiedBy definition
@@ -132,6 +136,19 @@ public class AssetCategory extends AbstractAuditingEntity<Long> implements Seria
         this.description = description;
     }
 
+    public Boolean getIsActive() {
+        return this.isActive;
+    }
+
+    public AssetCategory isActive(Boolean isActive) {
+        this.setIsActive(isActive);
+        return this;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
     // Inherited createdBy methods
     public AssetCategory createdBy(String createdBy) {
         this.setCreatedBy(createdBy);
@@ -203,6 +220,7 @@ public class AssetCategory extends AbstractAuditingEntity<Long> implements Seria
             ", assetCategoryCode='" + getAssetCategoryCode() + "'" +
             ", assetCategoryName='" + getAssetCategoryName() + "'" +
             ", description='" + getDescription() + "'" +
+            ", isActive='" + getIsActive() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedBy='" + getLastModifiedBy() + "'" +

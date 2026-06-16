@@ -60,7 +60,8 @@ public class MaintenanceLogAsserts {
             .satisfies(a -> assertThat(a.getCost()).as("check cost").usingComparator(bigDecimalCompareTo).isEqualTo(expected.getCost()))
             .satisfies(a -> assertThat(a.getVendor()).as("check vendor").isEqualTo(expected.getVendor()))
             .satisfies(a -> assertThat(a.getNextServiceDate()).as("check nextServiceDate").isEqualTo(expected.getNextServiceDate()))
-            .satisfies(a -> assertThat(a.getNote()).as("check note").isEqualTo(expected.getNote()));
+            .satisfies(a -> assertThat(a.getNote()).as("check note").isEqualTo(expected.getNote()))
+            .satisfies(a -> assertThat(a.getIsActive()).as("check isActive").isEqualTo(expected.getIsActive()));
     }
 
     /**

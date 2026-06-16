@@ -97,6 +97,7 @@ entity ExpenseCategory {
     categoryCode String
     categoryName String
     description String
+    isActive Boolean
 }
 
 @EnableAudit
@@ -106,6 +107,7 @@ entity ExpenseSubCategory {
     categoryCode String
     subCategoryCode String
     subCategoryName String
+    isActive Boolean
 }
 
 /**
@@ -167,6 +169,7 @@ entity AssetCategory {
     assetCategoryCode String
     assetCategoryName String
     description String
+    isActive Boolean
 }
 
 @EnableAudit
@@ -176,6 +179,7 @@ entity AssetSubCategory {
     assetCategoryCode String
     assetSubCategoryCode String
     assetSubCategoryName String
+    isActive Boolean
 }
 
 /**
@@ -223,6 +227,7 @@ entity MaintenanceLog {
     vendor String
     nextServiceDate LocalDate
     note String
+    isActive Boolean
 }
 
 /**
@@ -238,6 +243,7 @@ entity InventoryItem {
     quantity BigDecimal
     unitPrice BigDecimal
     runningStockCount BigDecimal
+    isActive Boolean
 }
 
 @EnableAudit

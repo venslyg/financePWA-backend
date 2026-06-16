@@ -1126,7 +1126,7 @@ class SalaryPayoutResourceIT {
         SalaryPayout partialUpdatedSalaryPayout = new SalaryPayout();
         partialUpdatedSalaryPayout.setId(salaryPayout.getId());
 
-        partialUpdatedSalaryPayout.branchCode(UPDATED_BRANCH_CODE).staffCode(UPDATED_STAFF_CODE).payoutDate(UPDATED_PAYOUT_DATE);
+        partialUpdatedSalaryPayout.allowances(UPDATED_ALLOWANCES).deductions(UPDATED_DEDUCTIONS).netPay(UPDATED_NET_PAY);
 
         restSalaryPayoutMockMvc
             .perform(

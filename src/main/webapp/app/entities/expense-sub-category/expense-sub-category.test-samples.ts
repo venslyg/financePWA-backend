@@ -7,12 +7,13 @@ export const sampleWithRequiredData: IExpenseSubCategory = {
 };
 
 export const sampleWithPartialData: IExpenseSubCategory = {
-  id: 9691,
-  branchCode: 'once abnormally about',
-  categoryCode: 'instead',
-  createdBy: 'before management bossy',
-  lastModifiedBy: 'claw for',
-  lastModifiedDate: dayjs('2026-06-12T00:32'),
+  id: 23450,
+  branchCode: 'unto uselessly inasmuch',
+  categoryCode: 'through',
+  isActive: true,
+  createdDate: dayjs('2026-06-11T09:53'),
+  lastModifiedBy: 'small',
+  lastModifiedDate: dayjs('2026-06-11T13:14'),
 };
 
 export const sampleWithFullData: IExpenseSubCategory = {
@@ -22,10 +23,11 @@ export const sampleWithFullData: IExpenseSubCategory = {
   categoryCode: 'at',
   subCategoryCode: 'foot unsteady',
   subCategoryName: 'ick championship',
-  createdBy: 'major',
-  createdDate: dayjs('2026-06-12T01:11'),
-  lastModifiedBy: 'rewarding from underneath',
-  lastModifiedDate: dayjs('2026-06-11T17:47'),
+  isActive: true,
+  createdBy: 'ouch willing',
+  createdDate: dayjs('2026-06-11T23:26'),
+  lastModifiedBy: 'which internalise',
+  lastModifiedDate: dayjs('2026-06-11T10:37'),
 };
 
 export const sampleWithNewData: NewExpenseSubCategory = {

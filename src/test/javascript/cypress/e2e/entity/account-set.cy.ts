@@ -160,25 +160,25 @@ describe('AccountSet e2e test', () => {
     });
 
     it('should create an instance of AccountSet', () => {
-      cy.get(`[data-cy="branchCode"]`).type('on');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'on');
+      cy.get(`[data-cy="branchCode"]`).type('urgently');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'urgently');
 
-      cy.get(`[data-cy="branchId"]`).type('hm emotional during');
-      cy.get(`[data-cy="branchId"]`).should('have.value', 'hm emotional during');
+      cy.get(`[data-cy="branchId"]`).type('carelessly but yieldingly');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'carelessly but yieldingly');
 
-      cy.get(`[data-cy="accountCode"]`).type('necklace');
-      cy.get(`[data-cy="accountCode"]`).should('have.value', 'necklace');
+      cy.get(`[data-cy="accountCode"]`).type('upbeat usable');
+      cy.get(`[data-cy="accountCode"]`).should('have.value', 'upbeat usable');
 
-      cy.get(`[data-cy="accountName"]`).type('Savings Account');
-      cy.get(`[data-cy="accountName"]`).should('have.value', 'Savings Account');
+      cy.get(`[data-cy="accountName"]`).type('Auto Loan Account');
+      cy.get(`[data-cy="accountName"]`).should('have.value', 'Auto Loan Account');
 
       cy.get(`[data-cy="accountType"]`).select('INCOME');
 
-      cy.get(`[data-cy="subCategory"]`).type('sheepishly pension');
-      cy.get(`[data-cy="subCategory"]`).should('have.value', 'sheepishly pension');
+      cy.get(`[data-cy="subCategory"]`).type('ew uh-huh gleefully');
+      cy.get(`[data-cy="subCategory"]`).should('have.value', 'ew uh-huh gleefully');
 
-      cy.get(`[data-cy="remark"]`).type('ick shoot until');
-      cy.get(`[data-cy="remark"]`).should('have.value', 'ick shoot until');
+      cy.get(`[data-cy="remark"]`).type('gadzooks bungalow overconfidently');
+      cy.get(`[data-cy="remark"]`).should('have.value', 'gadzooks bungalow overconfidently');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

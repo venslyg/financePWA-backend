@@ -647,7 +647,7 @@ class BranchResourceIT {
         Branch partialUpdatedBranch = new Branch();
         partialUpdatedBranch.setId(branch.getId());
 
-        partialUpdatedBranch.location(UPDATED_LOCATION).phoneNumber(UPDATED_PHONE_NUMBER).isActive(UPDATED_IS_ACTIVE);
+        partialUpdatedBranch.branchCode(UPDATED_BRANCH_CODE).location(UPDATED_LOCATION).isActive(UPDATED_IS_ACTIVE);
 
         restBranchMockMvc
             .perform(

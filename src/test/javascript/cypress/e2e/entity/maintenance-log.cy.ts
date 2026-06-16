@@ -160,36 +160,40 @@ describe('MaintenanceLog e2e test', () => {
     });
 
     it('should create an instance of MaintenanceLog', () => {
-      cy.get(`[data-cy="branchCode"]`).type('mozzarella');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'mozzarella');
+      cy.get(`[data-cy="branchCode"]`).type('kookily');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'kookily');
 
-      cy.get(`[data-cy="branchId"]`).type('aw');
-      cy.get(`[data-cy="branchId"]`).should('have.value', 'aw');
+      cy.get(`[data-cy="branchId"]`).type('entry but weighty');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'entry but weighty');
 
-      cy.get(`[data-cy="maintenanceLogCode"]`).type('crank superior');
-      cy.get(`[data-cy="maintenanceLogCode"]`).should('have.value', 'crank superior');
+      cy.get(`[data-cy="maintenanceLogCode"]`).type('continually ha');
+      cy.get(`[data-cy="maintenanceLogCode"]`).should('have.value', 'continually ha');
 
       cy.get(`[data-cy="logDate"]`).type('2026-06-11');
       cy.get(`[data-cy="logDate"]`).blur();
       cy.get(`[data-cy="logDate"]`).should('have.value', '2026-06-11');
 
-      cy.get(`[data-cy="logType"]`).select('REPAIR');
+      cy.get(`[data-cy="logType"]`).select('REPLACEMENT');
 
-      cy.get(`[data-cy="description"]`).type('outside fooey whenever');
-      cy.get(`[data-cy="description"]`).should('have.value', 'outside fooey whenever');
+      cy.get(`[data-cy="description"]`).type('pension');
+      cy.get(`[data-cy="description"]`).should('have.value', 'pension');
 
-      cy.get(`[data-cy="cost"]`).type('18369.52');
-      cy.get(`[data-cy="cost"]`).should('have.value', '18369.52');
+      cy.get(`[data-cy="cost"]`).type('18442.85');
+      cy.get(`[data-cy="cost"]`).should('have.value', '18442.85');
 
-      cy.get(`[data-cy="vendor"]`).type('unexpectedly while bewail');
-      cy.get(`[data-cy="vendor"]`).should('have.value', 'unexpectedly while bewail');
+      cy.get(`[data-cy="vendor"]`).type('during quaintly arrogantly');
+      cy.get(`[data-cy="vendor"]`).should('have.value', 'during quaintly arrogantly');
 
       cy.get(`[data-cy="nextServiceDate"]`).type('2026-06-11');
       cy.get(`[data-cy="nextServiceDate"]`).blur();
       cy.get(`[data-cy="nextServiceDate"]`).should('have.value', '2026-06-11');
 
-      cy.get(`[data-cy="note"]`).type('aha ha even');
-      cy.get(`[data-cy="note"]`).should('have.value', 'aha ha even');
+      cy.get(`[data-cy="note"]`).type('axe ha');
+      cy.get(`[data-cy="note"]`).should('have.value', 'axe ha');
+
+      cy.get(`[data-cy="isActive"]`).should('not.be.checked');
+      cy.get(`[data-cy="isActive"]`).click();
+      cy.get(`[data-cy="isActive"]`).should('be.checked');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

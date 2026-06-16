@@ -160,29 +160,33 @@ describe('InventoryItem e2e test', () => {
     });
 
     it('should create an instance of InventoryItem', () => {
-      cy.get(`[data-cy="branchCode"]`).type('underneath furthermore');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'underneath furthermore');
+      cy.get(`[data-cy="branchCode"]`).type('progress dilate angrily');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'progress dilate angrily');
 
-      cy.get(`[data-cy="branchId"]`).type('whoa adumbrate deeply');
-      cy.get(`[data-cy="branchId"]`).should('have.value', 'whoa adumbrate deeply');
+      cy.get(`[data-cy="branchId"]`).type('around');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'around');
 
-      cy.get(`[data-cy="inventoryItemCode"]`).type('opposite within before');
-      cy.get(`[data-cy="inventoryItemCode"]`).should('have.value', 'opposite within before');
+      cy.get(`[data-cy="inventoryItemCode"]`).type('understanding beside');
+      cy.get(`[data-cy="inventoryItemCode"]`).should('have.value', 'understanding beside');
 
-      cy.get(`[data-cy="itemName"]`).type('wherever');
-      cy.get(`[data-cy="itemName"]`).should('have.value', 'wherever');
+      cy.get(`[data-cy="itemName"]`).type('anenst inside gifted');
+      cy.get(`[data-cy="itemName"]`).should('have.value', 'anenst inside gifted');
 
-      cy.get(`[data-cy="category"]`).type('pro athwart gee');
-      cy.get(`[data-cy="category"]`).should('have.value', 'pro athwart gee');
+      cy.get(`[data-cy="category"]`).type('solace');
+      cy.get(`[data-cy="category"]`).should('have.value', 'solace');
 
-      cy.get(`[data-cy="quantity"]`).type('2124.72');
-      cy.get(`[data-cy="quantity"]`).should('have.value', '2124.72');
+      cy.get(`[data-cy="quantity"]`).type('17094.36');
+      cy.get(`[data-cy="quantity"]`).should('have.value', '17094.36');
 
-      cy.get(`[data-cy="unitPrice"]`).type('7512.3');
-      cy.get(`[data-cy="unitPrice"]`).should('have.value', '7512.3');
+      cy.get(`[data-cy="unitPrice"]`).type('5322.04');
+      cy.get(`[data-cy="unitPrice"]`).should('have.value', '5322.04');
 
-      cy.get(`[data-cy="runningStockCount"]`).type('23945.42');
-      cy.get(`[data-cy="runningStockCount"]`).should('have.value', '23945.42');
+      cy.get(`[data-cy="runningStockCount"]`).type('17427.06');
+      cy.get(`[data-cy="runningStockCount"]`).should('have.value', '17427.06');
+
+      cy.get(`[data-cy="isActive"]`).should('not.be.checked');
+      cy.get(`[data-cy="isActive"]`).click();
+      cy.get(`[data-cy="isActive"]`).should('be.checked');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

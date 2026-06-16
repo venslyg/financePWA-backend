@@ -89,6 +89,7 @@ public class InventoryItemQueryService extends QueryService<InventoryItem> {
                 buildRangeSpecification(criteria.getQuantity(), InventoryItem_.quantity),
                 buildRangeSpecification(criteria.getUnitPrice(), InventoryItem_.unitPrice),
                 buildRangeSpecification(criteria.getRunningStockCount(), InventoryItem_.runningStockCount),
+                buildSpecification(criteria.getIsActive(), InventoryItem_.isActive),
                 buildStringSpecification(criteria.getCreatedBy(), InventoryItem_.createdBy),
                 buildRangeSpecification(criteria.getCreatedDate(), InventoryItem_.createdDate),
                 buildStringSpecification(criteria.getLastModifiedBy(), InventoryItem_.lastModifiedBy),

@@ -14,6 +14,7 @@ export interface IMaintenanceLog {
   vendor?: string | null;
   nextServiceDate?: dayjs.Dayjs | null;
   note?: string | null;
+  isActive?: boolean | null;
   createdBy?: string | null;
   createdDate?: dayjs.Dayjs | null;
   lastModifiedBy?: string | null;

@@ -8,6 +8,7 @@ export interface IAssetSubCategory {
   assetCategoryCode?: string | null;
   assetSubCategoryCode?: string | null;
   assetSubCategoryName?: string | null;
+  isActive?: boolean | null;
   createdBy?: string | null;
   createdDate?: dayjs.Dayjs | null;
   lastModifiedBy?: string | null;

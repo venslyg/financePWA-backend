@@ -44,6 +44,10 @@ public class ExpenseSubCategory extends AbstractAuditingEntity<Long> implements 
     @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Text)
     private String subCategoryName;
 
+    @Column(name = "is_active")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Boolean)
+    private Boolean isActive;
+
     // Inherited createdBy definition
     // Inherited createdDate definition
     // Inherited lastModifiedBy definition
@@ -135,6 +139,19 @@ public class ExpenseSubCategory extends AbstractAuditingEntity<Long> implements 
         this.subCategoryName = subCategoryName;
     }
 
+    public Boolean getIsActive() {
+        return this.isActive;
+    }
+
+    public ExpenseSubCategory isActive(Boolean isActive) {
+        this.setIsActive(isActive);
+        return this;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
     // Inherited createdBy methods
     public ExpenseSubCategory createdBy(String createdBy) {
         this.setCreatedBy(createdBy);
@@ -219,6 +236,7 @@ public class ExpenseSubCategory extends AbstractAuditingEntity<Long> implements 
             ", categoryCode='" + getCategoryCode() + "'" +
             ", subCategoryCode='" + getSubCategoryCode() + "'" +
             ", subCategoryName='" + getSubCategoryName() + "'" +
+            ", isActive='" + getIsActive() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedBy='" + getLastModifiedBy() + "'" +

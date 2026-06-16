@@ -10,6 +10,7 @@ export interface IInventoryItem {
   quantity?: number | null;
   unitPrice?: number | null;
   runningStockCount?: number | null;
+  isActive?: boolean | null;
   createdBy?: string | null;
   createdDate?: dayjs.Dayjs | null;
   lastModifiedBy?: string | null;

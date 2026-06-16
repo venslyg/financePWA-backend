@@ -40,6 +40,10 @@
       "fieldType": "BigDecimal"
     },
     {
+      "fieldName": "isActive",
+      "fieldType": "Boolean"
+    },
+    {
       "auditField": true,
       "autoGenerate": true,
       "columnType": "varchar(50)",

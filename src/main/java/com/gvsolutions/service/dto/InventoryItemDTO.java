@@ -31,6 +31,8 @@ public class InventoryItemDTO implements Serializable {
 
     private BigDecimal runningStockCount;
 
+    private Boolean isActive;
+
     private String createdBy;
 
     private Instant createdDate;
@@ -111,6 +113,14 @@ public class InventoryItemDTO implements Serializable {
         this.runningStockCount = runningStockCount;
     }
 
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
     public String getCreatedBy() {
         return createdBy;
     }
@@ -177,6 +187,7 @@ public class InventoryItemDTO implements Serializable {
             ", quantity=" + getQuantity() +
             ", unitPrice=" + getUnitPrice() +
             ", runningStockCount=" + getRunningStockCount() +
+            ", isActive='" + getIsActive() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedBy='" + getLastModifiedBy() + "'" +

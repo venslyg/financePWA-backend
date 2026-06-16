@@ -34,6 +34,8 @@ public class ExpenseSubCategoryCriteria implements Serializable, Criteria {
 
     private StringFilter subCategoryName;
 
+    private BooleanFilter isActive;
+
     private StringFilter createdBy;
 
     private InstantFilter createdDate;
@@ -55,6 +57,7 @@ public class ExpenseSubCategoryCriteria implements Serializable, Criteria {
         this.categoryCode = other.optionalCategoryCode().map(StringFilter::copy).orElse(null);
         this.subCategoryCode = other.optionalSubCategoryCode().map(StringFilter::copy).orElse(null);
         this.subCategoryName = other.optionalSubCategoryName().map(StringFilter::copy).orElse(null);
+        this.isActive = other.optionalIsActive().map(BooleanFilter::copy).orElse(null);
         this.createdBy = other.optionalCreatedBy().map(StringFilter::copy).orElse(null);
         this.createdDate = other.optionalCreatedDate().map(InstantFilter::copy).orElse(null);
         this.lastModifiedBy = other.optionalLastModifiedBy().map(StringFilter::copy).orElse(null);
@@ -180,6 +183,25 @@ public class ExpenseSubCategoryCriteria implements Serializable, Criteria {
 
     public void setSubCategoryName(StringFilter subCategoryName) {
         this.subCategoryName = subCategoryName;
+    }
+
+    public BooleanFilter getIsActive() {
+        return isActive;
+    }
+
+    public Optional<BooleanFilter> optionalIsActive() {
+        return Optional.ofNullable(isActive);
+    }
+
+    public BooleanFilter isActive() {
+        if (isActive == null) {
+            setIsActive(new BooleanFilter());
+        }
+        return isActive;
+    }
+
+    public void setIsActive(BooleanFilter isActive) {
+        this.isActive = isActive;
     }
 
     public StringFilter getCreatedBy() {
@@ -312,6 +334,7 @@ public class ExpenseSubCategoryCriteria implements Serializable, Criteria {
             Objects.equals(categoryCode, that.categoryCode) &&
             Objects.equals(subCategoryCode, that.subCategoryCode) &&
             Objects.equals(subCategoryName, that.subCategoryName) &&
+            Objects.equals(isActive, that.isActive) &&
             Objects.equals(createdBy, that.createdBy) &&
             Objects.equals(createdDate, that.createdDate) &&
             Objects.equals(lastModifiedBy, that.lastModifiedBy) &&
@@ -330,6 +353,7 @@ public class ExpenseSubCategoryCriteria implements Serializable, Criteria {
             categoryCode,
             subCategoryCode,
             subCategoryName,
+            isActive,
             createdBy,
             createdDate,
             lastModifiedBy,
@@ -349,6 +373,7 @@ public class ExpenseSubCategoryCriteria implements Serializable, Criteria {
             optionalCategoryCode().map(f -> "categoryCode=" + f + ", ").orElse("") +
             optionalSubCategoryCode().map(f -> "subCategoryCode=" + f + ", ").orElse("") +
             optionalSubCategoryName().map(f -> "subCategoryName=" + f + ", ").orElse("") +
+            optionalIsActive().map(f -> "isActive=" + f + ", ").orElse("") +
             optionalCreatedBy().map(f -> "createdBy=" + f + ", ").orElse("") +
             optionalCreatedDate().map(f -> "createdDate=" + f + ", ").orElse("") +
             optionalLastModifiedBy().map(f -> "lastModifiedBy=" + f + ", ").orElse("") +

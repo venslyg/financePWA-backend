@@ -1125,9 +1125,8 @@ class BankLedgerResourceIT {
 
         partialUpdatedBankLedger
             .branchId(UPDATED_BRANCH_ID)
-            .bankLedgerCode(UPDATED_BANK_LEDGER_CODE)
-            .description(UPDATED_DESCRIPTION)
-            .depositAmount(UPDATED_DEPOSIT_AMOUNT)
+            .referenceNo(UPDATED_REFERENCE_NO)
+            .withdrawalAmount(UPDATED_WITHDRAWAL_AMOUNT)
             .runningBalance(UPDATED_RUNNING_BALANCE);
 
         restBankLedgerMockMvc

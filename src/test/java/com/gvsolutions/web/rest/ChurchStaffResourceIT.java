@@ -915,7 +915,11 @@ class ChurchStaffResourceIT {
         ChurchStaff partialUpdatedChurchStaff = new ChurchStaff();
         partialUpdatedChurchStaff.setId(churchStaff.getId());
 
-        partialUpdatedChurchStaff.position(UPDATED_POSITION).staffType(UPDATED_STAFF_TYPE).isActive(UPDATED_IS_ACTIVE);
+        partialUpdatedChurchStaff
+            .staffCode(UPDATED_STAFF_CODE)
+            .branchId(UPDATED_BRANCH_ID)
+            .staffType(UPDATED_STAFF_TYPE)
+            .isActive(UPDATED_IS_ACTIVE);
 
         restChurchStaffMockMvc
             .perform(

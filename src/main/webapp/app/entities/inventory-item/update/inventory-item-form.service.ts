@@ -28,7 +28,7 @@ type InventoryItemFormRawValue = FormValueOf<IInventoryItem>;
 
 type NewInventoryItemFormRawValue = FormValueOf<NewInventoryItem>;
 
-type InventoryItemFormDefaults = Pick<NewInventoryItem, 'id' | 'createdDate' | 'lastModifiedDate'>;
+type InventoryItemFormDefaults = Pick<NewInventoryItem, 'id' | 'isActive' | 'createdDate' | 'lastModifiedDate'>;
 
 type InventoryItemFormGroupContent = {
   id: FormControl<InventoryItemFormRawValue['id'] | NewInventoryItem['id']>;
@@ -40,6 +40,7 @@ type InventoryItemFormGroupContent = {
   quantity: FormControl<InventoryItemFormRawValue['quantity']>;
   unitPrice: FormControl<InventoryItemFormRawValue['unitPrice']>;
   runningStockCount: FormControl<InventoryItemFormRawValue['runningStockCount']>;
+  isActive: FormControl<InventoryItemFormRawValue['isActive']>;
   createdBy: FormControl<InventoryItemFormRawValue['createdBy']>;
   createdDate: FormControl<InventoryItemFormRawValue['createdDate']>;
   lastModifiedBy: FormControl<InventoryItemFormRawValue['lastModifiedBy']>;
@@ -71,6 +72,7 @@ export class InventoryItemFormService {
       quantity: new FormControl(inventoryItemRawValue.quantity),
       unitPrice: new FormControl(inventoryItemRawValue.unitPrice),
       runningStockCount: new FormControl(inventoryItemRawValue.runningStockCount),
+      isActive: new FormControl(inventoryItemRawValue.isActive),
       createdBy: new FormControl(inventoryItemRawValue.createdBy),
       createdDate: new FormControl(inventoryItemRawValue.createdDate),
       lastModifiedBy: new FormControl(inventoryItemRawValue.lastModifiedBy),
@@ -97,6 +99,7 @@ export class InventoryItemFormService {
 
     return {
       id: null,
+      isActive: false,
       createdDate: currentTime,
       lastModifiedDate: currentTime,
     };

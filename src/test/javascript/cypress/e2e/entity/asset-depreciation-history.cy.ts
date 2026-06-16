@@ -160,27 +160,27 @@ describe('AssetDepreciationHistory e2e test', () => {
     });
 
     it('should create an instance of AssetDepreciationHistory', () => {
-      cy.get(`[data-cy="branchCode"]`).type('agreement concrete');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'agreement concrete');
+      cy.get(`[data-cy="branchCode"]`).type('rim technician hastily');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'rim technician hastily');
 
-      cy.get(`[data-cy="branchId"]`).type('righteously after');
-      cy.get(`[data-cy="branchId"]`).should('have.value', 'righteously after');
+      cy.get(`[data-cy="branchId"]`).type('which since');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'which since');
 
-      cy.get(`[data-cy="assetRegisterCode"]`).type('assured cantaloupe amidst');
-      cy.get(`[data-cy="assetRegisterCode"]`).should('have.value', 'assured cantaloupe amidst');
+      cy.get(`[data-cy="assetRegisterCode"]`).type('pfft round');
+      cy.get(`[data-cy="assetRegisterCode"]`).should('have.value', 'pfft round');
 
-      cy.get(`[data-cy="depreciationDate"]`).type('2026-06-12');
+      cy.get(`[data-cy="depreciationDate"]`).type('2026-06-11');
       cy.get(`[data-cy="depreciationDate"]`).blur();
-      cy.get(`[data-cy="depreciationDate"]`).should('have.value', '2026-06-12');
+      cy.get(`[data-cy="depreciationDate"]`).should('have.value', '2026-06-11');
 
-      cy.get(`[data-cy="depreciationAmount"]`).type('8275.14');
-      cy.get(`[data-cy="depreciationAmount"]`).should('have.value', '8275.14');
+      cy.get(`[data-cy="depreciationAmount"]`).type('31412.57');
+      cy.get(`[data-cy="depreciationAmount"]`).should('have.value', '31412.57');
 
-      cy.get(`[data-cy="valueAfterDepreciation"]`).type('16860.89');
-      cy.get(`[data-cy="valueAfterDepreciation"]`).should('have.value', '16860.89');
+      cy.get(`[data-cy="valueAfterDepreciation"]`).type('11534.21');
+      cy.get(`[data-cy="valueAfterDepreciation"]`).should('have.value', '11534.21');
 
-      cy.get(`[data-cy="processedBy"]`).type('brr');
-      cy.get(`[data-cy="processedBy"]`).should('have.value', 'brr');
+      cy.get(`[data-cy="processedBy"]`).type('separately warped geez');
+      cy.get(`[data-cy="processedBy"]`).should('have.value', 'separately warped geez');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

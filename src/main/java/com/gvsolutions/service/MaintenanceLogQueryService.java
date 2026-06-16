@@ -92,6 +92,7 @@ public class MaintenanceLogQueryService extends QueryService<MaintenanceLog> {
                 buildStringSpecification(criteria.getVendor(), MaintenanceLog_.vendor),
                 buildRangeSpecification(criteria.getNextServiceDate(), MaintenanceLog_.nextServiceDate),
                 buildStringSpecification(criteria.getNote(), MaintenanceLog_.note),
+                buildSpecification(criteria.getIsActive(), MaintenanceLog_.isActive),
                 buildStringSpecification(criteria.getCreatedBy(), MaintenanceLog_.createdBy),
                 buildRangeSpecification(criteria.getCreatedDate(), MaintenanceLog_.createdDate),
                 buildStringSpecification(criteria.getLastModifiedBy(), MaintenanceLog_.lastModifiedBy),

@@ -28,7 +28,7 @@ type MaintenanceLogFormRawValue = FormValueOf<IMaintenanceLog>;
 
 type NewMaintenanceLogFormRawValue = FormValueOf<NewMaintenanceLog>;
 
-type MaintenanceLogFormDefaults = Pick<NewMaintenanceLog, 'id' | 'createdDate' | 'lastModifiedDate'>;
+type MaintenanceLogFormDefaults = Pick<NewMaintenanceLog, 'id' | 'isActive' | 'createdDate' | 'lastModifiedDate'>;
 
 type MaintenanceLogFormGroupContent = {
   id: FormControl<MaintenanceLogFormRawValue['id'] | NewMaintenanceLog['id']>;
@@ -42,6 +42,7 @@ type MaintenanceLogFormGroupContent = {
   vendor: FormControl<MaintenanceLogFormRawValue['vendor']>;
   nextServiceDate: FormControl<MaintenanceLogFormRawValue['nextServiceDate']>;
   note: FormControl<MaintenanceLogFormRawValue['note']>;
+  isActive: FormControl<MaintenanceLogFormRawValue['isActive']>;
   createdBy: FormControl<MaintenanceLogFormRawValue['createdBy']>;
   createdDate: FormControl<MaintenanceLogFormRawValue['createdDate']>;
   lastModifiedBy: FormControl<MaintenanceLogFormRawValue['lastModifiedBy']>;
@@ -76,6 +77,7 @@ export class MaintenanceLogFormService {
       vendor: new FormControl(maintenanceLogRawValue.vendor),
       nextServiceDate: new FormControl(maintenanceLogRawValue.nextServiceDate),
       note: new FormControl(maintenanceLogRawValue.note),
+      isActive: new FormControl(maintenanceLogRawValue.isActive),
       createdBy: new FormControl(maintenanceLogRawValue.createdBy),
       createdDate: new FormControl(maintenanceLogRawValue.createdDate),
       lastModifiedBy: new FormControl(maintenanceLogRawValue.lastModifiedBy),
@@ -105,6 +107,7 @@ export class MaintenanceLogFormService {
 
     return {
       id: null,
+      isActive: false,
       createdDate: currentTime,
       lastModifiedDate: currentTime,
     };

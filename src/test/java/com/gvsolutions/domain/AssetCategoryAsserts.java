@@ -53,7 +53,8 @@ public class AssetCategoryAsserts {
             .satisfies(a -> assertThat(a.getBranchId()).as("check branchId").isEqualTo(expected.getBranchId()))
             .satisfies(a -> assertThat(a.getAssetCategoryCode()).as("check assetCategoryCode").isEqualTo(expected.getAssetCategoryCode()))
             .satisfies(a -> assertThat(a.getAssetCategoryName()).as("check assetCategoryName").isEqualTo(expected.getAssetCategoryName()))
-            .satisfies(a -> assertThat(a.getDescription()).as("check description").isEqualTo(expected.getDescription()));
+            .satisfies(a -> assertThat(a.getDescription()).as("check description").isEqualTo(expected.getDescription()))
+            .satisfies(a -> assertThat(a.getIsActive()).as("check isActive").isEqualTo(expected.getIsActive()));
     }
 
     /**

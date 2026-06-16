@@ -54,6 +54,10 @@ public class InventoryItem extends AbstractAuditingEntity<Long> implements Seria
     @Column(name = "running_stock_count", precision = 21, scale = 2)
     private BigDecimal runningStockCount;
 
+    @Column(name = "is_active")
+    @org.springframework.data.elasticsearch.annotations.Field(type = org.springframework.data.elasticsearch.annotations.FieldType.Boolean)
+    private Boolean isActive;
+
     // Inherited createdBy definition
     // Inherited createdDate definition
     // Inherited lastModifiedBy definition
@@ -181,6 +185,19 @@ public class InventoryItem extends AbstractAuditingEntity<Long> implements Seria
         this.runningStockCount = runningStockCount;
     }
 
+    public Boolean getIsActive() {
+        return this.isActive;
+    }
+
+    public InventoryItem isActive(Boolean isActive) {
+        this.setIsActive(isActive);
+        return this;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
     // Inherited createdBy methods
     public InventoryItem createdBy(String createdBy) {
         this.setCreatedBy(createdBy);
@@ -255,6 +272,7 @@ public class InventoryItem extends AbstractAuditingEntity<Long> implements Seria
             ", quantity=" + getQuantity() +
             ", unitPrice=" + getUnitPrice() +
             ", runningStockCount=" + getRunningStockCount() +
+            ", isActive='" + getIsActive() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedBy='" + getLastModifiedBy() + "'" +

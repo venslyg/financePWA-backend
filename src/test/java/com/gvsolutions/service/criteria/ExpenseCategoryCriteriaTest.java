@@ -81,6 +81,7 @@ class ExpenseCategoryCriteriaTest {
         expenseCategoryCriteria.categoryCode();
         expenseCategoryCriteria.categoryName();
         expenseCategoryCriteria.description();
+        expenseCategoryCriteria.isActive();
         expenseCategoryCriteria.createdBy();
         expenseCategoryCriteria.createdDate();
         expenseCategoryCriteria.lastModifiedBy();
@@ -97,6 +98,7 @@ class ExpenseCategoryCriteriaTest {
                 condition.apply(criteria.getCategoryCode()) &&
                 condition.apply(criteria.getCategoryName()) &&
                 condition.apply(criteria.getDescription()) &&
+                condition.apply(criteria.getIsActive()) &&
                 condition.apply(criteria.getCreatedBy()) &&
                 condition.apply(criteria.getCreatedDate()) &&
                 condition.apply(criteria.getLastModifiedBy()) &&
@@ -118,6 +120,7 @@ class ExpenseCategoryCriteriaTest {
                 condition.apply(criteria.getCategoryCode(), copy.getCategoryCode()) &&
                 condition.apply(criteria.getCategoryName(), copy.getCategoryName()) &&
                 condition.apply(criteria.getDescription(), copy.getDescription()) &&
+                condition.apply(criteria.getIsActive(), copy.getIsActive()) &&
                 condition.apply(criteria.getCreatedBy(), copy.getCreatedBy()) &&
                 condition.apply(criteria.getCreatedDate(), copy.getCreatedDate()) &&
                 condition.apply(criteria.getLastModifiedBy(), copy.getLastModifiedBy()) &&

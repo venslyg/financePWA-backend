@@ -129,6 +129,13 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
+            <th scope="col" jhiSortBy="isActive">
+              <div class="d-flex">
+                <span>Is Active</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col" jhiSortBy="createdBy">
               <div class="d-flex">
                 <span>Created By</span>
@@ -176,6 +183,7 @@
               <td>{{ inventoryItem.quantity }}</td>
               <td>{{ inventoryItem.unitPrice }}</td>
               <td>{{ inventoryItem.runningStockCount }}</td>
+              <td>{{ inventoryItem.isActive }}</td>
               <td>{{ inventoryItem.createdBy }}</td>
               <td>{{ inventoryItem.createdDate | formatMediumDatetime }}</td>
               <td>{{ inventoryItem.lastModifiedBy }}</td>

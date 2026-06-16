@@ -160,20 +160,24 @@ describe('AssetSubCategory e2e test', () => {
     });
 
     it('should create an instance of AssetSubCategory', () => {
-      cy.get(`[data-cy="branchCode"]`).type('afraid hello');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'afraid hello');
+      cy.get(`[data-cy="branchCode"]`).type('however');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'however');
 
-      cy.get(`[data-cy="branchId"]`).type('messy whether');
-      cy.get(`[data-cy="branchId"]`).should('have.value', 'messy whether');
+      cy.get(`[data-cy="branchId"]`).type('shrilly contractor whose');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'shrilly contractor whose');
 
-      cy.get(`[data-cy="assetCategoryCode"]`).type('verbally impanel without');
-      cy.get(`[data-cy="assetCategoryCode"]`).should('have.value', 'verbally impanel without');
+      cy.get(`[data-cy="assetCategoryCode"]`).type('dwell around');
+      cy.get(`[data-cy="assetCategoryCode"]`).should('have.value', 'dwell around');
 
-      cy.get(`[data-cy="assetSubCategoryCode"]`).type('violently remorseful');
-      cy.get(`[data-cy="assetSubCategoryCode"]`).should('have.value', 'violently remorseful');
+      cy.get(`[data-cy="assetSubCategoryCode"]`).type('psst electric');
+      cy.get(`[data-cy="assetSubCategoryCode"]`).should('have.value', 'psst electric');
 
-      cy.get(`[data-cy="assetSubCategoryName"]`).type('blah');
-      cy.get(`[data-cy="assetSubCategoryName"]`).should('have.value', 'blah');
+      cy.get(`[data-cy="assetSubCategoryName"]`).type('midst ouch infinite');
+      cy.get(`[data-cy="assetSubCategoryName"]`).should('have.value', 'midst ouch infinite');
+
+      cy.get(`[data-cy="isActive"]`).should('not.be.checked');
+      cy.get(`[data-cy="isActive"]`).click();
+      cy.get(`[data-cy="isActive"]`).should('be.checked');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

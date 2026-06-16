@@ -56,6 +56,9 @@ class ExpenseCategoryResourceIT {
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_IS_ACTIVE = false;
+    private static final Boolean UPDATED_IS_ACTIVE = true;
+
     private static final String ENTITY_API_URL = "/api/expense-categories";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
     private static final String ENTITY_SEARCH_API_URL = "/api/expense-categories/_search";
@@ -97,7 +100,8 @@ class ExpenseCategoryResourceIT {
             .branchId(DEFAULT_BRANCH_ID)
             .categoryCode(DEFAULT_CATEGORY_CODE)
             .categoryName(DEFAULT_CATEGORY_NAME)
-            .description(DEFAULT_DESCRIPTION);
+            .description(DEFAULT_DESCRIPTION)
+            .isActive(DEFAULT_IS_ACTIVE);
     }
 
     /**
@@ -112,7 +116,8 @@ class ExpenseCategoryResourceIT {
             .branchId(UPDATED_BRANCH_ID)
             .categoryCode(UPDATED_CATEGORY_CODE)
             .categoryName(UPDATED_CATEGORY_NAME)
-            .description(UPDATED_DESCRIPTION);
+            .description(UPDATED_DESCRIPTION)
+            .isActive(UPDATED_IS_ACTIVE);
     }
 
     @BeforeEach
@@ -198,7 +203,8 @@ class ExpenseCategoryResourceIT {
             .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].categoryCode").value(hasItem(DEFAULT_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].categoryName").value(hasItem(DEFAULT_CATEGORY_NAME)))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)));
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE)));
     }
 
     @Test
@@ -217,7 +223,8 @@ class ExpenseCategoryResourceIT {
             .andExpect(jsonPath("$.branchId").value(DEFAULT_BRANCH_ID))
             .andExpect(jsonPath("$.categoryCode").value(DEFAULT_CATEGORY_CODE))
             .andExpect(jsonPath("$.categoryName").value(DEFAULT_CATEGORY_NAME))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION));
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
+            .andExpect(jsonPath("$.isActive").value(DEFAULT_IS_ACTIVE));
     }
 
     @Test
@@ -509,6 +516,36 @@ class ExpenseCategoryResourceIT {
         );
     }
 
+    @Test
+    @Transactional
+    void getAllExpenseCategoriesByIsActiveIsEqualToSomething() throws Exception {
+        // Initialize the database
+        insertedExpenseCategory = expenseCategoryRepository.saveAndFlush(expenseCategory);
+
+        // Get all the expenseCategoryList where isActive equals to
+        defaultExpenseCategoryFiltering("isActive.equals=" + DEFAULT_IS_ACTIVE, "isActive.equals=" + UPDATED_IS_ACTIVE);
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseCategoriesByIsActiveIsInShouldWork() throws Exception {
+        // Initialize the database
+        insertedExpenseCategory = expenseCategoryRepository.saveAndFlush(expenseCategory);
+
+        // Get all the expenseCategoryList where isActive in
+        defaultExpenseCategoryFiltering("isActive.in=" + DEFAULT_IS_ACTIVE + "," + UPDATED_IS_ACTIVE, "isActive.in=" + UPDATED_IS_ACTIVE);
+    }
+
+    @Test
+    @Transactional
+    void getAllExpenseCategoriesByIsActiveIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        insertedExpenseCategory = expenseCategoryRepository.saveAndFlush(expenseCategory);
+
+        // Get all the expenseCategoryList where isActive is not null
+        defaultExpenseCategoryFiltering("isActive.specified=true", "isActive.specified=false");
+    }
+
     private void defaultExpenseCategoryFiltering(String shouldBeFound, String shouldNotBeFound) throws Exception {
         defaultExpenseCategoryShouldBeFound(shouldBeFound);
         defaultExpenseCategoryShouldNotBeFound(shouldNotBeFound);
@@ -527,7 +564,8 @@ class ExpenseCategoryResourceIT {
             .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].categoryCode").value(hasItem(DEFAULT_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].categoryName").value(hasItem(DEFAULT_CATEGORY_NAME)))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)));
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE)));
 
         // Check, that the count call also returns 1
         restExpenseCategoryMockMvc
@@ -582,7 +620,8 @@ class ExpenseCategoryResourceIT {
             .branchId(UPDATED_BRANCH_ID)
             .categoryCode(UPDATED_CATEGORY_CODE)
             .categoryName(UPDATED_CATEGORY_NAME)
-            .description(UPDATED_DESCRIPTION);
+            .description(UPDATED_DESCRIPTION)
+            .isActive(UPDATED_IS_ACTIVE);
         ExpenseCategoryDTO expenseCategoryDTO = expenseCategoryMapper.toDto(updatedExpenseCategory);
 
         restExpenseCategoryMockMvc
@@ -693,10 +732,10 @@ class ExpenseCategoryResourceIT {
         partialUpdatedExpenseCategory.setId(expenseCategory.getId());
 
         partialUpdatedExpenseCategory
-            .branchCode(UPDATED_BRANCH_CODE)
-            .categoryCode(UPDATED_CATEGORY_CODE)
+            .branchId(UPDATED_BRANCH_ID)
             .categoryName(UPDATED_CATEGORY_NAME)
-            .description(UPDATED_DESCRIPTION);
+            .description(UPDATED_DESCRIPTION)
+            .isActive(UPDATED_IS_ACTIVE);
 
         restExpenseCategoryMockMvc
             .perform(
@@ -732,7 +771,8 @@ class ExpenseCategoryResourceIT {
             .branchId(UPDATED_BRANCH_ID)
             .categoryCode(UPDATED_CATEGORY_CODE)
             .categoryName(UPDATED_CATEGORY_NAME)
-            .description(UPDATED_DESCRIPTION);
+            .description(UPDATED_DESCRIPTION)
+            .isActive(UPDATED_IS_ACTIVE);
 
         restExpenseCategoryMockMvc
             .perform(
@@ -862,7 +902,8 @@ class ExpenseCategoryResourceIT {
             .andExpect(jsonPath("$.[*].branchId").value(hasItem(DEFAULT_BRANCH_ID)))
             .andExpect(jsonPath("$.[*].categoryCode").value(hasItem(DEFAULT_CATEGORY_CODE)))
             .andExpect(jsonPath("$.[*].categoryName").value(hasItem(DEFAULT_CATEGORY_NAME)))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)));
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE)));
     }
 
     protected long getRepositoryCount() {

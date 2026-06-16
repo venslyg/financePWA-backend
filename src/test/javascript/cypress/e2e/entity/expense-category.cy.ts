@@ -160,20 +160,24 @@ describe('ExpenseCategory e2e test', () => {
     });
 
     it('should create an instance of ExpenseCategory', () => {
-      cy.get(`[data-cy="branchCode"]`).type('famously keenly');
-      cy.get(`[data-cy="branchCode"]`).should('have.value', 'famously keenly');
+      cy.get(`[data-cy="branchCode"]`).type('before');
+      cy.get(`[data-cy="branchCode"]`).should('have.value', 'before');
 
-      cy.get(`[data-cy="branchId"]`).type('cod boiling but');
-      cy.get(`[data-cy="branchId"]`).should('have.value', 'cod boiling but');
+      cy.get(`[data-cy="branchId"]`).type('incidentally fortunately swath');
+      cy.get(`[data-cy="branchId"]`).should('have.value', 'incidentally fortunately swath');
 
-      cy.get(`[data-cy="categoryCode"]`).type('accessorise contrast');
-      cy.get(`[data-cy="categoryCode"]`).should('have.value', 'accessorise contrast');
+      cy.get(`[data-cy="categoryCode"]`).type('less');
+      cy.get(`[data-cy="categoryCode"]`).should('have.value', 'less');
 
-      cy.get(`[data-cy="categoryName"]`).type('before oof chasuble');
-      cy.get(`[data-cy="categoryName"]`).should('have.value', 'before oof chasuble');
+      cy.get(`[data-cy="categoryName"]`).type('if excitedly vamoose');
+      cy.get(`[data-cy="categoryName"]`).should('have.value', 'if excitedly vamoose');
 
-      cy.get(`[data-cy="description"]`).type('voluntarily yet that');
-      cy.get(`[data-cy="description"]`).should('have.value', 'voluntarily yet that');
+      cy.get(`[data-cy="description"]`).type('recommendation');
+      cy.get(`[data-cy="description"]`).should('have.value', 'recommendation');
+
+      cy.get(`[data-cy="isActive"]`).should('not.be.checked');
+      cy.get(`[data-cy="isActive"]`).click();
+      cy.get(`[data-cy="isActive"]`).should('be.checked');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

@@ -86,6 +86,7 @@ public class AssetCategoryQueryService extends QueryService<AssetCategory> {
                 buildStringSpecification(criteria.getAssetCategoryCode(), AssetCategory_.assetCategoryCode),
                 buildStringSpecification(criteria.getAssetCategoryName(), AssetCategory_.assetCategoryName),
                 buildStringSpecification(criteria.getDescription(), AssetCategory_.description),
+                buildSpecification(criteria.getIsActive(), AssetCategory_.isActive),
                 buildStringSpecification(criteria.getCreatedBy(), AssetCategory_.createdBy),
                 buildRangeSpecification(criteria.getCreatedDate(), AssetCategory_.createdDate),
                 buildStringSpecification(criteria.getLastModifiedBy(), AssetCategory_.lastModifiedBy),

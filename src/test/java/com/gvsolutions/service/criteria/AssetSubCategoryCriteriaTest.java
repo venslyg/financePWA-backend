@@ -81,6 +81,7 @@ class AssetSubCategoryCriteriaTest {
         assetSubCategoryCriteria.assetCategoryCode();
         assetSubCategoryCriteria.assetSubCategoryCode();
         assetSubCategoryCriteria.assetSubCategoryName();
+        assetSubCategoryCriteria.isActive();
         assetSubCategoryCriteria.createdBy();
         assetSubCategoryCriteria.createdDate();
         assetSubCategoryCriteria.lastModifiedBy();
@@ -98,6 +99,7 @@ class AssetSubCategoryCriteriaTest {
                 condition.apply(criteria.getAssetCategoryCode()) &&
                 condition.apply(criteria.getAssetSubCategoryCode()) &&
                 condition.apply(criteria.getAssetSubCategoryName()) &&
+                condition.apply(criteria.getIsActive()) &&
                 condition.apply(criteria.getCreatedBy()) &&
                 condition.apply(criteria.getCreatedDate()) &&
                 condition.apply(criteria.getLastModifiedBy()) &&
@@ -120,6 +122,7 @@ class AssetSubCategoryCriteriaTest {
                 condition.apply(criteria.getAssetCategoryCode(), copy.getAssetCategoryCode()) &&
                 condition.apply(criteria.getAssetSubCategoryCode(), copy.getAssetSubCategoryCode()) &&
                 condition.apply(criteria.getAssetSubCategoryName(), copy.getAssetSubCategoryName()) &&
+                condition.apply(criteria.getIsActive(), copy.getIsActive()) &&
                 condition.apply(criteria.getCreatedBy(), copy.getCreatedBy()) &&
                 condition.apply(criteria.getCreatedDate(), copy.getCreatedDate()) &&
                 condition.apply(criteria.getLastModifiedBy(), copy.getLastModifiedBy()) &&

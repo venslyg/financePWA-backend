@@ -74,6 +74,11 @@
           />
         </div>
 
+        <div class="mb-3">
+          <label class="form-label" for="field_isActive">Is Active</label>
+          <input type="checkbox" class="form-check" name="isActive" id="field_isActive" data-cy="isActive" formControlName="isActive" />
+        </div>
+
         @if (editForm.controls.createdBy.value !== null) {
           <div class="mb-3">
             <label class="form-label" for="field_createdBy">Created By</label>
